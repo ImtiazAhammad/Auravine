@@ -1,0 +1,15 @@
+{
+  "node": {
+    "601f9f285e3964b2942ef779510674890a632141a5": {
+      "workers": {
+        "app/projects/page": {
+          "moduleId": 60807,
+          "async": false
+        }
+      },
+      "exportedName": "getProjectImages",
+      "filename": "src/app/actions/getProjectImages.ts"
+    }
+  },
+  "edge": {}
+}

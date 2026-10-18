@@ -1,0 +1,15 @@
+{
+  "node": {
+    "40303ccfd680f989c167d185f975a1f8331e9e524c": {
+      "workers": {
+        "app/experience/page": {
+          "moduleId": 4515,
+          "async": false
+        }
+      },
+      "exportedName": "getJourneyImages",
+      "filename": "src/app/actions/getJourneyImages.ts"
+    }
+  },
+  "edge": {}
+}

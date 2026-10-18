@@ -1,0 +1,3 @@
+module.exports=[[3363,a=>{var b=a.i(7997),c=a.i(65889);a.s(["default",0,function(){return(0,b.jsx)(c.QuantumError,{type:"404"})}])},2708,a=>{let b=(0,a.i(11857).registerClientReference)(function(){throw Error("Attempted to call QuantumError() from the server but QuantumError is on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component.")},"[project]/src/components/ui/QuantumError.tsx","QuantumError");a.s(["QuantumError",0,b])},65889,a=>{var b=a.i(2708);a.n(b)}],17537,function(a){a.n(a.i(3363))}];
+
+//# sourceMappingURL=src_15nzr4_y5jveo._.js.map

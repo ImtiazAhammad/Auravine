@@ -1,0 +1,15 @@
+{
+  "node": {
+    "00198f359a326501e7bf4185559e343b287cecc108": {
+      "workers": {
+        "app/gallery/page": {
+          "moduleId": 54694,
+          "async": false
+        }
+      },
+      "exportedName": "getAllGalleryImages",
+      "filename": "src/app/actions/getGalleryImages.ts"
+    }
+  },
+  "edge": {}
+}
