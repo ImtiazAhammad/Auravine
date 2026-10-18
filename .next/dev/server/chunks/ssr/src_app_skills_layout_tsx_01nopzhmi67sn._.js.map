@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///home/imtiaz/Projects/Auravine/src/app/skills/layout.tsx"],"sourcesContent":["import type { Metadata } from 'next';\n\nexport const metadata: Metadata = {\n    title: 'Skills',\n    description: 'My technical skills, tech stack, and tools I work with.',\n};\n\nexport default function SkillsLayout({\n    children,\n}: {\n    children: React.ReactNode;\n}) {\n    return children;\n}\n"],"names":["metadata","title","description","SkillsLayout","children"],"mappings":";;;;;;AAEO,MAAMA,WAAqB;IAC9BC,OAAO;IACPC,aAAa;AACjB;AAEe,SAASC,aAAa,EACjCC,QAAQ,EAGX;IACG,OAAOA;AACX"}}]
+}

@@ -32,7 +32,7 @@ const signature = Alex_Brush({
 
 export const metadata: Metadata = {
     title: {
-        default: 'Arfazrll | AI & Software Engineer',
+        default: 'Auravine | AI-First Software Development & Digital Transformation',
         template: '%s | Portfolio',
     },
     description: "Auravine builds AI agents, intelligent applications, computer vision systems, POS, e-commerce, ERP, and custom software tailored to business needs.",
@@ -67,8 +67,8 @@ export const metadata: Metadata = {
     },
     icons: {
         icon: [
-            { url: '/Arfazrll_light.svg', media: '(prefers-color-scheme: light)' },
-            { url: '/Arfazrll_dark.svg', media: '(prefers-color-scheme: dark)' },
+            { url: '/Auravine_light.svg', media: '(prefers-color-scheme: light)' },
+            { url: '/Auravine_dark.svg', media: '(prefers-color-scheme: dark)' },
         ],
     },
 };
