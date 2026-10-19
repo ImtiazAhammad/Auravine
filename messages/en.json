@@ -164,20 +164,20 @@
             ],
             "projectsList": [
                 {
-                    "title": "AI Voice Agent for Customer Calls",
-                    "desc": "A 24/7 voice receptionist that answers calls in Bangla and English, books appointments, and hands off complex cases to your team."
+                    "title": "Shefa: AI Front-Desk Agent for Hospitals",
+                    "desc": "An AI agent that answers hospital calls in Bangla and English and books doctor slots, so patients skip the phone queue."
                 },
                 {
-                    "title": "Custom AI Chatbot for Customer Support",
-                    "desc": "A chatbot for your website, WhatsApp, and Messenger that answers from your own documents and cites its sources."
+                    "title": "Safar: Electric Neighborhood Shuttle",
+                    "desc": "25 electric shuttles on fixed routes across Dhaka, with a commuter app that shows live shuttle locations."
                 },
                 {
-                    "title": "Face Recognition Smart Attendance",
-                    "desc": "Touchless attendance with liveness checks, live presence boards, and payroll-ready reports for offices and factories."
+                    "title": "The Handset Depot: Pre-Owned & New Phones",
+                    "desc": "A complete store platform for buying and selling phones, with servicing, accessories, and full order, stock, and profit management."
                 },
                 {
-                    "title": "Business Analytics & Forecasting Dashboard",
-                    "desc": "Unified sales, inventory, and operations dashboards with AI demand forecasts and smart alerts for business owners."
+                    "title": "SpanishStitch: RMG Buying House Platform",
+                    "desc": "A buying house CMS for RFQs, orders, clients, and styles in production, with no-code website content editing."
                 },
                 {
                     "title": "Computer Vision Quality Inspection",
@@ -219,7 +219,8 @@
             "viewLess": "Show Less",
             "solution": "Our Approach",
             "liveDemo": "Live Demo",
-            "sourceCode": "Source Code"
+            "sourceCode": "Source Code",
+            "illustrativeNote": "Illustrative figures. Replace with pilot data before publishing."
         },
         "status": {
             "ongoing": "Active Development",

@@ -45,62 +45,243 @@ export const portfolioData: PortfolioData = {
     },
     projects: [
         {
-            id: 'project-1',
-            slug: 'ai-voice-agent',
-            title: 'AI Voice Agent for Customer Calls',
-            image: '/project/swarmaiblogwriter1.webp',
-            galleryImages: ['/project/swarmaiblogwriter2.webp', '/project/swarmaiblogwriter3.webp'],
-            description: 'A 24/7 AI voice receptionist that answers calls in Bangla and English, books appointments, answers FAQs, and hands off complex cases to your team.',
-            longDescription: 'Missed calls cost businesses customers every day. Our AI voice agent answers inbound calls around the clock, understands natural Bangla, English, and mixed speech, checks availability in your calendar or booking system, confirms appointments by SMS, and routes urgent or complex conversations to a human with a full call summary. It is built for clinics, hotels, real estate firms, logistics companies, and service businesses that cannot afford to lose a lead after hours.',
-            techStack: ['Python', 'Speech-to-Text', 'Text-to-Speech', 'LLM Orchestration', 'Telephony APIs', 'PostgreSQL'],
-            tools: ['Twilio', 'Asterisk SIP', 'Google Calendar API', 'Docker', 'Grafana'],
+            id: 'project-featured-shefa',
+            slug: 'shefa-hospital-ai-front-desk',
+            title: 'Shefa: AI Front-Desk Agent for Hospitals',
+            description: 'An AI agent that answers hospital calls in Bangla and English, so patients no longer wait in a phone queue to book a doctor.',
+            longDescription: 'Hospital phone lines are busy from the first hour of the morning, and patients often hang up before a receptionist answers. Shefa is our in-house AI front-desk agent with one job: take the booking call. It picks up inbound calls, understands what the patient needs in Bangla or English, and checks the requested doctor\'s availability. It then offers the open slots, reserves the one the patient chooses, gives a serial number, and tells the patient the expected time of visit. Reception staff see every booking as it happens and can take over any call.',
+            image: '/project/featured/shefa-hero.svg',
+            galleryImages: ['/project/featured/shefa-gallery.svg'],
+            techStack: ['Python', 'Speech-to-Text', 'Text-to-Speech', 'LLM Orchestration', 'Telephony', 'PostgreSQL'],
+            tools: ['Asterisk SIP', 'Twilio', 'Docker', 'Grafana'],
             status: 'ongoing',
             repoUrl: '#',
             demoUrl: '#',
-            startDate: '2026-02-01',
-            role: 'AI Solutions Lead',
-            customTimeline: '2026',
-            team: 'Auravine Delivery Team',
-            highlights: ['24/7 Call Answering', 'Bangla & English Speech', 'Calendar & CRM Integration'],
-            category: 'Voice AI',
+            startDate: '2026-01-01',
+            role: 'AI Product Lead',
+            team: 'Auravine (in-house product)',
+            highlights: ['Bangla & English Calls', 'Live Doctor Availability', 'Serial Number & Visit Time'],
+            metrics: [
+                { value: '24/7', label: 'Calls answered, day and night' },
+                { value: '< 5 sec', label: 'Average wait before a call is picked up' },
+                { value: '~2 min', label: 'Average time to book a doctor slot' },
+            ],
+            category: 'Healthcare AI',
             features: [
                 {
-                    title: 'Conversation Engine',
+                    title: 'Call Handling',
                     items: [
-                        '**Bangla & English Speech Recognition**: Understands natural speech, including code-mixed conversations common in Dhaka business calls.',
-                        '**Intent & Slot Extraction**: Captures name, service, preferred date, and contact details during the call without rigid menus.',
-                        '**Human Handoff**: Transfers to a live agent with the transcript and caller context when the conversation needs a person.'
+                        '**24/7 Call Pickup**: Answers every inbound call immediately, so no patient waits in the queue.',
+                        '**Bangla & English Conversations**: Understands the patient in either language, including mixed sentences.',
+                        '**Human Takeover**: Reception can join or take over any call with the full transcript on screen.'
                     ]
                 },
                 {
-                    title: 'Business Integrations',
+                    title: 'Booking Engine',
                     items: [
-                        '**Calendar & Booking Sync**: Checks real-time availability and books into Google Calendar or your existing scheduling system.',
-                        '**CRM & Ticketing**: Creates leads, updates contact records, and opens support tickets automatically after each call.',
-                        '**SMS Confirmations**: Sends appointment and follow-up messages to the caller once the call ends.'
+                        '**Doctor & Department Lookup**: Matches the patient\'s need to the right doctor or department.',
+                        '**Live Slot Availability**: Offers only slots that are open at that moment, so double bookings are avoided.',
+                        '**Serial & Visit Time**: Gives the patient a serial number and the expected time of visit, then sends a confirmation.'
                     ]
                 },
                 {
-                    title: 'Operations & Control',
+                    title: 'Hospital Operations',
                     items: [
-                        '**Call Analytics Dashboard**: Volume, answer rate, booking conversion, and common questions in one view.',
-                        '**Guardrails & Scripts**: Business rules, forbidden topics, and escalation triggers are configured by your team, not left to chance.',
-                        '**Call Recording & Consent**: Recording notices and retention periods are configurable to match your policies.'
+                        '**Doctor Schedules**: Hospital admins update schedules and leave days in one place.',
+                        '**Booking Dashboard**: Calls, bookings, and unanswered requests in real time.',
+                        '**Audit Trail**: Every call summary and booking change is logged for review.'
                     ]
                 }
             ],
             challengesAndSolutions: [
                 {
-                    problem: 'Callers switch between Bangla and English in the same sentence',
-                    solution: 'We tuned speech recognition on code-mixed local conversations and built a normalization layer so intents are recognized the same way regardless of language mix.'
+                    problem: 'Patients describe symptoms and departments in everyday language',
+                    solution: 'Shefa maps everyday phrases to departments and doctors, and asks one clarifying question when the request is unclear.'
                 },
                 {
-                    problem: 'Latency makes AI calls feel unnatural',
-                    solution: 'We streamed speech recognition and synthesis, kept the LLM prompt compact, and cached frequently used answers so replies start quickly.'
+                    problem: 'Two callers must never be given the same slot',
+                    solution: 'Each slot is reserved against live availability at the moment of confirmation, not when the call started.'
                 },
                 {
-                    problem: 'Wrong bookings damage trust',
-                    solution: 'Every booking is confirmed against live availability before the call ends, with a read-back step and an SMS confirmation to prevent mistakes.'
+                    problem: 'Staff must trust the agent before they rely on it',
+                    solution: 'Reception can monitor calls live, take over at any point, and review a summary of every conversation.'
+                }
+            ]
+        },
+        {
+            id: 'project-featured-safar',
+            slug: 'safar-electric-neighborhood-shuttle',
+            title: 'Safar: Electric Neighborhood Shuttle for Dhaka',
+            description: 'An electric shuttle service with 25 fleets on fixed routes across Dhaka, with a commuter app that shows where the next shuttle is in real time.',
+            longDescription: 'Safar runs electric neighborhood shuttles on defined routes across Dhaka, giving commuters an affordable and comfortable ride for short and medium trips. Our commuter app shows every shuttle on a live map, like a ride-tracking app, so riders know exactly when and where to wait. Location sharing is limited to the shuttles and the commuters who are riding, and each route has its own stops. A current example is the route from Jashimuddin to Uttara North Metro Station.',
+            image: '/project/featured/safar-hero.svg',
+            galleryImages: ['/project/featured/safar-gallery.svg'],
+            techStack: ['React Native', 'Node.js', 'PostgreSQL', 'WebSockets', 'Maps API', 'Docker'],
+            tools: ['Figma', 'Grafana', 'Docker', 'GitHub'],
+            status: 'ongoing',
+            repoUrl: '#',
+            demoUrl: '#',
+            startDate: '2026-01-01',
+            role: 'Product & Full Stack Engineer',
+            team: 'Auravine (in-house product)',
+            highlights: ['25 Electric Shuttles', 'Live Shuttle Tracking', 'Fixed Dhaka Routes'],
+            category: 'Mobility',
+            features: [
+                {
+                    title: 'Commuter App',
+                    items: [
+                        '**Live Shuttle Map**: See each shuttle on the route, its direction, and its estimated arrival at your stop.',
+                        '**Seat Availability**: Check how many seats are free before you walk to the stop.',
+                        '**Route Planning**: Choose your pickup and drop-off stops on a defined route.'
+                    ]
+                },
+                {
+                    title: 'Fleet Operations',
+                    items: [
+                        '**Fleet Monitoring**: Track all 25 electric shuttles from one control view.',
+                        '**Route & Stop Management**: Add or adjust stops and timetables without an app update.',
+                        '**Driver Check-in**: Shift start and stop are recorded for each shuttle.'
+                    ]
+                },
+                {
+                    title: 'Privacy & Safety',
+                    items: [
+                        '**Shared Location Only**: Location is shared only between a shuttle and the commuters riding it.',
+                        '**Role-Based Access**: Operators, drivers, and commuters each see only what they need.',
+                        '**Data Minimization**: Ride history is kept only as long as operations require.'
+                    ]
+                }
+            ],
+            challengesAndSolutions: [
+                {
+                    problem: 'Live positions must update smoothly on mobile networks',
+                    solution: 'Shuttle positions stream over a lightweight connection and the app falls back to the last known position when the signal drops.'
+                },
+                {
+                    problem: 'Commuters need arrival times they can trust in heavy traffic',
+                    solution: 'Arrival estimates combine the shuttle\'s live position with recent travel times on the same stretch of road.'
+                },
+                {
+                    problem: 'Electric shuttles must be managed like a fleet',
+                    solution: 'Each shuttle has its own status, route, and shift record, so operators can reassign a vehicle in a few taps.'
+                }
+            ]
+        },
+        {
+            id: 'project-featured-handset-depot',
+            slug: 'the-handset-depot-ecommerce',
+            title: 'The Handset Depot: Pre-Owned & New Phone Commerce',
+            description: 'A complete e-commerce platform for buying and selling pre-owned and new smartphones, with phone servicing and accessories, backed by full order, stock, and service management.',
+            longDescription: 'The Handset Depot is a complete platform for pre-owned and new smartphones. Customers buy and sell phones online, book phone servicing, and shop for accessories such as earbuds, neckbands, phone cases, and original chargers. Behind the storefront, the business runs on one system: orders, stock, sales tracking, service tickets, partner management, and profit tracking, so the team can see what sold, what is being repaired, and what each sale earned.',
+            image: '/project/featured/handset-depot-hero.svg',
+            galleryImages: ['/project/featured/handset-depot-gallery.svg'],
+            techStack: ['Next.js', 'TypeScript', 'Node.js', 'PostgreSQL', 'Prisma', 'Stripe'],
+            tools: ['Figma', 'Postman', 'Docker', 'GitHub'],
+            status: 'completed',
+            repoUrl: '#',
+            demoUrl: '#',
+            startDate: '2026-01-01',
+            role: 'Full Stack Engineer',
+            team: 'Auravine Delivery Team',
+            highlights: ['Buy & Sell Pre-Owned Phones', 'Phone Servicing Tracking', 'Profit & Partner Management'],
+            category: 'E-Commerce',
+            features: [
+                {
+                    title: 'Storefront',
+                    items: [
+                        '**Pre-Owned & New Phones**: Browse certified pre-owned and new handsets with clear condition details.',
+                        '**Sell Your Phone**: Customers submit their phone for an offer and get a quote.',
+                        '**Accessories**: Earbuds, AirPods-style pods, neckbands, cases, and original chargers in one catalog.'
+                    ]
+                },
+                {
+                    title: 'Operations',
+                    items: [
+                        '**Order Management**: Every order moves through a clear status from placed to delivered.',
+                        '**Stock Management**: Stock is tracked per unit for phones and per SKU for accessories.',
+                        '**Sales Tracking**: Daily, weekly, and monthly sales by product, channel, and partner.'
+                    ]
+                },
+                {
+                    title: 'Servicing & Partners',
+                    items: [
+                        '**Service Tickets**: Track each repair from received to ready for pickup, with customer updates.',
+                        '**Partner Management**: Manage suppliers, resellers, and service partners with their own records.',
+                        '**Profit Management**: Margin per sale, per device, and per service, after parts and partner costs.'
+                    ]
+                }
+            ],
+            challengesAndSolutions: [
+                {
+                    problem: 'Pre-owned phones need clear, trustworthy condition information',
+                    solution: 'Each device has a standard condition grade, inspection notes, and photos, recorded before it is listed for sale.'
+                },
+                {
+                    problem: 'Stock, orders, and repairs must not drift apart',
+                    solution: 'A single inventory record links each handset to its purchase, service tickets, and sale, so the numbers reconcile automatically.'
+                },
+                {
+                    problem: 'Profit depends on parts and partner costs',
+                    solution: 'Profit is calculated per sale and per service using the actual parts and partner costs recorded against each job.'
+                }
+            ]
+        },
+        {
+            id: 'project-featured-spanishstitch',
+            slug: 'spanishstitch-rmg-buying-house-cms',
+            title: 'SpanishStitch: RMG Buying House Platform',
+            description: 'A CMS and operations platform for a garment buying house, covering RFQs, orders, clients, sales pipeline, and the styles in production for each product category.',
+            longDescription: 'SpanishStitch is a buying house platform for the ready-made garment (RMG) industry. It manages the full path from a buyer\'s request for quotation to a confirmed order, keeps every client and potential client in one place, and shows total sales and the pipeline at a glance. Super admins can change and configure every text and asset on each section of the public website without a developer, and the dashboard shows how many styles are in production in each category, such as knit, woven, denim, and sweater.',
+            image: '/project/featured/spanishstitch-hero.svg',
+            galleryImages: ['/project/featured/spanishstitch-gallery.svg'],
+            techStack: ['Next.js', 'TypeScript', 'Python', 'FastAPI', 'PostgreSQL', 'Tailwind CSS'],
+            tools: ['Figma', 'Docker', 'GitHub', 'Postman'],
+            status: 'completed',
+            repoUrl: '#',
+            demoUrl: '#',
+            startDate: '2026-01-01',
+            role: 'Full Stack & Backend Engineer',
+            team: 'Auravine Delivery Team',
+            highlights: ['RFQ to Order Workflow', 'Client & Pipeline CRM', 'Styles by Category'],
+            category: 'Enterprise SaaS',
+            features: [
+                {
+                    title: 'Buying House Operations',
+                    items: [
+                        '**RFQ Management**: Log buyer requests, track costing and sampling, and convert approved RFQs into orders.',
+                        '**Order Management**: Orders, shipment milestones, and status for each style and buyer.',
+                        '**Styles in Production**: See how many styles are running in knit, woven, denim, and sweater lines.'
+                    ]
+                },
+                {
+                    title: 'Clients & Sales',
+                    items: [
+                        '**Client Handling**: Buyer contacts, requirements, and history in one profile.',
+                        '**Potential Clients**: Pipeline stages from first contact to first order.',
+                        '**Total Sales**: Sales totals and trends across clients, categories, and periods.'
+                    ]
+                },
+                {
+                    title: 'Website Control',
+                    items: [
+                        '**No-Code Content Editing**: Super admins change every text and image in each section of the website.',
+                        '**Role-Based Access**: Merchandisers, sales, and management see only their modules.',
+                        '**Activity Log**: Changes to orders, RFQs, and website content are recorded.'
+                    ]
+                }
+            ],
+            challengesAndSolutions: [
+                {
+                    problem: 'RFQs, orders, and client records live in separate sheets',
+                    solution: 'One data model links each client, RFQ, order, and style, so every team sees the same record.'
+                },
+                {
+                    problem: 'Non-technical staff need to update the public website',
+                    solution: 'Every section of the site reads its text and images from the admin CMS, so content changes do not need a developer.'
+                },
+                {
+                    problem: 'Management needs to see production by category at a glance',
+                    solution: 'Style counts are grouped by production category and updated as orders move through their stages.'
                 }
             ]
         },
@@ -108,8 +289,7 @@ export const portfolioData: PortfolioData = {
             id: 'project-2',
             slug: 'custom-business-chatbot',
             title: 'Custom AI Chatbot for Customer Support',
-            image: '/project/creativeportfoliowebsite1.webp',
-            galleryImages: ['/project/creativeportfoliowebsite2.webp', '/project/creativeportfoliowebsite3.webp', '/project/creativeportfoliowebsite4.webp'],
+            image: '/project/featured/chatbot-hero.svg',
             description: 'A custom chatbot for your website, WhatsApp, and Messenger that answers customer questions from your own documents and hands off to your team when needed.',
             longDescription: 'Most customer questions repeat: prices, delivery times, return policies, product details, and order status. Our custom chatbot is trained on your own knowledge base so it answers accurately, cites its sources, and avoids guessing. It runs on your website, WhatsApp Business, and Facebook Messenger from a single backend, and it escalates to human agents with full context when a customer needs more than an answer.',
             techStack: ['Next.js', 'TypeScript', 'LLM APIs', 'RAG', 'WhatsApp Cloud API', 'Node.js'],
@@ -168,8 +348,7 @@ export const portfolioData: PortfolioData = {
             id: 'project-3',
             slug: 'face-recognition-attendance',
             title: 'Face Recognition Smart Attendance',
-            image: '/project/snbtinplatformpersiapansnbt20251.webp',
-            galleryImages: ['/project/snbtinplatformpersiapansnbt20252.webp'],
+            image: '/project/featured/face-hero.svg',
             description: 'Touchless attendance with face recognition, live dashboards, and automatic payroll-ready reports for offices, factories, schools, and campuses.',
             longDescription: 'Manual attendance registers are slow and easy to manipulate. Our smart attendance system uses face recognition on standard IP cameras or dedicated terminals to record check-in and check-out within seconds. Managers see who is present in real time, late arrivals and early departures are flagged automatically, and reports export directly to payroll or HR systems. Liveness checks and privacy controls keep the system secure and compliant with your internal policies.',
             techStack: ['Python', 'OpenCV', 'Face Embeddings', 'FastAPI', 'PostgreSQL', 'React'],
@@ -228,8 +407,7 @@ export const portfolioData: PortfolioData = {
             id: 'project-4',
             slug: 'business-analytics-dashboard',
             title: 'Business Analytics & Forecasting Dashboard',
-            image: '/project/terraflowplatform1.webp',
-            galleryImages: ['/project/terraflowplatform2.webp'],
+            image: '/project/featured/analytics-hero.svg',
             description: 'Live sales, inventory, and operations dashboards with AI forecasts, so leaders see what is happening and what is likely to happen next.',
             longDescription: 'Most businesses have data in POS systems, spreadsheets, and accounting software, but no single view of performance. We connect those sources into one analytics platform with clear dashboards for owners and managers. Forecasting models estimate demand, stock needs, and cash flow, and alerts notify the right person when a KPI moves outside its normal range. The platform is designed to be understood by non-technical leaders from day one.',
             techStack: ['Python', 'Pandas', 'Prophet', 'PostgreSQL', 'Next.js', 'Recharts'],
@@ -288,8 +466,7 @@ export const portfolioData: PortfolioData = {
             id: 'project-5',
             slug: 'document-intelligence-rag',
             title: 'Document Intelligence & Knowledge Assistant',
-            image: '/project/parallax/image1.webp',
-            galleryImages: ['/project/parallax/image2.webp', '/project/parallax/image3.webp'],
+            image: '/project/featured/docs-hero.svg',
             description: 'A private AI assistant that searches contracts, policies, and reports across your company and answers questions with page-level citations.',
             longDescription: 'Teams lose hours searching for the right clause, policy, or past report. Our document intelligence platform indexes your internal files, respects existing access permissions, and answers natural-language questions with citations to the exact page. It can run on your own cloud or on-premise infrastructure, which matters for companies that handle sensitive legal, financial, or client data.',
             techStack: ['Python', 'LangChain', 'Vector Search', 'OCR', 'FastAPI', 'Next.js'],
@@ -348,8 +525,7 @@ export const portfolioData: PortfolioData = {
             id: 'project-6',
             slug: 'computer-vision-quality-inspection',
             title: 'Computer Vision Quality Inspection',
-            image: '/project/parallax/image5.webp',
-            galleryImages: ['/project/parallax/image6.webp'],
+            image: '/project/featured/cv-hero.svg',
             description: 'Camera-based defect detection for production lines that flags faulty items in real time and logs every decision for traceability.',
             longDescription: 'Manual inspection is tiring, inconsistent, and expensive to scale. Our computer vision inspection system uses industrial or standard cameras and a trained detection model to identify defects, missing components, and packaging errors while products move along the line. Operators receive instant alerts, rejected items are logged with images, and quality trends are visible to production managers.',
             techStack: ['Python', 'PyTorch', 'YOLO', 'OpenCV', 'MQTT', 'Docker'],
@@ -408,8 +584,7 @@ export const portfolioData: PortfolioData = {
             id: 'project-7',
             slug: 'ai-sales-and-recommendations',
             title: 'AI Product Recommendations for E-Commerce',
-            image: '/project/parallax/image7.webp',
-            galleryImages: ['/project/parallax/image8.webp'],
+            image: '/project/featured/recs-hero.svg',
             description: 'Personalized product recommendations and smart search for online stores, designed to lift average order value and reduce bounce rates.',
             longDescription: 'Online shoppers leave when they cannot find what they want. Our recommendation engine learns from browsing and purchase behavior to show relevant products on the homepage, product pages, and carts. Smart search understands typos, Bangla and English queries, and product attributes, so customers find items faster. The system is integrated with popular storefront platforms and reports results in plain language for store owners.',
             techStack: ['Python', 'Scikit-learn', 'Embeddings', 'Redis', 'Node.js', 'React'],
@@ -468,8 +643,7 @@ export const portfolioData: PortfolioData = {
             id: 'project-8',
             slug: 'clinic-management-saas',
             title: 'Clinic Management SaaS with AI Assistance',
-            image: '/project/parallax/image9.webp',
-            galleryImages: ['/project/parallax/image10.webp'],
+            image: '/project/featured/clinic-hero.svg',
             description: 'A cloud platform for clinics and diagnostic centers covering appointments, patient records, billing, and AI-assisted queue and no-show management.',
             longDescription: 'Clinics juggle paper registers, phone bookings, and separate billing tools. Our clinic management platform brings appointments, patient records, prescriptions, billing, and reporting into one secure system. AI features predict no-shows so reception can send reminders, balance queues across doctors, and surface patterns that help clinic owners plan staffing. Patient data is protected with role-based access and audit trails.',
             techStack: ['Next.js', 'TypeScript', 'Node.js', 'PostgreSQL', 'Prisma', 'Python'],
@@ -765,7 +939,7 @@ Measure what matters: answer rate, bookings made, average handling time, and the
 ## The bottom line
 
 Voice AI is not about replacing your team. It is about making sure no caller is ignored, that routine work does not crowd out important work, and that every conversation is recorded and searchable. At Auravine we design these systems around your business rules, deploy them securely, and keep improving them after launch.`,
-            image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2000&auto=format&fit=crop&fm=webp',
+            image: '/blog/ai-voice-agents-for-business.svg',
             date: '2026-03-20',
             category: 'applied-ai',
             tags: ['Voice AI', 'Customer Service', 'Automation'],
@@ -792,7 +966,7 @@ The same knowledge should power your website chat, WhatsApp, and Messenger. When
 ## Measure and improve
 
 Track three numbers from day one: the share of questions answered without a handoff, the questions the bot could not answer, and customer satisfaction after each conversation. The unanswered questions are your roadmap. Add the missing information, and the assistant gets better without a rebuild.`,
-            image: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=2000&auto=format&fit=crop&fm=webp',
+            image: '/blog/chatbots-that-cite-their-sources.svg',
             date: '2026-03-15',
             category: 'applied-ai',
             tags: ['Chatbot', 'RAG', 'Customer Trust'],
@@ -823,7 +997,7 @@ Store face data as encrypted mathematical templates rather than raw photos where
 ## What success looks like
 
 The best outcome is not a clever camera. It is accurate, trusted attendance data that your managers use every day and that matches your payroll rules. Auravine builds these systems with shift rules, audit trails, and privacy controls from the first sprint.`,
-            image: 'https://images.unsplash.com/photo-1618477388954-7852f32655ec?q=80&w=2000&auto=format&fit=crop&fm=webp',
+            image: '/blog/face-recognition-attendance-privacy.svg',
             date: '2026-02-10',
             category: 'software-development',
             tags: ['Computer Vision', 'HR Tech', 'Privacy'],
@@ -854,7 +1028,7 @@ Once the data is clean and the dashboards are trusted, forecasting becomes pract
 ## Where to begin
 
 A focused first project, usually four to six weeks, is enough to show value. Choose one decision that is made often and matters financially, build the data foundation for it, and measure the result. That early win makes the next AI project easier to justify.`,
-            image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000&auto=format&fit=crop&fm=webp',
+            image: '/blog/analytics-before-ai.svg',
             date: '2026-01-22',
             category: 'applied-ai',
             tags: ['Business Intelligence', 'Strategy', 'Data'],
@@ -881,7 +1055,7 @@ AI should be measured against business outcomes. Systems should be secure by des
 ## Talk to us
 
 If you are exploring AI for your business, book a free consultation. We will listen to your challenge, suggest a practical first step, and tell you honestly whether AI is the right tool for it.`,
-            image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2000&auto=format&fit=crop&fm=webp',
+            image: '/blog/about-auravine.svg',
             date: '2026-01-05',
             category: 'about-me',
             tags: ['Company', 'Dhaka', 'AI'],
@@ -896,7 +1070,7 @@ If you are exploring AI for your business, book a free consultation. We will lis
             description: 'Mapping business processes with a client team before design begins.',
             date: '2026-02-05',
             type: 'image',
-            url: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2000&auto=format&fit=crop&fm=webp',
+            url: '/studio/discovery-workshop.svg',
             category: 'research'
         },
         {
@@ -905,7 +1079,7 @@ If you are exploring AI for your business, book a free consultation. We will lis
             description: 'Walking stakeholders through a working prototype at the end of a sprint.',
             date: '2026-01-20',
             type: 'image',
-            url: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000&auto=format&fit=crop&fm=webp',
+            url: '/studio/product-demo.svg',
             category: 'event'
         },
         {
@@ -914,7 +1088,7 @@ If you are exploring AI for your business, book a free consultation. We will lis
             description: 'Testing detection models on camera feeds from real production conditions.',
             date: '2025-12-15',
             type: 'image',
-            url: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2000&auto=format&fit=crop&fm=webp',
+            url: '/studio/computer-vision-lab.svg',
             category: 'technical'
         },
         {
@@ -923,7 +1097,7 @@ If you are exploring AI for your business, book a free consultation. We will lis
             description: 'Planning the next quarter of AI product development together.',
             date: '2025-11-25',
             type: 'image',
-            url: 'https://images.unsplash.com/photo-1516245834210-c4c142787335?q=80&w=2000&auto=format&fit=crop&fm=webp',
+            url: '/studio/team-build-day.svg',
             category: 'event'
         },
     ],

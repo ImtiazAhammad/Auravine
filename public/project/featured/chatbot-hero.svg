@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Custom AI Chatbot for Customer Support">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b1220"/><stop offset="1" stop-color="#1e1b4b"/></linearGradient><linearGradient id="au" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2dd4bf"/><stop offset="0.55" stop-color="#6366f1"/><stop offset="1" stop-color="#f59e0b"/></linearGradient></defs>
+<rect width="1600" height="1000" fill="url(#bg)"/>
+  <rect x="110" y="120" width="235" height="46" rx="23" fill="#818cf8" opacity="0.2"/>
+  <text x="132" y="152" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#818cf8" text-anchor="start">CONVERSATIONAL AI</text>
+  <text x="110" y="280" font-family="Inter, Arial, sans-serif" font-size="66" font-weight="800" fill="#ffffff" text-anchor="start">Custom AI Chatbot</text>
+  <text x="110" y="360" font-family="Inter, Arial, sans-serif" font-size="66" font-weight="800" fill="#ffffff" text-anchor="start">for Customer Support</text>
+  <text x="110" y="560" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="400" fill="#cbd5e1" text-anchor="start">Website, WhatsApp, and Messenger</text>
+  <text x="110" y="602" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="400" fill="#cbd5e1" text-anchor="start">assistants that answer from your own</text>
+  <text x="110" y="644" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="400" fill="#cbd5e1" text-anchor="start">documents.</text>
+  <rect x="110" y="720" width="274" height="50" rx="25" fill="#ffffff" fill-opacity="0.08" stroke="#818cf8" stroke-opacity="0.6"/>
+  <text x="130" y="753" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="500" fill="#ffffff" text-anchor="start">Website &amp; WhatsApp</text>
+  <rect x="440" y="720" width="209" height="50" rx="25" fill="#ffffff" fill-opacity="0.08" stroke="#818cf8" stroke-opacity="0.6"/>
+  <text x="460" y="753" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="500" fill="#ffffff" text-anchor="start">Cites sources</text>
+  <rect x="110" y="794" width="209" height="50" rx="25" fill="#ffffff" fill-opacity="0.08" stroke="#818cf8" stroke-opacity="0.6"/>
+  <text x="130" y="827" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="500" fill="#ffffff" text-anchor="start">Human handoff</text>
+  <rect x="880" y="160" width="610" height="680" rx="32" fill="#0f172a" stroke="#818cf8" stroke-opacity="0.5" stroke-width="2"/>
+  <rect x="920" y="270" width="420" height="64" rx="22" fill="#1e293b"/>
+  <text x="944" y="310" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="500" fill="#e2e8f0" text-anchor="start">Hi, I'd like to book a visit.</text>
+  <rect x="1030" y="350" width="420" height="64" rx="22" fill="#818cf8"/>
+  <text x="1054" y="390" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="500" fill="#ffffff" text-anchor="start">Sure. Three slots are open.</text>
+  <rect x="920" y="430" width="420" height="64" rx="22" fill="#1e293b"/>
+  <text x="944" y="470" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="500" fill="#e2e8f0" text-anchor="start">The 10:15 slot, please.</text>
+  <rect x="1030" y="510" width="420" height="64" rx="22" fill="#818cf8"/>
+  <text x="1054" y="550" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="500" fill="#ffffff" text-anchor="start">Confirmed. Reference #2841.</text>
+  <rect x="920" y="730" width="530" height="58" rx="29" fill="#1e293b"/>
+  <text x="950" y="767" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="400" fill="#94a3b8" text-anchor="start">Type a message...</text>
+  <text x="110" y="940" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="400" fill="#94a3b8" text-anchor="start">Sample visual · illustrative only</text>
+</svg>

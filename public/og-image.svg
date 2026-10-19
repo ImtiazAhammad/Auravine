@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Auravine: AI-first software from Dhaka">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b1220"/><stop offset="1" stop-color="#1e1b4b"/></linearGradient><linearGradient id="au" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2dd4bf"/><stop offset="0.55" stop-color="#6366f1"/><stop offset="1" stop-color="#f59e0b"/></linearGradient></defs>
+<rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1100" cy="80" r="260" fill="url(#au)" opacity="0.18"/>
+  <rect x="90" y="200" width="230" height="230" rx="54" fill="url(#au)"/><path d="M130 390 L205 228 L280 390" fill="none" stroke="#ffffff" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/><path d="M160 340 L250 340" stroke="#ffffff" stroke-width="24" stroke-linecap="round"/><circle cx="290" cy="210" r="18" fill="#fde68a"/>
+  <text x="380" y="290" font-family="Inter, Arial, sans-serif" font-size="92" font-weight="800" fill="#ffffff" text-anchor="start">Auravine</text>
+  <text x="380" y="360" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="500" fill="#cbd5e1" text-anchor="start">AI-first software from Dhaka, Bangladesh</text>
+  <text x="380" y="430" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="400" fill="#94a3b8" text-anchor="start">AI voice agents · Chatbots · Computer vision · Analytics</text>
+</svg>

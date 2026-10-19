@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Shefa call flow from caller to booking confirmation">
+  <rect width="1600" height="1000" fill="#0b1f2a"/>
+  <g font-family="Inter, Arial, sans-serif" text-anchor="middle">
+    <rect x="80" y="420" width="260" height="160" rx="24" fill="#17394a" stroke="#2dd4bf" stroke-width="3"/>
+    <text x="210" y="492" font-size="32" font-weight="700" fill="#e6fffb">Inbound call</text>
+    <text x="210" y="532" font-size="22" fill="#94a3b8">Bangla or English</text>
+    <rect x="450" y="420" width="260" height="160" rx="24" fill="#0f766e"/>
+    <text x="580" y="492" font-size="32" font-weight="700" fill="#ffffff">Shefa AI</text>
+    <text x="580" y="532" font-size="22" fill="#ccfbf1">Intent and needs</text>
+    <rect x="820" y="420" width="260" height="160" rx="24" fill="#17394a" stroke="#2dd4bf" stroke-width="3"/>
+    <text x="950" y="492" font-size="32" font-weight="700" fill="#e6fffb">Doctor slots</text>
+    <text x="950" y="532" font-size="22" fill="#94a3b8">Live availability</text>
+    <rect x="1190" y="420" width="300" height="160" rx="24" fill="#0f766e"/>
+    <text x="1340" y="492" font-size="32" font-weight="700" fill="#ffffff">Confirmed</text>
+    <text x="1340" y="532" font-size="22" fill="#ccfbf1">Serial no. and time</text>
+  </g>
+  <g stroke="#2dd4bf" stroke-width="5" fill="none" marker-end="url(#arr)">
+    <line x1="350" y1="500" x2="440" y2="500"/><line x1="720" y1="500" x2="810" y2="500"/><line x1="1090" y1="500" x2="1180" y2="500"/>
+  </g>
+  <defs><marker id="arr" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#2dd4bf"/></marker></defs>
+  <text x="800" y="260" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="700" fill="#e6fffb">From phone queue to confirmed visit</text>
+  <text x="800" y="740" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="24" fill="#94a3b8">Sample visual · illustrative only</text>
+</svg>

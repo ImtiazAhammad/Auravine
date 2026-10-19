@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Business Analytics &amp; Forecasting Dashboard">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f172a"/><stop offset="1" stop-color="#1e293b"/></linearGradient><linearGradient id="au" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2dd4bf"/><stop offset="0.55" stop-color="#6366f1"/><stop offset="1" stop-color="#f59e0b"/></linearGradient></defs>
+<rect width="1600" height="1000" fill="url(#bg)"/>
+  <rect x="110" y="120" width="287" height="46" rx="23" fill="#f59e0b" opacity="0.2"/>
+  <text x="132" y="152" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#f59e0b" text-anchor="start">BUSINESS INTELLIGENCE</text>
+  <text x="110" y="280" font-family="Inter, Arial, sans-serif" font-size="66" font-weight="800" fill="#ffffff" text-anchor="start">Business Analytics &amp;</text>
+  <text x="110" y="360" font-family="Inter, Arial, sans-serif" font-size="66" font-weight="800" fill="#ffffff" text-anchor="start">Forecasting</text>
+  <text x="110" y="440" font-family="Inter, Arial, sans-serif" font-size="66" font-weight="800" fill="#ffffff" text-anchor="start">Dashboard</text>
+  <text x="110" y="560" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="400" fill="#cbd5e1" text-anchor="start">Sales, stock, and operations in one view,</text>
+  <text x="110" y="602" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="400" fill="#cbd5e1" text-anchor="start">with AI demand forecasts and smart alerts.</text>
+  <rect x="110" y="720" width="196" height="50" rx="25" fill="#ffffff" fill-opacity="0.08" stroke="#f59e0b" stroke-opacity="0.6"/>
+  <text x="130" y="753" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="500" fill="#ffffff" text-anchor="start">Unified data</text>
+  <rect x="440" y="720" width="248" height="50" rx="25" fill="#ffffff" fill-opacity="0.08" stroke="#f59e0b" stroke-opacity="0.6"/>
+  <text x="460" y="753" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="500" fill="#ffffff" text-anchor="start">Demand forecasts</text>
+  <rect x="110" y="794" width="196" height="50" rx="25" fill="#ffffff" fill-opacity="0.08" stroke="#f59e0b" stroke-opacity="0.6"/>
+  <text x="130" y="827" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="500" fill="#ffffff" text-anchor="start">Smart alerts</text>
+  <rect x="880" y="160" width="610" height="680" rx="32" fill="#0f172a" stroke="#f59e0b" stroke-opacity="0.5" stroke-width="2"/>
+  <rect x="940" y="600" width="56" height="120" rx="12" fill="#f59e0b" opacity="0.45"/>
+  <rect x="1030" y="520" width="56" height="200" rx="12" fill="#f59e0b" opacity="0.54"/>
+  <rect x="1120" y="560" width="56" height="160" rx="12" fill="#f59e0b" opacity="0.63"/>
+  <rect x="1210" y="460" width="56" height="260" rx="12" fill="#f59e0b" opacity="0.72"/>
+  <rect x="1300" y="500" width="56" height="220" rx="12" fill="#f59e0b" opacity="0.81"/>
+  <rect x="1390" y="400" width="56" height="320" rx="12" fill="#f59e0b" opacity="0.90"/>
+  <polyline points="968,570 1058,490 1148,530 1238,430 1328,470 1418,370" fill="none" stroke="#ffffff" stroke-width="4" stroke-dasharray="12 10"/>
+  <text x="920" y="220" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700" fill="#e2e8f0" text-anchor="start">Demand forecast</text>
+  <text x="920" y="258" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="400" fill="#94a3b8" text-anchor="start">Next 6 weeks · illustrative</text>
+  <line x1="920" y1="720" x2="1450" y2="720" stroke="#334155" stroke-width="2"/>
+  <text x="110" y="940" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="400" fill="#94a3b8" text-anchor="start">Sample visual · illustrative only</text>
+</svg>

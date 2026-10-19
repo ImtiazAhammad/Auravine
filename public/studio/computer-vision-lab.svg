@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Computer Vision Lab">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b1220"/><stop offset="1" stop-color="#1e1b4b"/></linearGradient><linearGradient id="au" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2dd4bf"/><stop offset="0.55" stop-color="#6366f1"/><stop offset="1" stop-color="#f59e0b"/></linearGradient></defs>
+<rect width="1200" height="800" fill="url(#bg)"/>
+  <circle cx="180" cy="110" r="9" fill="#334155"/>
+  <circle cx="270" cy="110" r="9" fill="#334155"/>
+  <circle cx="360" cy="110" r="9" fill="#334155"/>
+  <circle cx="450" cy="110" r="9" fill="#334155"/>
+  <circle cx="540" cy="110" r="9" fill="#334155"/>
+  <circle cx="630" cy="110" r="9" fill="#334155"/>
+  <circle cx="720" cy="110" r="9" fill="#334155"/>
+  <circle cx="810" cy="110" r="9" fill="#334155"/>
+  <circle cx="900" cy="110" r="9" fill="#334155"/>
+  <circle cx="990" cy="110" r="9" fill="#334155"/>
+  <circle cx="180" cy="180" r="9" fill="#334155"/>
+  <circle cx="270" cy="180" r="9" fill="#334155"/>
+  <circle cx="360" cy="180" r="9" fill="#334155"/>
+  <circle cx="450" cy="180" r="14" fill="#2dd4bf"/>
+  <circle cx="540" cy="180" r="9" fill="#334155"/>
+  <circle cx="630" cy="180" r="9" fill="#334155"/>
+  <circle cx="720" cy="180" r="9" fill="#334155"/>
+  <circle cx="810" cy="180" r="9" fill="#334155"/>
+  <circle cx="900" cy="180" r="9" fill="#334155"/>
+  <circle cx="990" cy="180" r="9" fill="#334155"/>
+  <circle cx="180" cy="250" r="9" fill="#334155"/>
+  <circle cx="270" cy="250" r="9" fill="#334155"/>
+  <circle cx="360" cy="250" r="9" fill="#334155"/>
+  <circle cx="450" cy="250" r="9" fill="#334155"/>
+  <circle cx="540" cy="250" r="9" fill="#334155"/>
+  <circle cx="630" cy="250" r="14" fill="#2dd4bf"/>
+  <circle cx="720" cy="250" r="9" fill="#334155"/>
+  <circle cx="810" cy="250" r="9" fill="#334155"/>
+  <circle cx="900" cy="250" r="9" fill="#334155"/>
+  <circle cx="990" cy="250" r="9" fill="#334155"/>
+  <circle cx="180" cy="320" r="9" fill="#334155"/>
+  <circle cx="270" cy="320" r="14" fill="#2dd4bf"/>
+  <circle cx="360" cy="320" r="9" fill="#334155"/>
+  <circle cx="450" cy="320" r="9" fill="#334155"/>
+  <circle cx="540" cy="320" r="9" fill="#334155"/>
+  <circle cx="630" cy="320" r="9" fill="#334155"/>
+  <circle cx="720" cy="320" r="9" fill="#334155"/>
+  <circle cx="810" cy="320" r="9" fill="#334155"/>
+  <circle cx="900" cy="320" r="14" fill="#2dd4bf"/>
+  <circle cx="990" cy="320" r="9" fill="#334155"/>
+  <circle cx="180" cy="390" r="9" fill="#334155"/>
+  <circle cx="270" cy="390" r="9" fill="#334155"/>
+  <circle cx="360" cy="390" r="9" fill="#334155"/>
+  <circle cx="450" cy="390" r="9" fill="#334155"/>
+  <circle cx="540" cy="390" r="9" fill="#334155"/>
+  <circle cx="630" cy="390" r="9" fill="#334155"/>
+  <circle cx="720" cy="390" r="14" fill="#2dd4bf"/>
+  <circle cx="810" cy="390" r="9" fill="#334155"/>
+  <circle cx="900" cy="390" r="9" fill="#334155"/>
+  <circle cx="990" cy="390" r="9" fill="#334155"/>
+  <text x="600" y="560" font-family="Inter, Arial, sans-serif" font-size="52" font-weight="800" fill="#ffffff" text-anchor="middle">Computer Vision Lab</text>
+  <text x="600" y="612" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="400" fill="#cbd5e1" text-anchor="middle">Testing detection models on real camera feeds.</text>
+  <text x="600" y="700" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="400" fill="#94a3b8" text-anchor="middle">Sample visual · illustrative only</text>
+</svg>

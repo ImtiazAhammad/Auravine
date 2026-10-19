@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Shefa AI front-desk agent handling a call and booking a doctor slot">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b1f2a"/><stop offset="1" stop-color="#0c3b3a"/></linearGradient>
+    <linearGradient id="teal" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2dd4bf"/><stop offset="1" stop-color="#14b8a6"/></linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <rect x="60" y="60" width="1480" height="880" rx="28" fill="#10242f" stroke="#1f4a4f" stroke-width="2"/>
+  <text x="110" y="128" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700" fill="#e6fffb">SHEFA · AI Front Desk</text>
+  <circle cx="1330" cy="120" r="9" fill="#34d399"/>
+  <text x="1350" y="128" font-family="Inter, Arial, sans-serif" font-size="24" fill="#a7f3d0">Live call · 00:42</text>
+  <!-- call waveform -->
+  <g fill="url(#teal)">
+    <rect x="110" y="190" width="10" height="40" rx="5"/><rect x="130" y="176" width="10" height="68" rx="5"/><rect x="150" y="200" width="10" height="20" rx="5"/>
+    <rect x="170" y="164" width="10" height="92" rx="5"/><rect x="190" y="190" width="10" height="40" rx="5"/><rect x="210" y="170" width="10" height="80" rx="5"/>
+    <rect x="230" y="196" width="10" height="28" rx="5"/><rect x="250" y="158" width="10" height="104" rx="5"/><rect x="270" y="186" width="10" height="48" rx="5"/>
+    <rect x="290" y="172" width="10" height="76" rx="5"/><rect x="310" y="196" width="10" height="28" rx="5"/><rect x="330" y="180" width="10" height="60" rx="5"/>
+  </g>
+  <!-- transcript -->
+  <g font-family="Inter, Arial, sans-serif" font-size="26">
+    <rect x="110" y="300" width="640" height="110" rx="18" fill="#17394a"/>
+    <text x="136" y="345" fill="#94a3b8" font-size="20">Caller</text>
+    <text x="136" y="382" fill="#e2e8f0">I want to see a cardiologist tomorrow morning.</text>
+    <rect x="330" y="440" width="640" height="150" rx="18" fill="#0f766e"/>
+    <text x="356" y="485" fill="#ccfbf1" font-size="20">Shefa</text>
+    <text x="356" y="522" fill="#ffffff">Certainly. Cardiology has three morning slots.</text>
+    <text x="356" y="556" fill="#ffffff">Which time would you prefer?</text>
+    <rect x="110" y="630" width="640" height="110" rx="18" fill="#17394a"/>
+    <text x="136" y="675" fill="#94a3b8" font-size="20">Caller</text>
+    <text x="136" y="712" fill="#e2e8f0">Around 10 o'clock, please.</text>
+    <rect x="330" y="770" width="640" height="110" rx="18" fill="#0f766e"/>
+    <text x="356" y="815" fill="#ccfbf1" font-size="20">Shefa</text>
+    <text x="356" y="852" fill="#ffffff">Booked. Serial No. 14, expected visit 10:40 AM.</text>
+  </g>
+  <!-- availability card -->
+  <rect x="1040" y="280" width="450" height="600" rx="24" fill="#0b1f2a" stroke="#2dd4bf" stroke-width="2"/>
+  <text x="1076" y="340" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="700" fill="#e6fffb">Cardiology</text>
+  <text x="1076" y="376" font-family="Inter, Arial, sans-serif" font-size="20" fill="#94a3b8">Tomorrow · Available slots</text>
+  <g font-family="Inter, Arial, sans-serif" font-size="24" text-anchor="middle">
+    <rect x="1076" y="410" width="120" height="58" rx="12" fill="#17394a"/><text x="1136" y="446" fill="#e2e8f0">09:30</text>
+    <rect x="1216" y="410" width="120" height="58" rx="12" fill="#14b8a6"/><text x="1276" y="446" fill="#042f2e" font-weight="700">10:15</text>
+    <rect x="1356" y="410" width="120" height="58" rx="12" fill="#17394a"/><text x="1416" y="446" fill="#e2e8f0">11:00</text>
+    <rect x="1076" y="488" width="120" height="58" rx="12" fill="#17394a"/><text x="1136" y="524" fill="#64748b">09:45</text>
+    <rect x="1216" y="488" width="120" height="58" rx="12" fill="#17394a"/><text x="1276" y="524" fill="#e2e8f0">10:30</text>
+  </g>
+  <line x1="1076" y1="600" x2="1454" y2="600" stroke="#1f4a4f" stroke-width="2"/>
+  <text x="1076" y="650" font-family="Inter, Arial, sans-serif" font-size="22" fill="#94a3b8">Serial number</text>
+  <text x="1076" y="700" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="700" fill="#e6fffb">No. 14</text>
+  <text x="1076" y="750" font-family="Inter, Arial, sans-serif" font-size="22" fill="#94a3b8">Expected visit time</text>
+  <text x="1076" y="796" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="700" fill="#e6fffb">10:40 AM</text>
+  <rect x="1076" y="820" width="378" height="22" rx="11" fill="#17394a"/>
+  <text x="1076" y="862" font-family="Inter, Arial, sans-serif" font-size="20" fill="#5eead4">Sample visual · illustrative only</text>
+</svg>

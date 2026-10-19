@@ -6,7 +6,8 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "lint": "next lint"
+        "lint": "next lint",
+        "assets:generate": "python3 scripts/generate_assets.py"
     },
     "dependencies": {
         "@base-ui/react": "^1.4.1",

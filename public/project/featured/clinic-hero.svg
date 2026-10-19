@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Clinic Management SaaS with AI Assistance">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0c4a6e"/><stop offset="1" stop-color="#0f172a"/></linearGradient><linearGradient id="au" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2dd4bf"/><stop offset="0.55" stop-color="#6366f1"/><stop offset="1" stop-color="#f59e0b"/></linearGradient></defs>
+<rect width="1600" height="1000" fill="url(#bg)"/>
+  <rect x="110" y="120" width="209" height="46" rx="23" fill="#38bdf8" opacity="0.2"/>
+  <text x="132" y="152" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#38bdf8" text-anchor="start">ENTERPRISE SAAS</text>
+  <text x="110" y="280" font-family="Inter, Arial, sans-serif" font-size="66" font-weight="800" fill="#ffffff" text-anchor="start">Clinic Management</text>
+  <text x="110" y="360" font-family="Inter, Arial, sans-serif" font-size="66" font-weight="800" fill="#ffffff" text-anchor="start">SaaS with AI</text>
+  <text x="110" y="440" font-family="Inter, Arial, sans-serif" font-size="66" font-weight="800" fill="#ffffff" text-anchor="start">Assistance</text>
+  <text x="110" y="560" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="400" fill="#cbd5e1" text-anchor="start">Appointments, records, and billing for</text>
+  <text x="110" y="602" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="400" fill="#cbd5e1" text-anchor="start">clinics, with no-show prediction.</text>
+  <rect x="110" y="720" width="326" height="50" rx="25" fill="#ffffff" fill-opacity="0.08" stroke="#38bdf8" stroke-opacity="0.6"/>
+  <text x="130" y="753" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="500" fill="#ffffff" text-anchor="start">Appointments &amp; billing</text>
+  <rect x="440" y="720" width="274" height="50" rx="25" fill="#ffffff" fill-opacity="0.08" stroke="#38bdf8" stroke-opacity="0.6"/>
+  <text x="460" y="753" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="500" fill="#ffffff" text-anchor="start">No-show prediction</text>
+  <rect x="110" y="794" width="274" height="50" rx="25" fill="#ffffff" fill-opacity="0.08" stroke="#38bdf8" stroke-opacity="0.6"/>
+  <text x="130" y="827" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="500" fill="#ffffff" text-anchor="start">Role-based privacy</text>
+  <rect x="880" y="160" width="610" height="680" rx="32" fill="#0f172a" stroke="#38bdf8" stroke-opacity="0.5" stroke-width="2"/>
+  <text x="920" y="220" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700" fill="#e2e8f0" text-anchor="start">Doctor schedule · This week</text>
+  <text x="950" y="280" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="600" fill="#94a3b8" text-anchor="middle">M</text>
+  <text x="1030" y="280" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="600" fill="#94a3b8" text-anchor="middle">T</text>
+  <text x="1110" y="280" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="600" fill="#94a3b8" text-anchor="middle">W</text>
+  <text x="1190" y="280" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="600" fill="#94a3b8" text-anchor="middle">T</text>
+  <text x="1270" y="280" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="600" fill="#94a3b8" text-anchor="middle">F</text>
+  <text x="1350" y="280" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="600" fill="#94a3b8" text-anchor="middle">S</text>
+  <text x="1430" y="280" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="600" fill="#94a3b8" text-anchor="middle">S</text>
+  <rect x="920" y="300" width="64" height="52" rx="14" fill="#38bdf8" opacity="0.85"/>
+  <rect x="1000" y="300" width="64" height="52" rx="14" fill="#1e293b" opacity="1"/>
+  <rect x="1080" y="300" width="64" height="52" rx="14" fill="#1e293b" opacity="1"/>
+  <rect x="1160" y="300" width="64" height="52" rx="14" fill="#1e293b" opacity="1"/>
+  <rect x="1240" y="300" width="64" height="52" rx="14" fill="#38bdf8" opacity="0.85"/>
+  <rect x="1320" y="300" width="64" height="52" rx="14" fill="#1e293b" opacity="1"/>
+  <rect x="1400" y="300" width="64" height="52" rx="14" fill="#1e293b" opacity="1"/>
+  <rect x="920" y="370" width="64" height="52" rx="14" fill="#1e293b" opacity="1"/>
+  <rect x="1000" y="370" width="64" height="52" rx="14" fill="#1e293b" opacity="1"/>
+  <rect x="1080" y="370" width="64" height="52" rx="14" fill="#1e293b" opacity="1"/>
+  <rect x="1160" y="370" width="64" height="52" rx="14" fill="#38bdf8" opacity="0.85"/>
+  <rect x="1240" y="370" width="64" height="52" rx="14" fill="#1e293b" opacity="1"/>
+  <rect x="1320" y="370" width="64" height="52" rx="14" fill="#1e293b" opacity="1"/>
+  <rect x="1400" y="370" width="64" height="52" rx="14" fill="#1e293b" opacity="1"/>
+  <rect x="920" y="440" width="64" height="52" rx="14" fill="#1e293b" opacity="1"/>
+  <rect x="1000" y="440" width="64" height="52" rx="14" fill="#1e293b" opacity="1"/>
+  <rect x="1080" y="440" width="64" height="52" rx="14" fill="#38bdf8" opacity="0.85"/>
+  <rect x="1160" y="440" width="64" height="52" rx="14" fill="#1e293b" opacity="1"/>
+  <rect x="1240" y="440" width="64" height="52" rx="14" fill="#1e293b" opacity="1"/>
+  <rect x="1320" y="440" width="64" height="52" rx="14" fill="#1e293b" opacity="1"/>
+  <rect x="1400" y="440" width="64" height="52" rx="14" fill="#38bdf8" opacity="0.85"/>
+  <rect x="920" y="540" width="530" height="58" rx="16" fill="#1e293b"/>
+  <text x="944" y="578" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="500" fill="#e2e8f0" text-anchor="start">10:15 · Serial 14 · Confirmed</text>
+  <rect x="920" y="616" width="530" height="58" rx="16" fill="#1e293b"/>
+  <text x="944" y="654" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="500" fill="#e2e8f0" text-anchor="start">11:00 · Reminder sent by SMS</text>
+  <rect x="920" y="692" width="230" height="44" rx="22" fill="#f59e0b" opacity="0.9"/>
+  <text x="1035" y="721" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" fill="#0b1220" text-anchor="middle">No-show risk: high</text>
+  <text x="110" y="940" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="400" fill="#94a3b8" text-anchor="start">Sample visual · illustrative only</text>
+</svg>

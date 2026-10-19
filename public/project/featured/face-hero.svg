@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Face Recognition Smart Attendance">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#042f2e"/><stop offset="1" stop-color="#0f172a"/></linearGradient><linearGradient id="au" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2dd4bf"/><stop offset="0.55" stop-color="#6366f1"/><stop offset="1" stop-color="#f59e0b"/></linearGradient></defs>
+<rect width="1600" height="1000" fill="url(#bg)"/>
+  <rect x="110" y="120" width="209" height="46" rx="23" fill="#2dd4bf" opacity="0.2"/>
+  <text x="132" y="152" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#2dd4bf" text-anchor="start">COMPUTER VISION</text>
+  <text x="110" y="280" font-family="Inter, Arial, sans-serif" font-size="66" font-weight="800" fill="#ffffff" text-anchor="start">Face Recognition</text>
+  <text x="110" y="360" font-family="Inter, Arial, sans-serif" font-size="66" font-weight="800" fill="#ffffff" text-anchor="start">Smart Attendance</text>
+  <text x="110" y="560" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="400" fill="#cbd5e1" text-anchor="start">Touchless check-in with liveness checks</text>
+  <text x="110" y="602" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="400" fill="#cbd5e1" text-anchor="start">and payroll-ready reports.</text>
+  <rect x="110" y="720" width="274" height="50" rx="25" fill="#ffffff" fill-opacity="0.08" stroke="#2dd4bf" stroke-opacity="0.6"/>
+  <text x="130" y="753" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="500" fill="#ffffff" text-anchor="start">Touchless check-in</text>
+  <rect x="440" y="720" width="274" height="50" rx="25" fill="#ffffff" fill-opacity="0.08" stroke="#2dd4bf" stroke-opacity="0.6"/>
+  <text x="460" y="753" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="500" fill="#ffffff" text-anchor="start">Liveness detection</text>
+  <rect x="110" y="794" width="235" height="50" rx="25" fill="#ffffff" fill-opacity="0.08" stroke="#2dd4bf" stroke-opacity="0.6"/>
+  <text x="130" y="827" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="500" fill="#ffffff" text-anchor="start">Payroll exports</text>
+  <rect x="880" y="160" width="610" height="680" rx="32" fill="#0f172a" stroke="#2dd4bf" stroke-opacity="0.5" stroke-width="2"/>
+  <circle cx="1185.0" cy="500.0" r="230" fill="none" stroke="#2dd4bf" stroke-opacity="0.25" stroke-width="3"/>
+  <circle cx="1185.0" cy="500.0" r="170" fill="none" stroke="#2dd4bf" stroke-opacity="0.4" stroke-width="3"/>
+  <circle cx="1185.0" cy="500.0" r="110" fill="none" stroke="#2dd4bf" stroke-opacity="0.6" stroke-width="3"/>
+  <ellipse cx="1185.0" cy="480.0" rx="70" ry="92" fill="none" stroke="#2dd4bf" stroke-width="7"/>
+  <path d="M1065.0 340.0 v-30 h30 M1275.0 310.0 h30 v30 M1065.0 650.0 v30 h30 M1275.0 680.0 h30 v-30" fill="none" stroke="#2dd4bf" stroke-width="6" stroke-linecap="round"/>
+  <rect x="910" y="540.0" width="550" height="6" fill="#2dd4bf" opacity="0.8"/>
+  <text x="1185.0" y="780" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="600" fill="#e2e8f0" text-anchor="middle">Liveness check passed</text>
+  <text x="110" y="940" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="400" fill="#94a3b8" text-anchor="start">Sample visual · illustrative only</text>
+</svg>

@@ -15,6 +15,7 @@ export interface Project {
     startDate: string;
     endDate?: string;
     highlights?: string[];
+    metrics?: { value: string; label: string }[];
     challenges?: string[];
     category?: string;
     features?: { title: string; items: string[] }[];

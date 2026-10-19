@@ -11,7 +11,7 @@ export async function getProjectImages(slug: string, title?: string): Promise<st
     // Strategy 1: Slug-based (business-analytics-dashboard -> businessanalyticsdashboard)
     const sanitizedSlug = slug.replace(/-/g, '');
 
-    // Strategy 2: Title-based (AI Voice Agent for Customer Calls -> aivoiceagentforcustomercalls)
+    // Strategy 2: Title-based (Project Title -> projecttitle)
     // Remove all non-alphanumeric characters and lowercase
     const sanitizedTitle = title ? title.toLowerCase().replace(/[^a-z0-9]/g, '') : '';
 
