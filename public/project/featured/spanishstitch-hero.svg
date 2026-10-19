@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="SpanishStitch RMG dashboard with RFQs, orders, clients and styles by category">
+  <rect width="1600" height="1000" fill="#f5f5f4"/>
+  <rect x="0" y="0" width="300" height="1000" fill="#1c1917"/>
+  <text x="40" y="90" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="800" fill="#fafaf9">SpanishStitch</text>
+  <g font-family="Inter, Arial, sans-serif" font-size="24" fill="#d6d3d1">
+    <text x="40" y="170" fill="#fafaf9">Dashboard</text><text x="40" y="215">RFQ management</text><text x="40" y="260">Orders</text><text x="40" y="305">Clients</text><text x="40" y="350">Sales &amp; pipeline</text><text x="40" y="395">Styles</text>
+  </g>
+  <g font-family="Inter, Arial, sans-serif">
+    <text x="360" y="105" font-size="38" font-weight="700" fill="#1c1917">Buying house overview</text>
+    <rect x="360" y="150" width="280" height="130" rx="20" fill="#ffffff"/><text x="390" y="200" font-size="22" fill="#78716c">Open RFQs</text><text x="390" y="250" font-size="40" font-weight="700" fill="#1c1917">Live</text>
+    <rect x="670" y="150" width="280" height="130" rx="20" fill="#ffffff"/><text x="700" y="200" font-size="22" fill="#78716c">Active orders</text><text x="700" y="250" font-size="40" font-weight="700" fill="#1c1917">Live</text>
+    <rect x="980" y="150" width="280" height="130" rx="20" fill="#ffffff"/><text x="1010" y="200" font-size="22" fill="#78716c">Potential clients</text><text x="1010" y="250" font-size="40" font-weight="700" fill="#1c1917">Live</text>
+    <rect x="1290" y="150" width="250" height="130" rx="20" fill="#ffffff"/><text x="1320" y="200" font-size="22" fill="#78716c">Pipeline value</text><text x="1320" y="250" font-size="40" font-weight="700" fill="#1c1917">Live</text>
+  </g>
+  <!-- styles by category bars -->
+  <rect x="360" y="320" width="1180" height="480" rx="24" fill="#ffffff"/>
+  <text x="400" y="375" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700" fill="#1c1917">Styles in production by category</text>
+  <g font-family="Inter, Arial, sans-serif" font-size="24" fill="#44403c">
+    <text x="400" y="460">Knit</text><rect x="520" y="430" width="620" height="40" rx="10" fill="#0f766e"/>
+    <text x="400" y="530">Woven</text><rect x="520" y="500" width="500" height="40" rx="10" fill="#0d9488"/>
+    <text x="400" y="600">Denim</text><rect x="520" y="570" width="390" height="40" rx="10" fill="#14b8a6"/>
+    <text x="400" y="670">Sweater</text><rect x="520" y="640" width="260" height="40" rx="10" fill="#5eead4"/>
+  </g>
+  <text x="1500" y="880" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="20" fill="#78716c">Sample visual · illustrative only</text>
+</svg>

@@ -16,36 +16,36 @@ interface ProjectData {
 
 const PROJECT_DATA: ProjectData[] = [
   {
-    title: "AI Voice Agent",
-    image: "/project/swarmaiblogwriter1.webp",
-    category: "Voice AI",
+    title: "Shefa: AI Front-Desk Agent",
+    image: "/project/featured/shefa-hero.svg",
+    category: "Healthcare AI",
     year: "2026",
-    description: "24/7 call answering in Bangla and English, with appointment booking.",
-    slug: "ai-voice-agent"
+    description: "Answers hospital calls in Bangla and English and books doctor slots.",
+    slug: "shefa-hospital-ai-front-desk"
   },
   {
-    title: "Custom AI Chatbot",
-    image: "/project/creativeportfoliowebsite1.webp",
-    category: "Conversational AI",
+    title: "Safar: Electric Shuttle",
+    image: "/project/featured/safar-hero.svg",
+    category: "Mobility",
     year: "2026",
-    description: "Website, WhatsApp, and Messenger assistants grounded in your own documents.",
-    slug: "custom-business-chatbot"
+    description: "25 electric shuttles on fixed Dhaka routes, with live tracking for commuters.",
+    slug: "safar-electric-neighborhood-shuttle"
   },
   {
-    title: "Face Recognition Attendance",
-    image: "/project/snbtinplatformpersiapansnbt20251.webp",
-    category: "Computer Vision",
-    year: "2025",
-    description: "Touchless attendance with liveness checks and payroll-ready reports.",
-    slug: "face-recognition-attendance"
+    title: "The Handset Depot",
+    image: "/project/featured/handset-depot-hero.svg",
+    category: "E-Commerce",
+    year: "2026",
+    description: "Pre-owned and new phones, servicing, and accessories with full store management.",
+    slug: "the-handset-depot-ecommerce"
   },
   {
-    title: "Business Analytics Dashboard",
-    image: "/project/terraflowplatform1.webp",
-    category: "Business Intelligence",
-    year: "2025",
-    description: "Live sales, inventory, and forecasting dashboards for business owners.",
-    slug: "business-analytics-dashboard"
+    title: "SpanishStitch",
+    image: "/project/featured/spanishstitch-hero.svg",
+    category: "Enterprise SaaS",
+    year: "2026",
+    description: "RMG buying house CMS for RFQs, orders, clients, and styles in production.",
+    slug: "spanishstitch-rmg-buying-house-cms"
   },
 ];
 

@@ -45,62 +45,238 @@ export const portfolioData: PortfolioData = {
     },
     projects: [
         {
-            id: 'project-1',
-            slug: 'ai-voice-agent',
-            title: 'AI Voice Agent for Customer Calls',
-            image: '/project/swarmaiblogwriter1.webp',
-            galleryImages: ['/project/swarmaiblogwriter2.webp', '/project/swarmaiblogwriter3.webp'],
-            description: 'A 24/7 AI voice receptionist that answers calls in Bangla and English, books appointments, answers FAQs, and hands off complex cases to your team.',
-            longDescription: 'Missed calls cost businesses customers every day. Our AI voice agent answers inbound calls around the clock, understands natural Bangla, English, and mixed speech, checks availability in your calendar or booking system, confirms appointments by SMS, and routes urgent or complex conversations to a human with a full call summary. It is built for clinics, hotels, real estate firms, logistics companies, and service businesses that cannot afford to lose a lead after hours.',
-            techStack: ['Python', 'Speech-to-Text', 'Text-to-Speech', 'LLM Orchestration', 'Telephony APIs', 'PostgreSQL'],
-            tools: ['Twilio', 'Asterisk SIP', 'Google Calendar API', 'Docker', 'Grafana'],
+            id: 'project-featured-shefa',
+            slug: 'shefa-hospital-ai-front-desk',
+            title: 'Shefa: AI Front-Desk Agent for Hospitals',
+            description: 'An AI agent that answers hospital calls in Bangla and English, so patients no longer wait in a phone queue to book a doctor.',
+            longDescription: 'Hospital phone lines are busy from the first hour of the morning, and patients often hang up before a receptionist answers. Shefa is our in-house AI front-desk agent with one job: take the booking call. It picks up inbound calls, understands what the patient needs in Bangla or English, and checks the requested doctor\'s availability. It then offers the open slots, reserves the one the patient chooses, gives a serial number, and tells the patient the expected time of visit. Reception staff see every booking as it happens and can take over any call.',
+            image: '/project/featured/shefa-hero.svg',
+            galleryImages: ['/project/featured/shefa-gallery.svg'],
+            techStack: ['Python', 'Speech-to-Text', 'Text-to-Speech', 'LLM Orchestration', 'Telephony', 'PostgreSQL'],
+            tools: ['Asterisk SIP', 'Twilio', 'Docker', 'Grafana'],
             status: 'ongoing',
             repoUrl: '#',
             demoUrl: '#',
-            startDate: '2026-02-01',
-            role: 'AI Solutions Lead',
-            customTimeline: '2026',
-            team: 'Auravine Delivery Team',
-            highlights: ['24/7 Call Answering', 'Bangla & English Speech', 'Calendar & CRM Integration'],
-            category: 'Voice AI',
+            startDate: '2026-01-01',
+            role: 'AI Product Lead',
+            team: 'Auravine (in-house product)',
+            highlights: ['Bangla & English Calls', 'Live Doctor Availability', 'Serial Number & Visit Time'],
+            category: 'Healthcare AI',
             features: [
                 {
-                    title: 'Conversation Engine',
+                    title: 'Call Handling',
                     items: [
-                        '**Bangla & English Speech Recognition**: Understands natural speech, including code-mixed conversations common in Dhaka business calls.',
-                        '**Intent & Slot Extraction**: Captures name, service, preferred date, and contact details during the call without rigid menus.',
-                        '**Human Handoff**: Transfers to a live agent with the transcript and caller context when the conversation needs a person.'
+                        '**24/7 Call Pickup**: Answers every inbound call immediately, so no patient waits in the queue.',
+                        '**Bangla & English Conversations**: Understands the patient in either language, including mixed sentences.',
+                        '**Human Takeover**: Reception can join or take over any call with the full transcript on screen.'
                     ]
                 },
                 {
-                    title: 'Business Integrations',
+                    title: 'Booking Engine',
                     items: [
-                        '**Calendar & Booking Sync**: Checks real-time availability and books into Google Calendar or your existing scheduling system.',
-                        '**CRM & Ticketing**: Creates leads, updates contact records, and opens support tickets automatically after each call.',
-                        '**SMS Confirmations**: Sends appointment and follow-up messages to the caller once the call ends.'
+                        '**Doctor & Department Lookup**: Matches the patient\'s need to the right doctor or department.',
+                        '**Live Slot Availability**: Offers only slots that are open at that moment, so double bookings are avoided.',
+                        '**Serial & Visit Time**: Gives the patient a serial number and the expected time of visit, then sends a confirmation.'
                     ]
                 },
                 {
-                    title: 'Operations & Control',
+                    title: 'Hospital Operations',
                     items: [
-                        '**Call Analytics Dashboard**: Volume, answer rate, booking conversion, and common questions in one view.',
-                        '**Guardrails & Scripts**: Business rules, forbidden topics, and escalation triggers are configured by your team, not left to chance.',
-                        '**Call Recording & Consent**: Recording notices and retention periods are configurable to match your policies.'
+                        '**Doctor Schedules**: Hospital admins update schedules and leave days in one place.',
+                        '**Booking Dashboard**: Calls, bookings, and unanswered requests in real time.',
+                        '**Audit Trail**: Every call summary and booking change is logged for review.'
                     ]
                 }
             ],
             challengesAndSolutions: [
                 {
-                    problem: 'Callers switch between Bangla and English in the same sentence',
-                    solution: 'We tuned speech recognition on code-mixed local conversations and built a normalization layer so intents are recognized the same way regardless of language mix.'
+                    problem: 'Patients describe symptoms and departments in everyday language',
+                    solution: 'Shefa maps everyday phrases to departments and doctors, and asks one clarifying question when the request is unclear.'
                 },
                 {
-                    problem: 'Latency makes AI calls feel unnatural',
-                    solution: 'We streamed speech recognition and synthesis, kept the LLM prompt compact, and cached frequently used answers so replies start quickly.'
+                    problem: 'Two callers must never be given the same slot',
+                    solution: 'Each slot is reserved against live availability at the moment of confirmation, not when the call started.'
                 },
                 {
-                    problem: 'Wrong bookings damage trust',
-                    solution: 'Every booking is confirmed against live availability before the call ends, with a read-back step and an SMS confirmation to prevent mistakes.'
+                    problem: 'Staff must trust the agent before they rely on it',
+                    solution: 'Reception can monitor calls live, take over at any point, and review a summary of every conversation.'
+                }
+            ]
+        },
+        {
+            id: 'project-featured-safar',
+            slug: 'safar-electric-neighborhood-shuttle',
+            title: 'Safar: Electric Neighborhood Shuttle for Dhaka',
+            description: 'An electric shuttle service with 25 fleets on fixed routes across Dhaka, with a commuter app that shows where the next shuttle is in real time.',
+            longDescription: 'Safar runs electric neighborhood shuttles on defined routes across Dhaka, giving commuters an affordable and comfortable ride for short and medium trips. Our commuter app shows every shuttle on a live map, like a ride-tracking app, so riders know exactly when and where to wait. Location sharing is limited to the shuttles and the commuters who are riding, and each route has its own stops. A current example is the route from Jashimuddin to Uttara North Metro Station.',
+            image: '/project/featured/safar-hero.svg',
+            galleryImages: ['/project/featured/safar-gallery.svg'],
+            techStack: ['React Native', 'Node.js', 'PostgreSQL', 'WebSockets', 'Maps API', 'Docker'],
+            tools: ['Figma', 'Grafana', 'Docker', 'GitHub'],
+            status: 'ongoing',
+            repoUrl: '#',
+            demoUrl: '#',
+            startDate: '2026-01-01',
+            role: 'Product & Full Stack Engineer',
+            team: 'Auravine (in-house product)',
+            highlights: ['25 Electric Shuttles', 'Live Shuttle Tracking', 'Fixed Dhaka Routes'],
+            category: 'Mobility',
+            features: [
+                {
+                    title: 'Commuter App',
+                    items: [
+                        '**Live Shuttle Map**: See each shuttle on the route, its direction, and its estimated arrival at your stop.',
+                        '**Seat Availability**: Check how many seats are free before you walk to the stop.',
+                        '**Route Planning**: Choose your pickup and drop-off stops on a defined route.'
+                    ]
+                },
+                {
+                    title: 'Fleet Operations',
+                    items: [
+                        '**Fleet Monitoring**: Track all 25 electric shuttles from one control view.',
+                        '**Route & Stop Management**: Add or adjust stops and timetables without an app update.',
+                        '**Driver Check-in**: Shift start and stop are recorded for each shuttle.'
+                    ]
+                },
+                {
+                    title: 'Privacy & Safety',
+                    items: [
+                        '**Shared Location Only**: Location is shared only between a shuttle and the commuters riding it.',
+                        '**Role-Based Access**: Operators, drivers, and commuters each see only what they need.',
+                        '**Data Minimization**: Ride history is kept only as long as operations require.'
+                    ]
+                }
+            ],
+            challengesAndSolutions: [
+                {
+                    problem: 'Live positions must update smoothly on mobile networks',
+                    solution: 'Shuttle positions stream over a lightweight connection and the app falls back to the last known position when the signal drops.'
+                },
+                {
+                    problem: 'Commuters need arrival times they can trust in heavy traffic',
+                    solution: 'Arrival estimates combine the shuttle\'s live position with recent travel times on the same stretch of road.'
+                },
+                {
+                    problem: 'Electric shuttles must be managed like a fleet',
+                    solution: 'Each shuttle has its own status, route, and shift record, so operators can reassign a vehicle in a few taps.'
+                }
+            ]
+        },
+        {
+            id: 'project-featured-handset-depot',
+            slug: 'the-handset-depot-ecommerce',
+            title: 'The Handset Depot: Pre-Owned & New Phone Commerce',
+            description: 'A complete e-commerce platform for buying and selling pre-owned and new smartphones, with phone servicing and accessories, backed by full order, stock, and service management.',
+            longDescription: 'The Handset Depot is a complete platform for pre-owned and new smartphones. Customers buy and sell phones online, book phone servicing, and shop for accessories such as earbuds, neckbands, phone cases, and original chargers. Behind the storefront, the business runs on one system: orders, stock, sales tracking, service tickets, partner management, and profit tracking, so the team can see what sold, what is being repaired, and what each sale earned.',
+            image: '/project/featured/handset-depot-hero.svg',
+            galleryImages: ['/project/featured/handset-depot-gallery.svg'],
+            techStack: ['Next.js', 'TypeScript', 'Node.js', 'PostgreSQL', 'Prisma', 'Stripe'],
+            tools: ['Figma', 'Postman', 'Docker', 'GitHub'],
+            status: 'completed',
+            repoUrl: '#',
+            demoUrl: '#',
+            startDate: '2026-01-01',
+            role: 'Full Stack Engineer',
+            team: 'Auravine Delivery Team',
+            highlights: ['Buy & Sell Pre-Owned Phones', 'Phone Servicing Tracking', 'Profit & Partner Management'],
+            category: 'E-Commerce',
+            features: [
+                {
+                    title: 'Storefront',
+                    items: [
+                        '**Pre-Owned & New Phones**: Browse certified pre-owned and new handsets with clear condition details.',
+                        '**Sell Your Phone**: Customers submit their phone for an offer and get a quote.',
+                        '**Accessories**: Earbuds, AirPods-style pods, neckbands, cases, and original chargers in one catalog.'
+                    ]
+                },
+                {
+                    title: 'Operations',
+                    items: [
+                        '**Order Management**: Every order moves through a clear status from placed to delivered.',
+                        '**Stock Management**: Stock is tracked per unit for phones and per SKU for accessories.',
+                        '**Sales Tracking**: Daily, weekly, and monthly sales by product, channel, and partner.'
+                    ]
+                },
+                {
+                    title: 'Servicing & Partners',
+                    items: [
+                        '**Service Tickets**: Track each repair from received to ready for pickup, with customer updates.',
+                        '**Partner Management**: Manage suppliers, resellers, and service partners with their own records.',
+                        '**Profit Management**: Margin per sale, per device, and per service, after parts and partner costs.'
+                    ]
+                }
+            ],
+            challengesAndSolutions: [
+                {
+                    problem: 'Pre-owned phones need clear, trustworthy condition information',
+                    solution: 'Each device has a standard condition grade, inspection notes, and photos, recorded before it is listed for sale.'
+                },
+                {
+                    problem: 'Stock, orders, and repairs must not drift apart',
+                    solution: 'A single inventory record links each handset to its purchase, service tickets, and sale, so the numbers reconcile automatically.'
+                },
+                {
+                    problem: 'Profit depends on parts and partner costs',
+                    solution: 'Profit is calculated per sale and per service using the actual parts and partner costs recorded against each job.'
+                }
+            ]
+        },
+        {
+            id: 'project-featured-spanishstitch',
+            slug: 'spanishstitch-rmg-buying-house-cms',
+            title: 'SpanishStitch: RMG Buying House Platform',
+            description: 'A CMS and operations platform for a garment buying house, covering RFQs, orders, clients, sales pipeline, and the styles in production for each product category.',
+            longDescription: 'SpanishStitch is a buying house platform for the ready-made garment (RMG) industry. It manages the full path from a buyer\'s request for quotation to a confirmed order, keeps every client and potential client in one place, and shows total sales and the pipeline at a glance. Super admins can change and configure every text and asset on each section of the public website without a developer, and the dashboard shows how many styles are in production in each category, such as knit, woven, denim, and sweater.',
+            image: '/project/featured/spanishstitch-hero.svg',
+            galleryImages: ['/project/featured/spanishstitch-gallery.svg'],
+            techStack: ['Next.js', 'TypeScript', 'Python', 'FastAPI', 'PostgreSQL', 'Tailwind CSS'],
+            tools: ['Figma', 'Docker', 'GitHub', 'Postman'],
+            status: 'completed',
+            repoUrl: '#',
+            demoUrl: '#',
+            startDate: '2026-01-01',
+            role: 'Full Stack & Backend Engineer',
+            team: 'Auravine Delivery Team',
+            highlights: ['RFQ to Order Workflow', 'Client & Pipeline CRM', 'Styles by Category'],
+            category: 'Enterprise SaaS',
+            features: [
+                {
+                    title: 'Buying House Operations',
+                    items: [
+                        '**RFQ Management**: Log buyer requests, track costing and sampling, and convert approved RFQs into orders.',
+                        '**Order Management**: Orders, shipment milestones, and status for each style and buyer.',
+                        '**Styles in Production**: See how many styles are running in knit, woven, denim, and sweater lines.'
+                    ]
+                },
+                {
+                    title: 'Clients & Sales',
+                    items: [
+                        '**Client Handling**: Buyer contacts, requirements, and history in one profile.',
+                        '**Potential Clients**: Pipeline stages from first contact to first order.',
+                        '**Total Sales**: Sales totals and trends across clients, categories, and periods.'
+                    ]
+                },
+                {
+                    title: 'Website Control',
+                    items: [
+                        '**No-Code Content Editing**: Super admins change every text and image in each section of the website.',
+                        '**Role-Based Access**: Merchandisers, sales, and management see only their modules.',
+                        '**Activity Log**: Changes to orders, RFQs, and website content are recorded.'
+                    ]
+                }
+            ],
+            challengesAndSolutions: [
+                {
+                    problem: 'RFQs, orders, and client records live in separate sheets',
+                    solution: 'One data model links each client, RFQ, order, and style, so every team sees the same record.'
+                },
+                {
+                    problem: 'Non-technical staff need to update the public website',
+                    solution: 'Every section of the site reads its text and images from the admin CMS, so content changes do not need a developer.'
+                },
+                {
+                    problem: 'Management needs to see production by category at a glance',
+                    solution: 'Style counts are grouped by production category and updated as orders move through their stages.'
                 }
             ]
         },
