@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Computer Vision Quality Inspection">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#052e16"/><stop offset="1" stop-color="#0f172a"/></linearGradient><linearGradient id="au" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2dd4bf"/><stop offset="0.55" stop-color="#6366f1"/><stop offset="1" stop-color="#f59e0b"/></linearGradient></defs>
+<rect width="1600" height="1000" fill="url(#bg)"/>
+  <rect x="110" y="120" width="209" height="46" rx="23" fill="#4ade80" opacity="0.2"/>
+  <text x="132" y="152" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#4ade80" text-anchor="start">COMPUTER VISION</text>
+  <text x="110" y="280" font-family="Inter, Arial, sans-serif" font-size="66" font-weight="800" fill="#ffffff" text-anchor="start">Computer Vision</text>
+  <text x="110" y="360" font-family="Inter, Arial, sans-serif" font-size="66" font-weight="800" fill="#ffffff" text-anchor="start">Quality Inspection</text>
+  <text x="110" y="560" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="400" fill="#cbd5e1" text-anchor="start">Camera-based defect detection on the</text>
+  <text x="110" y="602" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="400" fill="#cbd5e1" text-anchor="start">production line, with image traceability.</text>
+  <rect x="110" y="720" width="287" height="50" rx="25" fill="#ffffff" fill-opacity="0.08" stroke="#4ade80" stroke-opacity="0.6"/>
+  <text x="130" y="753" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="500" fill="#ffffff" text-anchor="start">Real-time detection</text>
+  <rect x="440" y="720" width="274" height="50" rx="25" fill="#ffffff" fill-opacity="0.08" stroke="#4ade80" stroke-opacity="0.6"/>
+  <text x="460" y="753" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="500" fill="#ffffff" text-anchor="start">Image traceability</text>
+  <rect x="110" y="794" width="235" height="50" rx="25" fill="#ffffff" fill-opacity="0.08" stroke="#4ade80" stroke-opacity="0.6"/>
+  <text x="130" y="827" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="500" fill="#ffffff" text-anchor="start">Edge deployment</text>
+  <rect x="880" y="160" width="610" height="680" rx="32" fill="#0f172a" stroke="#4ade80" stroke-opacity="0.5" stroke-width="2"/>
+  <rect x="930" y="270" width="110" height="110" rx="18" fill="#1e293b"/>
+  <rect x="952" y="292" width="66" height="66" rx="14" fill="#4ade80" opacity="0.35"/>
+  <rect x="1065" y="270" width="110" height="110" rx="18" fill="#1e293b"/>
+  <rect x="1087" y="292" width="66" height="66" rx="14" fill="#4ade80" opacity="0.35"/>
+  <rect x="1200" y="270" width="110" height="110" rx="18" fill="#1e293b"/>
+  <rect x="1222" y="292" width="66" height="66" rx="14" fill="#4ade80" opacity="0.35"/>
+  <rect x="1335" y="270" width="110" height="110" rx="18" fill="#3f1d1d" stroke="#f87171" stroke-width="4" stroke-dasharray="10 6"/>
+  <rect x="930" y="405" width="110" height="110" rx="18" fill="#1e293b"/>
+  <rect x="952" y="427" width="66" height="66" rx="14" fill="#4ade80" opacity="0.35"/>
+  <rect x="1065" y="405" width="110" height="110" rx="18" fill="#1e293b"/>
+  <rect x="1087" y="427" width="66" height="66" rx="14" fill="#4ade80" opacity="0.35"/>
+  <rect x="1200" y="405" width="110" height="110" rx="18" fill="#3f1d1d" stroke="#f87171" stroke-width="4" stroke-dasharray="10 6"/>
+  <rect x="1335" y="405" width="110" height="110" rx="18" fill="#1e293b"/>
+  <rect x="1357" y="427" width="66" height="66" rx="14" fill="#4ade80" opacity="0.35"/>
+  <rect x="930" y="540" width="110" height="110" rx="18" fill="#3f1d1d" stroke="#f87171" stroke-width="4" stroke-dasharray="10 6"/>
+  <rect x="1065" y="540" width="110" height="110" rx="18" fill="#1e293b"/>
+  <rect x="1087" y="562" width="66" height="66" rx="14" fill="#4ade80" opacity="0.35"/>
+  <rect x="1200" y="540" width="110" height="110" rx="18" fill="#1e293b"/>
+  <rect x="1222" y="562" width="66" height="66" rx="14" fill="#4ade80" opacity="0.35"/>
+  <rect x="1335" y="540" width="110" height="110" rx="18" fill="#1e293b"/>
+  <rect x="1357" y="562" width="66" height="66" rx="14" fill="#4ade80" opacity="0.35"/>
+  <text x="920" y="220" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700" fill="#e2e8f0" text-anchor="start">Line 2 · Live inspection</text>
+  <text x="920" y="256" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="400" fill="#94a3b8" text-anchor="start">2 defects flagged · images logged</text>
+  <text x="110" y="940" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="400" fill="#94a3b8" text-anchor="start">Sample visual · illustrative only</text>
+</svg>

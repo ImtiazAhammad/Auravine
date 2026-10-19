@@ -317,6 +317,21 @@ export function ProjectPageContent({ project, isLowPowerMode }: { project: Proje
                             </div>
                         </section>
 
+                        {/* METRICS (optional, illustrative until real figures are added) */}
+                        {project.metrics && (
+                            <section id="metrics" className="mb-16">
+                                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                    {project.metrics.map((metric) => (
+                                        <div key={metric.label} className="rounded-2xl border border-border/50 bg-muted/30 p-6">
+                                            <div className="text-3xl font-black text-foreground">{metric.value}</div>
+                                            <div className="mt-2 text-sm text-muted-foreground">{metric.label}</div>
+                                        </div>
+                                    ))}
+                                </div>
+                                <p className="mt-3 text-xs italic text-muted-foreground">{t('sections.illustrativeNote')}</p>
+                            </section>
+                        )}
+
                         {/* FEATURES (BENTO GRID - Adapted for 8 cols) */}
                         {project.features && (
                             <section id="features">

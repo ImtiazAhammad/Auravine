@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="AI Product Recommendations for E-Commerce">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f1235"/><stop offset="1" stop-color="#3b0764"/></linearGradient><linearGradient id="au" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2dd4bf"/><stop offset="0.55" stop-color="#6366f1"/><stop offset="1" stop-color="#f59e0b"/></linearGradient></defs>
+<rect width="1600" height="1000" fill="url(#bg)"/>
+  <rect x="110" y="120" width="183" height="46" rx="23" fill="#f472b6" opacity="0.2"/>
+  <text x="132" y="152" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#f472b6" text-anchor="start">E-COMMERCE AI</text>
+  <text x="110" y="280" font-family="Inter, Arial, sans-serif" font-size="66" font-weight="800" fill="#ffffff" text-anchor="start">AI Product</text>
+  <text x="110" y="360" font-family="Inter, Arial, sans-serif" font-size="66" font-weight="800" fill="#ffffff" text-anchor="start">Recommendations for</text>
+  <text x="110" y="440" font-family="Inter, Arial, sans-serif" font-size="66" font-weight="800" fill="#ffffff" text-anchor="start">E-Commerce</text>
+  <text x="110" y="560" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="400" fill="#cbd5e1" text-anchor="start">Personalized recommendations and smart</text>
+  <text x="110" y="602" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="400" fill="#cbd5e1" text-anchor="start">search that understands Bangla and</text>
+  <text x="110" y="644" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="400" fill="#cbd5e1" text-anchor="start">English.</text>
+  <rect x="110" y="720" width="274" height="50" rx="25" fill="#ffffff" fill-opacity="0.08" stroke="#f472b6" stroke-opacity="0.6"/>
+  <text x="130" y="753" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="500" fill="#ffffff" text-anchor="start">Personalized picks</text>
+  <rect x="440" y="720" width="300" height="50" rx="25" fill="#ffffff" fill-opacity="0.08" stroke="#f472b6" stroke-opacity="0.6"/>
+  <text x="460" y="753" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="500" fill="#ffffff" text-anchor="start">Typo-tolerant search</text>
+  <rect x="110" y="794" width="274" height="50" rx="25" fill="#ffffff" fill-opacity="0.08" stroke="#f472b6" stroke-opacity="0.6"/>
+  <text x="130" y="827" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="500" fill="#ffffff" text-anchor="start">Store integrations</text>
+  <rect x="880" y="160" width="610" height="680" rx="32" fill="#0f172a" stroke="#f472b6" stroke-opacity="0.5" stroke-width="2"/>
+  <text x="920" y="220" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700" fill="#e2e8f0" text-anchor="start">Recommended for you</text>
+  <rect x="920" y="280" width="170" height="260" rx="24" fill="#1e293b" stroke="#f472b6" stroke-opacity="0.3" stroke-width="2"/>
+  <circle cx="1005" cy="375" r="50" fill="#f472b6" opacity="0.50"/>
+  <rect x="942" y="455" width="126" height="14" rx="7" fill="#475569"/>
+  <rect x="942" y="480" width="80" height="14" rx="7" fill="#334155"/>
+  <rect x="1110" y="280" width="170" height="260" rx="24" fill="#1e293b" stroke="#f472b6" stroke-opacity="0.9" stroke-width="4"/>
+  <circle cx="1195" cy="375" r="50" fill="#f472b6" opacity="0.70"/>
+  <rect x="1132" y="455" width="126" height="14" rx="7" fill="#475569"/>
+  <rect x="1132" y="480" width="80" height="14" rx="7" fill="#334155"/>
+  <rect x="1300" y="280" width="170" height="260" rx="24" fill="#1e293b" stroke="#f472b6" stroke-opacity="0.3" stroke-width="2"/>
+  <circle cx="1385" cy="375" r="50" fill="#f472b6" opacity="0.90"/>
+  <rect x="1322" y="455" width="126" height="14" rx="7" fill="#475569"/>
+  <rect x="1322" y="480" width="80" height="14" rx="7" fill="#334155"/>
+  <rect x="920" y="590" width="530" height="120" rx="22" fill="#f472b6" opacity="0.18"/>
+  <text x="950" y="638" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="500" fill="#e2e8f0" text-anchor="start">Search: "blue cotton kurta"</text>
+  <text x="950" y="676" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="400" fill="#94a3b8" text-anchor="start">Typo-tolerant · Bangla &amp; English</text>
+  <text x="110" y="940" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="400" fill="#94a3b8" text-anchor="start">Sample visual · illustrative only</text>
+</svg>

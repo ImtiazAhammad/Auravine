@@ -47,12 +47,14 @@ export const metadata: Metadata = {
         title: "Auravine | AI-First Software Development & Custom Solutions",
         description: "Auravine is an AI-first software company in Dhaka, Bangladesh. We build AI voice agents, custom chatbots, computer vision systems, business analytics, and custom software for businesses worldwide.",
         siteName: "Auravine",
+        images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Auravine: AI-first software from Dhaka' }],
     },
     twitter: {
         card: 'summary_large_image',
         title: "Auravine | AI-First Software Development & Custom Solutions",
         description: "Auravine is an AI-first software company in Dhaka, Bangladesh. We build AI voice agents, custom chatbots, computer vision systems, business analytics, and custom software for businesses worldwide.",
         creator: '@auravine',
+        images: ['/og-image.png'],
     },
     robots: {
         index: true,

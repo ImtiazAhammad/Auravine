@@ -219,7 +219,8 @@
             "viewLess": "Show Less",
             "solution": "Our Approach",
             "liveDemo": "Live Demo",
-            "sourceCode": "Source Code"
+            "sourceCode": "Source Code",
+            "illustrativeNote": "Illustrative figures. Replace with pilot data before publishing."
         },
         "status": {
             "ongoing": "Active Development",

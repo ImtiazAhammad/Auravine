@@ -61,6 +61,11 @@ export const portfolioData: PortfolioData = {
             role: 'AI Product Lead',
             team: 'Auravine (in-house product)',
             highlights: ['Bangla & English Calls', 'Live Doctor Availability', 'Serial Number & Visit Time'],
+            metrics: [
+                { value: '24/7', label: 'Calls answered, day and night' },
+                { value: '< 5 sec', label: 'Average wait before a call is picked up' },
+                { value: '~2 min', label: 'Average time to book a doctor slot' },
+            ],
             category: 'Healthcare AI',
             features: [
                 {
@@ -284,8 +289,7 @@ export const portfolioData: PortfolioData = {
             id: 'project-2',
             slug: 'custom-business-chatbot',
             title: 'Custom AI Chatbot for Customer Support',
-            image: '/project/creativeportfoliowebsite1.webp',
-            galleryImages: ['/project/creativeportfoliowebsite2.webp', '/project/creativeportfoliowebsite3.webp', '/project/creativeportfoliowebsite4.webp'],
+            image: '/project/featured/chatbot-hero.svg',
             description: 'A custom chatbot for your website, WhatsApp, and Messenger that answers customer questions from your own documents and hands off to your team when needed.',
             longDescription: 'Most customer questions repeat: prices, delivery times, return policies, product details, and order status. Our custom chatbot is trained on your own knowledge base so it answers accurately, cites its sources, and avoids guessing. It runs on your website, WhatsApp Business, and Facebook Messenger from a single backend, and it escalates to human agents with full context when a customer needs more than an answer.',
             techStack: ['Next.js', 'TypeScript', 'LLM APIs', 'RAG', 'WhatsApp Cloud API', 'Node.js'],
@@ -344,8 +348,7 @@ export const portfolioData: PortfolioData = {
             id: 'project-3',
             slug: 'face-recognition-attendance',
             title: 'Face Recognition Smart Attendance',
-            image: '/project/snbtinplatformpersiapansnbt20251.webp',
-            galleryImages: ['/project/snbtinplatformpersiapansnbt20252.webp'],
+            image: '/project/featured/face-hero.svg',
             description: 'Touchless attendance with face recognition, live dashboards, and automatic payroll-ready reports for offices, factories, schools, and campuses.',
             longDescription: 'Manual attendance registers are slow and easy to manipulate. Our smart attendance system uses face recognition on standard IP cameras or dedicated terminals to record check-in and check-out within seconds. Managers see who is present in real time, late arrivals and early departures are flagged automatically, and reports export directly to payroll or HR systems. Liveness checks and privacy controls keep the system secure and compliant with your internal policies.',
             techStack: ['Python', 'OpenCV', 'Face Embeddings', 'FastAPI', 'PostgreSQL', 'React'],
@@ -404,8 +407,7 @@ export const portfolioData: PortfolioData = {
             id: 'project-4',
             slug: 'business-analytics-dashboard',
             title: 'Business Analytics & Forecasting Dashboard',
-            image: '/project/terraflowplatform1.webp',
-            galleryImages: ['/project/terraflowplatform2.webp'],
+            image: '/project/featured/analytics-hero.svg',
             description: 'Live sales, inventory, and operations dashboards with AI forecasts, so leaders see what is happening and what is likely to happen next.',
             longDescription: 'Most businesses have data in POS systems, spreadsheets, and accounting software, but no single view of performance. We connect those sources into one analytics platform with clear dashboards for owners and managers. Forecasting models estimate demand, stock needs, and cash flow, and alerts notify the right person when a KPI moves outside its normal range. The platform is designed to be understood by non-technical leaders from day one.',
             techStack: ['Python', 'Pandas', 'Prophet', 'PostgreSQL', 'Next.js', 'Recharts'],
@@ -464,8 +466,7 @@ export const portfolioData: PortfolioData = {
             id: 'project-5',
             slug: 'document-intelligence-rag',
             title: 'Document Intelligence & Knowledge Assistant',
-            image: '/project/parallax/image1.webp',
-            galleryImages: ['/project/parallax/image2.webp', '/project/parallax/image3.webp'],
+            image: '/project/featured/docs-hero.svg',
             description: 'A private AI assistant that searches contracts, policies, and reports across your company and answers questions with page-level citations.',
             longDescription: 'Teams lose hours searching for the right clause, policy, or past report. Our document intelligence platform indexes your internal files, respects existing access permissions, and answers natural-language questions with citations to the exact page. It can run on your own cloud or on-premise infrastructure, which matters for companies that handle sensitive legal, financial, or client data.',
             techStack: ['Python', 'LangChain', 'Vector Search', 'OCR', 'FastAPI', 'Next.js'],
@@ -524,8 +525,7 @@ export const portfolioData: PortfolioData = {
             id: 'project-6',
             slug: 'computer-vision-quality-inspection',
             title: 'Computer Vision Quality Inspection',
-            image: '/project/parallax/image5.webp',
-            galleryImages: ['/project/parallax/image6.webp'],
+            image: '/project/featured/cv-hero.svg',
             description: 'Camera-based defect detection for production lines that flags faulty items in real time and logs every decision for traceability.',
             longDescription: 'Manual inspection is tiring, inconsistent, and expensive to scale. Our computer vision inspection system uses industrial or standard cameras and a trained detection model to identify defects, missing components, and packaging errors while products move along the line. Operators receive instant alerts, rejected items are logged with images, and quality trends are visible to production managers.',
             techStack: ['Python', 'PyTorch', 'YOLO', 'OpenCV', 'MQTT', 'Docker'],
@@ -584,8 +584,7 @@ export const portfolioData: PortfolioData = {
             id: 'project-7',
             slug: 'ai-sales-and-recommendations',
             title: 'AI Product Recommendations for E-Commerce',
-            image: '/project/parallax/image7.webp',
-            galleryImages: ['/project/parallax/image8.webp'],
+            image: '/project/featured/recs-hero.svg',
             description: 'Personalized product recommendations and smart search for online stores, designed to lift average order value and reduce bounce rates.',
             longDescription: 'Online shoppers leave when they cannot find what they want. Our recommendation engine learns from browsing and purchase behavior to show relevant products on the homepage, product pages, and carts. Smart search understands typos, Bangla and English queries, and product attributes, so customers find items faster. The system is integrated with popular storefront platforms and reports results in plain language for store owners.',
             techStack: ['Python', 'Scikit-learn', 'Embeddings', 'Redis', 'Node.js', 'React'],
@@ -644,8 +643,7 @@ export const portfolioData: PortfolioData = {
             id: 'project-8',
             slug: 'clinic-management-saas',
             title: 'Clinic Management SaaS with AI Assistance',
-            image: '/project/parallax/image9.webp',
-            galleryImages: ['/project/parallax/image10.webp'],
+            image: '/project/featured/clinic-hero.svg',
             description: 'A cloud platform for clinics and diagnostic centers covering appointments, patient records, billing, and AI-assisted queue and no-show management.',
             longDescription: 'Clinics juggle paper registers, phone bookings, and separate billing tools. Our clinic management platform brings appointments, patient records, prescriptions, billing, and reporting into one secure system. AI features predict no-shows so reception can send reminders, balance queues across doctors, and surface patterns that help clinic owners plan staffing. Patient data is protected with role-based access and audit trails.',
             techStack: ['Next.js', 'TypeScript', 'Node.js', 'PostgreSQL', 'Prisma', 'Python'],
@@ -941,7 +939,7 @@ Measure what matters: answer rate, bookings made, average handling time, and the
 ## The bottom line
 
 Voice AI is not about replacing your team. It is about making sure no caller is ignored, that routine work does not crowd out important work, and that every conversation is recorded and searchable. At Auravine we design these systems around your business rules, deploy them securely, and keep improving them after launch.`,
-            image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2000&auto=format&fit=crop&fm=webp',
+            image: '/blog/ai-voice-agents-for-business.svg',
             date: '2026-03-20',
             category: 'applied-ai',
             tags: ['Voice AI', 'Customer Service', 'Automation'],
@@ -968,7 +966,7 @@ The same knowledge should power your website chat, WhatsApp, and Messenger. When
 ## Measure and improve
 
 Track three numbers from day one: the share of questions answered without a handoff, the questions the bot could not answer, and customer satisfaction after each conversation. The unanswered questions are your roadmap. Add the missing information, and the assistant gets better without a rebuild.`,
-            image: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=2000&auto=format&fit=crop&fm=webp',
+            image: '/blog/chatbots-that-cite-their-sources.svg',
             date: '2026-03-15',
             category: 'applied-ai',
             tags: ['Chatbot', 'RAG', 'Customer Trust'],
@@ -999,7 +997,7 @@ Store face data as encrypted mathematical templates rather than raw photos where
 ## What success looks like
 
 The best outcome is not a clever camera. It is accurate, trusted attendance data that your managers use every day and that matches your payroll rules. Auravine builds these systems with shift rules, audit trails, and privacy controls from the first sprint.`,
-            image: 'https://images.unsplash.com/photo-1618477388954-7852f32655ec?q=80&w=2000&auto=format&fit=crop&fm=webp',
+            image: '/blog/face-recognition-attendance-privacy.svg',
             date: '2026-02-10',
             category: 'software-development',
             tags: ['Computer Vision', 'HR Tech', 'Privacy'],
@@ -1030,7 +1028,7 @@ Once the data is clean and the dashboards are trusted, forecasting becomes pract
 ## Where to begin
 
 A focused first project, usually four to six weeks, is enough to show value. Choose one decision that is made often and matters financially, build the data foundation for it, and measure the result. That early win makes the next AI project easier to justify.`,
-            image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000&auto=format&fit=crop&fm=webp',
+            image: '/blog/analytics-before-ai.svg',
             date: '2026-01-22',
             category: 'applied-ai',
             tags: ['Business Intelligence', 'Strategy', 'Data'],
@@ -1057,7 +1055,7 @@ AI should be measured against business outcomes. Systems should be secure by des
 ## Talk to us
 
 If you are exploring AI for your business, book a free consultation. We will listen to your challenge, suggest a practical first step, and tell you honestly whether AI is the right tool for it.`,
-            image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2000&auto=format&fit=crop&fm=webp',
+            image: '/blog/about-auravine.svg',
             date: '2026-01-05',
             category: 'about-me',
             tags: ['Company', 'Dhaka', 'AI'],
@@ -1072,7 +1070,7 @@ If you are exploring AI for your business, book a free consultation. We will lis
             description: 'Mapping business processes with a client team before design begins.',
             date: '2026-02-05',
             type: 'image',
-            url: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2000&auto=format&fit=crop&fm=webp',
+            url: '/studio/discovery-workshop.svg',
             category: 'research'
         },
         {
@@ -1081,7 +1079,7 @@ If you are exploring AI for your business, book a free consultation. We will lis
             description: 'Walking stakeholders through a working prototype at the end of a sprint.',
             date: '2026-01-20',
             type: 'image',
-            url: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000&auto=format&fit=crop&fm=webp',
+            url: '/studio/product-demo.svg',
             category: 'event'
         },
         {
@@ -1090,7 +1088,7 @@ If you are exploring AI for your business, book a free consultation. We will lis
             description: 'Testing detection models on camera feeds from real production conditions.',
             date: '2025-12-15',
             type: 'image',
-            url: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2000&auto=format&fit=crop&fm=webp',
+            url: '/studio/computer-vision-lab.svg',
             category: 'technical'
         },
         {
@@ -1099,7 +1097,7 @@ If you are exploring AI for your business, book a free consultation. We will lis
             description: 'Planning the next quarter of AI product development together.',
             date: '2025-11-25',
             type: 'image',
-            url: 'https://images.unsplash.com/photo-1516245834210-c4c142787335?q=80&w=2000&auto=format&fit=crop&fm=webp',
+            url: '/studio/team-build-day.svg',
             category: 'event'
         },
     ],
