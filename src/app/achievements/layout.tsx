@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'Achievements',
-    description: 'My certifications, awards, and accomplishments.',
+    title: 'Commitments',
+    description: 'How Auravine builds AI responsibly, securely, and in the languages your customers speak.',
 };
 
 export default function AchievementsLayout({

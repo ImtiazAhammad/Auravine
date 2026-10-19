@@ -14,7 +14,6 @@ const FallingText = dynamic(() => import('@/components/effects/FallingText'), {
     ssr: false,
     loading: () => <div className="h-[400px] w-full animate-pulse bg-zinc-100/5 dark:bg-zinc-800/5 rounded-xl" />
 });
-import CertificateHeroScroll from '@/components/sections/CertificateHeroScroll';
 import { usePerformance } from '@/hooks/usePerformance';
 import { ErrorBoundary } from '@/components/ui/ErrorBoundary';
 import { useLenis } from 'lenis/react';
@@ -775,11 +774,6 @@ export default function AchievementsPage() {
     return (
 
         <div className="min-h-screen bg-background text-foreground overflow-x-clip">
-            {/* Hero Scroll Section */}
-            <ErrorBoundary fallback={<div className="h-[60vh] flex items-center justify-center">Hero Unavailable</div>}>
-                <CertificateHeroScroll isLowPowerMode={isLowPowerMode} />
-            </ErrorBoundary>
-
             {/* Ambient Background layer */}
             <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
                 <motion.div
@@ -1031,7 +1025,7 @@ export default function AchievementsPage() {
                                 Technical Universe
                             </h2>
                             <p className="text-sm text-muted-foreground/60 max-w-lg mx-auto leading-relaxed">
-                                Interact with the core technologies and values that drive my research and development journey.
+                                Explore the technologies and values that guide how we research, build, and support AI for our clients.
                             </p>
                         </motion.div>
 

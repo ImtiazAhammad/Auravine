@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'Skills',
-    description: 'My technical skills, tech stack, and tools I work with.',
+    title: 'Capabilities',
+    description: 'The AI, data, and software services Auravine delivers, and the technology stack behind them.',
 };
 
 export default function SkillsLayout({

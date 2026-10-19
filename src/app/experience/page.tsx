@@ -29,7 +29,6 @@ import dynamic from 'next/dynamic';
 import { useTheme } from 'next-themes';
 import { Experience, Education } from '@/types';
 
-import ExperienceMarquee from '../../components/sections/ExperienceMarquee';
 import ExperienceStickyScroll from '../../components/sections/ExperienceStickyScroll';
 import { Timeline } from '@/components/ui/timeline';
 import { InnovativeExperienceHero } from '@/components/sections/InnovativeExperienceHero';
@@ -41,17 +40,17 @@ const highlightContent = {
     education: {
         title: "Building the Future",
         highlight: "Through Knowledge",
-        description: "Every line of code starts with understanding. My academic journey at Telkom University shapes how I approach complex problems with systematic thinking."
+        description: "Good solutions start with understanding. Our applied AI research and internal training keep our engineers current on the models and tools that matter for business."
     },
     journey: {
         title: "Crafting Experiences",
         highlight: "That Matter",
-        description: "From internships to leadership roles, each step has been a lesson in collaboration, innovation, and pushing boundaries."
+        description: "From the first workshop to long-term support, every phase is designed around collaboration, clear communication, and measurable results."
     },
     experience: {
         title: "Turning Ideas",
         highlight: "Into Reality",
-        description: "Real-world projects that solve real problems. Building solutions that make a difference."
+        description: "Practical AI and software delivery that solves real business problems and keeps working after launch."
     }
 };
 
@@ -99,16 +98,13 @@ function ExperienceTabSlider({ isLowPowerMode }: { isLowPowerMode: boolean }) {
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
     const tabs: TabItem[] = [
-        { id: 'education', label: 'Education', description: 'Building strong foundations through academic excellence at Telkom University and SMAN 88 Jakarta.' },
-        { id: 'journey', label: 'Journey', description: 'A timeline of roles, responsibilities, and professional growth across various organizations.' },
-        { id: 'experience', label: 'Experience', description: 'Detailed breakdown of work experiences with project highlights and achievements.' },
+        { id: 'education', label: 'Research & Training', description: 'Applied AI research and internal training that keep our solutions current and reliable.' },
+        { id: 'journey', label: 'Our Process', description: 'A timeline of how we take a project from discovery and design to launch and ongoing support.' },
+        { id: 'experience', label: 'Engagements', description: 'A detailed breakdown of each delivery phase, what we do, and what our clients gain.' },
     ];
 
     const categories = [
-        { id: 'professional', label: 'Professional Experience', icon: Briefcase, color: 'bg-blue-600', prefix: 'prof-' },
-        { id: 'leadership', label: 'Leadership & Organizational', icon: Users, color: 'bg-purple-600', prefix: 'lead-' },
-        { id: 'volunteer', label: 'Volunteer Experience', icon: Heart, color: 'bg-orange-500', prefix: 'vol-' },
-        { id: 'certifications', label: 'Certifications & Development', icon: Award, color: 'bg-emerald-500', prefix: 'cert-' },
+        { id: 'professional', label: 'Delivery Phases', icon: Briefcase, color: 'bg-blue-600', prefix: 'phase-' },
     ];
 
     const heightFix = () => {
@@ -268,7 +264,7 @@ function ExperienceTabSlider({ isLowPowerMode }: { isLowPowerMode: boolean }) {
                                                     </span>
                                                 </h2>
                                                 <p className="text-xl text-neutral-500 dark:text-neutral-400 max-w-md leading-relaxed">
-                                                    Navigate through the timeline of my career. Choose a lens to filter the experience database.
+                                                    Follow the timeline of how we deliver. Choose a lens to explore each phase in detail.
                                                 </p>
                                             </motion.div>
 
@@ -425,16 +421,6 @@ export default function ExperiencePage() {
             </div>
 
             <DeferredMount>
-                {/* 1. Work Experience Gallery Marquee */}
-                <motion.div
-                    initial={{ opacity: 0, y: isLowPowerMode ? 0 : 60 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-                    className="w-full relative z-10 pt-20 mb-20 -mt-10 md:-mt-20 overflow-hidden"
-                >
-                    <ExperienceMarquee />
-                </motion.div>
-
                 <motion.div
                     initial={{ opacity: 0, y: isLowPowerMode ? 0 : 60 }}
                     animate={{ opacity: 1, y: 0 }}

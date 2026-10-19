@@ -33,10 +33,10 @@ const signature = Alex_Brush({
 export const metadata: Metadata = {
     title: {
         default: 'Auravine | AI-First Software Development & Digital Transformation',
-        template: '%s | Portfolio',
+        template: '%s | Auravine',
     },
-    description: "Auravine builds AI agents, intelligent applications, computer vision systems, POS, e-commerce, ERP, and custom software tailored to business needs.",
-    keywords: ['developer', 'portfolio', 'web development', 'full stack', 'react', 'nextjs'],
+    description: "Auravine is an AI-first software company in Dhaka, Bangladesh. We build AI voice agents, custom chatbots, computer vision systems, business analytics, and custom software for businesses worldwide.",
+    keywords: ['AI-first software', 'AI voice agent', 'AI chatbot', 'computer vision', 'face recognition attendance', 'business analytics', 'custom software', 'Dhaka', 'Bangladesh', 'Bangla AI'],
     authors: [{ name: "Auravine" }],
     creator: "Auravine",
     metadataBase: new URL('https://your-domain.com'),
@@ -45,13 +45,13 @@ export const metadata: Metadata = {
         locale: 'en_US',
         url: 'https://your-domain.com',
         title: "Auravine | AI-First Software Development & Custom Solutions",
-        description: "Auravine builds AI agents, intelligent applications, computer vision systems, POS, e-commerce, ERP, and custom software tailored to business needs.",
+        description: "Auravine is an AI-first software company in Dhaka, Bangladesh. We build AI voice agents, custom chatbots, computer vision systems, business analytics, and custom software for businesses worldwide.",
         siteName: "Auravine",
     },
     twitter: {
         card: 'summary_large_image',
         title: "Auravine | AI-First Software Development & Custom Solutions",
-        description: "Auravine builds AI agents, intelligent applications, computer vision systems, POS, e-commerce, ERP, and custom software tailored to business needs.",
+        description: "Auravine is an AI-first software company in Dhaka, Bangladesh. We build AI voice agents, custom chatbots, computer vision systems, business analytics, and custom software for businesses worldwide.",
         creator: '@auravine',
     },
     robots: {

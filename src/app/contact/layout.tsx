@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
     title: 'Contact',
-    description: 'Get in touch with me for collaborations and opportunities.',
+    description: 'Book a free consultation with Auravine to discuss your AI or software project.',
 };
 
 export default function ContactLayout({

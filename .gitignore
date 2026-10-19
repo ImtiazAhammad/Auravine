@@ -1,0 +1,9 @@
+# Dependencies
+node_modules/
+
+# Next.js build output and generated agent rules
+.next/
+AGENTS.md
+
+# Local environment secrets
+.env*.local
