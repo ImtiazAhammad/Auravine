@@ -106,7 +106,7 @@ export const MarqueeClosing = ({ isLowPowerMode: parentLowPowerMode }: { isLowPo
                         "text-xl md:text-2xl font-light leading-relaxed max-w-2xl drop-shadow-md pb-2",
                         isDark ? "text-white/70" : "text-muted-foreground font-medium"
                     )}>
-                        I'm always open to discussing product design work or partnership opportunities. Let's create something extraordinary together.
+                        We are always open to new AI projects and partnerships. Let's create something extraordinary together.
                     </p>
 
                     {/* Action Area: Newsletter & Navigation */}

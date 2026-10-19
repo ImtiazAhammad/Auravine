@@ -2,197 +2,197 @@
     "navigation": {
         "home": "Home",
         "about": "About",
-        "projects": "Projects",
-        "experience": "Experience",
-        "skills": "Skills",
-        "achievements": "Achievements",
-        "blog": "Blog",
+        "projects": "Solutions",
+        "experience": "Our Process",
+        "skills": "Capabilities",
+        "achievements": "Commitments",
+        "blog": "Insights",
         "gallery": "Gallery",
         "contact": "Contact",
-        "resume": "Resume",
+        "resume": "Company Profile",
         "tools": "Tools",
         "menu": {
-            "achievements": "Achievements",
-            "achievementsDesc": "Certifications, awards, and milestones",
-            "skills": "Skills",
-            "skillsDesc": "Technologies and tools I work with",
-            "experience": "Experience",
-            "experienceDesc": "My professional journey and growth",
-            "projects": "Projects",
-            "projectsDesc": "A showcase of all my work",
-            "blog": "Blog",
-            "blogDesc": "Thoughts and technical explorations",
+            "achievements": "Commitments",
+            "achievementsDesc": "How we build responsibly, securely, and bilingually",
+            "skills": "Capabilities",
+            "skillsDesc": "AI, data, and software services we deliver",
+            "experience": "Our Process",
+            "experienceDesc": "From discovery to launch and long-term support",
+            "projects": "Solutions",
+            "projectsDesc": "AI products we build for businesses",
+            "blog": "Insights",
+            "blogDesc": "Practical guides on AI, automation, and analytics",
             "gallery": "Gallery",
-            "galleryDesc": "Visual archive of media and projects"
+            "galleryDesc": "Inside our studio and project work"
         },
         "shortcuts": {
-            "volume1": "Volume I: Identity",
-            "volume2": "Volume II: Professional Sequence",
-            "volume3": "Volume III: Competency Matrix",
-            "volume4": "Volume IV: Creative Output",
+            "volume1": "Volume I: Who We Are",
+            "volume2": "Volume II: How We Work",
+            "volume3": "Volume III: Capabilities",
+            "volume4": "Volume IV: Solutions",
             "preview": "Preview Mode",
-            "idRef": "ID_REF"
+            "idRef": "AV_REF"
         }
     },
     "hero": {
         "greeting": "Welcome to Auravine",
-        "subtitle": "AI-first software development & custom solutions",
+        "subtitle": "AI-first software development from Dhaka, Bangladesh",
         "cta": {
             "primary": "Explore Our Solutions",
-            "secondary": "Discuss Your Project",
+            "secondary": "Book a Free Consultation",
             "exploreMore": "Explore More"
         },
-        "badge": "Ready to build your next solution",
+        "badge": "Now booking consultations for new projects",
         "scroll": "Scroll Down",
-        "role": "Software Engineer",
-        "description": "We build intelligent, practical software that helps businesses <span class='text-primary font-semibold'>AI</span>, <span class='text-secondary font-semibold'>Engineering</span>, and <span class='text-accent font-semibold'>Scalable Architecture</span>."
+        "role": "AI-First Software Company",
+        "description": "We help businesses grow with <span class='text-primary font-semibold'>AI voice agents</span>, <span class='text-secondary font-semibold'>custom chatbots</span>, and <span class='text-accent font-semibold'>computer vision & analytics</span> that deliver measurable results."
     },
     "about": {
         "title": "About Us",
-        "subtitle": "Technology That Moves Your Business Forward",
-        "description": "Auravine is a custom software development company focused on building intelligent, practical, and scalable digital solutions. We combine modern software engineering with AI capabilities to help businesses solve operational challenges, create better customer experiences, and unlock new opportunities.",
+        "subtitle": "Practical AI That Moves Your Business Forward",
+        "description": "Auravine is an AI-first software development company in Dhaka, Bangladesh. We design and build AI voice agents, custom chatbots, computer vision systems, and business analytics platforms for local and international businesses that want real results, not experiments.",
         "stats": {
-            "experience": "Years Learning",
-            "projects": "Projects Done",
-            "certifications": "Certifications",
-            "competitions": "Competitions"
+            "experience": "Years Building AI",
+            "projects": "Solutions Delivered",
+            "certifications": "Core Services",
+            "competitions": "Languages Supported"
         },
-        "identity": "Identity Link Established",
-        "architecting": "Architecting",
-        "digitalReality": "Digital Reality",
+        "identity": "Client-First Approach Established",
+        "architecting": "Engineering",
+        "digitalReality": "Business Outcomes",
         "leadIn": {
-            "label": "WHAT I DO",
-            "tagline": "CORE FOCUS",
+            "label": "WHAT WE DO",
+            "tagline": "CORE SERVICES",
             "headlineAI": "Applied AI.",
-            "headlineData": "Scalable Data.",
-            "headlineSoftware": "Robust software engineering",
-            "thesis": "I build intelligent systems and the <span class='text-primary italic font-serif-elegant font-normal'>data infrastructure</span> that makes them reliable at scale.",
-            "scope": "Focusing on predictive models, optimized data processing, and RAG pipelines designed for production environments and measurable performance.",
-            "bridging": "Bridging labs and live systems.",
-            "integration": "Beyond models, I architect full-stack ecosystems: secure backends, robust data architectures, and scalable pipelines.",
-            "signature": "Azril",
-            "role": "AI, Data & Software Engineer",
+            "headlineData": "Actionable Data.",
+            "headlineSoftware": "Reliable software delivery",
+            "thesis": "We build intelligent products and the <span class='text-primary italic font-serif-elegant font-normal'>data foundations</span> that keep them accurate and secure in daily operations.",
+            "scope": "From voice agents that never miss a call to face recognition attendance and demand forecasting, every solution is designed around a measurable business goal.",
+            "bridging": "From idea to production.",
+            "integration": "We design the AI, the data pipelines, the dashboards, and the integrations with your existing tools, so the whole system works together.",
+            "signature": "Auravine Team",
+            "role": "AI, Data & Software Engineering",
             "aboutMe": "About Us",
             "scroll": "Scroll to Explore",
-            "shortStory": "My Short Story"
+            "shortStory": "Our Story"
         },
         "coreEngineering": {
             "label": "Core Engineering",
             "title": "Proven <span class='text-primary italic font-serif font-light lowercase'>stack.</span> <br /> Measurable <span class='italic font-serif font-light text-foreground'>results.</span>",
-            "p1": "I develop applied AI systems using TensorFlow, Scikit-learn, and LangChain, structuring workflows and exposing models as services through Flask and FastAPI.",
-            "p2": "Integrated into full-stack apps with Next.js, Express.js, and Spring Boot, backed by PostgreSQL and Prisma ORM.",
-            "p3": "All projects use disciplined version control, Docker containerization, and are built for stable production deployment.",
-            "gpa": "Academic GPA",
-            "projects": "Projects Built",
-            "years": "Years Exp."
+            "p1": "We build applied AI systems with Python, PyTorch, TensorFlow, and LangChain, and expose models as reliable services through FastAPI and Flask.",
+            "p2": "We integrate AI into full-stack products with Next.js, TypeScript, and Node.js, backed by PostgreSQL and Prisma ORM.",
+            "p3": "Every project uses version control, Docker containers, automated testing, and monitoring so it runs reliably in production.",
+            "gpa": "Languages Supported",
+            "projects": "Solution Types",
+            "years": "Delivery Model"
         },
         "emergingResearch": {
-            "label": "Exploration Phase",
+            "label": "Research Focus",
             "title": "EMERGING RESEARCH <span class='italic font-serif font-light text-primary lowercase'>&</span> EXPANSION",
             "agentic": {
                 "title": "AGENTIC AI SYSTEMS",
-                "desc": "Exploring autonomous agents, multi-agent orchestration, and reasoning frameworks — extending my applied AI foundation into self-directed decision-making systems."
+                "desc": "We are exploring AI agents that can complete multi-step tasks, such as qualifying leads, reconciling records, and routing support requests, with human approval where it matters."
             },
             "web3": {
-                "title": "WEB3 & BLOCKCHAIN",
-                "desc": "Building decentralized applications with Solidity and Hardhat. Currently hands-on with smart contract development through projects like the Web3 Guestbook DApp on Ethereum."
+                "title": "BANGLA & MULTILINGUAL AI",
+                "desc": "Our research improves speech recognition and language understanding for Bangla, English, and code-mixed conversations, so AI products serve customers in the language they actually speak."
             }
         },
         "profile": {
-            "title": "Architecting Scalable Systems <br /> Where Intelligence Meets Engineering.",
-            "narrativeLabel": "Core Narrative",
-            "narrative": "As an Information Technology student specializing in Artificial Intelligence and Software Engineering, I focus on building systems that bridge research foundations with production-ready implementation.",
-            "narrative2": "My work combines algorithmic thinking, backend engineering, and scalable architecture to deliver solutions that are intelligent, reliable, and built for real-world impact.",
+            "title": "Engineering Intelligent Software <br /> For Businesses That Need Results.",
+            "narrativeLabel": "Our Approach",
+            "narrative": "We start with the business problem, then choose the simplest technology that solves it. Our teams combine AI expertise, solid software engineering, and clear communication so clients always know what is being built and why.",
+            "narrative2": "Whether you run a clinic, a retail chain, a factory, or a growing startup, we deliver solutions that are secure, scalable, and designed for the people who use them every day.",
             "pillars": {
                 "reliable": {
                     "title": "Robust by Design",
-                    "desc": "Engineered for reliability under scale and operational pressure."
+                    "desc": "Built to perform under real traffic, real data, and real operational pressure."
                 },
                 "optimized": {
                     "title": "Production-Ready",
-                    "desc": "From prototype to deployment with engineering discipline."
+                    "desc": "From prototype to deployment, with testing, monitoring, and documentation."
                 },
                 "maintainable": {
-                    "title": "Architected for Evolution",
-                    "desc": "Designed to grow, adapt, and sustain long-term system development."
+                    "title": "Built to Evolve",
+                    "desc": "Modular architecture that grows with your business and your data."
                 },
                 "evolvable": {
-                    "title": "Data-Driven Intelligence",
-                    "desc": "Decisions powered by models, metrics, and measurable performance."
+                    "title": "Data-Driven Decisions",
+                    "desc": "Every AI system is measured against clear, agreed business metrics."
                 }
             }
         },
         "closing": {
             "experience": {
-                "label": "BACKGROUND",
-                "title1": "KEY",
-                "title2": "EXPERIENCE",
-                "viewMore": "Full Experience"
+                "label": "OUR PROCESS",
+                "title1": "PROVEN",
+                "title2": "DELIVERY",
+                "viewMore": "Full Process"
             },
             "projects": {
-                "label": "PORTFOLIO",
+                "label": "SOLUTIONS",
                 "title1": "FLAGSHIP",
-                "title2": "PROJECTS",
-                "viewMore": "All Projects"
+                "title2": "SOLUTIONS",
+                "viewMore": "All Solutions"
             },
             "experiencesList": [
                 {
-                    "company": "Dicoding Academy",
-                    "role": "MACHINE LEARNING CODE REVIEWER",
-                    "desc": "Technical evaluation and quality assurance of ML project submissions. Validating logical correctness, efficiency, and enforcing industry best practices for learners."
+                    "company": "Discovery & Design",
+                    "role": "WORKSHOPS · PROPOSAL · ARCHITECTURE",
+                    "desc": "We map your processes, review your data and systems, and deliver a written plan with scope, timeline, and expected business impact before development starts."
                 },
                 {
-                    "company": "Advanced Software Engineering Laboratory",
-                    "role": "SYSTEM ANALYST INTERN",
-                    "desc": "Translating complex requirements into SRS documentation and designing system architectures using UML diagrams. focused on software design."
+                    "company": "Build & Integrate",
+                    "role": "SPRINTS · MODELS · INTEGRATIONS",
+                    "desc": "Agile delivery with a working demo every two weeks. We connect AI products to your CRM, POS, accounting, messaging, and telephony tools."
                 },
                 {
-                    "company": "Cyber Physical System Laboratory",
-                    "role": "RESEARCH ASSISTANT (CONTRACT)",
-                    "desc": "Developing AI-driven research products and designing learning materials for Deep Learning and Computer Vision. Contributing to intelligent systems."
+                    "company": "Launch & Train",
+                    "role": "TESTING · TRAINING · GO-LIVE",
+                    "desc": "User acceptance testing, staff training, and a controlled rollout so your team is confident from day one."
                 },
                 {
-                    "company": "HUMIC Engineering Research Center",
-                    "role": "AI DEVELOPER INTERN",
-                    "desc": "Built Transformer-based attack detection models for cybersecurity applications. Managed large-scale datasets through the full ML pipeline."
+                    "company": "Operate & Improve",
+                    "role": "MONITORING · RETRAINING · SUPPORT",
+                    "desc": "We monitor performance, retrain models as your data changes, apply security updates, and share monthly reports on outcomes."
                 },
                 {
-                    "company": "Cyber Physical System Laboratory",
-                    "role": "COMPUTER VISION RESEARCHER INTERN",
-                    "desc": "End-to-end development of intelligent models using state-of-the-art Deep Learning architectures. Implemented ML algorithms for real-world applications."
+                    "company": "Strategy Sessions",
+                    "role": "AI READINESS · ROADMAP",
+                    "desc": "Not sure where to start with AI? We assess your readiness, prioritize use cases by value and effort, and build a practical roadmap."
                 }
             ],
             "projectsList": [
                 {
-                    "title": "Creative Portfolio Website",
-                    "desc": "Modern, animated portfolio with 3D elements, physics-simulated interactions, and shader-based warp effects. Engineered for high performance & optimization."
+                    "title": "AI Voice Agent for Customer Calls",
+                    "desc": "A 24/7 voice receptionist that answers calls in Bangla and English, books appointments, and hands off complex cases to your team."
                 },
                 {
-                    "title": "SNBTIn - Platform Persiapan SNBT 2025",
-                    "desc": "Leading EdTech platform in Indonesia for exam preparation. Featuring a comprehensive learning ecosystem with interactive and real-time analytics."
+                    "title": "Custom AI Chatbot for Customer Support",
+                    "desc": "A chatbot for your website, WhatsApp, and Messenger that answers from your own documents and cites its sources."
                 },
                 {
-                    "title": "TerraFlow Platform",
-                    "desc": "Enterprise IoT solution for precision agriculture. ESP32 sensor nodes communicate with Firebase via a Go (Gin), with a Next.js dashboard for real-time monitoring"
+                    "title": "Face Recognition Smart Attendance",
+                    "desc": "Touchless attendance with liveness checks, live presence boards, and payroll-ready reports for offices and factories."
                 },
                 {
-                    "title": "DocsInsight Engine",
-                    "desc": "Private RAG platform for intelligent document analysis. Powered by local LLMs through Ollama, with LangChain orchestration and ChromaDB vector search."
+                    "title": "Business Analytics & Forecasting Dashboard",
+                    "desc": "Unified sales, inventory, and operations dashboards with AI demand forecasts and smart alerts for business owners."
                 },
                 {
-                    "title": "POLABDC Dental Management",
-                    "desc": "AI-powered dental clinic SaaS with disease prediction, real-time queue management, and a Monorepo architecture Next.js, Express.js, and Python"
+                    "title": "Computer Vision Quality Inspection",
+                    "desc": "Camera-based defect detection for production lines, with real-time alerts and full image traceability."
                 }
             ],
             "discoverMore": "Discover More"
         }
     },
     "projects": {
-        "title": "Projects",
-        "subtitle": "A showcase of my creative and technical work",
-        "search": "Search projects...",
-        "viewAll": "View All Projects",
-        "viewProject": "View Project",
+        "title": "Solutions",
+        "subtitle": "AI products we build to solve real business problems",
+        "search": "Search solutions...",
+        "viewAll": "View All Solutions",
+        "viewProject": "View Solution",
         "liveDemo": "Live Demo",
         "sourceCode": "Source Code",
         "techStack": "Tech Stack",
@@ -201,51 +201,51 @@
         "challenges": "Challenges",
         "filters": {
             "all": "All",
-            "ongoing": "Ongoing",
-            "completed": "Completed"
+            "ongoing": "Active",
+            "completed": "Delivered"
         },
         "sections": {
-            "missionBrief": "Mission Brief",
+            "missionBrief": "The Business Challenge",
             "keyFeatures": "Key Features",
-            "engineeringChronicles": "Engineering Chronicles",
+            "engineeringChronicles": "How We Solved It",
             "visualGallery": "Visual Gallery",
-            "installation": "Installation Instructions",
-            "projectAccess": "Project Access",
+            "installation": "Engagement Details",
+            "projectAccess": "Solution Access",
             "technologies": "Technologies",
             "contents": "Table of Contents",
-            "moreProjects": "More Projects",
-            "backToProjects": "Back to Projects",
+            "moreProjects": "More Solutions",
+            "backToProjects": "Back to Solutions",
             "viewMore": "View More",
             "viewLess": "Show Less",
-            "solution": "Solution",
+            "solution": "Our Approach",
             "liveDemo": "Live Demo",
             "sourceCode": "Source Code"
         },
         "status": {
             "ongoing": "Active Development",
-            "completed": "Completed Project"
+            "completed": "Delivered Solution"
         },
         "metadata": {
-            "role": "Role",
+            "role": "Our Role",
             "timeline": "Timeline",
             "team": "Team",
             "techStack": "Tech Stack",
-            "roleValue": "Full Stack Dev",
-            "teamValue": "Individual",
+            "roleValue": "AI & Software Delivery",
+            "teamValue": "Auravine Team",
             "techStackValue": "{count} Technologies"
         }
     },
     "experience": {
-        "title": "Experience",
-        "subtitle": "My professional journey and growth",
+        "title": "Our Process",
+        "subtitle": "How we take a project from first conversation to long-term support",
         "showDetail": "Show Detail",
         "hideDetail": "Hide Detail",
-        "tasks": "TASKS",
-        "learned": "WHAT I LEARNED",
+        "tasks": "WHAT WE DO",
+        "learned": "WHAT CLIENTS GAIN",
         "impact": "IMPACT",
-        "present": "Present",
-        "responsibilities": "Responsibilities",
-        "skills": "Skills Used",
+        "present": "Ongoing",
+        "responsibilities": "Activities",
+        "skills": "Skills Involved",
         "month": "month",
         "months": "months",
         "year": "year",
@@ -255,7 +255,7 @@
             "part-time": "Part-time",
             "internship": "Internship",
             "freelance": "Freelance",
-            "contract": "Contract",
+            "contract": "Engagement",
             "apprenticeship": "Apprenticeship",
             "volunteer": "Volunteer"
         },
@@ -266,23 +266,23 @@
             "ongoing": "Ongoing"
         },
         "education": {
-            "title": "Education"
+            "title": "Research & Training"
         }
     },
     "expertise": {
         "title": "Core Capabilities",
-        "subtitle": "Specialized in cutting-edge technologies that power modern digital experiences",
+        "subtitle": "Specialized AI and software services for businesses that want to grow smarter",
         "dragHint": "Drag or scroll to explore"
     },
     "skills": {
-        "title": "Skills & Tools",
-        "subtitle": "Technologies and tools I work with",
-        "hard": "Hard Skills",
-        "soft": "Soft Skills",
+        "title": "Capabilities",
+        "subtitle": "The AI, data, and software services we deliver",
+        "hard": "Service Capabilities",
+        "soft": "How We Work",
         "technical": "Technical Proficiency",
-        "tools": "Tools & Software",
+        "tools": "Tools & Platforms",
         "pillars": "Core Pillars",
-        "achievements": "Verified Achievements",
+        "achievements": "Our Commitments",
         "level": {
             "beginner": "Beginner",
             "intermediate": "Intermediate",
@@ -291,10 +291,10 @@
         }
     },
     "achievements": {
-        "title": "Achievements",
-        "subtitle": "Certifications, awards, and milestones",
-        "search": "Search achievements...",
-        "viewCredential": "View Credential",
+        "title": "Commitments",
+        "subtitle": "How we build responsibly, securely, and for every language your customers speak",
+        "search": "Search commitments...",
+        "viewCredential": "View Details",
         "category": {
             "all": "All",
             "certification": "Certification",
@@ -307,29 +307,29 @@
             "oldest": "Oldest"
         },
         "stats": {
-            "total": "Total Achievements",
+            "total": "Total Commitments",
             "awards": "Awards Won",
             "certifications": "Certifications"
         }
     },
     "contact": {
-        "title": "Discuss Your Project",
-        "subtitle": "Let's build something amazing together",
+        "title": "Book a Free Consultation",
+        "subtitle": "Tell us about your business and the problem you want to solve",
         "form": {
             "name": "Your Name",
             "email": "Your Email",
-            "subject": "Subject",
+            "subject": "Company & Subject",
             "message": "Your Message",
-            "messagePlaceholder": "Tell me about your project...",
+            "messagePlaceholder": "Tell us about your business, your challenge, and what you want to achieve...",
             "send": "Send Message",
             "submit": "SEND MESSAGE",
             "sending": "SENDING...",
             "sent": "SENT!",
-            "success": "Message sent successfully!",
+            "success": "Thank you! Our team will contact you within one business day.",
             "error": "Something went wrong. Please try again."
         },
         "social": {
-            "title": "Connect on Social Media"
+            "title": "Follow Auravine"
         },
         "faq": {
             "title": "Frequently Asked Questions"
@@ -338,90 +338,90 @@
             "email": "Email",
             "phone": "Phone",
             "location": "Location",
-            "availability": "Open for opportunities"
+            "availability": "Accepting new projects"
         },
         "hero": {
             "title": "LET'S TALK",
-            "subtitle": "Have an idea? Let's build something extraordinary together.",
+            "subtitle": "Have a business problem AI can solve? Let's explore it together.",
             "ticker": {
                 "build": "Let's Build Something Amazing · ",
-                "freelance": "Available for Freelance · "
+                "freelance": "Free Consultation for New Clients · "
             }
         },
         "faqData": [
             {
-                "q": "What is your main area of expertise?",
-                "a": "As an Information Technology student at Telkom University and a Research Assistant at the Cyber Physical System Laboratory, I specialize in the intersection of Artificial Intelligence (Computer Vision & Deep Learning), Full-stack Development (Next.js & Node.js), and emerging Blockchain/Web3 technologies."
+                "q": "What does Auravine build?",
+                "a": "We build AI voice agents for customer calls, custom chatbots for websites and messaging apps, computer vision systems such as face recognition attendance and quality inspection, business analytics dashboards, and custom web and mobile software."
             },
             {
-                "q": "Are you available for research or freelance collaborations?",
-                "a": "Absolutely. I am currently active in AI research at the CPS Lab and HUMIC Research Center, but I'm always open to innovative freelance projects, internships, or technical collaborations that bridge innovation with strategic execution."
+                "q": "Do you work with international clients?",
+                "a": "Yes. We are based in Dhaka and work with businesses across South Asia, the Middle East, Europe, and North America. Our projects are remote-friendly, with regular video demos and clear written updates."
             },
             {
-                "q": "What is your typical tech stack for production?",
-                "a": "For AI projects, I primarily use Python with TensorFlow, PyTorch, and YOLO. For web applications, my go-to is the T3-style stack: Next.js, TypeScript, and Tailwind CSS, often integrated with AI Agents or Smart Contracts where appropriate."
+                "q": "Can your AI voice agent and chatbot handle Bangla?",
+                "a": "Yes. Our voice and chat products support Bangla, English, and code-mixed conversations. We test every deployment with real examples from your customers before launch."
             },
             {
-                "q": "Do you have experience with enterprise or lab projects?",
-                "a": "Yes, I've served as a System Analyst and AI Developer in various research-driven environments. I've architected everything from AIoT platforms and attack detection systems to student practicum modules for global audiences."
+                "q": "How do you keep our data secure?",
+                "a": "You choose where your data lives, including your own cloud account or on-premise hardware. Access control, encryption, audit logs, and backups are standard in every project."
             },
             {
-                "q": "How can we start a partnership or project?",
-                "a": "The most efficient way is to use the contact form above or reach out directly via email at azril4974@gmail.com. I'm usually able to respond within 24 hours to discuss how my technical skill set can add value to your initiatives."
+                "q": "How do we get started?",
+                "a": "Book a free consultation using the form above. We will review your goals, suggest a practical first step, and send a written proposal with scope, timeline, and pricing."
             }
         ]
     },
     "footer": {
         "copyright": "All rights reserved.",
-        "madeWith": "Made with",
+        "madeWith": "Built in",
         "more": "More",
         "marquee": [
-            "Open to Opportunities",
-            "Frontend Development",
-            "Backend Architecture",
-            "UI/UX Design",
-            "Creative Coding",
-            "System Optimization"
+            "AI Voice Agents",
+            "Custom Chatbots",
+            "Computer Vision",
+            "Business Analytics",
+            "Face Recognition",
+            "Custom Software"
         ],
         "cta": {
-            "title": "Let's Work",
+            "title": "Let's Build",
             "titleHighlight": "Together",
-            "subtitle": "Have a project in mind? Let's build something extraordinary that solves real problems."
+            "subtitle": "Have a business challenge in mind? Let's turn it into an AI solution that delivers measurable results."
         },
         "links": "LINKS",
         "socials": "SOCIALS",
-        "localTime": "LOCAL TIME",
-        "version": "VERSION",
-        "versionEdition": "2026 © Edition"
+        "localTime": "DHAKA TIME",
+        "version": "COMPANY",
+        "versionEdition": "Dhaka, Bangladesh · 2026"
     },
     "ctaSection": {
-        "title": "Have a Project in Mind?",
+        "title": "Ready to Automate Your Business?",
         "together": "",
-        "subtitle": "Tell us about your business, your challenges, and what you want to build. We'll help you explore a practical software solution.",
-        "start": "Let's Talk About Your Project",
+        "subtitle": "Tell us about your customers, your operations, and your goals. We will help you choose the AI solution with the best return for your business.",
+        "start": "Book a Free Consultation",
         "work": "Explore Our Solutions",
         "words": {
-            "amazing": "Amazing",
-            "innovative": "Innovative",
+            "amazing": "Smarter",
+            "innovative": "Automated",
             "intelligent": "Intelligent",
-            "creative": "Creative"
+            "creative": "Scalable"
         },
-        "ribbon1": "Next.js • React • Python • PyTorch • Pandas • TypeScript • Node.js • Scikit-Learn • TensorFlow • SQL",
-        "ribbon2": "Software Engineer • AI Engineer • Data Scientist • Data Analyst • Machine Learning Engineer • Backend Developer • Full Stack Engineer • NLP Engineer • Data Engineer • Web Developer"
+        "ribbon1": "AI Voice Agents • Custom Chatbots • Computer Vision • Face Recognition • Business Analytics • Demand Forecasting • Document AI • Custom Web & Mobile Apps",
+        "ribbon2": "Python • PyTorch • TensorFlow • LangChain • Next.js • TypeScript • Node.js • PostgreSQL • Docker • FastAPI • OpenCV • Power BI"
     },
     "stats": {
-        "systemStatus": "System Status: Analytics Active",
-        "portfolio": "Engineering Metrics",
-        "totalPulse": "Total Pulse",
+        "systemStatus": "System Status: Operational",
+        "portfolio": "Delivery Metrics",
+        "totalPulse": "Total Activity",
         "peakActivity": "Peak Activity",
         "dailyAverage": "Daily Average",
         "currentSprint": "Current Sprint",
         "engageFlow": "Engage Flow",
-        "weeklyEffort": "Weekly Coding Effort",
+        "weeklyEffort": "Weekly Delivery Effort",
         "processSpeed": "Process Speed",
         "avgPerf": "Average Performance",
         "latency": "LATENCY: 14MS",
-        "system": "SYSTEM: DARWIN_X64_STABLE",
+        "system": "SYSTEM: DHAKA_HQ_STABLE",
         "scanning": "SCANNING_LIVE_RESOURCES",
         "engineering": "ENGINEERING",
         "metrics": "METRICS",
@@ -430,8 +430,8 @@
         "loadStable": "SYSTEM_LOAD: STABLE"
     },
     "projectHeader": {
-        "title": "Architecting Digital Reality",
-        "subtitle": "A curated showcase of technical innovation and creative engineering. Exploring the frontiers of <span class='font-bold text-foreground'>Artificial Intelligence</span>, Blockchain, Data, and Immersive Web experiences."
+        "title": "AI Solutions That Deliver",
+        "subtitle": "Real-world AI products for businesses in Bangladesh and abroad. Explore our work in <span class='font-bold text-foreground'>Voice AI</span>, <span class='font-bold text-foreground'>Conversational AI</span>, <span class='font-bold text-foreground'>Computer Vision</span>, and <span class='font-bold text-foreground'>Business Analytics</span>."
     },
     "common": {
         "loading": "Loading...",
@@ -447,8 +447,8 @@
     },
     "technical": {
         "github": {
-            "title": "GitHub Contributions",
-            "description": "My GitHub activity over the last year.",
+            "title": "Engineering Activity",
+            "description": "Our open-source and engineering activity over the last year.",
             "total": "Total",
             "thisWeek": "This Week",
             "best": "Best",
@@ -457,8 +457,8 @@
             "more": "More"
         },
         "wakatime": {
-            "title": "WakaTime Stats",
-            "description": "Coding activity over the last 7 days.",
+            "title": "Development Stats",
+            "description": "Engineering activity over the last 7 days.",
             "lastUpdate": "Last Updated",
             "startDate": "Start Date",
             "endDate": "End Date",
@@ -470,24 +470,24 @@
         }
     },
     "blog": {
-        "title": "Thoughts & Explorations",
-        "subtitle": "Bridging the gap between technical complexity and practical implementation. A collection of insights on AI, Web3, and Software Engineering.",
-        "sectionBadge": "The Digital Archive",
+        "title": "Insights",
+        "subtitle": "Practical guides on AI voice agents, chatbots, computer vision, and business analytics, written for business owners and their teams.",
+        "sectionBadge": "The Auravine Journal",
         "search": "Search articles...",
         "readTime": "min read",
         "readMore": "Read Post",
-        "back": "Back to Blog",
+        "back": "Back to Insights",
         "noResults": "No articles found",
         "categories": {
             "applied-ai": "Applied AI",
-            "software-development": "Software Dev",
+            "software-development": "Software",
             "about-me": "About Us",
             "more": "More"
         }
     },
     "gallery": {
-        "title": "Visual Archive",
-        "subtitle": "A curated collection of project highlights, technical documentation, and creative visual explorations.",
+        "title": "Studio Gallery",
+        "subtitle": "Workshops, demos, and behind-the-scenes moments from our team in Dhaka.",
         "filter": {
             "all": "All Media",
             "image": "Photos",
@@ -497,14 +497,14 @@
     },
     "chatbot": {
         "title": "AI Assistant",
-        "subtitle": "Ask me about Azril",
+        "subtitle": "Ask me about Auravine",
         "placeholder": "Type a message...",
-        "greeting": "Hi! I'm an AI assistant for **{name}**. 👋\n\nI can answer questions about:\n- Skills & technical expertise\n- Projects and work\n- Experience\n- Education\n- And more!\n\nAnything you'd like to ask?",
+        "greeting": "Hi! I'm the AI assistant for **{name}**. 👋\n\nI can help you with:\n- Our AI services and solutions\n- How we work and our delivery process\n- Pricing and engagement options\n- Booking a free consultation\n\nWhat would you like to know?",
         "suggestions": [
-            "What are your main skills?",
-            "Tell me about your best project",
-            "What is your work experience?",
-            "What AI skills do you have?"
+            "What services does Auravine offer?",
+            "How does the AI voice agent work?",
+            "Do you support Bangla?",
+            "How do I book a consultation?"
         ],
         "error": "An error occurred. Please try again.",
         "invalidResponse": "Invalid response from server.",

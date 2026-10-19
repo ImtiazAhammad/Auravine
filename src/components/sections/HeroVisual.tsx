@@ -176,7 +176,7 @@ export function HeroVisual({ isExiting = false }: { isExiting?: boolean }) {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-[10px] md:text-xs text-muted-foreground text-start md:text-right leading-relaxed max-w-[200px] md:max-w-[220px] font-medium uppercase tracking-[0.2em]"
             >
-              Hi, I'm {personal.name}. I build scalable systems powered by intelligence.
+              Welcome to {personal.name}. We build AI systems that help businesses grow.
             </motion.p>
             <div className="relative">
               <div ref={githubRef} className="absolute -top-4 right-0 md:right-2 text-primary/60 hover:text-primary z-20 opacity-0">
@@ -270,7 +270,7 @@ export function HeroVisual({ isExiting = false }: { isExiting?: boolean }) {
                     detail: { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 }
                   }));
                 }}
-                onMouseEnter={(e) => setTooltip({ show: true, text: "Talk to my AI Assistant", icon: 'bot', x: e.clientX, y: e.clientY })}
+                onMouseEnter={(e) => setTooltip({ show: true, text: "Talk to our AI Assistant", icon: 'bot', x: e.clientX, y: e.clientY })}
                 onMouseMove={(e) => setTooltip(prev => ({ ...prev, x: e.clientX, y: e.clientY }))}
                 onMouseLeave={() => setTooltip(prev => ({ ...prev, show: false }))}
               >
@@ -295,7 +295,7 @@ export function HeroVisual({ isExiting = false }: { isExiting?: boolean }) {
           <div className="flex items-center gap-6">
             <Separator className="flex-1 h-[1px] bg-foreground/10 hidden md:block" />
             <div className="text-[10px] md:text-xs whitespace-nowrap font-bold tracking-[0.3em] text-muted-foreground uppercase">
-              JAKARTA, ID — 2026
+              DHAKA, BD — 2026
             </div>
             <Link
               href="/resume"

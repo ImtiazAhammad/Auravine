@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'Projects',
-    description: 'Explore my portfolio of projects and work.',
+    title: 'Solutions',
+    description: 'Explore the AI solutions Auravine builds for businesses: voice agents, chatbots, computer vision, and analytics.',
 };
 
 export default function ProjectsLayout({

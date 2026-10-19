@@ -121,7 +121,7 @@ export function Navbar() {
     }, []);
 
     const toggleLocale = useCallback(() => {
-        const newLocale = currentLocale === 'en' ? 'id' : 'en';
+        const newLocale = currentLocale === 'en' ? 'bn' : 'en';
         document.cookie = `locale=${newLocale};path=/;max-age=31536000`;
         setCurrentLocale(newLocale);
         window.location.reload();
@@ -327,7 +327,7 @@ export function Navbar() {
                                         onClick={toggleLocale}
                                         className="px-6 py-3 rounded-full glass-card text-sm font-medium hover:bg-muted/50 transition-colors"
                                     >
-                                        {currentLocale === 'en' ? 'English' : 'Indonesia'}
+                                        {currentLocale === 'en' ? 'English' : 'বাংলা'}
                                     </button>
                                     {mounted && (
                                         <AnimatedThemeToggler

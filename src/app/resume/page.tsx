@@ -4,16 +4,15 @@ import { ArrowLeft, Download, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { usePerformance } from '@/hooks/usePerformance';
-import { PdfViewer } from '@/components/ui/pdf-viewer';
+import dynamic from 'next/dynamic';
+
+// react-pdf needs browser APIs (DOMMatrix), so the viewer renders only on the client.
+const PdfViewer = dynamic(() => import('@/components/ui/pdf-viewer').then((m) => m.PdfViewer), { ssr: false });
 
 export default function ResumePage() {
     const { isLowPowerMode } = usePerformance();
-    // File ID: 1mfYs2MOHpwEFLe-Ld4OCcgS1Lbo6wW7O
-    const fileId = "1mfYs2MOHpwEFLe-Ld4OCcgS1Lbo6wW7O";
-    const resumeUrl = `https://drive.google.com/file/d/${fileId}/view?usp=sharing`;
-
-    // Standard preview URL with sharing context
-    const previewUrl = `https://drive.google.com/file/d/${fileId}/preview?usp=sharing`;
+    // Company profile PDF served from public/resume.pdf
+    const resumeUrl = "/resume.pdf";
 
     return (
         <div className="h-screen bg-background relative flex flex-col pt-24 pb-4 overflow-hidden">
@@ -29,7 +28,7 @@ export default function ResumePage() {
                     className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors group"
                 >
                     <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-                    <span>Back to Portfolio</span>
+                    <span>Back to Home</span>
                 </Link>
 
                 <div className="flex items-center gap-4">

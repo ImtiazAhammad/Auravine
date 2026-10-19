@@ -16,44 +16,36 @@ interface ProjectData {
 
 const PROJECT_DATA: ProjectData[] = [
   {
-    title: "Browser Automation Agent",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&fm=webp",
-    category: "AI & Automation",
-    year: "2026",
-    description: "AI-driven browser interaction & testing engine.",
-    slug: "browser-automation-agent"
-  },
-  {
-    title: "Swarm AI Blog Writer",
+    title: "AI Voice Agent",
     image: "/project/swarmaiblogwriter1.webp",
-    category: "AI & Content",
-    year: "2025",
-    description: "Multi-agent orchestration for research-backed content.",
-    slug: "swarm-ai-blog-writer"
+    category: "Voice AI",
+    year: "2026",
+    description: "24/7 call answering in Bangla and English, with appointment booking.",
+    slug: "ai-voice-agent"
   },
   {
-    title: "Creative Portfolio Website",
+    title: "Custom AI Chatbot",
     image: "/project/creativeportfoliowebsite1.webp",
-    category: "Creative Tech",
-    year: "2025",
-    description: "Immersive 3D portfolio with WebGL shaders.",
-    slug: "creative-portfolio-website"
+    category: "Conversational AI",
+    year: "2026",
+    description: "Website, WhatsApp, and Messenger assistants grounded in your own documents.",
+    slug: "custom-business-chatbot"
   },
   {
-    title: "SNBTIn Platform",
+    title: "Face Recognition Attendance",
     image: "/project/snbtinplatformpersiapansnbt20251.webp",
-    category: "EdTech",
+    category: "Computer Vision",
     year: "2025",
-    description: "Leading e-learning platform for SNBT preparation.",
-    slug: "snbtin-platform"
+    description: "Touchless attendance with liveness checks and payroll-ready reports.",
+    slug: "face-recognition-attendance"
   },
   {
-    title: "Terraflow Platform",
+    title: "Business Analytics Dashboard",
     image: "/project/terraflowplatform1.webp",
-    category: "IoT & Embedded",
+    category: "Business Intelligence",
     year: "2025",
-    description: "Enterprise IoT solution for precision agriculture.",
-    slug: "terraflow-platform"
+    description: "Live sales, inventory, and forecasting dashboards for business owners.",
+    slug: "business-analytics-dashboard"
   },
 ];
 

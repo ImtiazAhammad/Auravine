@@ -1,148 +1,132 @@
 <div align="center">
 
-<img src="public/Auravine_light.svg" alt="Project Logo" width="80" height="80" />
+<img src="public/Arfazrll_light.svg" alt="Auravine logo" width="80" height="80" />
 
-# Auravine — Technical Portfolio
+# Auravine — AI-First Software Development
 
-### Engineering AI Systems, Scalable Software, and Data Architectures
+### AI voice agents · Custom chatbots · Computer vision · Business analytics
 
-[![Next.js](https://img.shields.io/badge/Next.js-16.1.6-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
-[![React](https://img.shields.io/badge/React-19.2.4-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.3-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-16-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
-[![Three.js](https://img.shields.io/badge/Three.js-0.170-000000?style=for-the-badge&logo=threedotjs&logoColor=white)](https://threejs.org/)
-[![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
-
-[![Live Demo](https://img.shields.io/badge/Live_Demo-Visit_Portfolio-6366f1?style=for-the-badge)](https://syahrilarfianalmazril.vercel.app)
-[![GitHub](https://img.shields.io/badge/GitHub-Auravine-181717?style=for-the-badge&logo=github)](https://github.com/Auravine)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/syahril-arfian-almazril)
-
----
-
-![GitHub last commit](https://img.shields.io/github/last-commit/Auravine/PersonalBlog?style=flat-square&color=6366f1)
-![GitHub repo size](https://img.shields.io/github/repo-size/Auravine/PersonalBlog?style=flat-square&color=a855f7)
-![GitHub stars](https://img.shields.io/github/stars/Auravine/PersonalBlog?style=flat-square&color=f59e0b)
-![License](https://img.shields.io/badge/license-MIT-22c55e?style=flat-square)
 
 </div>
 
 ---
 
-## Executive Summary
+## About
 
-A production-grade, highly interactive portfolio application engineered to showcase technical expertise across Artificial Intelligence, Data Science, and Modern Software Engineering. Moving beyond traditional static documentation, this platform delivers an immersive, high-performance user experience powered by WebGL physics simulations, real-time data integrations, and an autonomous AI chatbot assistant.
+Auravine is an AI-first software development company based in Dhaka, Bangladesh. This repository is the company website: it presents our AI services, delivery process, case-study solutions, insights, and a free consultation booking form for local and international businesses.
+
+### Services
+
+- **AI Voice Agents**: 24/7 call answering in Bangla and English, appointment booking, and human handoff.
+- **Custom Chatbots**: Website, WhatsApp, and Messenger assistants that answer from the client's own documents and cite their sources.
+- **Computer Vision**: Face recognition attendance, defect detection, and video analytics.
+- **Business Analytics**: Live dashboards, demand forecasting, and smart alerts.
+- **Document AI**: Private knowledge assistants with page-level citations.
+- **Custom Web & Mobile Software**: Full-stack platforms, admin panels, and integrations.
 
 ---
 
-## System Architecture & Technologies
+## Tech Stack
 
-The repository is built on a modern, decoupled architecture designed for maximal performance, scalability, and maintainability.
-
-### Core Framework
-- **Next.js 16 (App Router):** Leverages server-side rendering (SSR), static site generation (SSG), and advanced caching mechanisms for optimal content delivery.
-- **React 19 & TypeScript:** Enforces strict type safety and modern reactive paradigms across 50+ custom UI components.
-
-### 3D Graphics & Physics Simulation
-- **Three.js & React Three Fiber (R3F):** Powers the core WebGL rendering engine.
-- **Rapier Physics:** Integrates real-time, deterministic physics simulations (e.g., interactive 3D Lanyard and structural models).
-- **Custom GLSL Shaders:** Utilized for bespoke background elements, including the Hyperspeed and warp effects.
-
-### UI/UX Choreography
-- **Framer Motion & GSAP:** Drives complex, timeline-based choreographies, micro-interactions, and fluid page transitions.
-- **Tailwind CSS & Shadcn UI:** Provides a scalable, utility-first design system utilizing robust Radix UI accessibility primitives.
-- **Lenis:** Implements smooth, premium scrolling dynamics.
-
-### System Integrations & APIs
-- **Dual-LLM AI Chatbot Architecture:** Integrates Groq (LLaMA 3.1) as the primary provider with an automatic failover to Google Gemini (1.5 Flash), utilizing retrieval-augmented generation context mapped directly from `portfolio.ts`.
-- **GraphQL & REST Pipelines:** Consumes GitHub GraphQL for repository statistics and WakaTime API for real-time code telemetry.
-- **Next-Intl:** Provides a complete bilingual experience (EN/ID) driven by client-side browser header detection.
+- **Framework:** Next.js 16 (App Router), React 19, TypeScript
+- **Styling & UI:** Tailwind CSS, Radix UI primitives, Framer Motion, GSAP, Lenis smooth scrolling
+- **3D & Visuals:** Three.js with React Three Fiber, Rapier physics, custom GLSL shaders
+- **Internationalization:** next-intl with English (`en`) and Bangla (`bn`), defaulting to English
+- **Chat Assistant:** `/api/chat` route, grounded in the company data in `src/data/portfolio.ts`, using Groq with Google Gemini as fallback
 
 ---
 
 ## Project Structure
 
 ```text
-PersonalBlog/
+auravine-website/
 ├── src/
-│   ├── app/                          # Next.js 16 App Router Entry Points
-│   │   ├── api/                      # Backend API Routes (Chatbot, GitHub, WakaTime)
-│   │   ├── projects/                 # Comprehensive Project Directory
-│   │   ├── experience/               # Career Timeline and Analytics
-│   │   ├── skills/                   # Technical Skill Radar
-│   │   ├── resume/                   # Custom PDF Rendering Engine (react-pdf)
-│   │   └── blog/                     # MDX/Markdown Article Renderer
+│   ├── app/                    # Next.js App Router pages and API routes
+│   │   ├── api/                # Chat, contact, and optional stats routes
+│   │   ├── projects/           # Solutions (case studies)
+│   │   ├── experience/         # Our process and engagement phases
+│   │   ├── skills/             # Capabilities
+│   │   ├── achievements/       # Commitments
+│   │   ├── blog/               # Insights (articles)
+│   │   ├── gallery/            # Studio gallery
+│   │   ├── contact/            # Free consultation booking
+│   │   └── resume/             # Company profile viewer (PDF)
 │   ├── components/
-│   │   ├── three/                    # WebGL & R3F Components (Lanyard, Splash)
-│   │   ├── sections/                 # Primary Page Layout Structures
-│   │   └── ui/                       # 50+ Custom Shadcn & Animated Primitives
+│   │   ├── three/              # WebGL and R3F components
+│   │   ├── sections/           # Page sections
+│   │   └── ui/                 # Shared UI primitives and animated effects
 │   ├── data/
-│   │   └── portfolio.ts              # Centralized JSON/TS Data Store
-│   ├── hooks/                        # Custom React Hooks (Performance, Intersection)
-│   └── styles/                       # Global CSS & Tailwind Directives
-├── public/                           # Static Assets (Images, 3D Models, PDFs)
-├── next.config.ts                    # Next.js Optimization Configuration
-└── tailwind.config.ts                # Custom Design System Configurations
+│   │   └── portfolio.ts        # Single source of company content
+│   ├── hooks/                  # Custom React hooks
+│   └── i18n/ + lib/i18n.ts     # Locale configuration
+├── messages/
+│   ├── en.json                 # English copy
+│   └── bn.json                 # Bangla copy
+├── public/                     # Static assets (images, 3D models, PDFs)
+├── next.config.ts
+└── tailwind.config.ts
 ```
 
 ---
 
-## Key Features
+## Updating Content
 
-### 1. Interactive 3D Environments
-Implements hardware-accelerated 3D models using `@react-three/drei` and `@react-three/fiber`. Features include a physics-simulated identification badge that responds to cursor velocity and window constraints in real time.
+Most of the company content lives in two places:
 
-### 2. Autonomous Portfolio Chatbot
-An intelligent conversational agent deployed via the `/api/chat` route. The system builds a dynamic context window from the static `portfolio.ts` database and processes natural language queries using a redundant Dual-LLM infrastructure.
+1. **`src/data/portfolio.ts`**: company profile, solutions (case studies), delivery phases, research and training, commitments, technology stack, FAQs, insights (blog articles), and gallery items.
+2. **`messages/en.json` and `messages/bn.json`**: interface copy, page headings, and the consultation form. Keep both files in sync when you change a key.
 
-### 3. Real-Time Telemetry
-Dashboards across the platform retrieve and display real-time engineering metrics, utilizing authenticated GraphQL requests to GitHub (activity heatmaps, language breakdown) and WakaTime (coding hours, IDE preferences).
-
-### 4. Interactive PDF Document Viewer
-A custom-built document rendering engine utilizing `react-pdf`, allowing users to zoom, rotate, search, and download the resume natively within the browser application without relying on external plugins.
-
-### 5. Performance Diagnostics
-The application implements a `usePerformance` hook to evaluate client hardware capabilities in real time, automatically disabling intensive WebGL shaders and complex GSAP animations on low-power or mobile devices to preserve battery life and maintain stable framerates.
+Images referenced from `portfolio.ts` live in `public/`. Replace the files at the same paths, or update the paths in the data file.
 
 ---
 
-## Local Development Setup
+## Local Development
 
 ### Prerequisites
-- Node.js >= 18.0.0
-- npm >= 9.0.0
+- Node.js 18 or newer
+- npm 9 or newer
 
 ### Installation
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/Auravine/PersonalBlog.git
-   cd PersonalBlog
-   ```
+```bash
+git clone <your-repository-url> auravine-website
+cd auravine-website
+npm install
+```
 
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+### Environment Variables
 
-3. **Configure Environment Variables:**
-   Create a `.env.local` file in the root directory.
+Create a `.env.local` file in the project root. All variables are optional unless a feature that needs them is in use.
 
-   ```env
-   NEXT_PUBLIC_GITHUB_USERNAME=your_username
-   GITHUB_TOKEN=your_personal_access_token
-   WAKATIME_API_KEY=your_wakatime_key
-   GROQ_API_KEY=your_groq_key
-   GEMINI_API_KEY=your_gemini_key
-   ```
+```env
+# AI assistant (chat widget)
+GROQ_API_KEY=your_groq_key
+GEMINI_API_KEY=your_gemini_key
 
-4. **Initialize Development Server:**
-   ```bash
-   npm run dev
-   ```
-   Navigate to `http://localhost:3000` to interact with the application.
+# Contact form (messages are emailed to EMAIL_USER via Gmail SMTP)
+EMAIL_USER=hello@your-company.com
+EMAIL_APP_PASSWORD=your_app_password
+
+# Optional engineering-activity stats (GitHub, WakaTime)
+NEXT_PUBLIC_GITHUB_USERNAME=your_github_org_or_user
+GITHUB_TOKEN=your_github_token
+WAKATIME_API_KEY=your_wakatime_key
+```
+
+### Run the Development Server
+
+```bash
+npm run dev
+```
+
+Open `http://localhost:3000`.
 
 ### Production Build
-Execute the following to compile and serve the optimized application bundle:
+
 ```bash
 npm run build
 npm start
@@ -150,16 +134,12 @@ npm start
 
 ---
 
-## Project Showcase Overview
+## Before Going Live
 
-The platform currently documents **19 technical projects** spanning multiple engineering disciplines:
-
-| Discipline | Notable Projects | Core Technologies |
-|------------|------------------|-------------------|
-| **Artificial Intelligence** | DocsInsight Engine, NeuroVision, Hand Gesture Recognition | Python, TensorFlow, OpenCV, LangChain |
-| **Data Science & Analytics** | Credit Risk Analysis, MyTelkomsel Sentiment, Data Analyst Dashboard | Python, LSTM, Pandas, Plotly |
-| **Software Engineering** | Donasiaku, POLABDC SaaS, Digilibzx | Laravel, Next.js, Go, PostgreSQL, Prisma |
-| **IoT & Embedded Systems** | TerraFlow Platform, Smart Motion Detection | ESP32, Raspberry Pi, MQTT, C++ |
+- Replace placeholder contact details, social links, and the `metadataBase` URL in `src/app/layout.tsx`.
+- Replace the sample case studies and insights with real client work and approved claims. Do not publish results or client names that you cannot verify.
+- Replace the company logo, favicon, gallery photos, and certificate and profile PDFs in `public/`.
+- Set `EMAIL_USER` and `EMAIL_APP_PASSWORD` in your hosting environment so consultation requests reach your team. To use a CRM instead, update `src/app/api/contact/route.ts`.
 
 ---
 
@@ -168,5 +148,5 @@ The platform currently documents **19 technical projects** spanning multiple eng
 This project is licensed under the [MIT License](LICENSE).
 
 <div align="center">
-  <p>Engineered by Auravine</p>
+  <p>Built in Dhaka, Bangladesh by Auravine</p>
 </div>

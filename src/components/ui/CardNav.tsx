@@ -306,7 +306,7 @@ export default function CardNav({
                                 "w-[280px] p-4 flex flex-col justify-center gap-4 border-l",
                                 theme === 'dark' ? "border-white/5" : "border-black/5"
                             )}>
-                                <SidebarLink href="/gallery" icon={ImageIcon} title="Gallery" desc="Visual portfolio & moments" theme={theme} pathname={pathname} />
+                                <SidebarLink href="/gallery" icon={ImageIcon} title="Gallery" desc="Studio gallery & moments" theme={theme} pathname={pathname} />
                                 <SidebarLink href="/resume" icon={FileText} title="Resume" desc="View or download my CV" theme={theme} pathname={pathname} />
                                 <SidebarLink href="#" icon={MessageCircle} title="Chat" desc="Coming soon to connect" theme={theme} pathname={pathname} />
                             </div>

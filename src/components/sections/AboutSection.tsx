@@ -25,73 +25,47 @@ import ScrollAdventure from "@/components/ui/animated-scroll";
 import Bucket from "@/components/ui/bucket";
 import { ArgentLoopInfiniteSlider } from "@/components/ui/argent-loop-infinite-slider";
 import { HorizontalTimeline } from "@/components/ui/horizontal-timeline";
-import { CertificateShowcase } from "@/components/ui/certificate-marquee";
-import { GitHubShowcase } from "@/components/ui/github-showcase";
-import KaggleShowcase from "@/components/ui/kaggle-showcase";
-import { WakaTimeShowcase } from "@/components/ui/wakatime-showcase";
-import { ShowcaseStack } from "@/components/ui/showcase-stack";
 
 const showcaseMembers = [
-    // 1. Cyber Physical Systems Laboratory
-    ...portfolioData.experiences.filter(exp => exp.id === 'prof-7').map(exp => ({
+    // 1. Discovery & Design
+    ...portfolioData.experiences.filter(exp => exp.id === 'phase-1').map(exp => ({
         id: exp.id,
-        name: "Cyber Physical Systems Laboratory",
-        role: exp.position.replace(' (Contract-Based)', ''),
+        name: "Discovery & Design",
+        role: exp.position,
         description: exp.description,
-        period: "August 2025 - Present",
+        period: "Weeks 1 - 3",
         image: "/journey/researchassistant2.webp",
-        social: exp.externalLink ? { website: Array.isArray(exp.externalLink) ? exp.externalLink[0] : exp.externalLink } : undefined
+        social: undefined
     })),
-    // 2. HUMIC Engineering
-    ...portfolioData.experiences.filter(exp => exp.id === 'prof-3').map(exp => ({
+    // 2. Build & Integrate
+    ...portfolioData.experiences.filter(exp => exp.id === 'phase-2').map(exp => ({
         id: exp.id,
-        name: "HUMIC Engineering",
+        name: "Build & Integrate",
         role: exp.position,
         description: exp.description,
-        period: "September 2025 - December 2025",
+        period: "Weeks 4 - 12",
         image: "/journey/aideveloperintern1.webp",
-        social: exp.externalLink ? { website: Array.isArray(exp.externalLink) ? exp.externalLink[0] : exp.externalLink } : undefined
+        social: undefined
     })),
-    // 3. Informatics Laboratory, Telkom University
-    ...portfolioData.experiences.filter(exp => exp.id === 'prof-6').map(exp => ({
+    // 3. Launch & Operate
+    ...portfolioData.experiences.filter(exp => exp.id === 'phase-3').map(exp => ({
         id: exp.id,
-        name: exp.company,
-        role: exp.position.replace(' (Contract-Based)', ''),
+        name: "Launch & Operate",
+        role: exp.position,
         description: exp.description,
-        period: "September 2025 - January 2026",
+        period: "Ongoing",
         image: "/journey/computernetworkpracticumassistant2.webp",
-        social: exp.externalLink ? { website: Array.isArray(exp.externalLink) ? exp.externalLink[0] : exp.externalLink } : undefined
+        social: undefined
     })),
-    // 4. Digistar Club by Telkom Indonesia
-    ...portfolioData.experiences.filter(exp => exp.id === 'lead-2').map(exp => ({
-        id: exp.id,
-        name: exp.company,
-        role: exp.position,
-        description: exp.description,
-        period: "October 2025 - December 2025",
-        image: "/journey/chiefcommittee1.webp",
-        social: exp.externalLink ? { website: Array.isArray(exp.externalLink) ? exp.externalLink[0] : exp.externalLink } : undefined
-    })),
-    // 5. Food and Agriculture Office of Bandung City
-    ...portfolioData.experiences.filter(exp => exp.id === 'prof-8').map(exp => ({
-        id: exp.id,
-        name: "Food and Agriculture Office of Bandung City",
-        role: exp.position,
-        description: exp.description,
-        period: "July - September 2025",
-        image: "/journey/dataentryassistant1.webp",
-        social: exp.externalLink ? { website: Array.isArray(exp.externalLink) ? exp.externalLink[0] : exp.externalLink } : undefined
-    })),
-    // 6. View more
+    // 4. View more
     {
         id: 'view-more',
         name: 'View more',
-        role: 'Explore all experiences',
+        role: 'Explore our process',
         image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1964&auto=format&fit=crop',
         social: { website: '/experience' }
     }
 ];
-
 const GALLERY_IMAGES = [
     "/gallery/Foto Utama.webp",
     "/gallery/FotoSC1.webp",
@@ -686,23 +660,6 @@ export default function AboutSection() {
                             </div>
                         </motion.div>
 
-                        {/* Certificate Showcase Section */}
-                        <div className="w-full mt-8 md:mt-12">
-                            <CertificateShowcase />
-                        </div>
-
-                        {/* Stacking Card Showcases */}
-                        <ShowcaseStack>
-                            <div className="w-full">
-                                <GitHubShowcase />
-                            </div>
-                            <div className="w-full">
-                                <KaggleShowcase />
-                            </div>
-                            <div className="w-full">
-                                <WakaTimeShowcase />
-                            </div>
-                        </ShowcaseStack>
                     </div>
                     <AuditFunnel />
                 </div>

@@ -705,7 +705,7 @@ export function ChatBot({ headless = false }: { headless?: boolean }) {
                             ? "bg-primary/20 border-primary/40"
                             : "bg-foreground/5 hover:bg-foreground/10"
                     )}
-                    aria-label="Open portfolio chatbot"
+                    aria-label="Open AI assistant"
                     aria-expanded={isOpen}
                 >
                     <MessageSquare
