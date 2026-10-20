@@ -13,7 +13,6 @@ import {
     Github,
     Linkedin,
     Twitter,
-    Instagram,
     Mail,
     Heart,
     Copy,
@@ -34,7 +33,6 @@ const socialIcons: { [key: string]: SocialIconComponent } = {
     github: Github,
     linkedin: Linkedin,
     twitter: Bot, // Replaced Twitter logo with AI Bot logo
-    instagram: Instagram,
     discord: Gamepad2,
     spotify: Music,
 };
@@ -339,7 +337,6 @@ export function Footer() {
                                     <div className="w-full grid grid-cols-4 gap-x-[5vw] gap-y-[4vh]">
                                         <FooterColumn title={t('links')}>
                                             <FooterLink href="/">{tNav('home')}</FooterLink>
-                                            <FooterLink href="/resume">{tNav('resume')}</FooterLink>
                                             <FooterLink href="/contact">{tNav('contact')}</FooterLink>
                                             <AboutHoverMenu tNav={tNav} onExpandChange={setIsAboutExpanded} />
                                         </FooterColumn>
@@ -376,9 +373,8 @@ export function Footer() {
                                                     )}
                                                 </AnimatePresence>
                                             </div>
-                                            <FooterLink href={portfolioData.personal.socialLinks.find(s => s.platform === 'LinkedIn')?.url || '#'} target="_blank">LinkedIn</FooterLink>
-                                            <FooterLink href={portfolioData.personal.socialLinks.find(s => s.platform === 'Instagram')?.url || '#'} target="_blank">Instagram</FooterLink>
-                                            <FooterLink href={portfolioData.personal.socialLinks.find(s => s.platform === 'GitHub')?.url || '#'} target="_blank">GitHub</FooterLink>
+                                            <p className="text-zinc-900 dark:text-white text-[1.2vw] min-text-[14px] font-medium tracking-tight">LinkedIn</p>
+                                            <p className="text-zinc-900 dark:text-white text-[1.2vw] min-text-[14px] font-medium tracking-tight">GitHub</p>
                                         </FooterColumn>
 
                                         <FooterColumn title={t('localTime')}>

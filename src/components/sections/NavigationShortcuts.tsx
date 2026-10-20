@@ -85,7 +85,7 @@ export const NavigationShortcuts = () => {
             title: t('shortcuts.volume1'),
             items: [
                 { id: '01', title: t('home'), href: '/#hero' },
-                { id: '02', title: t('resume'), href: portfolioData.personal.resumeUrl, external: true }, // Using existing key for Resume or adding new?
+                { id: '02', title: t('projects'), href: '/projects' },
                 { id: '03', title: t('contact'), href: '/contact' },
             ]
         },
@@ -240,7 +240,6 @@ export const NavigationShortcuts = () => {
                                             <Link
                                                 key={item.id}
                                                 href={item.href || '#'}
-                                                target={item.external ? "_blank" : undefined}
                                                 className="group block relative"
                                                 onClick={() => setIsOpen(false)}
                                                 onMouseEnter={() => setHoveredImage(itemImageMap[item.id])}

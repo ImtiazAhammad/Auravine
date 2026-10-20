@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Separator } from "@/components/ui/separator";
-import { Github, Linkedin, Instagram, ArrowDown, ArrowDownRight, Bot, Zap, ExternalLink, MessageSquare } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowDown, ArrowDownRight, Bot, Zap, ExternalLink, MessageSquare } from 'lucide-react';
 import { portfolioData } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
 import Link from 'next/link';
@@ -22,7 +22,7 @@ export function HeroVisual({ isExiting = false }: { isExiting?: boolean }) {
 
   const githubRef = useRef(null);
   const linkedinRef = useRef(null);
-  const instagramRef = useRef(null);
+  const mailRef = useRef(null);
   const zapRef = useRef(null);
   const zapSmallRef = useRef(null);
   const botRef = useRef(null);
@@ -75,7 +75,7 @@ export function HeroVisual({ isExiting = false }: { isExiting?: boolean }) {
       );
 
       // Reveal + Loop for Instagram
-      gsap.fromTo(instagramRef.current,
+      gsap.fromTo(mailRef.current,
         { opacity: 0, y: 40 },
         {
           opacity: 1,
@@ -84,7 +84,7 @@ export function HeroVisual({ isExiting = false }: { isExiting?: boolean }) {
           delay: 0.2,
           ease: "power3.out",
           onComplete: () => {
-            gsap.to(instagramRef.current, {
+            gsap.to(mailRef.current, {
               x: 10,
               duration: 3,
               repeat: -1,
@@ -180,13 +180,9 @@ export function HeroVisual({ isExiting = false }: { isExiting?: boolean }) {
             </motion.p>
             <div className="relative">
               <div ref={githubRef} className="absolute -top-4 right-0 md:right-2 text-primary/60 hover:text-primary z-20 opacity-0">
-                <a
-                  href={personal.socialLinks.find(s => s.platform === 'GitHub')?.url}
-                  target="_blank"
-                  className="block"
-                >
+                <span className="block">
                   <Github size={32} />
-                </a>
+                </span>
               </div>
               <motion.h1
                 initial={{ opacity: 0, y: 30 }}
@@ -203,22 +199,14 @@ export function HeroVisual({ isExiting = false }: { isExiting?: boolean }) {
           <div className="md:flex gap-8 items-center relative">
             <div className="relative">
               <div ref={linkedinRef} className="absolute -top-8 left-4 text-primary/60 hover:text-primary z-20 opacity-0">
-                <a
-                  href={personal.socialLinks.find(s => s.platform === 'LinkedIn')?.url}
-                  target="_blank"
-                  className="block"
-                >
+                <span className="block">
                   <Linkedin size={32} />
-                </a>
+                </span>
               </div>
-              <div ref={instagramRef} className="absolute -bottom-12 right-24 md:right-36 text-primary/60 hover:text-primary z-20 opacity-0">
-                <a
-                  href={personal.socialLinks.find(s => s.platform === 'Instagram')?.url}
-                  target="_blank"
-                  className="block"
-                >
-                  <Instagram size={32} />
-                </a>
+              <div ref={mailRef} className="absolute -bottom-12 right-24 md:right-36 text-primary/60 hover:text-primary z-20 opacity-0">
+                <span className="block">
+                  <Mail size={32} />
+                </span>
               </div>
               <motion.h1
                 initial={{ opacity: 0, y: 30 }}
@@ -297,22 +285,7 @@ export function HeroVisual({ isExiting = false }: { isExiting?: boolean }) {
             <div className="text-[10px] md:text-xs whitespace-nowrap font-bold tracking-[0.3em] text-muted-foreground uppercase">
               DHAKA, BD — 2026
             </div>
-            <Link
-              href="/resume"
-              className="group flex items-center"
-            >
-              <motion.div
-                className="relative flex items-center bg-zinc-100 dark:bg-white h-12 w-12 group-hover:w-44 rounded-full transition-all duration-500 ease-[0.23,1,0.32,1] overflow-hidden shadow-xl"
-              >
-                <span className="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 group-hover:delay-150 text-[10px] font-black uppercase tracking-widest text-zinc-900 dark:text-black pl-6 pr-12">
-                  View Resume
-                </span>
-                <div className="absolute right-0 flex items-center justify-center size-12 text-zinc-900 dark:text-black group-hover:rotate-45 transition-transform duration-500">
-                  <ArrowDownRight className="w-5 h-5" />
-                </div>
-              </motion.div>
-            </Link>
-          </div>
+                      </div>
         </div>
       </main>
 
@@ -347,12 +320,9 @@ export function HeroVisual({ isExiting = false }: { isExiting?: boolean }) {
             >
               <ProfileCard
                 name={personal.name}
-                title="AI Engineer & Software Engineer"
-                description={`${personal.name} is a dedicated AI & Software Engineer focused on building scalable, intelligent systems and robust software architectures. He specializes in bridging technical innovation with high-performance execution to deliver meaningful and impactful digital solutions.`}
+                title="AI-first software studio"
+                description="Auravine is an AI-first software development company in Dhaka, Bangladesh. We build AI voice agents, chatbots, computer vision systems, and analytics platforms for businesses worldwide."
                 imageUrl={personal.avatar}
-                githubUrl={personal.socialLinks.find(s => s.platform === 'GitHub')?.url}
-                linkedinUrl={personal.socialLinks.find(s => s.platform === 'LinkedIn')?.url}
-                instagramUrl={personal.socialLinks.find(s => s.platform === 'Instagram')?.url}
                 className="!max-w-4xl scale-[0.8] origin-left"
               />
             </motion.div>

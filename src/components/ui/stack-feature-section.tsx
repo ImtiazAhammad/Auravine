@@ -65,11 +65,6 @@ export default function FeatureSection() {
                 <Link href="/projects">View Projects</Link>
               </Button>
             </MagneticEffect>
-            <MagneticEffect strength={0.8} stiffness={120} damping={10}>
-              <Button variant="outline" asChild className="rounded-full px-6 md:px-8 py-5 md:py-6 font-semibold text-sm md:text-base bg-transparent border border-gray-200 dark:border-white/20 text-foreground hover:!bg-black hover:!text-white dark:hover:!bg-white dark:hover:!text-black transition-all duration-300 w-full sm:w-auto text-center justify-center">
-                <Link href="/resume">My Resume</Link>
-              </Button>
-            </MagneticEffect>
           </div>
         </div>
 

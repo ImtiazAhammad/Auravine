@@ -19,7 +19,6 @@ import { useCountUp } from "@/hooks/useCountUp";
 import { SocialCorner } from "@/components/layout/SocialCorner";
 import { cn } from "@/lib/utils";
 
-import Testimonial1 from "@/components/ui/testimonial-1";
 import { IdentitySequence } from "./IdentitySequence";
 import ScrollAdventure from "@/components/ui/animated-scroll";
 import Bucket from "@/components/ui/bucket";
@@ -292,7 +291,6 @@ const CoreEngineeringPanel = ({ scrollYProgress }: { scrollYProgress: any }) => 
                 }}
                 className="w-full h-full flex items-center justify-center"
             >
-                <Testimonial1 />
             </motion.div>
         </div>
     );

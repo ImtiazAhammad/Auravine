@@ -3,7 +3,7 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { useTranslations } from 'next-intl';
-import { Send, CheckCircle, AlertCircle, Loader2, Disc, Music, ArrowUpRight, Sparkles, HelpCircle, MessageSquare, ExternalLink, Github, Linkedin, Twitter, Instagram, ChevronDown } from 'lucide-react';
+import { Send, CheckCircle, AlertCircle, Loader2, Disc, Music, ArrowUpRight, Sparkles, HelpCircle, MessageSquare, ExternalLink, Github, Linkedin, Twitter, Mail, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { portfolioData } from '@/data/portfolio';
 import dynamic from 'next/dynamic';
@@ -54,7 +54,7 @@ const socialIconsMap: Record<string, React.ElementType> = {
     github: Github,
     linkedin: Linkedin,
     twitter: Twitter,
-    instagram: Instagram,
+    email: Mail,
     discord: Disc,
     spotify: Music
 };
@@ -62,10 +62,7 @@ const socialIconsMap: Record<string, React.ElementType> = {
 function SocialCard({ item }: { item: any }) {
     const Icon = item.image || ArrowUpRight;
     return (
-        <a
-            href={item.url}
-            target="_blank"
-            rel="noopener noreferrer"
+        <div
             className="group relative flex h-[140px] w-[280px] flex-col justify-between rounded-3xl border border-neutral-200 dark:border-white/5 bg-white dark:bg-white/[0.02] p-6 shadow-sm dark:shadow-2xl transition-all hover:bg-neutral-50 dark:hover:bg-white/5 hover:border-neutral-300 hover:scale-[1.02] hover:-translate-y-1 backdrop-blur-md overflow-hidden flex-shrink-0"
         >
             <div className="absolute -top-6 -right-6 p-6 opacity-[0.03] group-hover:opacity-10 transition-opacity transform group-hover:scale-125 duration-700">
@@ -86,9 +83,8 @@ function SocialCard({ item }: { item: any }) {
                 <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground/60 group-hover:text-foreground/70 transition-colors">
                     Connect
                 </span>
-                <ExternalLink className="w-3 h-3 text-muted-foreground group-hover:text-primary opacity-50 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0" />
             </div>
-        </a>
+        </div>
     );
 }
 
@@ -291,7 +287,7 @@ const socialDescriptions: Record<string, string> = {
     GitHub: "Open Source",
     LinkedIn: "Professional",
     Twitter: "Thoughts",
-    Instagram: "Lifestyle",
+    Email: "Contact",
     Discord: "Community",
     Spotify: "Music"
 };
@@ -303,6 +299,9 @@ export default function ContactPage() {
     const { isLowPowerMode } = usePerformance();
 
     const getSocialItem = (platform: string) => {
+        if (platform === 'email') {
+            return { name: 'Email', username: portfolioData.personal.email || 'Coming soon', body: 'Contact', image: Mail, url: '#' };
+        }
         const link = portfolioData.personal.socialLinks.find(l => l.platform.toLowerCase() === platform);
         return {
             name: (link?.platform || platform).charAt(0).toUpperCase() + (link?.platform || platform).slice(1),
@@ -313,8 +312,8 @@ export default function ContactPage() {
         };
     };
 
-    const row1Real = ['linkedin', 'github', 'instagram'].map(getSocialItem);
-    const row2Real = ['twitter', 'discord', 'spotify'].map(getSocialItem);
+    const row1Real = ['linkedin', 'github', 'email'].map(getSocialItem);
+    const row2Real = ['twitter'].map(getSocialItem);
 
     const containerRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({

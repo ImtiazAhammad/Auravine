@@ -10,7 +10,6 @@ export const portfolioData: PortfolioData = {
         location: "Dhaka, Bangladesh · Serving clients worldwide",
         email: "",
         phone: "",
-        resumeUrl: '/resume',
         website: "",
         languages: [
             { name: 'Bengali', level: 'Native' },
@@ -27,12 +26,6 @@ export const portfolioData: PortfolioData = {
                 platform: 'LinkedIn',
                 url: '#',
                 icon: 'linkedin',
-                username: 'auravine',
-            },
-            {
-                platform: 'Instagram',
-                url: '#',
-                icon: 'instagram',
                 username: 'auravine',
             },
             {

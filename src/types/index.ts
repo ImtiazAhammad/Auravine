@@ -129,7 +129,6 @@ export interface PersonalInfo {
     email: string;
     phone?: string;
     website?: string;
-    resumeUrl?: string;
     languages?: Language[];
     socialLinks: SocialLink[];
 }

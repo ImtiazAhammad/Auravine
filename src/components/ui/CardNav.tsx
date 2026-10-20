@@ -226,7 +226,7 @@ export default function CardNav({
     }, []);
 
     const aboutItem = items.find(i => i.label === "About") || items[0];
-    const allHrefs = ['/projects', '/experience', '/skills', '/achievements', '/blog', '/gallery', '/resume'];
+    const allHrefs = ['/projects', '/experience', '/skills', '/achievements', '/blog', '/gallery'];
     const isActive = useMemo(() => {
         return allHrefs.some(href => pathname === href || pathname.startsWith(`${href}/`));
     }, [pathname]);
@@ -307,7 +307,6 @@ export default function CardNav({
                                 theme === 'dark' ? "border-white/5" : "border-black/5"
                             )}>
                                 <SidebarLink href="/gallery" icon={ImageIcon} title="Gallery" desc="Studio gallery & moments" theme={theme} pathname={pathname} />
-                                <SidebarLink href="/resume" icon={FileText} title="Resume" desc="View or download my CV" theme={theme} pathname={pathname} />
                                 <SidebarLink href="#" icon={MessageCircle} title="Chat" desc="Coming soon to connect" theme={theme} pathname={pathname} />
                             </div>
                         </div>

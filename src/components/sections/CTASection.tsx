@@ -101,7 +101,7 @@ export default function CTASection() {
                         <Mail className="w-5 h-5" />
                         <span>{t('start')}</span>
                     </MagneticButton>
-                    <MagneticButton href="/resume" variant="outline" className="text-lg px-10 py-5">
+                    <MagneticButton href="/projects" variant="outline" className="text-lg px-10 py-5">
                         <Layers className="w-5 h-5" />
                         <span>{t('work')}</span>
                     </MagneticButton>
