@@ -218,8 +218,8 @@ export function TechStack({ techStack, tools, isLowPowerMode }: TechStackProps &
                 >
                     {/* Fog / Ambient Background Effects */}
                     <div className="absolute inset-0 pointer-events-none">
-                        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[100px] animate-pulse" />
-                        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-emerald-500/5 rounded-full blur-[100px] animate-pulse delay-1000" />
+                        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand/10 rounded-full blur-[100px] animate-pulse" />
+                        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-brand/5 rounded-full blur-[100px] animate-pulse delay-1000" />
                         {/* Gradient Fade - Made Transparent for Blending */}
                         <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-transparent to-transparent" />
                     </div>
@@ -231,7 +231,7 @@ export function TechStack({ techStack, tools, isLowPowerMode }: TechStackProps &
                                 className={cn(
                                     "p-2 rounded-full border backdrop-blur-md transition-all",
                                     gravityOn
-                                        ? "bg-emerald-100 dark:bg-emerald-500/20 border-emerald-600 dark:border-emerald-500 text-emerald-700 dark:text-emerald-400"
+                                        ? "bg-brand dark:bg-brand/20 border-brand dark:border-brand text-brand dark:text-brand"
                                         : "bg-white dark:bg-white/5 border-zinc-400 dark:border-white/10 text-zinc-800 dark:text-muted-foreground hover:bg-zinc-100 dark:hover:bg-white/10"
                                 )}>
                                 <ArrowDown className="w-4 h-4" />
@@ -261,7 +261,7 @@ export function TechStack({ techStack, tools, isLowPowerMode }: TechStackProps &
                                             className={cn(
                                                 "w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center border shadow-sm",
                                                 isHero
-                                                    ? "bg-emerald-50/50 dark:bg-emerald-500/10 border-emerald-200 dark:border-emerald-500/30"
+                                                    ? "bg-emerald-50/50 dark:bg-brand/10 border-brand dark:border-brand/30"
                                                     : "bg-white/50 dark:bg-white/5 border-zinc-100 dark:border-white/5"
                                             )}
                                         >
@@ -290,7 +290,7 @@ export function TechStack({ techStack, tools, isLowPowerMode }: TechStackProps &
                                 className={cn(
                                     "absolute flex items-center justify-center rounded-full shadow-lg backdrop-blur-sm border transition-colors select-none",
                                     body.isHero
-                                        ? "bg-emerald-50/80 dark:bg-white/10 border-emerald-200 dark:border-emerald-500 shadow-[0_4px_20px_rgba(16,185,129,0.1)] dark:shadow-[0_0_15px_rgba(16,185,129,0.2)] text-emerald-900 dark:text-emerald-100"
+                                        ? "bg-emerald-50/80 dark:bg-white/10 border-brand dark:border-brand shadow-[0_4px_20px_rgba(16,185,129,0.1)] dark:shadow-[0_0_15px_rgba(16,185,129,0.2)] text-brand dark:text-brand"
                                         : "bg-white/80 dark:bg-white/5 border-zinc-200 dark:border-white/5 text-zinc-700 dark:text-white/80"
                                 )}
                                 style={{
@@ -311,7 +311,7 @@ export function TechStack({ techStack, tools, isLowPowerMode }: TechStackProps &
                                     ) : (
                                         <span className={cn(
                                             "text-[10px] font-bold text-center leading-tight px-1",
-                                            body.isHero ? "text-emerald-950 dark:text-white" : "text-black dark:text-white/60"
+                                            body.isHero ? "text-brand dark:text-white" : "text-black dark:text-white/60"
                                         )}>{body.id.replace('-tool', '')}</span>
                                     )}
                                 </div>
@@ -331,8 +331,8 @@ export function TechStack({ techStack, tools, isLowPowerMode }: TechStackProps &
                 <div className="max-w-3xl mx-auto space-y-6">
                     {/* Section Header */}
                     <div className="text-center space-y-2 mb-12 opacity-80">
-                        <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400">Tech Breakdown</h2>
-                        <div className="h-1 w-20 bg-gradient-to-r from-emerald-500 to-cyan-500 mx-auto rounded-full blur-[2px]" />
+                        <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-brand to-brand">Tech Breakdown</h2>
+                        <div className="h-1 w-20 bg-gradient-to-r from-brand to-brand mx-auto rounded-full blur-[2px]" />
                     </div>
 
                     {techStack.map((tech, i) => (
@@ -342,7 +342,7 @@ export function TechStack({ techStack, tools, isLowPowerMode }: TechStackProps &
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
                             transition={{ delay: i * 0.05 }}
-                            className="bg-white/60 dark:bg-zinc-900/40 backdrop-blur-md border border-black/10 dark:border-white/5 p-6 rounded-2xl shadow-xl flex flex-col md:flex-row gap-6 items-start hover:bg-white/80 dark:hover:bg-zinc-900/60 hover:border-emerald-500/20 transition-all group"
+                            className="bg-white/60 dark:bg-zinc-900/40 backdrop-blur-md border border-black/10 dark:border-white/5 p-6 rounded-2xl shadow-xl flex flex-col md:flex-row gap-6 items-start hover:bg-white/80 dark:hover:bg-zinc-900/60 hover:border-brand/20 transition-all group"
                         >
                             {/* Icon */}
                             <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-black/5 to-black/0 dark:from-white/10 dark:to-white/5 p-3 shrink-0 border border-black/5 dark:border-white/5 group-hover:scale-105 transition-transform shadow-inner">
@@ -368,7 +368,7 @@ export function TechStack({ techStack, tools, isLowPowerMode }: TechStackProps &
 
                             {/* Content */}
                             <div className="flex-1">
-                                <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors flex items-center gap-2">
+                                <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-brand dark:group-hover:text-brand transition-colors flex items-center gap-2">
                                     {tech}
                                 </h3>
                                 <p className="text-sm text-muted-foreground leading-relaxed font-light">
@@ -387,14 +387,14 @@ export function TechStack({ techStack, tools, isLowPowerMode }: TechStackProps &
                         >
                             <div className="flex items-center gap-4 mb-8">
                                 <div className="h-[1px] flex-1 bg-black/10 dark:bg-white/10" />
-                                <h3 className="text-xs font-mono text-emerald-600 dark:text-emerald-400 font-bold tracking-widest uppercase">Creative Arsenal</h3>
+                                <h3 className="text-xs font-mono text-brand dark:text-brand font-bold tracking-widest uppercase">Creative Arsenal</h3>
                                 <div className="h-[1px] flex-1 bg-black/10 dark:bg-white/10" />
                             </div>
 
                             <div className="flex flex-wrap justify-center gap-3">
                                 {tools.map(tool => (
-                                    <div key={tool} className="group bg-black/5 dark:bg-white/5 hover:bg-emerald-500/10 border border-black/5 dark:border-white/5 hover:border-emerald-500/30 px-5 py-3 rounded-xl flex items-center gap-3 text-sm text-muted-foreground hover:text-emerald-700 dark:hover:text-emerald-100 transition-all cursor-default">
-                                        <Wrench className="w-4 h-4 text-emerald-600/50 dark:text-emerald-500/50 group-hover:text-emerald-600 dark:group-hover:text-emerald-400" />
+                                    <div key={tool} className="group bg-black/5 dark:bg-white/5 hover:bg-brand/10 border border-black/5 dark:border-white/5 hover:border-brand/30 px-5 py-3 rounded-xl flex items-center gap-3 text-sm text-muted-foreground hover:text-brand dark:hover:text-brand transition-all cursor-default">
+                                        <Wrench className="w-4 h-4 text-brand/50 dark:text-brand/50 group-hover:text-brand dark:group-hover:text-brand" />
                                         <span className="font-medium">{tool}</span>
                                     </div>
                                 ))}

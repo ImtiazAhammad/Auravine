@@ -12,17 +12,14 @@ const calculateMetrics = () => {
     const totalTechStack = portfolioData.techStack?.length || 0;
     const totalTools = portfolioData.tools?.length || 0;
 
-    // Calculate years of experience (assuming earliest project start date)
-    const yearsExp = 2; // Hardcoded based on resume/experience
+    // Bangla and English: the two languages every voice and chat product supports.
+    const languages = 2;
 
     return {
         projects: totalProjects,
         completed: completedProjects,
         techCount: totalTechStack + totalTools,
-        yearsExp,
-        // Creative metrics
-        impactScore: '12+', // GitHub stars, downloads, or impact metric
-        satisfaction: '98%'   // Client/user satisfaction rate
+        languages,
     };
 };
 
@@ -99,26 +96,26 @@ export function ProjectStats({ isLowPowerMode }: { isLowPowerMode?: boolean }) {
 
     const stats = [
         {
-            value: `${metrics.projects}+`,
-            label: 'Projects Built',
+            value: `${metrics.projects}`,
+            label: 'Solutions',
             icon: <Code2 className="w-6 h-6 text-primary" />,
             gradient: 'rgba(59, 130, 246, 0.3), rgba(139, 92, 246, 0.3), rgba(59, 130, 246, 0.3)'
         },
         {
-            value: `${metrics.yearsExp}+`,
-            label: 'Years Experience',
+            value: `${metrics.completed}`,
+            label: 'Delivered to Clients',
             icon: <TrendingUp className="w-6 h-6 text-emerald-500" />,
             gradient: 'rgba(16, 185, 129, 0.3), rgba(6, 182, 212, 0.3), rgba(16, 185, 129, 0.3)'
         },
         {
-            value: `${metrics.techCount}+`,
-            label: 'Tech Stack',
+            value: `${metrics.techCount}`,
+            label: 'Technologies',
             icon: <Code2 className="w-6 h-6 text-violet-500" />,
             gradient: 'rgba(139, 92, 246, 0.3), rgba(236, 72, 153, 0.3), rgba(139, 92, 246, 0.3)'
         },
         {
-            value: metrics.impactScore,
-            label: 'Active Deployments',
+            value: `${metrics.languages}`,
+            label: 'Languages Supported',
             icon: <Award className="w-6 h-6 text-amber-500" />,
             gradient: 'rgba(245, 158, 11, 0.3), rgba(251, 146, 60, 0.3), rgba(245, 158, 11, 0.3)'
         }
@@ -143,16 +140,16 @@ export function ProjectStats({ isLowPowerMode }: { isLowPowerMode?: boolean }) {
                     >
                         <Sparkles className="w-4 h-4 text-primary" />
                         <span className="text-xs sm:text-sm font-semibold text-primary uppercase tracking-wider">
-                            Project Impact
+                            Our work in numbers
                         </span>
                     </motion.div>
 
                     <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-foreground mb-3">
-                        Building The Future
+                        Built for real operations
                     </h2>
 
                     <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-                        Transforming ideas into production-ready solutions that drive real-world impact
+                        Every figure below comes straight from the solutions on this page.
                     </p>
                 </motion.div>
 

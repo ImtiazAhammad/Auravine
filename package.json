@@ -7,7 +7,7 @@
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
-        "assets:generate": "python3 scripts/generate_assets.py"
+        "assets:generate": "node scripts/brand-assets/render.mjs"
     },
     "dependencies": {
         "@base-ui/react": "^1.4.1",

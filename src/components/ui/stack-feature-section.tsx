@@ -54,7 +54,7 @@ export default function FeatureSection() {
         {/* Left side: Heading and Text */}
         <div className="w-full md:w-[55%] z-20 p-6 sm:p-8 md:p-14 lg:p-20 group/text">
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-4 md:mb-6 text-gray-900 dark:text-white tracking-tight leading-[1.1] transition-all duration-500 group-hover/text:tracking-[0.05em] group-hover/text:drop-shadow-[0_0_15px_rgba(0,0,0,0.1)] dark:group-hover/text:drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">
-            Engineering <br className="hidden md:block" /> the Future
+            Let's build <br className="hidden md:block" /> yours
           </h1>
           <p className="text-gray-500 dark:text-gray-400 mb-10 max-w-xl text-base md:text-lg leading-relaxed transition-colors duration-500 group-hover/text:text-gray-900 dark:group-hover/text:text-gray-200">
             {portfolioData.personal.subtitle}
@@ -62,7 +62,7 @@ export default function FeatureSection() {
           <div className="flex flex-wrap items-center gap-3 md:gap-4 relative z-30">
             <MagneticEffect strength={0.8} stiffness={120} damping={10}>
               <Button variant="default" asChild className="rounded-full px-6 md:px-8 py-5 md:py-6 font-semibold text-sm md:text-base bg-primary text-primary-foreground border border-transparent hover:!bg-white hover:!text-black dark:hover:!bg-black dark:hover:!text-white hover:!border-black dark:hover:!border-white transition-all duration-300 w-full sm:w-auto text-center justify-center">
-                <Link href="/projects">View Projects</Link>
+                <Link href="/projects">Explore solutions</Link>
               </Button>
             </MagneticEffect>
           </div>

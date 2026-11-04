@@ -14,9 +14,9 @@ const pages = [
         leftComponent: <Loader type="ai" />,
         leftContent: null,
         rightContent: {
-            heading: 'Intelligence Systems',
-            description: 'Specializing in architecting autonomous systems and intelligence-driven platforms. From fine-tuning LLMs and engineering RAG architectures to developing deep learning models for Computer Vision and NLP.',
-            skills: ["LLM Fine-tuning", "RAG Systems", "Deep Learning", "Computer Vision", "MLOps", "Data Analytics"],
+            heading: 'Conversational AI',
+            description: 'Voice agents and chatbots that answer your customers in Bangla and English, book appointments, take orders, and hand the conversation to your team when a person is needed.',
+            skills: ["Voice Agents", "Chatbots", "WhatsApp & Messenger", "RAG", "Telephony", "LLM Evaluation"],
             hoverColor: "bg-red-600/10"
         },
     },
@@ -26,9 +26,9 @@ const pages = [
         leftComponent: null,
         rightComponent: <Loader type="software" />,
         leftContent: {
-            heading: 'Scalable Systems',
-            description: 'Building the foundation for resilient digital ecosystems. I engineer full-stack solutions with a focus on system architecture, modular design, and high-performance backends using Go, Next.js, and Python.',
-            skills: ["System Architecture", "Full-Stack Dev", "Docker & K8s", "API Design", "DevOps", "Software Design"],
+            heading: 'Vision & Analytics',
+            description: 'Cameras that recognize faces and spot defects on the line, and dashboards that turn your sales, stock, and operations data into forecasts your managers can act on.',
+            skills: ["Face Recognition", "Quality Inspection", "Forecasting", "Dashboards", "Data Pipelines", "MLOps"],
             hoverColor: "bg-blue-600/10"
         },
         rightContent: null,
@@ -39,15 +39,15 @@ const pages = [
         leftComponent: <Loader type="softskill" />,
         leftContent: null,
         rightContent: {
-            heading: 'Strategic Innovation',
-            description: 'Translating complex technical requirements into impactful business solutions through systemic thinking, strategic leadership, and clear communication within cross-functional teams.',
-            skills: ["Systemic Thinking", "Leadership", "Problem Solving", "Teamwork", "Communication", "Research"],
+            heading: 'Product Engineering',
+            description: 'The secure web and mobile software around the AI: admin panels, customer apps, integrations with your CRM, POS, and accounting tools, and support long after launch.',
+            skills: ["Web & Mobile Apps", "Integrations", "Cloud & DevOps", "Security", "QA & Testing", "Ongoing Support"],
             hoverColor: "bg-purple-600/10"
         },
     },
     {
         isBridge: true,
-        heading: 'Discover my latest work and creative solutions that bring ideas to life',
+        heading: 'Solutions we have built for businesses like yours',
         subheading: 'SCROLL TO EXPLORE',
     }
 ];
@@ -237,7 +237,7 @@ function BridgeSlide({ page, isActive, scrollProgress, index }: { page: any, isA
         >
             <motion.div style={{ y }} className="space-y-16 max-w-[1200px] w-full px-[5%]">
                 <h2 className="text-4xl md:text-5xl lg:text-7xl font-medium tracking-tight text-foreground dark:text-white leading-[1.1] font-sans">
-                    <HoverScrambleText text={"Discover my latest work and creative solutions \nthat bring ideas to life"} />
+                    <HoverScrambleText text={"Solutions we have built \nfor businesses like yours"} />
                 </h2>
                 <div className="flex flex-col items-center gap-6 opacity-30 pt-10">
                     <span className="text-[11px] font-mono font-bold tracking-[0.5em] uppercase text-foreground dark:text-white">
@@ -305,7 +305,7 @@ function EditorialContent({ content, index }: { content: any, index: number }) {
             <div className="space-y-6">
                 <div className="flex items-center gap-6">
                     <span className="text-[11px] font-mono font-black tracking-[0.5em] text-primary uppercase opacity-60">
-                        FEATURE — 0{index + 1}
+                        SERVICE 0{index + 1}
                     </span>
                     <div className="h-[1px] w-12 bg-primary/20" />
                 </div>

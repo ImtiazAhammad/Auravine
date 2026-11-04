@@ -12,38 +12,45 @@ interface LoaderProps {
   type?: LoaderType;
 }
 
+// Faces use the brand mint, a lighter mint from the same family, and the site's
+// light neutrals, so the black icons stay legible in both themes.
+const MINT = '#34d399';
+const MINT_LIGHT = '#a7f3d0';
+const PAPER = '#fafafa';
+const STONE = '#e5e5e5';
+
 const config = {
   ai: [
-    { icon: Brain, label: "AI", color: "#ef4444" },
-    { icon: Network, label: "NN", color: "#3b82f6" },
-    { icon: Cpu, label: "LLM", color: "#eab308" },
-    { icon: Database, label: "DATA", color: "#22c55e" },
-    { icon: Fingerprint, label: "VISION", color: "#a855f7" },
-    { icon: Zap, label: "ML", color: "#f97316" }
+    { icon: MessageSquare, label: "CHAT", color: MINT },
+    { icon: Network, label: "VOICE", color: PAPER },
+    { icon: Brain, label: "LLM", color: MINT_LIGHT },
+    { icon: Database, label: "RAG", color: STONE },
+    { icon: Workflow, label: "AGENTS", color: MINT },
+    { icon: Users, label: "HANDOFF", color: PAPER }
   ],
   software: [
-    { icon: Server, label: "BACKEND", color: "#3b82f6" },
-    { icon: Code, label: "CODE", color: "#eab308" },
-    { icon: Terminal, label: "CLI", color: "#22c55e" },
-    { icon: Layers, label: "ARCH", color: "#ef4444" },
-    { icon: Shield, label: "SECURE", color: "#8b5cf6" },
-    { icon: Workflow, label: "CI/CD", color: "#06b6d4" }
+    { icon: Fingerprint, label: "FACE", color: MINT },
+    { icon: Target, label: "INSPECT", color: PAPER },
+    { icon: Database, label: "DATA", color: MINT_LIGHT },
+    { icon: Layers, label: "FORECAST", color: STONE },
+    { icon: Cpu, label: "EDGE", color: MINT },
+    { icon: Compass, label: "INSIGHT", color: PAPER }
   ],
   softskill: [
-    { icon: Lightbulb, label: "IDEA", color: "#eab308" },
-    { icon: Users, label: "TEAM", color: "#3b82f6" },
-    { icon: MessageSquare, label: "TALK", color: "#22c55e" },
-    { icon: Target, label: "GOAL", color: "#ef4444" },
-    { icon: Compass, label: "SYSTEM", color: "#a855f7" },
-    { icon: Briefcase, label: "LEAD", color: "#f97316" }
+    { icon: Code, label: "WEB", color: MINT },
+    { icon: Server, label: "API", color: PAPER },
+    { icon: Shield, label: "SECURE", color: MINT_LIGHT },
+    { icon: Terminal, label: "DEVOPS", color: STONE },
+    { icon: Briefcase, label: "SUPPORT", color: MINT },
+    { icon: Lightbulb, label: "DESIGN", color: PAPER }
   ],
   default: [
-    { icon: Zap, label: "Start", color: "#00d2ff" },
-    { icon: Zap, label: "Action", color: "#ff00ff" },
-    { icon: Zap, label: "Zoom", color: "#ffef00" },
-    { icon: Zap, label: "Wait", color: "#ffffff" },
-    { icon: Zap, label: "Boom", color: "#ff5252" },
-    { icon: Zap, label: "Loading", color: "#00e676" }
+    { icon: Zap, label: "AURAVINE", color: MINT },
+    { icon: Zap, label: "AURAVINE", color: PAPER },
+    { icon: Zap, label: "AURAVINE", color: MINT_LIGHT },
+    { icon: Zap, label: "AURAVINE", color: STONE },
+    { icon: Zap, label: "AURAVINE", color: MINT },
+    { icon: Zap, label: "AURAVINE", color: PAPER }
   ]
 };
 
@@ -150,7 +157,7 @@ function Face({ icon: Icon, label, color, transform }: { icon: any, label: strin
     >
       <div className="absolute w-[150%] h-[20px] bg-black opacity-20 -rotate-45 -translate-y-10" />
       <Icon className="w-10 h-10 text-black z-10 mb-1" strokeWidth={2.5} />
-      <span className="font-['Arial_Black',sans-serif] text-[10px] bg-black text-white px-2 mt-1 uppercase z-10 tracking-widest rounded-sm">
+      <span className="font-sans font-black text-[10px] bg-black text-white px-2 mt-1 uppercase z-10 tracking-widest rounded-sm">
         {label}
       </span>
     </div>

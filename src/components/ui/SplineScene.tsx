@@ -3,6 +3,7 @@
 import { useRef, useState, useEffect, type FC } from "react";
 import { usePerformance } from "@/hooks/usePerformance";
 import Spline from '@splinetool/react-spline';
+import { ErrorBoundary } from "@/components/ui/ErrorBoundary";
 
 interface SplineSceneProps {
     scene: string;
@@ -65,15 +66,18 @@ export const SplineScene: FC<SplineSceneProps> = ({ scene, className }) => {
         return () => clearTimeout(timeoutId);
     }, [isLowPowerMode, isSceneLoaded]);
 
-    if (isLowPowerMode) {
-        return (
-            <div className={`relative w-full h-full bg-background overflow-hidden ${className}`}>
-                <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent opacity-20" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-64 h-64 bg-primary/10 blur-[100px] rounded-full animate-pulse-slow" />
-                </div>
+    // Shown in low-power mode, and when the remote scene cannot be fetched.
+    const quietFallback = (
+        <div className={`relative w-full h-full bg-background overflow-hidden ${className || ''}`}>
+            <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent opacity-20" />
+            <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-64 h-64 bg-primary/10 blur-[100px] rounded-full animate-pulse-slow" />
             </div>
-        );
+        </div>
+    );
+
+    if (isLowPowerMode) {
+        return quietFallback;
     }
 
     return (
@@ -108,6 +112,7 @@ export const SplineScene: FC<SplineSceneProps> = ({ scene, className }) => {
                         visibility: isVisible ? 'visible' : 'hidden'
                     }}
                 >
+                    <ErrorBoundary fallback={quietFallback}>
                     <Spline
                         scene={scene}
                         onLoad={(app) => {
@@ -121,6 +126,7 @@ export const SplineScene: FC<SplineSceneProps> = ({ scene, className }) => {
                             transformOrigin: 'center center'
                         }}
                     />
+                    </ErrorBoundary>
                 </div>
             </div>
         </div>

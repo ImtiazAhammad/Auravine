@@ -1,6 +1,7 @@
 'use client';
 
 import { Suspense, lazy } from 'react';
+import { ErrorBoundary } from '@/components/ui/ErrorBoundary';
 const Spline = lazy(() => import('@splinetool/react-spline'));
 
 interface InteractiveRobotSplineProps {
@@ -20,11 +21,13 @@ export function InteractiveRobotSpline({ scene, className }: InteractiveRobotSpl
         </div>
       }
     >
-      
-      <Spline
-        scene={scene}
-        className={className} 
-      />
+      {/* If the remote scene cannot be fetched, render nothing instead of failing the page. */}
+      <ErrorBoundary fallback={<div className={className} />}>
+        <Spline
+          scene={scene}
+          className={className}
+        />
+      </ErrorBoundary>
     </Suspense>
   );
 }

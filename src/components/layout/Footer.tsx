@@ -5,6 +5,7 @@ import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { isPublished } from '@/config/pages';
 import { useTranslations } from 'next-intl';
 import { useTheme } from 'next-themes';
 import { Spotlight } from '@/components/ui/spotlight-new';
@@ -461,7 +462,7 @@ function AboutHoverMenu({ tNav, onExpandChange }: { tNav: (key: string) => strin
         { href: '/projects', label: tNav('projects') },
         { href: '/blog', label: tNav('blog') },
         { href: '/gallery', label: tNav('gallery') },
-    ];
+    ].filter((link) => isPublished(link.href));
 
     const active = isMobile ? isOpen : isHovered;
 

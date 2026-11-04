@@ -24,6 +24,7 @@ import ScrollAdventure from "@/components/ui/animated-scroll";
 import Bucket from "@/components/ui/bucket";
 import { ArgentLoopInfiniteSlider } from "@/components/ui/argent-loop-infinite-slider";
 import { HorizontalTimeline } from "@/components/ui/horizontal-timeline";
+import { PRODUCT_SCREENS } from "@/data/showcase";
 
 const showcaseMembers = [
     // 1. Discovery & Design
@@ -33,7 +34,7 @@ const showcaseMembers = [
         role: exp.position,
         description: exp.description,
         period: "Weeks 1 - 3",
-        image: "/journey/researchassistant2.webp",
+        image: "/process/discovery.webp",
         social: undefined
     })),
     // 2. Build & Integrate
@@ -43,7 +44,7 @@ const showcaseMembers = [
         role: exp.position,
         description: exp.description,
         period: "Weeks 4 - 12",
-        image: "/journey/aideveloperintern1.webp",
+        image: "/process/build.webp",
         social: undefined
     })),
     // 3. Launch & Operate
@@ -53,35 +54,19 @@ const showcaseMembers = [
         role: exp.position,
         description: exp.description,
         period: "Ongoing",
-        image: "/journey/computernetworkpracticumassistant2.webp",
+        image: "/process/operate.webp",
         social: undefined
     })),
     // 4. View more
     {
         id: 'view-more',
         name: 'View more',
-        role: 'Explore our process',
+        role: 'Start a project',
         image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1964&auto=format&fit=crop',
-        social: { website: '/experience' }
+        social: { website: '/contact' }
     }
 ];
-const GALLERY_IMAGES = [
-    "/gallery/Foto Utama.webp",
-    "/gallery/FotoSC1.webp",
-    "/gallery/FotoSC2.webp",
-    "/gallery/FotoSC3.webp",
-    "/gallery/FotoSC4.webp",
-    "/gallery/FotoSC5.webp",
-    "/gallery/academicaffairsdivision1.webp",
-    "/gallery/computernetworkpracticumassistant2.webp",
-    "/gallery/dataentryassistant1.webp",
-    "/gallery/delegateaiesecfutureleaders20241.webp",
-    "/gallery/environmentalhygieneteam1.webp",
-    "/gallery/environmentalhygieneteam2.webp",
-    "/gallery/logisticsoperatorcampusexpo20242.webp",
-    "/gallery/researchassistant1.webp",
-    "/gallery/researchassistant2.webp"
-];
+const GALLERY_IMAGES = PRODUCT_SCREENS.map((s) => s.src);
 
 const AboutLeadInImageStack = () => {
     const [randomData, setRandomData] = useState<{ src: string, rotate: number, x: number, y: number }[]>([]);
@@ -610,7 +595,7 @@ export default function AboutSection() {
                                     period: 'period' in member ? member.period : undefined,
                                     content: member.id === 'view-more' ? (
                                         <Link
-                                            href={member.social?.website || '/experience'}
+                                            href={member.social?.website || '/contact'}
                                             className="relative flex items-center h-[140px] w-[250px] z-30"
                                         >
                                             <div className="flex items-center gap-4">

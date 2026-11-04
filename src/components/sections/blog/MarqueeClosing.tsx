@@ -29,16 +29,16 @@ export const MarqueeClosing = ({ isLowPowerMode: parentLowPowerMode }: { isLowPo
 
     // Ocean Colors
     const oceanConfig = isDark ? {
-        // Dark Mode: Deep Black Ocean with Cyan Accents
+        // Dark mode: black ocean with the brand mint accent
         bg: 0x000000,
         grid: 0x222222, // Increased visibility from 0x050505
-        accent: 0x06b6d4, // Cyan-500
+        accent: 0x34d399, // brand (dark)
         opacity: 0.4
     } : {
         // Light Mode: White Ocean for seamless blending
         bg: 0xffffff,
         grid: 0x9ca3af, // Darker grid for light mode (gray-400)
-        accent: 0x2563eb, // Stronger blue (blue-600) to stand out more
+        accent: 0x047857, // brand (light)
         opacity: 0.4 // Lowered from 0.6 to make wireframe lines much sharper and visible
     };
 
@@ -55,7 +55,7 @@ export const MarqueeClosing = ({ isLowPowerMode: parentLowPowerMode }: { isLowPo
             <div className="absolute inset-0 z-0">
                 {!showOcean ? (
                     <div className={cn("absolute inset-0 transition-opacity duration-1000", isDark ? "bg-black" : "bg-white")}>
-                        <div className="absolute inset-0 opacity-20" style={{ backgroundImage: `radial-gradient(circle at 50% 120%, ${isDark ? '#06b6d4' : '#3b82f6'}, transparent)` }} />
+                        <div className="absolute inset-0 opacity-20" style={{ backgroundImage: `radial-gradient(circle at 50% 120%, ${isDark ? '#34d399' : '#047857'}, transparent)` }} />
                     </div>
                 ) : (
                     <LiquidOcean
@@ -112,48 +112,39 @@ export const MarqueeClosing = ({ isLowPowerMode: parentLowPowerMode }: { isLowPo
                     {/* Action Area: Newsletter & Navigation */}
                     <div className="w-full max-w-md mx-auto flex flex-col gap-6">
 
-                        {/* Newsletter Input */}
-                        <div className={cn(
-                            "relative group flex items-center p-1.5 rounded-full border-2 transition-all duration-300",
+                        {/* Primary action */}
+                        <Link href="/contact" className={cn(
+                            "relative group flex items-center justify-between gap-4 p-1.5 pl-6 rounded-full border-2 transition-all duration-300",
                             isDark
-                                ? "bg-white/5 border-white/10 backdrop-blur-md hover:border-cyan-500/50 hover:shadow-[0_0_30px_rgba(34,211,238,0.1)]"
-                                : "bg-card border-foreground/15 hover:border-blue-500/50 hover:shadow-[0_0_40px_rgba(59,130,246,0.15)] shadow-xl"
+                                ? "bg-white/5 border-white/10 backdrop-blur-md hover:border-brand/50"
+                                : "bg-card border-foreground/15 hover:border-brand/50 shadow-xl"
                         )}>
-                            <div className={`pl-4 ${isDark ? 'text-gray-300' : 'text-gray-500'}`}>
+                            <span className={cn("flex items-center gap-3 text-sm font-medium", isDark ? "text-white/80" : "text-foreground")}>
                                 <Mail className="w-5 h-5" />
-                            </div>
-                            <input
-                                type="email"
-                                placeholder="Enter your email for updates..."
-                                className={cn(
-                                    "w-full bg-transparent border-none focus:ring-0 px-4 py-2 outline-none text-sm font-medium",
-                                    isDark ? "text-white placeholder:text-white/40" : "text-foreground placeholder:text-muted-foreground"
-                                )}
-                            />
-                            <button className={cn(
-                                "px-6 py-2.5 rounded-full text-sm font-black uppercase tracking-[0.15em] transition-all duration-500 hover:scale-105 active:scale-95",
-                                isDark
-                                    ? "bg-cyan-500 text-black hover:bg-cyan-400 hover:shadow-[0_0_20px_rgba(6,182,212,0.4)]"
-                                    : "bg-foreground text-background hover:bg-primary shadow-xl shadow-primary/20"
+                                Tell us what you want to automate
+                            </span>
+                            <span className={cn(
+                                "px-6 py-2.5 rounded-full text-sm font-black uppercase tracking-[0.15em] transition-transform duration-200 group-active:scale-95",
+                                isDark ? "bg-brand text-black" : "bg-foreground text-background"
                             )}>
-                                Join
-                            </button>
-                        </div>
+                                Book a call
+                            </span>
+                        </Link>
 
                         {/* Secondary Navigation Links */}
                         <div className="flex items-center justify-center gap-6 text-sm font-medium tracking-wide">
                             <Link href="/contact" className={cn(
                                 "flex items-center gap-2 transition-colors",
-                                isDark ? "text-white/50 hover:text-cyan-400" : "text-muted-foreground hover:text-primary"
+                                isDark ? "text-white/50 hover:text-brand" : "text-muted-foreground hover:text-primary"
                             )}>
-                                <span>Contact Me</span>
+                                <span>Contact us</span>
                                 <ArrowUpRight className="w-3 h-3" />
                             </Link>
                             <Link href="/projects" className={cn(
                                 "flex items-center gap-2 transition-colors",
-                                isDark ? "text-white/50 hover:text-cyan-400" : "text-muted-foreground hover:text-primary"
+                                isDark ? "text-white/50 hover:text-brand" : "text-muted-foreground hover:text-primary"
                             )}>
-                                <span>View Projects</span>
+                                <span>View solutions</span>
                                 <ArrowUpRight className="w-3 h-3" />
                             </Link>
                         </div>
@@ -176,18 +167,18 @@ const SocialPill = ({ href, icon, label, isDark }: { href: string; icon: React.R
                 rounded-full backdrop-blur-md 
                 transition-all duration-300 transform hover:-translate-y-1
                 ${isDark
-                    ? 'bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-500/50 hover:shadow-[0_0_30px_rgba(34,211,238,0.15)]'
-                    : 'bg-white/80 hover:bg-white border border-gray-900/20 hover:border-blue-600 hover:shadow-[0_0_30px_rgba(37,99,235,0.1)]'
+                    ? 'bg-white/5 hover:bg-white/10 border border-white/10 hover:border-brand/50 hover:shadow-[0_0_30px_hsl(var(--brand)/0.15)]'
+                    : 'bg-white/80 hover:bg-white border border-gray-900/20 hover:border-brand hover:shadow-[0_0_30px_rgba(37,99,235,0.1)]'
                 }
             `}
         >
-            <span className={`transition-colors ${isDark ? 'text-gray-300 group-hover:text-cyan-400' : 'text-gray-800 group-hover:text-blue-600'}`}>
+            <span className={`transition-colors ${isDark ? 'text-gray-300 group-hover:text-brand' : 'text-gray-800 group-hover:text-brand'}`}>
                 {icon}
             </span>
             <span className={`font-semibold tracking-wide ${isDark ? 'text-gray-200 group-hover:text-white' : 'text-gray-900 group-hover:text-black'}`}>
                 {label}
             </span>
-            <ArrowUpRight className={`w-4 h-4 opacity-0 group-hover:opacity-100 transition-all transform -translate-x-2 group-hover:translate-x-0 ${isDark ? 'text-gray-500 group-hover:text-cyan-400' : 'text-gray-500 group-hover:text-blue-600'}`} />
+            <ArrowUpRight className={`w-4 h-4 opacity-0 group-hover:opacity-100 transition-all transform -translate-x-2 group-hover:translate-x-0 ${isDark ? 'text-gray-500 group-hover:text-brand' : 'text-gray-500 group-hover:text-brand'}`} />
         </Link>
     );
 };

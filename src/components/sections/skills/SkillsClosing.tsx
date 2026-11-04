@@ -58,8 +58,8 @@ export const SkillsClosing = () => {
                     transition={isLowPowerMode ? {} : { duration: 45, repeat: Infinity, ease: "linear" }}
                     className="flex whitespace-nowrap gap-24 text-[12vw] font-black uppercase leading-none text-foreground"
                 >
-                    <span>Creative Engineering</span>
-                    <span>Creative Engineering</span>
+                    <span>Applied AI</span>
+                    <span>Applied AI</span>
                 </motion.div>
             </div>
 

@@ -48,19 +48,21 @@ export function QuantumError({ type = '404', reset }: QuantumErrorProps) {
     }, [mouseX, mouseY, isLowPowerMode]);
 
     const title = type === '404' ? '404' : 'ERROR';
-    const subtitle = type === '404' ? 'YOU ARE LOST!?' : 'EXCEPTION_CAUGHT';
+    const subtitle = type === '404' ? 'PAGE NOT FOUND' : 'PAGE FAILED TO LOAD';
     const description = type === '404'
-        ? "The page you're looking for is missing."
-        : "An internal technical error has occurred.";
+        ? "This page doesn't exist or has moved. Head back home, or explore our solutions."
+        : "Something on this page didn't load. Try again, or go back to the home page.";
 
-    const formattedDate = currentTime.toLocaleDateString('id-ID', {
+    const formattedDate = currentTime.toLocaleDateString('en-GB', {
+        timeZone: 'Asia/Dhaka',
         weekday: 'long',
         year: 'numeric',
         month: 'long',
         day: 'numeric'
     }).toUpperCase();
 
-    const formattedTime = currentTime.toLocaleTimeString('id-ID', {
+    const formattedTime = currentTime.toLocaleTimeString('en-GB', {
+        timeZone: 'Asia/Dhaka',
         hour: '2-digit',
         minute: '2-digit',
         second: '2-digit',
@@ -126,7 +128,7 @@ export function QuantumError({ type = '404', reset }: QuantumErrorProps) {
                     <Link href="/">
                         <button className="group relative flex items-center gap-3 px-8 py-4 rounded-full bg-foreground text-background font-bold text-sm tracking-wide transition-all hover:pr-10">
                             <Home size={18} />
-                            <span>Return Home</span>
+                            <span>Back to home</span>
                             <div className="absolute right-4 opacity-0 group-hover:opacity-100 transition-opacity">
                                 <MoveLeft size={16} className="rotate-180" />
                             </div>
@@ -139,7 +141,7 @@ export function QuantumError({ type = '404', reset }: QuantumErrorProps) {
                             className="flex items-center gap-3 text-muted-foreground hover:text-foreground font-bold text-sm tracking-wide transition-colors"
                         >
                             <RefreshCcw size={18} />
-                            <span>Reboot Session</span>
+                            <span>Try again</span>
                         </button>
                     ) : (
                         <button
@@ -147,7 +149,7 @@ export function QuantumError({ type = '404', reset }: QuantumErrorProps) {
                             className="flex items-center gap-3 text-muted-foreground hover:text-foreground font-bold text-sm tracking-wide transition-colors"
                         >
                             <MoveLeft size={18} />
-                            <span>Step Back</span>
+                            <span>Go back</span>
                         </button>
                     )}
                 </motion.div>
@@ -157,7 +159,7 @@ export function QuantumError({ type = '404', reset }: QuantumErrorProps) {
             <div className="absolute bottom-12 left-12 z-20 hidden md:block">
                 <div className="flex flex-col font-mono text-left select-none">
                     <div className="flex items-center gap-2 text-primary font-black text-[11px] tracking-[0.2em] uppercase mb-1 opacity-80">
-                        <span>JAKARTA, INDONESIA</span>
+                        <span>DHAKA, BANGLADESH</span>
                     </div>
                     <div className="text-[10px] font-black uppercase tracking-[0.1em] text-foreground/40 mb-2">
                         {formattedDate}

@@ -36,6 +36,8 @@ const techDescriptions: Record<string, string> = {
     'LangChain': 'Large language model application orchestration.',
     'PyTorch': 'Dynamic neural networks for research and production.',
     'OpenCV': 'Real-time computer vision capabilities.',
+    'FastAPI': 'Typed Python APIs that serve AI models.',
+    'Flask': 'Lightweight Python services and model endpoints.',
 };
 
 export const KineticTechGrid = ({ items, className }: KineticTechGridProps) => {
@@ -62,7 +64,7 @@ export const KineticTechGrid = ({ items, className }: KineticTechGridProps) => {
 const TechCard = ({ tech, idx, isLowPowerMode }: { tech: TechItem, idx: number, isLowPowerMode?: boolean }) => {
     const cardRef = useRef<HTMLDivElement>(null);
 
-    const description = techDescriptions[tech.name] || `Builds cutting-edge ${tech.name} architectures.`;
+    const description = techDescriptions[tech.name] || 'Part of the Auravine engineering stack.';
 
     return (
         <motion.div

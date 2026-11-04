@@ -17,7 +17,7 @@ interface ProjectData {
 const PROJECT_DATA: ProjectData[] = [
   {
     title: "Shefa: AI Front-Desk Agent",
-    image: "/project/featured/shefa-hero.svg",
+    image: "/project/featured/shefa-hero.webp",
     category: "Healthcare AI",
     year: "2026",
     description: "Answers hospital calls in Bangla and English and books doctor slots.",
@@ -25,7 +25,7 @@ const PROJECT_DATA: ProjectData[] = [
   },
   {
     title: "Safar: Electric Shuttle",
-    image: "/project/featured/safar-hero.svg",
+    image: "/project/featured/safar-hero.webp",
     category: "Mobility",
     year: "2026",
     description: "25 electric shuttles on fixed Dhaka routes, with live tracking for commuters.",
@@ -33,7 +33,7 @@ const PROJECT_DATA: ProjectData[] = [
   },
   {
     title: "The Handset Depot",
-    image: "/project/featured/handset-depot-hero.svg",
+    image: "/project/featured/handset-depot-hero.webp",
     category: "E-Commerce",
     year: "2026",
     description: "Pre-owned and new phones, servicing, and accessories with full store management.",
@@ -41,7 +41,7 @@ const PROJECT_DATA: ProjectData[] = [
   },
   {
     title: "SpanishStitch",
-    image: "/project/featured/spanishstitch-hero.svg",
+    image: "/project/featured/spanishstitch-hero.webp",
     category: "Enterprise SaaS",
     year: "2026",
     description: "RMG buying house CMS for RFQs, orders, clients, and styles in production.",
@@ -239,14 +239,14 @@ export function ArgentLoopInfiniteSlider() {
 
         /* Independent GitHub hover */
         .custom-btn-github:hover {
-            background: #c1e44a !important;
+            background: hsl(var(--brand)) !important;
             color: black !important;
         }
 
         /* Synchronized View More + Arrow hover */
         .group-projects:hover .custom-btn,
         .group-projects:hover .custom-btn-arrow {
-            background: #c1e44a !important;
+            background: hsl(var(--brand)) !important;
             color: black !important;
         }
 
@@ -358,7 +358,7 @@ export function ArgentLoopInfiniteSlider() {
                   
                   <MagneticEffect>
                     <div className="group-projects flex items-center gap-2">
-                      <Link href="/projects" className="custom-btn group-hover:scale-105 active:scale-95 group-hover:shadow-[0_0_30px_rgba(193,228,74,0.3)]">
+                      <Link href="/projects" className="custom-btn group-hover:scale-105 active:scale-95 group-hover:shadow-[0_0_30px_hsl(var(--brand)/0.3)]">
                         View More
                       </Link>
                       <Link href="/projects" className="custom-btn-arrow group-hover:scale-110 active:scale-95 transition-transform shadow-xl">

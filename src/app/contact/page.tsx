@@ -75,7 +75,7 @@ function SocialCard({ item }: { item: any }) {
                 </div>
                 <div className="flex flex-col">
                     <span className="text-lg font-bold text-foreground group-hover:text-primary transition-colors tracking-tight">{item.name}</span>
-                    <span className="text-xs font-medium text-muted-foreground group-hover:text-foreground/80">@{item.username}</span>
+                    <span className="text-xs font-medium text-muted-foreground group-hover:text-foreground/80">{item.name === 'Email' ? item.username : `@${item.username}`}</span>
                 </div>
             </div>
 
@@ -300,7 +300,7 @@ export default function ContactPage() {
 
     const getSocialItem = (platform: string) => {
         if (platform === 'email') {
-            return { name: 'Email', username: portfolioData.personal.email || 'Coming soon', body: 'Contact', image: Mail, url: '#' };
+            return { name: 'Email', username: portfolioData.personal.email || 'Use the form below', body: 'Contact', image: Mail, url: '#' };
         }
         const link = portfolioData.personal.socialLinks.find(l => l.platform.toLowerCase() === platform);
         return {
@@ -313,7 +313,7 @@ export default function ContactPage() {
     };
 
     const row1Real = ['linkedin', 'github', 'email'].map(getSocialItem);
-    const row2Real = ['twitter'].map(getSocialItem);
+    const row2Real = ['email', 'twitter', 'github'].map(getSocialItem);
 
     const containerRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({

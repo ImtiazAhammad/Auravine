@@ -53,7 +53,7 @@ export function AnimatedFolder({ title, projects, className }: AnimatedFolderPro
         <div className="relative flex items-center justify-center mb-0 mt-4" style={{ height: "140px", width: "240px" }}>
           {/* Folder back layer - z-index 10 */}
           <div
-            className="absolute w-40 h-32 bg-orange-600 rounded-lg shadow-md"
+            className="absolute w-40 h-32 bg-brand-hover rounded-lg shadow-md"
             style={{
               transformOrigin: "bottom center",
               transform: isHovered ? "rotateX(-15deg)" : "rotateX(0deg)",
@@ -64,7 +64,7 @@ export function AnimatedFolder({ title, projects, className }: AnimatedFolderPro
 
           {/* Folder tab - z-index 10 */}
           <div
-            className="absolute w-16 h-6 bg-orange-500 rounded-t-md"
+            className="absolute w-16 h-6 bg-brand rounded-t-md"
             style={{
               top: "calc(50% - 64px - 16px)",
               left: "calc(50% - 80px + 20px)",
@@ -99,7 +99,7 @@ export function AnimatedFolder({ title, projects, className }: AnimatedFolderPro
 
           {/* Folder front layer - z-index 30 */}
           <div
-            className="absolute w-40 h-32 bg-orange-500 rounded-lg shadow-lg"
+            className="absolute w-40 h-32 bg-brand rounded-lg shadow-lg"
             style={{
               top: "calc(50% - 64px + 6px)",
               transformOrigin: "bottom center",

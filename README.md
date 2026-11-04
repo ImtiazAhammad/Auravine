@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="public/Arfazrll_light.svg" alt="Auravine logo" width="80" height="80" />
+<img src="public/brand/auravine-logo.svg" alt="Auravine" height="56" />
 
 # Auravine — AI-First Software Development
 
@@ -72,6 +72,21 @@ auravine-website/
 ```
 
 ---
+
+## Brand Assets
+
+All imagery (logo, product screens, blog covers, badge textures, social image) is rendered from code so it always follows the design system in [DESIGN.md](DESIGN.md).
+
+```bash
+npm run assets:generate              # render every asset
+npm run assets:generate -- shefa     # render only scenes whose name contains "shefa"
+```
+
+This needs Google Chrome or Chromium (set `CHROME_BIN` if it is not found automatically) and the Inter typeface installed. Scenes are defined in `scripts/brand-assets/scenes.mjs` and built from the helpers in `scripts/brand-assets/kit.mjs`. The logo is built separately by `scripts/brand-assets/build_logo.py`.
+
+## Published Pages
+
+Experience, Achievements, and Gallery are unpublished: they return 404 and are hidden from navigation. Edit `src/config/pages.ts` to publish them again.
 
 ## Updating Content
 

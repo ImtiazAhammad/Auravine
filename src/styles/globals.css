@@ -14,7 +14,7 @@
     --secondary: 0 0% 96%;
     --secondary-foreground: 0 0% 9%;
     --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
+    --muted-foreground: 0 0% 42%;
     --accent: 0 0% 96%;
     --accent-foreground: 0 0% 9%;
     --border: 0 0% 90%;
@@ -30,6 +30,9 @@
     --chart-4: 0 0% 65%;
     --chart-5: 0 0% 80%;
     --radius: 0.5rem;
+    /* Auravine brand accent (emerald). Text links, icons, focus rings, one chart series. */
+    --brand: 163 94% 24%;
+    --brand-hover: 163 88% 20%;
   }
 
   .dark {
@@ -44,6 +47,8 @@
     --secondary-foreground: 0 0% 98%;
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 65%;
+    --brand: 158 64% 52%;
+    --brand-hover: 156 72% 67%;
     --accent: 0 0% 15%;
     --accent-foreground: 0 0% 98%;
     --border: 0 0% 20%;
@@ -82,7 +87,18 @@
   }
 
   ::selection {
-    @apply bg-primary/20 text-foreground;
+    background-color: hsl(var(--brand) / 0.22);
+    color: hsl(var(--foreground));
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--brand));
+    outline-offset: 3px;
+  }
+
+  input,
+  textarea {
+    caret-color: hsl(var(--brand));
   }
 }
 

@@ -112,7 +112,7 @@ export const IdentitySequence = ({ scrollYProgress, isVisible }: IdentitySequenc
         <span key="1" className="text-[10rem] md:text-[16rem] font-black uppercase tracking-tighter mx-12 text-black dark:text-white leading-none">
             {portfolioData.personal.title}
         </span>,
-        <div key="icon" className="w-32 h-32 md:w-48 md:h-48 rounded-full bg-[#D1FF4D] flex items-center justify-center mx-12">
+        <div key="icon" className="w-32 h-32 md:w-48 md:h-48 rounded-full bg-brand flex items-center justify-center mx-12">
             <svg viewBox="0 0 100 100" className="w-20 h-20 md:w-32 md:h-32 fill-black dark:fill-zinc-900">
                 <path d="M50 0 C60 30 100 40 100 50 C100 60 60 70 50 100 C40 70 0 60 0 50 C0 40 40 30 50 0" />
             </svg>
@@ -130,7 +130,7 @@ export const IdentitySequence = ({ scrollYProgress, isVisible }: IdentitySequenc
                 <div className="mb-16 pointer-events-auto">
                     <MagneticEffect>
                         <div className="group flex items-center gap-2 cursor-pointer">
-                            <div className="relative px-10 py-5 rounded-full bg-black dark:bg-white group-hover:bg-[#c1e44a] dark:group-hover:bg-[#c1e44a] overflow-hidden transition-all duration-500 shadow-lg group-hover:shadow-[0_0_30px_rgba(193,228,74,0.3)]">
+                            <div className="relative px-10 py-5 rounded-full bg-black dark:bg-white group-hover:bg-brand dark:group-hover:bg-brand overflow-hidden transition-all duration-500 shadow-lg group-hover:shadow-[0_0_30px_hsl(var(--brand)/0.3)]">
                                 <div className="relative z-10 h-7 overflow-hidden">
                                     <div className="flex flex-col transition-transform duration-500 ease-out group-hover:-translate-y-1/2">
                                         <span className="text-white dark:text-black group-hover:text-black font-bold text-xl leading-7 transition-colors duration-500">
@@ -143,7 +143,7 @@ export const IdentitySequence = ({ scrollYProgress, isVisible }: IdentitySequenc
                                 </div>
                             </div>
 
-                            <div className="relative w-16 h-16 rounded-full bg-black dark:bg-white group-hover:bg-[#c1e44a] dark:group-hover:bg-[#c1e44a] overflow-hidden flex items-center justify-center transition-all duration-500 shadow-lg">
+                            <div className="relative w-16 h-16 rounded-full bg-black dark:bg-white group-hover:bg-brand dark:group-hover:bg-brand overflow-hidden flex items-center justify-center transition-all duration-500 shadow-lg">
                                 <div className="relative z-10 h-8 overflow-hidden">
                                     <div className="flex flex-col transition-transform duration-500 ease-out group-hover:-translate-y-1/2">
                                         <ArrowUpRight className="w-8 h-8 text-white dark:text-black group-hover:text-black transition-colors duration-500" />

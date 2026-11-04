@@ -8,9 +8,11 @@ import Link from 'next/link';
 import gsap from "gsap";
 import { ProfileCard } from "@/components/ui/profile-card";
 import { Spotlight } from "@/components/ui/spotlight-new";
+import { useRouter } from 'next/navigation';
 
 export function HeroVisual({ isExiting = false }: { isExiting?: boolean }) {
   const { personal } = portfolioData;
+  const router = useRouter();
   const [showProfile, setShowProfile] = useState(false);
   const [tooltip, setTooltip] = useState<{ show: boolean; text: string; x: number; y: number; icon: 'zap' | 'bot' | null }>({
     show: false,
@@ -168,18 +170,18 @@ export function HeroVisual({ isExiting = false }: { isExiting?: boolean }) {
             )}
           </AnimatePresence>
 
-          {/* Line 1: AI & DATA */}
+          {/* Line 1: AI-FIRST */}
           <div className="md:flex gap-8 items-center relative">
             <motion.p
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-[10px] md:text-xs text-muted-foreground text-start md:text-right leading-relaxed max-w-[200px] md:max-w-[220px] font-medium uppercase tracking-[0.2em]"
+              className="text-[10px] md:text-xs text-muted-foreground text-start md:text-right leading-relaxed max-w-[200px] md:max-w-[220px] font-medium uppercase tracking-[0.2em] mb-4 md:mb-0"
             >
               Welcome to {personal.name}. We build AI systems that help businesses grow.
             </motion.p>
             <div className="relative">
-              <div ref={githubRef} className="absolute -top-4 right-0 md:right-2 text-primary/60 hover:text-primary z-20 opacity-0">
+              <div ref={githubRef} className="hidden md:block absolute -top-4 right-0 md:right-2 text-primary/60 hover:text-primary z-20 opacity-0">
                 <span className="block">
                   <Github size={32} />
                 </span>
@@ -190,7 +192,7 @@ export function HeroVisual({ isExiting = false }: { isExiting?: boolean }) {
                 transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                 className="text-[clamp(3rem,11vw,13rem)] font-black leading-[0.85] tracking-tighter text-shiny will-change-transform px-4"
               >
-                AI & DATA
+                AI-FIRST
               </motion.h1>
             </div>
           </div>
@@ -198,12 +200,12 @@ export function HeroVisual({ isExiting = false }: { isExiting?: boolean }) {
           {/* Line 2: SOFT [ICON] WARE */}
           <div className="md:flex gap-8 items-center relative">
             <div className="relative">
-              <div ref={linkedinRef} className="absolute -top-8 left-4 text-primary/60 hover:text-primary z-20 opacity-0">
+              <div ref={linkedinRef} className="hidden md:block absolute -top-8 left-4 text-primary/60 hover:text-primary z-20 opacity-0">
                 <span className="block">
                   <Linkedin size={32} />
                 </span>
               </div>
-              <div ref={mailRef} className="absolute -bottom-12 right-24 md:right-36 text-primary/60 hover:text-primary z-20 opacity-0">
+              <div ref={mailRef} className="hidden md:block absolute -bottom-12 right-24 md:right-36 text-primary/60 hover:text-primary z-20 opacity-0">
                 <span className="block">
                   <Mail size={32} />
                 </span>
@@ -212,43 +214,43 @@ export function HeroVisual({ isExiting = false }: { isExiting?: boolean }) {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isExiting ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ duration: 1.2, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className="text-[clamp(3rem,11vw,13rem)] md:flex items-center font-black leading-[0.85] tracking-tighter text-shiny will-change-transform px-4"
+                className="text-[clamp(3rem,11vw,13rem)] flex items-center font-black leading-[0.85] tracking-tighter text-shiny will-change-transform px-4"
               >
                 <span className="">SOFT</span>
                 <div
                   ref={zapRef}
                   className="hidden lg:block mx-[0.05em] relative cursor-pointer group"
-                  onClick={() => window.open('#', '_blank')}
-                  onMouseEnter={(e) => setTooltip({ show: true, text: "Go to Workspace", icon: 'zap', x: e.clientX, y: e.clientY })}
+                  onClick={() => router.push('/projects')}
+                  onMouseEnter={(e) => setTooltip({ show: true, text: "See what we have built", icon: 'zap', x: e.clientX, y: e.clientY })}
                   onMouseMove={(e) => setTooltip(prev => ({ ...prev, x: e.clientX, y: e.clientY }))}
                   onMouseLeave={() => setTooltip(prev => ({ ...prev, show: false }))}
                 >
-                  <Zap className="w-[0.8em] h-[0.8em] text-sky-400 group-hover:text-sky-300 transition-colors" strokeWidth={1.5} />
+                  <Zap className="w-[0.8em] h-[0.8em] text-brand group-hover:text-brand-hover transition-colors" strokeWidth={1.5} />
                 </div>
                 <div
                   ref={zapSmallRef}
                   className="block lg:hidden mx-[0.02em] relative cursor-pointer group"
-                  onClick={() => window.open('#', '_blank')}
-                  onMouseEnter={(e) => setTooltip({ show: true, text: "Go to Workspace", icon: 'zap', x: e.clientX, y: e.clientY })}
+                  onClick={() => router.push('/projects')}
+                  onMouseEnter={(e) => setTooltip({ show: true, text: "See what we have built", icon: 'zap', x: e.clientX, y: e.clientY })}
                   onMouseMove={(e) => setTooltip(prev => ({ ...prev, x: e.clientX, y: e.clientY }))}
                   onMouseLeave={() => setTooltip(prev => ({ ...prev, show: false }))}
                 >
-                  <Zap className="w-[0.8em] h-[0.8em] text-sky-400 group-hover:text-sky-300 transition-colors" strokeWidth={2} />
+                  <Zap className="w-[0.8em] h-[0.8em] text-brand group-hover:text-brand-hover transition-colors" strokeWidth={2} />
                 </div>
                 <span className="">WARE</span>
               </motion.h1>
             </div>
           </div>
 
-          {/* Line 3: EN [ICON] GINEER */}
+          {/* Line 3: PARTN [ICON] ERS */}
           <div className="md:flex gap-8 items-center relative">
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={isExiting ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="text-[clamp(3rem,11vw,13rem)] md:flex items-center font-black leading-[0.85] tracking-tighter text-shiny will-change-transform px-4"
+              className="text-[clamp(3rem,11vw,13rem)] flex items-center font-black leading-[0.85] tracking-tighter text-shiny will-change-transform px-4"
             >
-              <span className="">EN</span>
+              <span className="">PARTN</span>
               <div
                 ref={botRef}
                 className="mx-[0.05em] relative cursor-pointer group"
@@ -262,9 +264,9 @@ export function HeroVisual({ isExiting = false }: { isExiting?: boolean }) {
                 onMouseMove={(e) => setTooltip(prev => ({ ...prev, x: e.clientX, y: e.clientY }))}
                 onMouseLeave={() => setTooltip(prev => ({ ...prev, show: false }))}
               >
-                <Bot className="w-[0.85em] h-[0.85em] text-yellow-500 fill-yellow-500/10 group-hover:text-yellow-400 group-hover:fill-yellow-400/20 transition-colors" />
+                <Bot className="w-[0.85em] h-[0.85em] text-brand fill-brand/10 group-hover:text-brand-hover group-hover:fill-brand/20 transition-colors" />
               </div>
-              <span className="">GINEER</span>
+              <span className="">ERS</span>
             </motion.h1>
 
             <motion.p
@@ -273,7 +275,7 @@ export function HeroVisual({ isExiting = false }: { isExiting?: boolean }) {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-[10px] md:text-xs text-muted-foreground pt-4 md:pt-8 leading-relaxed max-w-[250px] md:max-w-[200px] font-medium uppercase tracking-widest"
             >
-              Open to all forms of collaboration, regardless of location and language.
+              Working with businesses in Bangladesh and worldwide, in Bangla and English.
             </motion.p>
           </div>
         </div>
@@ -302,7 +304,7 @@ export function HeroVisual({ isExiting = false }: { isExiting?: boolean }) {
             className="bg-white text-black py-10 px-4 text-[10px] font-black uppercase tracking-[0.5em] shadow-2xl rounded-r-3xl border-r border-y border-zinc-200 cursor-pointer"
           >
             <span className="rotate-0 [writing-mode:vertical-rl]">
-              AVAILABLE FOR OPPORTUNITY
+              BOOKING NEW PROJECTS
             </span>
           </motion.div>
         </div>
