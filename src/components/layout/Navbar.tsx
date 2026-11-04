@@ -4,6 +4,7 @@ import { useState, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { isPublished } from '@/config/pages';
 import { useTranslations } from 'next-intl';
 import { Menu, X, Moon, Sun, Globe, ChevronDown, Focus } from 'lucide-react';
 import { useTheme } from 'next-themes';
@@ -49,12 +50,12 @@ const useNavItems = () => {
         {
             label: "About",
             links: [
-                { label: t('achievements'), href: "/achievements", description: t('achievementsDesc') },
-                { label: t('skills'), href: "/skills", description: t('skillsDesc') },
-                { label: t('experience'), href: "/experience", description: t('experienceDesc') },
                 { label: t('projects'), href: "/projects", description: t('projectsDesc') },
+                { label: t('skills'), href: "/skills", description: t('skillsDesc') },
                 { label: t('blog'), href: "/blog", description: t('blogDesc') },
-            ]
+                { label: t('achievements'), href: "/achievements", description: t('achievementsDesc') },
+                { label: t('experience'), href: "/experience", description: t('experienceDesc') },
+            ].filter((link) => isPublished(link.href))
         }
     ];
 };

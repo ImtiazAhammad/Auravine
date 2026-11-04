@@ -9,7 +9,6 @@
         "blog": "ইনসাইটস",
         "gallery": "গ্যালারি",
         "contact": "যোগাযোগ",
-        "resume": "কোম্পানি প্রোফাইল",
         "tools": "টুলস",
         "menu": {
             "achievements": "অঙ্গীকার",
@@ -220,7 +219,8 @@
             "solution": "আমাদের পদ্ধতি",
             "liveDemo": "লাইভ ডেমো",
             "sourceCode": "সোর্স কোড",
-            "illustrativeNote": "উদাহরণস্বরূপ সংখ্যা। প্রকাশের আগে পাইলট তথ্য দিয়ে বদলান।"
+            "illustrativeNote": "উদাহরণস্বরূপ সংখ্যা। প্রকাশের আগে পাইলট তথ্য দিয়ে বদলান।",
+            "requestWalkthrough": "ওয়াকথ্রু অনুরোধ করুন"
         },
         "status": {
             "ongoing": "সক্রিয় উন্নয়ন",
@@ -482,7 +482,7 @@
         "categories": {
             "applied-ai": "প্রয়োগিক AI",
             "software-development": "সফটওয়্যার",
-            "about-me": "আমাদের সম্পর্কে",
+            "company": "কোম্পানি",
             "more": "আরও"
         }
     },

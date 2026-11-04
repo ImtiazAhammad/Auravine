@@ -9,7 +9,6 @@
         "blog": "Insights",
         "gallery": "Gallery",
         "contact": "Contact",
-        "resume": "Company Profile",
         "tools": "Tools",
         "menu": {
             "achievements": "Commitments",
@@ -220,7 +219,8 @@
             "solution": "Our Approach",
             "liveDemo": "Live Demo",
             "sourceCode": "Source Code",
-            "illustrativeNote": "Illustrative figures. Replace with pilot data before publishing."
+            "illustrativeNote": "Illustrative figures. Replace with pilot data before publishing.",
+            "requestWalkthrough": "Request a walkthrough"
         },
         "status": {
             "ongoing": "Active Development",
@@ -482,7 +482,7 @@
         "categories": {
             "applied-ai": "Applied AI",
             "software-development": "Software",
-            "about-me": "About Us",
+            "company": "Company",
             "more": "More"
         }
     },

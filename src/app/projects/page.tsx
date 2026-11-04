@@ -22,6 +22,7 @@ import { ProjectPlaceholder, getPlaceholderImageUrl } from '@/components/project
 import { DeferredMount } from '@/components/ui/DeferredMount';
 
 import { getProjectImages } from '@/app/actions/getProjectImages';
+import { PRODUCT_SCREENS } from '@/data/showcase';
 
 type FilterType = 'all' | 'ongoing' | 'completed';
 
@@ -205,7 +206,7 @@ function ProjectListItem({
                         className={cn(
                             "text-2xl sm:text-4xl md:text-5xl font-black tabular-nums transition-colors duration-500",
                             isHovered
-                                ? (isOngoing ? "text-emerald-500 dark:text-emerald-400" : "text-blue-500 dark:text-blue-400")
+                                ? (isOngoing ? "text-brand dark:text-brand" : "text-brand dark:text-brand")
                                 : "text-muted-foreground/20"
                         )}
                         animate={{ scale: isHovered ? 1.1 : 1, x: isHovered ? 5 : 0 }}
@@ -227,8 +228,8 @@ function ProjectListItem({
                             <span className={cn(
                                 "shrink-0 px-2 sm:px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider",
                                 isOngoing
-                                    ? "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 dark:border-emerald-500/20"
-                                    : "bg-blue-500/15 text-blue-600 dark:text-blue-400 border border-blue-500/30 dark:border-blue-500/20"
+                                    ? "bg-brand/15 text-brand dark:text-brand border border-brand/30 dark:border-brand/20"
+                                    : "bg-brand/15 text-brand dark:text-brand border border-brand/30 dark:border-brand/20"
                             )}>
                                 {isOngoing ? 'ongoing' : 'done'}
                             </span>
@@ -249,7 +250,7 @@ function ProjectListItem({
                     >
                         <span className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors">view</span>
                         <motion.div animate={{ x: isHovered ? 5 : 0 }} transition={{ duration: 0.3 }}>
-                            <ArrowRight className={cn("w-5 h-5 transition-colors", isHovered ? (isOngoing ? "text-emerald-500 dark:text-emerald-400" : "text-blue-500 dark:text-blue-400") : "text-muted-foreground")} />
+                            <ArrowRight className={cn("w-5 h-5 transition-colors", isHovered ? (isOngoing ? "text-brand dark:text-brand" : "text-brand dark:text-brand") : "text-muted-foreground")} />
                         </motion.div>
                     </motion.div>
                     <ArrowUpRight className="w-5 h-5 text-muted-foreground sm:hidden" />
@@ -275,7 +276,7 @@ function ProjectListItem({
                                         transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
                                     >
                                         {[...Array(4)].map((_, i) => (
-                                            <span key={i} className={cn("mx-4 text-sm font-mono tracking-wider", isOngoing ? "text-emerald-600/60 dark:text-emerald-400/60" : "text-blue-600/60 dark:text-blue-400/60")}>
+                                            <span key={i} className={cn("mx-4 text-sm font-mono tracking-wider", isOngoing ? "text-brand/60 dark:text-brand/60" : "text-brand/60 dark:text-brand/60")}>
                                                 {techText} •
                                             </span>
                                         ))}
@@ -451,7 +452,7 @@ function FeaturedCard({ project, onClick, index, isLowPowerMode }: { project: Pr
                             <motion.div
                                 className={cn(
                                     "absolute w-40 h-40 rounded-full blur-[80px] z-0 opacity-40",
-                                    isOngoing ? "bg-emerald-500/20" : "bg-blue-500/20"
+                                    isOngoing ? "bg-brand/20" : "bg-brand/20"
                                 )}
                                 style={{ top: '10%', right: '15%' }}
                                 animate={{
@@ -462,7 +463,7 @@ function FeaturedCard({ project, onClick, index, isLowPowerMode }: { project: Pr
                                 transition={{ duration: 4, repeat: Infinity }}
                             />
                             <motion.div
-                                className="absolute w-32 h-32 rounded-full bg-violet-500/20 blur-[60px] z-0 opacity-40"
+                                className="absolute w-32 h-32 rounded-full bg-brand/20 blur-[60px] z-0 opacity-40"
                                 style={{ bottom: '20%', left: '10%' }}
                                 animate={{
                                     scale: isHovered ? [1, 1.3, 1] : 1,
@@ -511,17 +512,17 @@ function FeaturedCard({ project, onClick, index, isLowPowerMode }: { project: Pr
                                 animate={{ rotate: isHovered ? 360 : 0 }}
                                 transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
                             >
-                                <Sparkles className={cn("w-5 h-5", isOngoing ? "text-emerald-400" : "text-blue-400")} />
+                                <Sparkles className={cn("w-5 h-5", isOngoing ? "text-brand" : "text-brand")} />
                             </motion.div>
                             <span className={cn(
                                 "inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold backdrop-blur-md",
                                 isOngoing
-                                    ? "bg-emerald-500/15 text-emerald-400 border border-emerald-500/25"
-                                    : "bg-blue-500/15 text-blue-400 border border-blue-500/25"
+                                    ? "bg-brand/15 text-brand border border-brand/25"
+                                    : "bg-brand/15 text-brand border border-brand/25"
                             )}>
                                 <span className={cn(
                                     "w-2 h-2 rounded-full",
-                                    isOngoing ? "bg-emerald-400 animate-pulse" : "bg-blue-400"
+                                    isOngoing ? "bg-brand animate-pulse" : "bg-brand"
                                 )} />
                                 {isOngoing ? 'In Development' : 'Completed'}
                             </span>
@@ -536,7 +537,7 @@ function FeaturedCard({ project, onClick, index, isLowPowerMode }: { project: Pr
                             <motion.div
                                 className={cn(
                                     "absolute -bottom-1 left-0 h-1 rounded-full",
-                                    isOngoing ? "bg-gradient-to-r from-emerald-400 to-cyan-400" : "bg-gradient-to-r from-blue-400 to-violet-400"
+                                    isOngoing ? "bg-gradient-to-r from-brand to-brand" : "bg-gradient-to-r from-brand to-brand"
                                 )}
                                 initial={{ width: 0 }}
                                 animate={{ width: isHovered ? '60%' : '0%' }}
@@ -567,8 +568,8 @@ function FeaturedCard({ project, onClick, index, isLowPowerMode }: { project: Pr
                                     className={cn(
                                         "px-3 py-1.5 rounded-xl text-sm font-medium border backdrop-blur-sm",
                                         isOngoing
-                                            ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20"
-                                            : "bg-blue-500/10 text-blue-400 border-blue-500/20"
+                                            ? "bg-brand/10 text-brand border-brand/20"
+                                            : "bg-brand/10 text-brand border-brand/20"
                                     )}
                                     initial={{ opacity: 0, scale: 0.9 }}
                                     whileInView={{ opacity: 1, scale: 1 }}
@@ -584,13 +585,13 @@ function FeaturedCard({ project, onClick, index, isLowPowerMode }: { project: Pr
                             className={cn(
                                 "inline-flex items-center gap-2 px-6 py-3 rounded-2xl font-semibold transition-all duration-300",
                                 isOngoing
-                                    ? "bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/25"
-                                    : "bg-blue-500/15 text-blue-400 border border-blue-500/30 hover:bg-blue-500/25"
+                                    ? "bg-brand/15 text-brand border border-brand/30 hover:bg-brand/25"
+                                    : "bg-brand/15 text-brand border border-brand/30 hover:bg-brand/25"
                             )}
                             animate={{ x: isHovered ? 8 : 0 }}
                         >
                             <Zap className="w-4 h-4" />
-                            <span>Explore Project</span>
+                            <span>View solution</span>
                             <ArrowRight className={cn(
                                 "w-5 h-5 transition-transform duration-300",
                                 "group-hover:translate-x-1"
@@ -603,20 +604,11 @@ function FeaturedCard({ project, onClick, index, isLowPowerMode }: { project: Pr
     );
 }
 
-// Curated badge color palette — vibrant but balanced for both light & dark modes
+// Badge colours for tech tags: brand accent and neutral only
 const BADGE_COLORS = [
-    { border: 'rgba(168, 85, 247, 0.5)', bg: 'rgba(168, 85, 247, 0.12)', text: 'rgb(168, 85, 247)' },   // purple
-    { border: 'rgba(59, 130, 246, 0.5)', bg: 'rgba(59, 130, 246, 0.12)', text: 'rgb(59, 130, 246)' },    // blue
-    { border: 'rgba(16, 185, 129, 0.5)', bg: 'rgba(16, 185, 129, 0.12)', text: 'rgb(16, 185, 129)' },    // emerald
-    { border: 'rgba(245, 158, 11, 0.5)', bg: 'rgba(245, 158, 11, 0.12)', text: 'rgb(245, 158, 11)' },    // amber
-    { border: 'rgba(236, 72, 153, 0.5)', bg: 'rgba(236, 72, 153, 0.12)', text: 'rgb(236, 72, 153)' },    // pink
-    { border: 'rgba(6, 182, 212, 0.5)', bg: 'rgba(6, 182, 212, 0.12)', text: 'rgb(6, 182, 212)' },     // cyan
-    { border: 'rgba(239, 68, 68, 0.5)', bg: 'rgba(239, 68, 68, 0.12)', text: 'rgb(239, 68, 68)' },     // red
-    { border: 'rgba(34, 197, 94, 0.5)', bg: 'rgba(34, 197, 94, 0.12)', text: 'rgb(34, 197, 94)' },     // green
-    { border: 'rgba(251, 146, 60, 0.5)', bg: 'rgba(251, 146, 60, 0.12)', text: 'rgb(251, 146, 60)' },    // orange
-    { border: 'rgba(99, 102, 241, 0.5)', bg: 'rgba(99, 102, 241, 0.12)', text: 'rgb(99, 102, 241)' },    // indigo
-    { border: 'rgba(20, 184, 166, 0.5)', bg: 'rgba(20, 184, 166, 0.12)', text: 'rgb(20, 184, 166)' },    // teal
-    { border: 'rgba(217, 70, 239, 0.5)', bg: 'rgba(217, 70, 239, 0.12)', text: 'rgb(217, 70, 239)' },    // fuchsia
+    // Tech tags use the brand accent and a neutral, matching the design system.
+    { border: 'hsl(var(--brand) / 0.45)', bg: 'hsl(var(--brand) / 0.1)', text: 'hsl(var(--brand))' },
+    { border: 'hsl(var(--border))', bg: 'hsl(var(--muted))', text: 'hsl(var(--muted-foreground))' },
 ];
 
 // Deterministic color from string — same string always gets same color, but varied across badges
@@ -912,7 +904,7 @@ function CompactCard({ project, onClick, index }: { project: Project; onClick: (
                 <motion.div
                     className={cn(
                         "absolute top-4 right-4 w-2 h-2 rounded-full z-10",
-                        isOngoing ? "bg-emerald-400" : "bg-blue-400"
+                        isOngoing ? "bg-brand" : "bg-brand"
                     )}
                     animate={{ scale: isOngoing ? [1, 1.3, 1] : 1 }}
                     transition={{ duration: 1.5, repeat: Infinity }}
@@ -922,7 +914,7 @@ function CompactCard({ project, onClick, index }: { project: Project; onClick: (
                 <motion.h4
                     className={cn(
                         "text-base font-semibold text-white mb-2 pr-6 line-clamp-1 transition-colors duration-300 z-10 relative",
-                        isHovered && (isOngoing ? "text-emerald-400" : "text-blue-400")
+                        isHovered && (isOngoing ? "text-brand" : "text-brand")
                     )}
                 >
                     {project.title}
@@ -972,23 +964,10 @@ export default function ProjectsPage() {
     const pathname = usePathname();
 
     const products = useMemo(() => {
-        const techImages = [
-            "/project/parallax/image1.webp",
-            "/project/parallax/image2.webp",
-            "/project/parallax/image3.webp",
-            "/project/parallax/image4.webp",
-            "/project/parallax/image5.webp",
-            "/project/parallax/image6.webp",
-            "/project/parallax/image7.webp",
-            "/project/parallax/image8.webp",
-            "/project/parallax/image9.webp",
-            "/project/parallax/image10.webp",
-        ];
-
         const baseProducts = portfolioData.projects.map((p, i) => ({
             title: p.title,
-            link: p.repoUrl || p.demoUrl || '#',
-            thumbnail: techImages[i % techImages.length]
+            link: `/projects/${p.slug}`,
+            thumbnail: p.image || PRODUCT_SCREENS[i % PRODUCT_SCREENS.length].src
         }));
         return [...baseProducts, ...baseProducts, ...baseProducts].slice(0, 10);
     }, []);
@@ -1019,10 +998,10 @@ export default function ProjectsPage() {
     const [selectedCategory, setSelectedCategory] = useState('All');
 
     const categories = [
-        { id: 'All', label: 'All Realms', icon: Globe },
-        { id: 'AI & Machine Learning', label: 'Artificial Intelligence', icon: Brain },
-        { id: 'Software Engineering', label: 'Software Architecture', icon: Database },
-        { id: 'More', label: 'More', icon: Layers },
+        { id: 'All', label: 'All Solutions', icon: Globe },
+        { id: 'AI', label: 'AI Agents', icon: Brain, match: ['Healthcare AI', 'Conversational AI', 'Generative AI', 'E-Commerce AI'] },
+        { id: 'Vision', label: 'Vision & Analytics', icon: Database, match: ['Computer Vision', 'Business Intelligence'] },
+        { id: 'Platforms', label: 'Platforms', icon: Layers, match: ['Mobility', 'E-Commerce', 'Enterprise SaaS'] },
     ];
 
     const [projects, setProjects] = useState(portfolioData.projects);
@@ -1058,11 +1037,8 @@ export default function ProjectsPage() {
 
         // Category Filter
         if (selectedCategory !== 'All') {
-            if (selectedCategory === 'More') {
-                currentProjects = currentProjects.filter(p => p.category && ['IoT & Embedded', 'Blockchain', 'Creative Tech'].includes(p.category));
-            } else {
-                currentProjects = currentProjects.filter(p => p.category === selectedCategory);
-            }
+            const group = categories.find(c => c.id === selectedCategory);
+            currentProjects = currentProjects.filter(p => !!p.category && !!group?.match?.includes(p.category));
         }
 
         // Search Filter
@@ -1154,9 +1130,9 @@ export default function ProjectsPage() {
                             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 px-2">
                                 {/* Title & Count */}
                                 <div className="flex items-center gap-3">
-                                    <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                                    <div className="w-2 h-2 rounded-full bg-brand animate-pulse" />
                                     <h2 className="text-sm font-mono uppercase tracking-[0.2em] text-muted-foreground">
-                                        Projects Archive
+                                        Solutions Archive
                                     </h2>
                                     <span className="px-2 py-0.5 rounded-md bg-white/5 text-[10px] font-mono text-muted-foreground border border-white/5">
                                         {String(filteredProjects.length).padStart(2, '0')}
@@ -1170,7 +1146,7 @@ export default function ProjectsPage() {
                                         <Search className="absolute left-3 w-4 h-4 text-muted-foreground group-focus-within:text-primary transition-colors" />
                                         <input
                                             type="text"
-                                            placeholder="Search projects..."
+                                            placeholder="Search solutions..."
                                             value={searchQuery}
                                             onChange={(e) => setSearchQuery(e.target.value)}
                                             className="w-full pl-9 pr-8 py-2.5 bg-transparent text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none"
@@ -1327,7 +1303,7 @@ export default function ProjectsPage() {
                                     onClick={() => setVisibleCount(visibleCount < filteredProjects.length ? filteredProjects.length : 10)}
                                     showArrowFlip={visibleCount >= filteredProjects.length}
                                 >
-                                    {visibleCount < filteredProjects.length ? 'View All Projects' : 'View Less'}
+                                    {visibleCount < filteredProjects.length ? 'View all solutions' : 'Show fewer'}
                                 </MagneticFillButton>
                             </motion.div>
                         )
@@ -1337,7 +1313,7 @@ export default function ProjectsPage() {
                         filteredProjects.length === 0 && (
                             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-20">
                                 <Layers className="w-16 h-16 mx-auto text-white/20 mb-4" />
-                                <p className="text-lg text-white/50">No projects found</p>
+                                <p className="text-lg text-white/50">No solutions match your search</p>
                             </motion.div>
                         )
                     }

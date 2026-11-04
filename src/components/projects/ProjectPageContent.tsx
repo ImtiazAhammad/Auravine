@@ -42,14 +42,14 @@ const TerminalBlock = ({ title, code }: { title: string; code: string }) => {
                         onClick={handleCopy}
                         className="p-1.5 rounded-md bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 text-slate-500 dark:text-white/50 hover:text-black dark:hover:text-white transition-all focus:outline-none"
                     >
-                        {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                        {copied ? <Check className="w-3.5 h-3.5 text-brand" /> : <Copy className="w-3.5 h-3.5" />}
                     </button>
                 </div>
                 <div className="font-mono text-sm leading-relaxed overflow-x-auto">
                     {code.split('\n').map((line, i) => (
                         <div key={i} className="flex min-w-max">
                             <span className="text-slate-400 dark:text-white/20 mr-4 select-none">$</span>
-                            <span className="text-emerald-700 dark:text-emerald-400">{line}</span>
+                            <span className="text-brand dark:text-brand">{line}</span>
                         </div>
                     ))}
                 </div>
@@ -107,7 +107,7 @@ const ProjectGallery = ({
 
                         {/* Tech UI (Minimal Floating Label) */}
                         <div className="absolute top-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                            <div className="bg-white/90 dark:bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-black/10 dark:border-white/10 text-[10px] font-mono font-bold text-emerald-700 dark:text-emerald-400 shadow-lg flex items-center gap-2">
+                            <div className="bg-white/90 dark:bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-black/10 dark:border-white/10 text-[10px] font-mono font-bold text-brand dark:text-brand shadow-lg flex items-center gap-2">
                                 <span>IMG_0{idx + 1}</span>
                                 <Maximize2 className="w-3 h-3" />
                             </div>
@@ -163,7 +163,7 @@ const Typewriter = ({ examples }: { examples: string[] }) => {
     }, [currentText, isDeleting, loopNum, examples]);
 
     return (
-        <span className="font-mono text-emerald-400">
+        <span className="font-mono text-brand">
             {currentText}
             <span className="animate-pulse">|</span>
         </span>
@@ -218,7 +218,7 @@ export function ProjectPageContent({ project, isLowPowerMode }: { project: Proje
                     <div className="w-full">
                         {/* Status Badge */}
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-6 border bg-secondary/10 dark:bg-secondary/5 border-black/20 dark:border-border/40 text-muted-foreground">
-                            <span className={cn("w-2 h-2 rounded-full", isOngoing ? "bg-emerald-500 animate-pulse" : "bg-blue-500")} />
+                            <span className={cn("w-2 h-2 rounded-full", isOngoing ? "bg-brand animate-pulse" : "bg-brand")} />
                             {isOngoing ? t('status.ongoing') : t('status.completed')}
                         </div>
 
@@ -232,11 +232,11 @@ export function ProjectPageContent({ project, isLowPowerMode }: { project: Proje
                         </p>
 
                         {/* Typewriter Effect (Subtext) */}
-                        <div className="font-mono text-sm text-emerald-500/80 mb-8 h-6 flex items-center">
+                        <div className="font-mono text-sm text-brand mb-8 h-6 flex items-center">
                             <Typewriter examples={[
-                                "Initiating project overview...",
-                                "Loading technical specifications...",
-                                "Decrypting success metrics..."
+                                "Built in Dhaka for real operations.",
+                                "Bangla and English, by design.",
+                                "Supported long after launch."
                             ]} />
                         </div>
                     </div>
@@ -307,7 +307,7 @@ export function ProjectPageContent({ project, isLowPowerMode }: { project: Proje
                         {/* MISSION OVERVIEW */}
                         <section id="mission">
                             <div className="flex items-center gap-3 mb-6">
-                                <span className="bg-emerald-500/10 text-emerald-500 p-2 rounded-lg">
+                                <span className="bg-brand/10 text-brand p-2 rounded-lg">
                                     <Box className="w-5 h-5" />
                                 </span>
                                 <h2 className="text-2xl font-bold text-foreground">{t('sections.missionBrief')}</h2>
@@ -336,7 +336,7 @@ export function ProjectPageContent({ project, isLowPowerMode }: { project: Proje
                         {project.features && (
                             <section id="features">
                                 <div className="flex items-center gap-3 mb-8">
-                                    <span className="bg-blue-500/10 text-blue-500 p-2 rounded-lg">
+                                    <span className="bg-brand/10 text-brand p-2 rounded-lg">
                                         <Zap className="w-5 h-5" />
                                     </span>
                                     <h2 className="text-2xl font-bold text-foreground">{t('sections.keyFeatures')}</h2>
@@ -350,14 +350,14 @@ export function ProjectPageContent({ project, isLowPowerMode }: { project: Proje
                                             viewport={{ once: true }}
                                             className="p-6 rounded-2xl bg-secondary/10 dark:bg-secondary/5 border border-black/25 dark:border-white/5 hover:border-black/35 dark:hover:border-white/10 transition-colors shadow-sm dark:shadow-none"
                                         >
-                                            <div className="w-10 h-10 rounded-xl bg-black/10 dark:bg-white/5 flex items-center justify-center mb-4 text-emerald-700 dark:text-emerald-500">
+                                            <div className="w-10 h-10 rounded-xl bg-black/10 dark:bg-white/5 flex items-center justify-center mb-4 text-brand dark:text-brand">
                                                 {idx === 0 ? <Box className="w-5 h-5" /> : idx === 1 ? <Terminal className="w-5 h-5" /> : idx === 2 ? <Zap className="w-5 h-5" /> : <Sparkles className="w-5 h-5" />}
                                             </div>
                                             <h3 className="text-lg font-bold text-foreground mb-3">{group.title}</h3>
                                             <ul className="space-y-2">
                                                 {group.items.map((item, i) => (
                                                     <li key={i} className="text-sm text-muted-foreground flex gap-2 items-start">
-                                                        <span className="mt-1.5 w-1 h-1 rounded-full bg-emerald-500 shrink-0" />
+                                                        <span className="mt-1.5 w-1 h-1 rounded-full bg-brand shrink-0" />
                                                         <span>{renderRichText(item)}</span>
                                                     </li>
                                                 ))}
@@ -385,7 +385,7 @@ export function ProjectPageContent({ project, isLowPowerMode }: { project: Proje
                                                 {item.problem}
                                             </h4>
                                             <div className="text-sm text-zinc-600 dark:text-muted-foreground pl-4 border-l border-black/30 dark:border-white/5">
-                                                <span className="text-emerald-700 dark:text-emerald-500 font-bold text-xs uppercase tracking-wider block mb-1">{t('sections.solution')}</span>
+                                                <span className="text-brand dark:text-brand font-bold text-xs uppercase tracking-wider block mb-1">{t('sections.solution')}</span>
                                                 {item.solution}
                                             </div>
                                         </div>
@@ -398,7 +398,7 @@ export function ProjectPageContent({ project, isLowPowerMode }: { project: Proje
                         {project.galleryImages && project.galleryImages.length > 0 && (
                             <section id="gallery">
                                 <div className="flex items-center gap-3 mb-8">
-                                    <span className="bg-purple-500/10 text-purple-500 p-2 rounded-lg">
+                                    <span className="bg-brand/10 text-brand p-2 rounded-lg">
                                         <LayoutGrid className="w-5 h-5" />
                                     </span>
                                     <h2 className="text-2xl font-bold text-foreground">{t('sections.visualGallery')}</h2>
@@ -416,7 +416,7 @@ export function ProjectPageContent({ project, isLowPowerMode }: { project: Proje
                         {project.installation && (
                             <section id="installation">
                                 <div className="flex items-center gap-3 mb-8">
-                                    <span className="bg-emerald-500/10 text-emerald-500 p-2 rounded-lg">
+                                    <span className="bg-brand/10 text-brand p-2 rounded-lg">
                                         <Terminal className="w-5 h-5" />
                                     </span>
                                     <h2 className="text-2xl font-bold text-foreground">{t('sections.installation')}</h2>
@@ -432,7 +432,7 @@ export function ProjectPageContent({ project, isLowPowerMode }: { project: Proje
                                             ) : (
                                                 <div className="bg-secondary/20 dark:bg-secondary/5 p-6 rounded-2xl border border-black/10 dark:border-white/5">
                                                     <h3 className="text-base font-bold text-foreground mb-3 flex items-center gap-2">
-                                                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-700 dark:bg-emerald-500" />
+                                                        <span className="w-1.5 h-1.5 rounded-full bg-brand dark:bg-brand" />
                                                         {step.title}
                                                     </h3>
                                                     <p className="text-sm text-muted-foreground leading-relaxed">
@@ -456,7 +456,7 @@ export function ProjectPageContent({ project, isLowPowerMode }: { project: Proje
                             <div className="p-6 rounded-2xl bg-white dark:bg-secondary/5 border border-black/20 dark:border-white/10 backdrop-blur-sm shadow-sm dark:shadow-none">
                                 <h3 className="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-6">{t('sections.projectAccess')}</h3>
                                 <div className="flex flex-col gap-3">
-                                    {project.demoUrl && (
+                                    {project.demoUrl && project.demoUrl !== '#' && (
                                         <motion.a
                                             href={project.demoUrl === '#' ? undefined : project.demoUrl}
                                             target={project.demoUrl === '#' ? undefined : "_blank"}
@@ -474,12 +474,17 @@ export function ProjectPageContent({ project, isLowPowerMode }: { project: Proje
                                             <ExternalLink className="w-4 h-4" />
                                         </motion.a>
                                     )}
-                                    {project.repoUrl && (
+                                    {project.repoUrl && project.repoUrl !== '#' && (
                                         <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-medium text-sm bg-black/10 dark:bg-secondary/10 hover:bg-black/20 dark:hover:bg-secondary/20 text-foreground transition-all border border-black/5 dark:border-transparent hover:border-black/10 dark:hover:border-white/5">
                                             <Github className="w-4 h-4" />
                                             <span>{t('sections.sourceCode')}</span>
                                         </a>
                                     )}
+                                    {/* Client code is private, so every solution offers a walkthrough instead. */}
+                                    <Link href="/contact" className="flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-bold text-sm bg-foreground text-background transition-transform duration-150 active:scale-[0.97]">
+                                        <span>{t('sections.requestWalkthrough')}</span>
+                                        <ExternalLink className="w-4 h-4" />
+                                    </Link>
                                 </div>
                             </div>
 
@@ -581,8 +586,8 @@ export function ProjectPageContent({ project, isLowPowerMode }: { project: Proje
                                         <span className={cn(
                                             "inline-flex items-center rounded-full border px-2 py-0.5 text-xs font-medium backdrop-blur-md",
                                             p.status === 'ongoing'
-                                                ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-400"
-                                                : "border-blue-500/30 bg-blue-500/10 text-blue-400"
+                                                ? "border-brand/30 bg-brand/10 text-brand"
+                                                : "border-brand/30 bg-brand/10 text-brand"
                                         )}>
                                             {p.status === 'ongoing' ? 'In Progress' : 'Completed'}
                                         </span>

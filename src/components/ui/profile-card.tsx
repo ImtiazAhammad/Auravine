@@ -1,7 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
-import { Github, Twitter, Youtube, Linkedin, Instagram, X } from "lucide-react";
+import { Github, Twitter, Youtube, Linkedin, Mail, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export interface ProfileCardProps {
@@ -9,35 +8,29 @@ export interface ProfileCardProps {
   title?: string;
   description?: string;
   imageUrl?: string;
-  githubUrl?: string;
   twitterUrl?: string;
   youtubeUrl?: string;
-  linkedinUrl?: string;
-  instagramUrl?: string;
   className?: string;
   onClose?: () => void;
 }
 
 export function ProfileCard(props: ProfileCardProps) {
   const {
-    name = "Michael Chen",
-    title = "Senior Software Engineer, Cloud Infrastructure",
-    description = "Michael Chen is a seasoned software engineer at TechFlow Solutions with over 8 years of experience building scalable cloud infrastructure and microservices. He specializes in DevOps automation and leads the platform engineering team that serves millions of users daily.",
-    imageUrl = "https://plus.unsplash.com/premium_photo-1689977807477-a579eda91fa2?q=80&w=600&auto=format&fit=crop&fm=webp&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    githubUrl = "#",
+    name = "Auravine",
+    title = "AI-first software studio",
+    description = "AI-first software development from Dhaka, Bangladesh.",
+    imageUrl = "/grid.svg",
     twitterUrl = "#",
     youtubeUrl = "#",
-    linkedinUrl = "#",
-    instagramUrl = "#",
     className,
     onClose
   } = props;
 
   const socialIcons = [
-    { icon: Github, url: githubUrl, label: "GitHub" },
-    { icon: Instagram, url: instagramUrl, label: "Instagram" },
-    { icon: Linkedin, url: linkedinUrl, label: "LinkedIn" },
-  ].filter(social => social.url !== "#");
+    { icon: Github, label: "GitHub" },
+    { icon: Linkedin, label: "LinkedIn" },
+    { icon: Mail, label: "Email" },
+  ];
 
   return (
     <div className={cn("w-full max-w-7xl mx-auto px-4 relative", className)}>
@@ -87,17 +80,14 @@ export function ProfileCard(props: ProfileCardProps) {
           </p>
 
           <div className='flex space-x-4'>
-            {socialIcons.map(({ icon: Icon, url, label }) => (
-              <Link
+            {socialIcons.map(({ icon: Icon, label }) => (
+              <span
                 key={label}
-                href={url}
-                target='_blank'
-                rel='noopener noreferrer'
                 className='w-11 h-11 bg-zinc-900 dark:bg-white rounded-full flex items-center justify-center transition-all hover:scale-110 shadow-lg group'
                 aria-label={label}
               >
                 <Icon className='w-5 h-5 text-white dark:text-black group-hover:scale-110 transition-transform' />
-              </Link>
+              </span>
             ))}
           </div>
         </motion.div>
@@ -137,17 +127,14 @@ export function ProfileCard(props: ProfileCardProps) {
           </p>
 
           <div className='flex justify-center space-x-4'>
-            {socialIcons.map(({ icon: Icon, url, label }) => (
-              <Link
+            {socialIcons.map(({ icon: Icon, label }) => (
+              <span
                 key={label}
-                href={url}
-                target='_blank'
-                rel='noopener noreferrer'
                 className='w-12 h-12 bg-gray-900 dark:bg-white rounded-full flex items-center justify-center transition-all hover:scale-110'
                 aria-label={label}
               >
                 <Icon className='w-5 h-5 text-white dark:text-black' />
-              </Link>
+              </span>
             ))}
           </div>
         </div>

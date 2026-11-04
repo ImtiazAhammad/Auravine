@@ -14,7 +14,7 @@ import { AnimatedFolder } from '@/components/ui/3d-folder';
 import { cn } from '@/lib/utils';
 import { useTranslations } from 'next-intl';
 import { useTheme } from 'next-themes';
-import { getAllGalleryImages } from '@/app/actions/getGalleryImages';
+import { PRODUCT_SCREENS } from "@/data/showcase";
 
 /* ──────────────────────────────────────────────────────
    Helper to map Categories/Tags to Icons
@@ -128,7 +128,7 @@ function FeaturedVisual({ posts, currentSlide, isLowPowerMode }: any) {
               href={`/blog/${currentPost.slug}`}
               className="flex items-center gap-2 text-[10px] font-black text-foreground hover:text-primary transition-colors uppercase tracking-[0.2em] bg-background/80 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm"
             >
-              Explore Story <ArrowUpRight className="w-3 h-3" />
+              Read guide <ArrowUpRight className="w-3 h-3" />
             </Link>
             <div className="flex gap-1.5 hidden sm:flex">
               {posts.map((_: any, i: number) => (
@@ -150,8 +150,11 @@ function FeaturedVisual({ posts, currentSlide, isLowPowerMode }: any) {
 
 /* ── Card 2: Stats Monitor ── */
 function StatsVisual({ categoryStats }: { categoryStats: { name: string, count: number }[] }) {
-  const bars = [45, 75, 35, 85, 60, 95, 50];
-  const days = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
+  // One bar per topic, sized by how many articles it has.
+  const topicLabels: Record<string, string> = { 'applied-ai': 'AI', 'software-development': 'SOFTWARE', company: 'COMPANY' };
+  const maxCount = Math.max(1, ...categoryStats.map((c) => c.count));
+  const bars = categoryStats.map((c) => Math.round(25 + (c.count / maxCount) * 65));
+  const days = categoryStats.map((c) => topicLabels[c.name] ?? c.name.replace(/-/g, ' ').toUpperCase());
   const [activeIdx, setActiveIdx] = useState(0);
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
 
@@ -166,8 +169,8 @@ function StatsVisual({ categoryStats }: { categoryStats: { name: string, count: 
     <div className="w-full h-full flex flex-col gap-3.5 justify-between p-2">
       <div className="flex gap-4 pt-[0.625rem] pr-[0.625rem] pb-0.5 pl-0.5">
         {[
-          { label: "Total Articles", value: "10+", trend: "+2" },
-          { label: "Categories", value: "4", trend: "All" },
+          { label: "Articles", value: String(portfolioData.blogs.length), trend: "Published" },
+          { label: "Topics", value: String(categoryStats.length), trend: "Covered" },
         ].map((s, i) => {
           const isActive = i === activeIdx || hoveredIdx === i;
 
@@ -196,7 +199,6 @@ function StatsVisual({ categoryStats }: { categoryStats: { name: string, count: 
                     <span className="text-[8px] font-mono font-bold text-emerald-500">
                       {s.trend}
                     </span>
-                    <span className="text-[8px] text-muted-foreground/50 font-mono">new</span>
                   </div>
                 </div>
 
@@ -569,14 +571,8 @@ export const BentoHero = ({ isLowPowerMode }: { isLowPowerMode?: boolean }) => {
   const [randomGalleryImages, setRandomGalleryImages] = useState<string[]>([]);
 
   useEffect(() => {
-    const fetchImages = async () => {
-      const images = await getAllGalleryImages();
-      if (images && images.length > 0) {
-        const shuffled = [...images].sort(() => 0.5 - Math.random());
-        setRandomGalleryImages(shuffled.slice(0, 5).map(img => img.src));
-      }
-    };
-    fetchImages();
+    const shuffled = [...PRODUCT_SCREENS].sort(() => 0.5 - Math.random());
+    setRandomGalleryImages(shuffled.slice(0, 5).map((img) => img.src));
   }, []);
 
   useEffect(() => {
@@ -588,20 +584,20 @@ export const BentoHero = ({ isLowPowerMode }: { isLowPowerMode?: boolean }) => {
 
   const CARDS = [
     {
-      title: "Featured Publication",
-      description: "Our latest architectural blueprints and engineering reflections.",
+      title: "Featured guide",
+      description: "The newest article from the Auravine team.",
       visual: <FeaturedVisual posts={featuredPosts} currentSlide={currentSlide} isLowPowerMode={isLowPowerMode} />,
       colSpan: "lg:col-span-2",
       height: "h-[480px]",
     },
     {
-      title: "The Gallery",
-      description: "Curated milestones of the engineering journey.",
+      title: "Product screens",
+      description: "Interfaces from the systems we build.",
       visual: (
         <div className="p-2 w-full h-full pb-0 rounded-[14px] overflow-visible relative flex items-center justify-center">
           <div className="scale-[1.4] transform-gpu origin-center w-full h-full flex items-center justify-center">
             <AnimatedFolder
-              title="The Gallery"
+              title="Product screens"
               className="w-full h-full"
               projects={(randomGalleryImages.length > 0
                 ? randomGalleryImages
@@ -612,7 +608,7 @@ export const BentoHero = ({ isLowPowerMode }: { isLowPowerMode?: boolean }) => {
               ).map((url, i) => ({
                 id: `gallery-img-${i}`,
                 image: url,
-                title: `Archive 0${i + 1}`
+                title: `Screen 0${i + 1}`
               }))}
             />
           </div>
@@ -624,22 +620,22 @@ export const BentoHero = ({ isLowPowerMode }: { isLowPowerMode?: boolean }) => {
       innerClassName: "!overflow-visible hover:z-50"
     },
     {
-      title: "Publication Stats",
-      description: "Articles published across various engineering categories.",
+      title: "At a glance",
+      description: "Articles and topics published so far.",
       visual: <StatsVisual categoryStats={categoryStats} />,
       colSpan: "lg:col-span-1",
       height: "h-[420px]",
     },
     {
-      title: "Activity Feed",
-      description: "Real-time logs of latest published articles.",
+      title: "Recent articles",
+      description: "The latest guides, newest first.",
       visual: <RecentPublicationsVisual blogs={portfolioData.blogs} />,
       colSpan: "lg:col-span-1",
       height: "h-[420px]",
     },
     {
-      title: "Featured Projects",
-      description: "Explore the latest engineered solutions and applications.",
+      title: "Featured solutions",
+      description: "Products we have built for clients and for ourselves.",
       visual: <ProjectsVisual />,
       colSpan: "lg:col-span-1",
       height: "h-[420px]",
@@ -684,9 +680,7 @@ export const BentoHero = ({ isLowPowerMode }: { isLowPowerMode?: boolean }) => {
             transition={{ delay: 0.8 }}
             className="text-[10px] md:text-xs font-medium text-muted-foreground/60 max-w-5xl text-center leading-relaxed tracking-wider uppercase"
           >
-            This archive serves as a living documentation of technical blueprints, architectural patterns, and engineering reflections.
-            All content is licensed under Creative Commons for educational use, bridging the gap between theory and implementation.
-            Interactive gallery items represent curated milestones of the engineering journey. © 2026 Auravine.
+            Insights from the Auravine team on applying AI in real businesses, from Dhaka to clients worldwide. © 2026 Auravine.
           </motion.p>
         </div>
       </div>

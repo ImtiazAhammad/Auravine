@@ -68,17 +68,17 @@ export const ProjectContact = ({ isLowPowerMode }: { isLowPowerMode?: boolean })
             <div className="max-w-[1536px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-20">
                 <div className="relative z-10 w-full lg:w-1/2">
                     <BlockInTextCard
-                        tag="/ Let's Connect"
+                        tag="/ Free consultation"
                         isLowPowerMode={isLowPowerMode}
                         text={
                             <>
-                                <strong><Hover3DFlipText text="Ready to build the extraordinary?" /></strong> <Hover3DFlipText text="From intelligent AI solutions to scalable software architectures, let's collaborate on your big idea." />
+                                <strong><Hover3DFlipText text="Have a process AI could take over?" /></strong> <Hover3DFlipText text="Tell us how your team works today. We will show you what an AI agent, a vision system, or a dashboard could change." />
                             </>
                         }
                         examples={[
-                            "Looking for a Software & AI Engineer?",
+                            "Want an AI agent to answer your calls?",
                             "Need an AI solution for your business?",
-                            "Just want to say hi?",
+                            "Need a custom platform for your operations?",
                         ]}
                     />
                 </div>

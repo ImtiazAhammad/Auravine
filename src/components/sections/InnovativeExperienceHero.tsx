@@ -77,15 +77,6 @@ export function InnovativeExperienceHero({ type, title, highlight, description }
                         <p className="text-lg text-neutral-500 dark:text-neutral-400 max-w-4xl leading-relaxed">
                             {description}
                         </p>
-
-                        <div className="pt-4">
-                            <Link
-                                href="/resume"
-                                className="group flex items-center gap-2 w-fit px-6 py-3 rounded-xl bg-neutral-100 dark:bg-neutral-800 text-black dark:text-white font-bold text-sm transition-all hover:bg-neutral-200 dark:hover:bg-neutral-700"
-                            >
-                                View resume <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                            </Link>
-                        </div>
                     </motion.div>
                 </div>
 

@@ -6,15 +6,11 @@ import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import { useState } from 'react';
 
+// Local line illustrations rendered by scripts/brand-assets.
 const skillVisuals: Record<string, string> = {
-    'Leadership': 'https://illustrations.popsy.co/white/team-idea.svg',
-    'Communication': 'https://illustrations.popsy.co/white/communication.svg',
-    'Problem Solving': 'https://illustrations.popsy.co/white/genius.svg',
-    'Adaptability': 'https://illustrations.popsy.co/white/creative-work.svg',
-    'Critical Thinking': 'https://illustrations.popsy.co/white/idea-launch.svg',
-    'Public Speaking': 'https://illustrations.popsy.co/white/presentation.svg',
-    'Teamwork': 'https://illustrations.popsy.co/white/shaking-hands.svg',
-    'More': 'https://illustrations.popsy.co/white/abstract-art-6.svg',
+    'Leadership': '/skills/collaboration.webp',
+    'Critical Thinking': '/skills/business-understanding.webp',
+    'Public Speaking': '/skills/clear-communication.webp',
 };
 
 // Fallback high-end SVG icons
@@ -60,7 +56,7 @@ export const SoftSkills = () => {
                         transition={{ duration: 0.8, delay: 0.1 }}
                         className="text-6xl md:text-7xl font-bold tracking-tight text-foreground leading-[1.05] max-w-5xl"
                     >
-                        Strategic <br /> Directives
+                        How we <br /> work
                     </motion.h2>
                     <motion.p
                         initial={{ opacity: 0, y: 10 }}
@@ -69,8 +65,7 @@ export const SoftSkills = () => {
                         transition={{ duration: 0.8, delay: 0.3 }}
                         className="text-foreground text-lg font-sans max-w-2xl pt-6 leading-relaxed border-t border-border mt-4"
                     >
-                        Interpersonal capabilities engineered for high-impact
-                        leadership and systemic problem solving in complex environments.
+                        The habits that keep projects on schedule and clients informed, from the first workshop to long-term support.
                     </motion.p>
                 </div>
 

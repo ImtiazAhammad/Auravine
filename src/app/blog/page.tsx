@@ -44,7 +44,7 @@ function BlogContent() {
     const springY = useSpring(mouseY, springConfig);
 
     const gridRef = useRef<HTMLDivElement>(null);
-    const categories = ['all', 'applied-ai', 'software-development', 'about-me', 'more'];
+    const categories = ['all', 'applied-ai', 'software-development', 'company', 'more'];
 
     const filteredPosts = portfolioData.blogs
         .filter((post) => {
@@ -148,9 +148,9 @@ function BlogContent() {
                             className="text-4xl md:text-6xl lg:text-[5.5rem] font-black text-foreground leading-tight tracking-[-0.04em] uppercase whitespace-nowrap cursor-pointer group"
                         >
                             <span className="relative inline-block">
-                                <span>FEATURE &</span>{' '}
+                                <span>AURAVINE</span>{' '}
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-foreground via-foreground to-foreground/20">
-                                    DOCS
+                                    INSIGHTS
                                 </span>
                                 {/* Animated underline on hover */}
                                 <span className="absolute -bottom-1 left-0 w-full h-[4px] bg-foreground scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-full" />
@@ -163,7 +163,7 @@ function BlogContent() {
                             transition={{ duration: 0.8, delay: 0.2 }}
                             className="mt-6 text-[11px] md:text-sm font-medium text-muted-foreground/80 max-w-3xl mx-auto leading-relaxed tracking-wide"
                         >
-                            A dedicated space for documenting technical blueprints, architectural patterns, and engineering reflections. This archive serves as a living knowledge base where innovation meets practical execution.
+                            Practical guides on AI voice agents, chatbots, computer vision, and analytics, written for business owners and the teams who run their operations.
                         </motion.p>
                     </div>
                 </header>

@@ -8,39 +8,24 @@ import {
   RefreshCw, BookOpen, Network, LineChart, Search
 } from "lucide-react";
 
-// Lucide icons disesuaikan dengan skill baru (AI & Software Engineer)
+// Icons and line illustrations for each "How we work" value in portfolio.ts.
+// Illustrations are rendered by scripts/brand-assets (npm run assets:generate).
 const skillIcons: Record<string, any> = {
-  'Problem Solving': Puzzle,
-  'Systemic Thinking': Network,
-  'Critical Thinking': Brain,
-  'Continuous Learning': BookOpen,
-  'Analytical Thinking': LineChart,
-  'Adaptability': RefreshCw,
-  'Leadership': Users,
-  'Communication': MessageSquare,
-  'Teamwork': Users2,
-  'Research Skills': Search,
+  'Business Understanding': LineChart,
+  'Clear Communication': MessageSquare,
+  'Transparency': Search,
+  'Ownership': Puzzle,
+  'Localization': Network,
+  'Collaboration': Users2,
 };
 
-// Popsy SVG illustrations yang dipastikan berfungsi
-const skillVisuals: Record<string, string> = {
-  'Problem Solving': 'https://illustrations.popsy.co/white/genius.svg',
-  'Systemic Thinking': 'https://illustrations.popsy.co/white/abstract-art-6.svg',
-  'Critical Thinking': 'https://illustrations.popsy.co/white/idea-launch.svg',
-  'Continuous Learning': 'https://illustrations.popsy.co/white/student-going-to-school.svg',
-  'Analytical Thinking': 'https://illustrations.popsy.co/white/success.svg',
-  'Adaptability': 'https://illustrations.popsy.co/white/creative-work.svg',
-  'Leadership': 'https://illustrations.popsy.co/white/team-idea.svg',
-  'Communication': 'https://illustrations.popsy.co/white/communication.svg',
-  'Teamwork': 'https://illustrations.popsy.co/white/shaking-hands.svg',
-  'Research Skills': 'https://illustrations.popsy.co/white/presentation.svg',
-};
+const slug = (name: string) => name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 
 const allCards = portfolioData.softSkills.slice(0, 10).map((skill, index) => ({
   id: index + 1,
   title: skill.name,
   description: skill.description,
-  url: skillVisuals[skill.name] || 'https://illustrations.popsy.co/white/abstract-art-6.svg',
+  url: `/skills/${slug(skill.name)}.webp`,
   Icon: skillIcons[skill.name] || Users
 }));
 
@@ -68,11 +53,11 @@ export const HorizontalScrollCarousel = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <h2 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-foreground to-foreground/40 leading-[0.9] pb-2">
-              Strategic Directives
+              How We Work
             </h2>
             <div className="w-20 h-1.5 bg-primary mt-4 mb-4 rounded-full opacity-80"></div>
             <p className="text-muted-foreground text-base md:text-lg lg:text-xl font-medium max-w-2xl leading-relaxed">
-              Interpersonal capabilities engineered for high-impact leadership and systemic problem solving in complex environments.
+              The habits that keep projects on schedule and clients informed, from the first workshop to long-term support.
             </p>
           </motion.div>
         </div>

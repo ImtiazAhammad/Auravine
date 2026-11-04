@@ -52,7 +52,7 @@ export const ToolsSection = () => {
                     Professional Tooling
                 </h2>
                 <p className="max-w-3xl mx-auto text-lg md:text-xl text-foreground/60 leading-relaxed font-medium px-4">
-                    Leveraging industrial-grade platforms for development, design, and deployment to ensure rapid and reliable software delivery.
+                    The tools our team uses to design, build, test, and ship your software.
                 </p>
             </motion.div>
 

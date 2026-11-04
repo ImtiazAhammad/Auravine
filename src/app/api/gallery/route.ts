@@ -1,8 +1,12 @@
 import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
+import { isPublished } from '@/config/pages';
 
 export async function GET() {
+  if (!isPublished('/gallery')) {
+    return NextResponse.json({ error: 'Not found' }, { status: 404 });
+  }
   const galleryDir = path.join(process.cwd(), 'public', 'gallery');
   try {
     const files = fs.readdirSync(galleryDir);

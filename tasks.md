@@ -1,154 +1,109 @@
 # Auravine Website: Task List
 
-Transformation of the original personal portfolio into the website for **Auravine**, an AI-first software development company in Dhaka, Bangladesh.
+Auravine is an AI-first software development company in Dhaka, Bangladesh. This file tracks the move from the original personal portfolio template to the company site.
 
 Legend: `[x]` done · `[ ]` needs your input or a follow-up
 
+See also: [PRODUCT.md](PRODUCT.md) (product truth) and [DESIGN.md](DESIGN.md) (design system).
+
 ---
 
-## 1. Analysis of the original repository
+## 1. Asset audit
 
-The repository was a single-person portfolio (AI/ML engineer and researcher). Its content fell into these groups:
+Every file that was in `public/` was checked against one question: is it right for Auravine, or is it left over from the template or the previous owner?
 
-| Area | Where | What was personal |
+| Asset | Verdict | Action |
 |---|---|---|
-| Identity and bio | `src/data/portfolio.ts` (`personal`) | Name, first-person bio, personal social handles, languages, location |
-| Projects (22 entries) | `src/data/portfolio.ts` (`projects`) | Academic, freelance, and personal builds; personal repo links |
-| Experience, leadership, volunteer | `src/data/portfolio.ts` (`experiences`) | Employers, labs, and organizations of the owner |
-| Education, achievements, certificates | `src/data/portfolio.ts`, `public/certificate/` | Degree, competitions, personal certificates |
-| Blog | `src/data/portfolio.ts` (`blogs`), `src/app/blog/[slug]/page.tsx` | Placeholder bodies and a first-person manifesto hardcoded per slug |
-| Interface copy | `messages/en.json`, `messages/id.json` | First-person copy, Telkom and CPS Lab references, Indonesian locale |
-| Components | `src/components/**` | Hardcoded school and employer boxes, orbit labels, "Hi, I'm…" hero copy, Kaggle and GitHub and WakaTime showcases |
-| Chatbot | `src/app/api/chat/route.ts` | System prompt framed as the owner's personal assistant, Indonesian language rule |
-| Metadata and config | `src/app/layout.tsx`, `package.json`, `LICENSE`, `README.md` | Personal name, copyright holder, Jakarta timezone |
-| Assets | `public/` | Photos, certificates, resume PDF, ID-card model, logos (**kept as-is**, see section 4) |
+| `Arfazrll_*.svg` (old brand logo) | Previous owner | Deleted |
+| `about/arfazrll.webp` (portrait) | Previous owner | Deleted |
+| `assets/*` (23 school and employer logos) | Previous owner | Deleted |
+| `certificate/*` (35 personal certificates) | Previous owner | Deleted |
+| `experience/*`, `gallery/*`, `journey/*` (personal photos) | Previous owner | Deleted; every slot now shows product screens |
+| `lanyard/desain-kartu.webp` (ID card with the owner's name and photo) | Previous owner | Replaced with an Auravine badge |
+| `lanyard/lanyard.webp` (React-logo strap) | Template | Replaced with an Auravine strap |
+| `feature/icons/*` (cartoon stickers: "BUG", "GAME OVER", skull) | Template | Replaced with brand service tiles |
+| `project/parallax/*` (anime landscapes, a city skyline) | Template | Deleted; strip now shows each solution's screen |
+| `project/*.webp` (old personal project screenshots) | Previous owner | Deleted |
+| My earlier SVG mockups, blog SVGs, studio SVGs | Low quality | Replaced with rendered screens |
+| Remote Spline 3D scenes (template author's account) | Template | Kept for the animation, now fail soft |
+| `illustrations.popsy.co` images on the Capabilities cards | Third-party template art | Replaced with local brand illustrations |
+| `grid.svg`, `noise.svg`, `mask.svg` | Generic textures | Kept |
+| `lanyard/card.glb` (3D card model) | Generic geometry | Kept, with the new badge texture |
+
+## 2. Pages
+
+| Page | Decision | Why |
+|---|---|---|
+| Home `/` | Published | Main landing page |
+| Solutions `/projects` and detail pages | Published | Shows the work |
+| Capabilities `/skills` | Published | Services, how we work, technology |
+| Insights `/blog` and articles | Published | Guides for business owners |
+| Contact `/contact` | Published | The primary action |
+| Experience `/experience` | **Unpublished** | Built as a personal CV timeline (education tab, career "journey" gallery). Our process is shown on the home page instead. |
+| Achievements `/achievements` | **Unpublished** | Built as a personal certificate archive |
+| Gallery `/gallery` | **Unpublished** | A personal photo archive; there are no studio photos yet |
+
+Unpublished pages return 404, are marked `noindex`, and disappear from every navigation menu. They are listed in `src/config/pages.ts`. Remove a route from that list to publish it again. The code is kept.
 
 ---
 
-## 2. Decisions
+## 3. Done in this round
 
-- **Brand:** kept the name **Auravine**, which the earlier commits had already introduced.
-- **Location:** Dhaka, Bangladesh. Timezone changed from `Asia/Jakarta` (UTC+7) to `Asia/Dhaka` (UTC+6).
-- **Second language:** Indonesian is wrong for a Dhaka company, so the `id` locale is now **Bangla (`bn`)**. `messages/id.json` was replaced by `messages/bn.json`, with the same keys as English.
-- **Assets:** no image, PDF, or model file was deleted or renamed. Only the text and data that reference them changed.
-- **Solutions instead of personal projects:** the 22 projects became **8 AI solutions** that match the services you listed (voice agent, chatbot, face recognition attendance, analytics, plus document AI, computer vision QA, recommendations, and clinic SaaS). Each one reuses an existing project image.
-- **No invented facts:** there are no client names, metrics, awards, or pricing. The old "achievements" became **commitments** (responsible AI, secure delivery, Bangla and English support). Case-study wording describes what we deliver, not measured results.
-- **Experience becomes "Our Process":** the three engagement phases (discovery and design, build and integrate, launch and operate). Education becomes one entry for **Auravine AI Lab** as the research and training group.
-- **Dead code removed:** components that were never imported and held personal copy, and components that only rendered personal data, were deleted (see section 3).
-- **Route names kept** (`/projects`, `/experience`, `/skills`, `/achievements`, `/blog`, `/resume`) so links and SEO do not break. Only their visible labels changed.
+### Design system
+- [x] Brand tokens added: `--brand` and `--brand-hover`, as a Tailwind `brand` key, decided by the design debate (emerald `#047857` in light mode, `#34d399` in dark mode).
+- [x] Light-mode muted text moved to `#6b6b6b` for contrast on the muted surface.
+- [x] Off-system colours replaced with the brand: lime `#D1FF4D` and `#c1e44a`, the failing `#8cb815`, the hero's sky and yellow icons, blue and violet accents on the Solutions pages, the orange folder, cyan on the Insights closing, the blue CTA ribbons, and the rainbow 3D cube faces.
+- [x] Browser surfaces themed: text selection, focus rings, and the input caret.
+- [x] Dead legacy colour blocks (`glow`, `bento`) removed from `tailwind.config.ts`.
 
----
+### Content
+- [x] Hero headline: AI-FIRST / SOFT⚡WARE / PARTN🤖ERS, kept inline on mobile.
+- [x] Service panels rewritten as Conversational AI, Vision & Analytics, and Product Engineering.
+- [x] Removed every remaining first-person or template line: "Available for opportunity", "Discover my latest work", "Professional Journey", "Strategic Directives", "Engineering the Future", "Go to Workspace", "Contact Me", "Feature & Docs", Creative Commons claims.
+- [x] Fabricated numbers removed: "10+ articles, +2 new", "2+ years experience", "12+ active deployments", the made-up weekly chart. Stats now use real counts.
+- [x] Fake newsletter form on Insights replaced with a working consultation link.
+- [x] Solutions filters rebuilt for the current categories (all filters were empty before).
+- [x] Detail pages: "Source code" and "Live demo" only show when real links exist; every solution offers "Request a walkthrough".
+- [x] Error page: Dhaka time and location, plain-language messages (was Jakarta, Indonesian date).
 
-## 3. Completed tasks
+### Assets (rendered from code)
+- [x] Logo system: mark, lockup, dark versions, app tiles, adaptive favicon (`public/brand/`).
+- [x] 15 product screens for all 11 solutions (`public/project/featured/*.webp`).
+- [x] 3 delivery-phase screens (`public/process/`), 5 blog covers, 8 service tiles, 6 value illustrations, badge and strap textures, social share image.
+- [x] Pipeline: `npm run assets:generate` renders everything from `scripts/brand-assets/scenes.mjs`.
 
-### Content and data
-- [x] Rewrote `src/data/portfolio.ts`: company profile, delivery phases, research entry, commitments, tech stack, service capabilities, soft skills, tools, 6 FAQs, 5 insight articles with full text, 4 gallery items.
-- [x] Featured four notable projects at the top of the solutions list: Shefa (hospital AI front desk, replaces the generic voice-agent entry), Safar (electric neighborhood shuttle), The Handset Depot (phone e-commerce and servicing), and SpanishStitch (RMG buying house CMS).
-- [x] Created illustrative SVG visuals for each featured project in `public/project/featured/` (hero and gallery, 8 files). They are sample visuals, not screenshots. Each one is labeled "Sample visual · illustrative only".
-- [x] Homepage ticker and the project slider now show the featured projects, in English and Bangla.
-- [x] Attached existing project images and gallery images to the new solutions (mapping in section 4).
-- [x] Removed the Spotify handle, the personal Instagram handle, the Kaggle and personal GitHub and WakaTime references, and the Rickroll placeholder video from the gallery.
-- [x] Rewrote `messages/en.json` (all keys kept).
-- [x] Created `messages/bn.json` and removed `messages/id.json`.
-- [x] Chatbot: rewrote the system prompt as a company sales assistant. It now says not to quote prices or timelines and to invite visitors to book a consultation.
-
-### Locale, timezone, and labels
-- [x] Locales changed from `en`/`id` to `en`/`bn` in `src/i18n/settings.ts`, `src/lib/i18n.ts`, and `src/components/layout/Navbar.tsx`. The language toggle label now shows "বাংলা".
-- [x] Timezone changed to `Asia/Dhaka` in `src/i18n/request.ts`, `src/lib/i18n.ts`, `src/providers/I18nProvider.tsx`, and the footer clock (UTC+6).
-- [x] Footer: name and location changed to AURAVINE and Dhaka, Bangladesh. Map link updated.
-- [x] Hero, About, Experience, Achievements, Contact, and Blog copy rewritten in the company voice.
-- [x] Visible "portfolio" wording removed from the resume page, the chat button label, and the gallery card.
-
-### Metadata
-- [x] Root metadata: title template, description, keywords, and Open Graph and Twitter copy now describe the company.
-- [x] Section metadata (`skills`, `projects`, `achievements`, `experience`, `contact`) rewritten.
-- [x] `package.json` and `package-lock.json` renamed to `auravine-website`.
-- [x] `LICENSE` copyright holder changed to Auravine.
-
-### Components and pages
-- [x] `InnovativeExperienceHero`: orbit labels now describe research, process, and services.
-- [x] `ExperienceStickyScroll`: school boxes replaced with "Auravine AI Lab" and client delivery boxes.
-- [x] `AboutSection`: timeline now shows the three delivery phases.
-- [x] `HeroVisual`, `MarqueeClosing`, `SmoothScrollHero`: first-person copy replaced.
-- [x] `resume` page: now shows `public/resume.pdf` locally. It no longer embeds the owner's Google Drive file. The PDF viewer loads client-side only, which fixes a server-render crash.
-- [x] `getProjectImages.ts`: stale comments that named personal projects removed.
-- [x] Blog detail page (`src/app/blog/[slug]/page.tsx`): rewritten as one article renderer that reads `post.content`. The per-slug hardcoded bodies and the first-person manifesto were removed.
-
-### Removed personal-only code
-- [x] `src/components/ui/kaggle-showcase.tsx` and `src/app/api/kaggle-stats/route.ts` (personal Kaggle profile data)
-- [x] `src/components/ui/github-showcase.tsx` and `src/components/ui/wakatime-showcase.tsx` (personal repos and coding stats)
-- [x] `src/components/sections/CertificateHeroScroll.tsx` and `src/components/ui/certificate-marquee.tsx` (personal certificate lists)
-- [x] `src/components/sections/ExperienceMarquee.tsx` (logo wall of former employers and schools)
-- [x] Dead components with personal copy: `AboutMeHub.tsx`, `ExperienceTabsSection.tsx`, `blog/BlogBento.tsx`, `blog/ThoughtStreamClosing.tsx`, `blog/TypewriterCodeHero.tsx`, `projects/ProjectDetail.tsx`
-
-### Documentation
-- [x] `README.md` rewritten for the company: services, stack, structure, content-update guide, environment variables, and a pre-launch checklist.
+### Robustness
+- [x] Remote 3D scenes no longer crash Solutions and Capabilities when they cannot load.
+- [x] Gallery API gated with the Gallery page. Template utility route `downloadlanyard` removed.
 
 ---
 
 ## 4. Needs your input before launch
 
-### Blocking for a public launch
-- [ ] **Contact details.** The email and phone fields in `src/data/portfolio.ts` are empty. Add the business email, phone, and WhatsApp number.
-- [ ] **Consultation form delivery.** Set `EMAIL_USER` and `EMAIL_APP_PASSWORD` in the hosting environment. Without them, form submissions cannot be sent.
-- [ ] **Social links.** All links are `#` and the handles are the placeholder `auravine`. Replace with the real accounts.
-- [ ] **Case studies.** The 8 solutions are realistic showcases, not verified client work. Replace them with real delivered projects, or label them clearly as sample solutions, before publishing. Do not add client names or results you cannot verify.
+- [ ] **Real screenshots and photos.** The product screens are faithful concepts with sample data, not captures of the live products. Replace them with real captures when you can. Keep the file names, or update the paths in `src/data/portfolio.ts`.
+- [ ] **Shefa metrics.** 24/7, under 5 seconds, and about 2 minutes are illustrative and labelled as such on the page. Replace them with pilot data.
+- [ ] **Featured project details.** Start dates are placeholders (`2026-01-01`). Confirm statuses, tech stacks, and whether you may name the clients.
+- [ ] **Contact details.** Business email, phone, and social links (all `#`). Set `EMAIL_USER` and `EMAIL_APP_PASSWORD` for the contact form.
 - [ ] **Domain.** `metadataBase` in `src/app/layout.tsx` is still `https://your-domain.com`.
-- [ ] **Logo and favicon.** `src/app/layout.tsx` points to `/Auravine_light.svg` and `/Auravine_dark.svg`, which are **not in `public/`**. The folder only has `Arfazrll_light.svg` and `Arfazrll_dark.svg`, which belong to the old brand. Add the Auravine logo files at those paths.
+- [ ] **Next.js security upgrade.** The build reports that Next.js 16.4.0 has a known vulnerability. Upgrade before launch.
 
-### Assets to replace (kept as files, per your request)
-- [ ] **Featured project visuals.** The four featured projects use the SVG visuals above. Replace them with real screenshots or photos of the products when you have them. Keep the same file names, or update the paths in `src/data/portfolio.ts`.
-- [ ] **Confirm featured project details.** Please check these before launch:
-  - Start dates are set to `2026-01-01` as placeholders. Replace them with the real dates.
-  - Shefa and Safar are marked "ongoing". The Handset Depot and SpanishStitch are marked "completed". Adjust if needed.
-  - Client names are not used. Add them only with the client's permission.
-  - Tech stack entries for the featured projects are reasonable defaults, not confirmed stacks. Correct them to match what was actually built.
-  - Demo and repository links are `#`.
-- [ ] **Project images.** The remaining solutions still use images from the original project. They will look unrelated until you replace them:
+## 5. Follow-ups (not blocking)
 
-  | Solution (`src/data/portfolio.ts`) | Current image(s) |
-  |---|---|
-  | Shefa: AI Front-Desk Agent | `/project/featured/shefa-hero.svg` (+ shefa-gallery.svg) |
-  | Safar: Electric Shuttle | `/project/featured/safar-hero.svg` (+ safar-gallery.svg) |
-  | The Handset Depot | `/project/featured/handset-depot-hero.svg` (+ handset-depot-gallery.svg) |
-  | SpanishStitch | `/project/featured/spanishstitch-hero.svg` (+ spanishstitch-gallery.svg) |
-  | AI Voice Agent (generic, no longer featured) | `/project/swarmaiblogwriter1.webp` (+ 2, 3) |
-  | Custom AI Chatbot for Customer Support | `/project/creativeportfoliowebsite1.webp` (+ 2, 3, 4) |
-  | Face Recognition Smart Attendance | `/project/snbtinplatformpersiapansnbt20251.webp` (+ 20252) |
-  | Business Analytics & Forecasting Dashboard | `/project/terraflowplatform1.webp` (+ terraflowplatform2) |
-  | Document Intelligence & Knowledge Assistant | `/project/parallax/image1.webp` (+ 2, 3) |
-  | Computer Vision Quality Inspection | `/project/parallax/image5.webp` (+ 6) |
-  | AI Product Recommendations for E-Commerce | `/project/parallax/image7.webp` (+ 8) |
-  | Clinic Management SaaS with AI Assistance | `/project/parallax/image9.webp` (+ 10) |
+Impeccable's design detector flagged these patterns, which belong to the original template's look. I kept them because the brief was to keep the animations and visual structure:
 
-- [ ] **Resume / company profile.** `public/resume.pdf` is still the owner's CV. The "Company Profile" page (`/resume`) displays it. Replace the file with your company profile PDF, keeping the same name.
-- [ ] **Certificates.** `public/certificate/` holds the owner's personal certificates (PDFs and images). They are no longer shown on the site. Delete them, or replace them with company certifications.
-- [ ] **Lanyard 3D badge.** `public/lanyard/desain-kartu.webp` (the badge face) and `public/lanyard/card.glb` are used by the 3D badge on the contact page. Check them, and replace with a company badge design if they show the owner's identity.
-- [ ] **Photos.** `public/gallery/` and `public/journey/` contain the owner's personal photos. The About timeline and the About page collage still use some of them. The Gallery page now uses stock images. Replace with studio photos.
-- [ ] **Partner logos.** `public/assets/` contains logos of the owner's former schools, employers, and organizations. Nothing displays them any more. Remove them, or keep only logos of partners you are authorized to show.
-- [ ] **Blog and gallery images.** These are Unsplash stock URLs. Replace with your own imagery when available.
-
-### Optional configuration
-- [ ] **Engineering stats.** `NEXT_PUBLIC_GITHUB_USERNAME`, `GITHUB_TOKEN`, and `WAKATIME_API_KEY` are optional. The GitHub and WakaTime showcases were removed from the About page, so these only matter if you bring the widgets back with company accounts.
-
----
-
-## 5. Follow-up cleanups (not blocking)
-
-- [ ] `src/app/experience/page.tsx` and `src/components/sections/ExperienceStickyScroll.tsx` still contain logo-inversion checks named after former employers. This is code only, not visible text, and the logo lookups are no longer fed by data. Remove when convenient.
-- [ ] `src/components/ui/showcase-stack.tsx` is no longer used.
-- [ ] `AGENTS.md` is generated by `next dev` and is committed as the project instructions file.
-- [ ] `graphify-out/` (generated code graph) was checked and contains no personal names. Regenerate it when the code settles.
-- [ ] Gallery captions, insight article images, and FAQ wording were written for a generic AI services company. Review them with the team before launch.
+- [ ] Gradient text on several headings (Insights, Capabilities, Solutions stats, timeline).
+- [ ] Spring "bounce" easing on the 3D folder animation.
+- [ ] A thick accent border on a rounded card in the About section.
+- [ ] The whole site uses Inter. A more distinctive display face would help the brand stand out.
+- [ ] Tech logos load from `cdn.simpleicons.org`. Self-host them if you want the site to work without that CDN.
+- [ ] Unpublished pages still contain their original template structure. Rework them before publishing.
 
 ---
 
 ## 6. Verification
 
-- [x] `npx tsc --noEmit` passes. The only error at first was stale generated types in `.next/dev/types/validator.ts`, which still referenced the deleted Kaggle route. Running `next dev` regenerated them; the regenerated `validator.ts` and `routes.d.ts` are committed so a fresh checkout builds.
-- [x] `npm run build` passes (27 static pages).
-- [x] Started the built server and requested `/`, `/projects`, `/projects/ai-voice-agent`, `/experience`, `/skills`, `/achievements`, `/blog`, `/blog/ai-voice-agents-for-business`, `/gallery`, `/contact`, and `/resume`. All returned 200. The Bangla locale home page also returned 200.
-- [x] Fixed `/resume` returning 500 during server rendering (`DOMMatrix is not defined` from `react-pdf`). The PDF viewer now loads only in the browser. This failure predates these changes.
-- [ ] Visual review in a browser (light and dark themes, mobile width, both languages). Not done.
-- [ ] Final copy review by someone at Auravine before launch.
-
+- [x] `npx tsc --noEmit` passes.
+- [x] `npm run build` passes.
+- [x] Every published page loads with no failed local requests (home, solutions, four detail pages, capabilities, insights, two articles, contact).
+- [x] Unpublished routes and `/api/gallery` return 404.
+- [x] Visual review of rendered pages in dark and light mode, and the home hero at phone width.

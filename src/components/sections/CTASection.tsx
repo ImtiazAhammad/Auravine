@@ -51,10 +51,10 @@ export default function CTASection() {
         <section ref={sectionRef} className="relative py-12 lg:py-16 overflow-hidden bg-background">
             {/* Infinite Ribbons - Moved from Stats Section */}
             <div className="relative flex h-[300px] w-full items-center justify-center pointer-events-none mb-10">
-                <InfiniteRibbon rotation={6} baseVelocity={1} className="z-10 py-5 border-y border-blue-200 dark:border-white/5 shadow-xl" background="bg-white dark:bg-zinc-900" textColor="text-blue-700 dark:text-zinc-400 font-mono tracking-tighter">
+                <InfiniteRibbon rotation={6} baseVelocity={1} className="z-10 py-5 border-y border-border dark:border-white/5 shadow-xl" background="bg-white dark:bg-zinc-900" textColor="text-brand dark:text-zinc-400 font-mono tracking-tighter">
                     {t('ribbon1')}
                 </InfiniteRibbon>
-                <InfiniteRibbon rotation={-6} reverse={true} baseVelocity={1.2} className="z-20 py-5 border-y border-white/40 dark:border-white/10 shadow-2xl" background="bg-blue-600 dark:bg-black" textColor="text-white font-bold tracking-widest uppercase">
+                <InfiniteRibbon rotation={-6} reverse={true} baseVelocity={1.2} className="z-20 py-5 border-y border-white/40 dark:border-white/10 shadow-2xl" background="bg-brand dark:bg-black" textColor="text-white font-bold tracking-widest uppercase">
                     {t('ribbon2')}
                 </InfiniteRibbon>
             </div>
@@ -101,7 +101,7 @@ export default function CTASection() {
                         <Mail className="w-5 h-5" />
                         <span>{t('start')}</span>
                     </MagneticButton>
-                    <MagneticButton href="/resume" variant="outline" className="text-lg px-10 py-5">
+                    <MagneticButton href="/projects" variant="outline" className="text-lg px-10 py-5">
                         <Layers className="w-5 h-5" />
                         <span>{t('work')}</span>
                     </MagneticButton>

@@ -8,20 +8,20 @@ import ImageTrail from "@/components/ImageTrail";
 const INITIAL_CHIPS = [
   {
     id: 1,
-    title: "AI Engineer",
-    description: "Architect intelligent systems",
+    title: "Voice Agents",
+    description: "Answer every customer call",
     icon: BrainCircuit,
   },
   {
     id: 2,
-    title: "Data Engineer",
-    description: "Building scalable pipelines",
+    title: "Computer Vision",
+    description: "Read cameras in real time",
     icon: Database,
   },
   {
     id: 3,
-    title: "Software Engineer",
-    description: "Crafting robust applications",
+    title: "Business Software",
+    description: "Built around your operations",
     icon: Code2,
   },
 ];

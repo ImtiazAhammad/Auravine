@@ -8,24 +8,9 @@ import { portfolioData } from "@/data/portfolio";
 import { ArrowUpRight } from "lucide-react";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useTranslations } from 'next-intl';
+import { PRODUCT_SCREENS } from "@/data/showcase";
 
-const GALLERY_IMAGES = [
-    '/gallery/Foto Utama.webp',
-    '/gallery/FotoSC1.webp',
-    '/gallery/FotoSC2.webp',
-    '/gallery/FotoSC3.webp',
-    '/gallery/FotoSC4.webp',
-    '/gallery/FotoSC5.webp',
-    '/gallery/academicaffairsdivision1.webp',
-    '/gallery/computernetworkpracticumassistant2.webp',
-    '/gallery/dataentryassistant1.webp',
-    '/gallery/delegateaiesecfutureleaders20241.webp',
-    '/gallery/environmentalhygieneteam1.webp',
-    '/gallery/environmentalhygieneteam2.webp',
-    '/gallery/logisticsoperatorcampusexpo20242.webp',
-    '/gallery/researchassistant1.webp',
-    '/gallery/researchassistant2.webp',
-];
+const GALLERY_IMAGES = PRODUCT_SCREENS.map((s) => s.src);
 
 export const NavigationShortcuts = () => {
     return null; // Component disabled per user request
@@ -85,7 +70,7 @@ export const NavigationShortcuts = () => {
             title: t('shortcuts.volume1'),
             items: [
                 { id: '01', title: t('home'), href: '/#hero' },
-                { id: '02', title: t('resume'), href: portfolioData.personal.resumeUrl, external: true }, // Using existing key for Resume or adding new?
+                { id: '02', title: t('projects'), href: '/projects' },
                 { id: '03', title: t('contact'), href: '/contact' },
             ]
         },
@@ -240,7 +225,6 @@ export const NavigationShortcuts = () => {
                                             <Link
                                                 key={item.id}
                                                 href={item.href || '#'}
-                                                target={item.external ? "_blank" : undefined}
                                                 className="group block relative"
                                                 onClick={() => setIsOpen(false)}
                                                 onMouseEnter={() => setHoveredImage(itemImageMap[item.id])}
