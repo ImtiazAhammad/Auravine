@@ -9,6 +9,7 @@ import { isPublished } from '@/config/pages';
 import { useTranslations } from 'next-intl';
 import { useTheme } from 'next-themes';
 import { Spotlight } from '@/components/ui/spotlight-new';
+import { Logo } from '@/components/layout/Logo';
 import {
     ChevronUp,
     Github,
@@ -188,6 +189,7 @@ export function Footer() {
                         <div className="flex items-center justify-between gap-4">
                             {/* Left Side - Animated Copyright */}
                             <div className="flex items-center gap-1.5 md:gap-2 pl-2 md:pl-4 z-10 overflow-hidden h-6">
+                                <Logo variant="mark" height={18} className="mr-1" />
                                 <span className={`text-xs md:text-sm font-bold uppercase tracking-widest ${isBlog ? 'text-muted-foreground' : 'text-gradient'}`}>
                                     © {currentYear}
                                 </span>

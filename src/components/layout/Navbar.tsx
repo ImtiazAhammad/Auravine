@@ -10,37 +10,10 @@ import { Menu, X, Moon, Sun, Globe, ChevronDown, Focus } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { cn } from '@/lib/utils';
 
+import { Logo } from '@/components/layout/Logo';
 import CardNav from '@/components/ui/CardNav';
 import { AnimatedThemeToggler } from '@/components/ui/animated-theme-toggler';
 import { usePreloadState } from '@/components/ui/arc-preloader-hero';
-
-function Clock() {
-    const [time, setTime] = useState<string>('');
-    const [mounted, setMounted] = useState(false);
-
-    useEffect(() => {
-        setMounted(true);
-        const updateTime = () => {
-            const now = new Date();
-            const h = String(now.getHours()).padStart(2, '0');
-            const m = String(now.getMinutes()).padStart(2, '0');
-            const s = String(now.getSeconds()).padStart(2, '0');
-            setTime(`${h}:${m}:${s}`);
-        };
-
-        updateTime();
-        const interval = setInterval(updateTime, 1000);
-        return () => clearInterval(interval);
-    }, []);
-
-    if (!mounted) return <span className="font-mono text-xl md:text-2xl font-black opacity-0">00:00:00</span>;
-
-    return (
-        <span className="font-mono text-xl md:text-2xl font-black text-gradient tracking-widest hover:tracking-[0.2em] transition-all duration-300">
-            {time}
-        </span>
-    );
-}
 
 // Sub-links for the "About" dropdown
 // Sub-links for the "About" dropdown
@@ -168,9 +141,9 @@ export function Navbar() {
                         )}
                         layout
                     >
-                        {/* Make the Clock a Link to Home */}
-                        <Link href="/" className="relative group min-w-[120px]" onClick={handleHomeClick}>
-                            <Clock />
+                        {/* Logo links home */}
+                        <Link href="/" aria-label="Auravine home" className="relative group min-w-[120px] flex items-center" onClick={handleHomeClick}>
+                            <Logo height={26} priority />
                         </Link>
 
                         {/* Desktop Navigation with CardNav */}
