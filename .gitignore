@@ -6,3 +6,7 @@ node_modules/
 
 # Local environment secrets
 .env*.local
+
+# Local tooling output
+.playwright-mcp/
+*.tsbuildinfo
