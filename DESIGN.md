@@ -33,10 +33,14 @@ Inter for everything, as loaded by `next/font` in `src/app/layout.tsx`. Brand as
 
 ## Logo
 
-- Mark: an arched "A" whose crossbar is a leaf — aura and vine. Files in `public/brand/`.
-- Lockup: mark plus "Auravine" wordmark outlined from Inter Display SemiBold.
-- App icon and favicon: the mark on a rounded brand tile (`public/Auravine_light.svg`, `public/Auravine_dark.svg`, adaptive `public/favicon.svg`).
-- Rebuild: `scripts/brand-assets/build_logo.py` (needs `fonttools` and `uharfbuzz`).
+- Mark ("Doorway A"): a solid A with true 60° edges; an arched doorway is cut out of its base and holds one small round dot. Ink A plus a brand-emerald dot on light, Paper A plus a mint dot on dark. Files in `public/brand/`.
+- Lockups: horizontal (primary) and stacked, with "Auravine" in Inter Display SemiBold, outlined (`scripts/brand-assets/wordmark.svgpath`). The A's base sits on the wordmark baseline. One-colour `-black`, `-white`, `-emerald` versions exist for every lockup and mark.
+- Small-size cut: `auravine-mark-small.svg` (wider doorway, larger dot) below 24 px tall. Use the full mark above that.
+- App icon and favicon: the small-size mark on a rounded Ink tile, Paper tile in dark UI (`public/Auravine_light.svg`, `public/Auravine_dark.svg`, adaptive `public/favicon.svg`, plus `favicon.ico`, `apple-touch-icon.png`, `icon-192/512.png`, `icon-maskable-512.png`, `site.webmanifest`).
+- In the app: `src/components/layout/Logo.tsx` renders the lockup or mark and swaps light/dark artwork with the theme. It is used in the navbar and footer.
+- Rebuild every SVG: `npm run assets:logo` (`scripts/brand-assets/build_logo.py`, standard library only). The PNG and ICO icons are rendered from `public/brand/app-icon.svg` and `app-icon-maskable.svg` with any SVG renderer.
+- Full rules, colours, minimum sizes and misuse: `brand-kit/BRAND-GUIDELINES.md`. Presentation board: `brand-kit/presentation/`. Concept history: `brand-kit/concepts/`.
+- Known gap: images rendered by `npm run assets:generate` before this change (`og-image.png`, the blog cover for "About Auravine", the lanyard textures, two chatbot avatars) still show the previous mark. `kit.mjs` already draws the new one. Re-render them on a machine with Inter installed so the type matches.
 
 ## Imagery
 

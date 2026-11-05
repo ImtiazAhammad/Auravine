@@ -67,12 +67,16 @@ export const metadata: Metadata = {
             'max-snippet': -1,
         },
     },
+    // Icons are built by scripts/brand-assets/build_logo.py (see DESIGN.md, Logo).
     icons: {
         icon: [
-            { url: '/Auravine_light.svg', media: '(prefers-color-scheme: light)' },
-            { url: '/Auravine_dark.svg', media: '(prefers-color-scheme: dark)' },
+            { url: '/favicon.ico', sizes: '48x48' },
+            { url: '/Auravine_light.svg', type: 'image/svg+xml', media: '(prefers-color-scheme: light)' },
+            { url: '/Auravine_dark.svg', type: 'image/svg+xml', media: '(prefers-color-scheme: dark)' },
         ],
+        apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],
     },
+    manifest: '/site.webmanifest',
 };
 
 export const viewport: Viewport = {

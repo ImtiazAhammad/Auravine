@@ -1,0 +1,36 @@
+{
+  "brand": "Auravine",
+  "tagline": "AI-first software partners",
+  "brief": "An AI-first software company in Dhaka, Bangladesh that builds voice agents, chatbots, computer vision, analytics and custom software for non-technical business owners (clinics, retail, garment, logistics). The identity must make those owners trust Auravine to build their product: trustworthy, intelligent, growing, hand-built.",
+  "adjectives": ["trustworthy", "intelligent", "welcoming", "growing"],
+  "criteria": "Success: reads as an A at 16 px, survives one colour and reversal, avoids AI clichés (sparkles, brains, node networks) and the eco-leaf cliché, and fits the existing emerald and Inter system.",
+  "industry": "software",
+  "mockups": ["website", "app-icon", "business-card", "signage", "social", "favicon-tab"],
+  "nav": ["Solutions", "Work", "Contact"],
+  "brand_color": "#047857",
+  "tile_color": "#171717",
+  "greyscale": false,
+  "final": true,
+  "designer": "Auravine brand kit",
+  "round": 2,
+  "concepts": [
+    {
+      "name": "Doorway A",
+      "symbol": "../../public/brand/auravine-mark.svg",
+      "lockup": "../../public/brand/auravine-logo.svg",
+      "stacked": "../../public/brand/auravine-logo-stacked.svg",
+      "symbol_on_tile": "../../public/brand/auravine-mark-dark.svg",
+      "lockup_on_tile": "../../public/brand/auravine-logo-dark.svg",
+      "symbol_on_dark": "../../public/brand/auravine-mark-dark.svg",
+      "lockup_on_dark": "../../public/brand/auravine-logo-dark.svg",
+      "stacked_on_dark": "../../public/brand/auravine-logo-stacked-dark.svg",
+      "idea": "A solid A that frames an arched doorway, with one small emerald presence inside: a welcome and an AI core in a single shape.",
+      "rationale": [
+        "The A silhouette (true 60 degree edges) is the strongest letter cue and survives 16 px",
+        "The doorway says welcome and trust to non-technical owners; the dot is the aura, the intelligence in the room",
+        "One accent colour only: the dot is the brand emerald, the rest is ink, so it extends cleanly into the existing site"
+      ]
+    }
+  ],
+  "recommendation": "Doorway A, refined after an independent review: thicker walls, smaller raised dot, consistent corner radii, emerald accent, and a simplified small-size cut for favicons and app icons."
+}
