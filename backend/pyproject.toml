@@ -14,11 +14,13 @@ dev = [
     "pytest",
     "httpx2",
     "ruff",
+    "psycopg[binary]",
 ]
 
 [tool.pytest.ini_options]
 pythonpath = ["."]
 testpaths = ["tests"]
+markers = ["db: needs a PostgreSQL server (uses local server binaries)"]
 
 [tool.ruff]
 line-length = 100
