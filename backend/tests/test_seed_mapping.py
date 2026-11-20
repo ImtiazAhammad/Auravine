@@ -44,6 +44,10 @@ def test_map_project_wraps_text_and_nests_details(portfolio):
     for key in ("highlights", "metrics", "features", "challengesAndSolutions"):
         assert row["details"]["en"][key] == raw[key]
     assert row["status"] == "published" and row["sort_order"] == 0
+    assert row["category"] == {"en": raw["category"]}
+    assert row["role"] == {"en": raw["role"]}
+    assert row["team"] == {"en": raw["team"]}
+    assert row["custom_timeline"] is None
 
 
 def test_placeholder_urls_become_null(portfolio):
@@ -72,7 +76,8 @@ def test_map_blog_post_keeps_markdown_and_converts_read_time(portfolio):
     assert row["read_time_minutes"] == int(raw["readTime"])
     assert row["published_at"] == raw["date"]
     assert row["cover_image"] == raw["image"]
-    assert row["author_name"] == raw["author"]["name"]
+    assert row["author_name"] == {"en": raw["author"]["name"]}
+    assert row["category"] == raw["category"]  # a filter key such as "applied-ai", not display text
     assert row["tags"] == raw["tags"] and row["sort_order"] == 2
 
 

@@ -41,7 +41,8 @@ def test_one_upsert_request_per_batch_with_conflict_key(settings, seed):
         assert str(request.url) == (
             f"https://x.supabase.co/rest/v1/{table}?on_conflict={UPSERT_KEYS[table]}"
         )
-        assert "resolution=merge-duplicates" in request.headers["Prefer"]
+        assert "resolution=ignore-duplicates" in request.headers["Prefer"]
+        assert "merge-duplicates" not in request.headers["Prefer"]  # never overwrite admin edits
 
 
 def test_batches_are_capped(settings, seed):

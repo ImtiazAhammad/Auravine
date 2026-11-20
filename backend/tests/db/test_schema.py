@@ -30,7 +30,12 @@ def test_bilingual_round_trip(connect):
 
 
 @pytest.mark.parametrize(
-    "bad", [{}, {"bn": "x"}, {"en": ""}, {"en": "  "}, "plain string", {"en": 5}]
+    "bad",
+    [
+        {}, {"bn": "x"}, {"en": ""}, {"en": "  "}, "plain string", {"en": 5}, {"en": None},
+        {"en": "x", "bn": 5},
+        {"en": "\n"}, {"en": "\t\r\n"}, {"en": "\u00a0"}, {"en": "\u200b"},
+    ],
 )
 def test_missing_or_blank_english_is_rejected(connect, bad):
     with pytest.raises(psycopg.errors.CheckViolation):
@@ -81,3 +86,55 @@ def test_contact_message_length_limits(connect):
         conn.execute(insert, ("m" * 5001,))
     with pytest.raises(psycopg.errors.CheckViolation):
         conn.execute(insert, ("",))
+
+
+PROJECT = (
+    "insert into projects (slug, delivery_status, title, description{col}) "
+    "values ('p', 'ongoing', %s, %s{ph})"
+)
+
+
+@pytest.mark.parametrize("column", ["category", "role", "team", "custom_timeline"])
+def test_project_display_fields_are_bilingual_or_null(connect, column):
+    conn = connect()
+    base = (Jsonb({"en": "T"}), Jsonb({"en": "D"}))
+    sql = PROJECT.format(col=f", {column}", ph=", %s")
+    conn.execute(sql, (*base, Jsonb({"en": "Lead", "bn": "নেতা"})))
+    conn.execute("delete from projects")
+    conn.execute(PROJECT.format(col="", ph=""), base)  # null is allowed
+    conn.execute("delete from projects")
+    with pytest.raises(psycopg.errors.CheckViolation):
+        conn.execute(sql, (*base, Jsonb("plain text")))
+
+
+def test_blog_author_name_is_bilingual_or_null(connect):
+    conn = connect()
+    insert = (
+        "insert into blog_posts (slug, title, excerpt, content, author_name) "
+        "values ('b', %s, %s, %s, %s)"
+    )
+    ok = (Jsonb({"en": "T"}), Jsonb({"en": "E"}), Jsonb({"en": "C"}))
+    conn.execute(insert, (*ok, Jsonb({"en": "Auravine Team"})))
+    conn.execute("delete from blog_posts")
+    with pytest.raises(psycopg.errors.CheckViolation):
+        conn.execute(insert, (*ok, Jsonb("Auravine Team")))
+
+
+@pytest.mark.parametrize("bad", [{"fr": {}}, {"en": []}, {"en": "text"}, [], {}])
+def test_project_details_must_hold_an_english_object(connect, bad):
+    with pytest.raises(psycopg.errors.CheckViolation):
+        connect().execute(
+            "insert into projects (slug, delivery_status, title, description, details) "
+            "values ('p', 'ongoing', %s, %s, %s)",
+            (Jsonb({"en": "T"}), Jsonb({"en": "D"}), Jsonb(bad)),
+        )
+
+
+def test_project_details_default_is_valid(connect):
+    conn = connect()
+    conn.execute(
+        "insert into projects (slug, delivery_status, title, description) "
+        "values ('p', 'ongoing', %s, %s)",
+        (Jsonb({"en": "T"}), Jsonb({"en": "D"})),
+    )
+    assert conn.execute("select details from projects").fetchone() == ({"en": {}},)

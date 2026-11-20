@@ -35,6 +35,10 @@ def _require(raw: dict, field: str, kind: str, label: str) -> Any:
     return value
 
 
+def _bilingual_or_none(text: str | None) -> dict[str, str] | None:
+    return bilingual(text) if isinstance(text, str) and text.strip() else None
+
+
 def _url(value: str | None) -> str | None:
     """The old site used '#' as 'no link'; the database uses NULL."""
     return None if value in (None, "", "#") else value
@@ -50,7 +54,7 @@ def map_project(raw: dict, index: int) -> dict:
         "status": "published",
         "sort_order": index,
         "delivery_status": _require(raw, "status", "project", label),
-        "category": raw.get("category"),
+        "category": _bilingual_or_none(raw.get("category")),
         "title": bilingual(_require(raw, "title", "project", label)),
         "description": bilingual(_require(raw, "description", "project", label)),
         "long_description": bilingual(long_description) if long_description else None,
@@ -63,9 +67,9 @@ def map_project(raw: dict, index: int) -> dict:
         "repo_url": _url(raw.get("repoUrl")),
         "start_date": raw.get("startDate"),
         "end_date": raw.get("endDate"),
-        "role": raw.get("role"),
-        "team": raw.get("team"),
-        "custom_timeline": raw.get("customTimeline"),
+        "role": _bilingual_or_none(raw.get("role")),
+        "team": _bilingual_or_none(raw.get("team")),
+        "custom_timeline": _bilingual_or_none(raw.get("customTimeline")),
     }
 
 
@@ -88,7 +92,7 @@ def map_blog_post(raw: dict, index: int) -> dict:
         "published_at": raw.get("date"),
         "category": raw.get("category"),
         "tags": list(raw.get("tags", [])),
-        "author_name": (raw.get("author") or {}).get("name"),
+        "author_name": _bilingual_or_none((raw.get("author") or {}).get("name")),
         "read_time_minutes": read_time,
     }
 

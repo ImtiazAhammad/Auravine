@@ -1,8 +1,9 @@
-"""Upsert seed rows into Supabase through its REST API using the service-role key.
+"""Insert seed rows into Supabase through its REST API using the service-role key.
 
     uv run python -m app.seed.load seed/portfolio.json [--dry-run]
 
-Rows are upserted on a stable key, so running it again updates rows and never duplicates them.
+Insert-only: a row whose key already exists is left untouched, so re-running never duplicates
+rows and never overwrites edits made later in the admin (status, order, Bangla translations).
 """
 
 import json
@@ -33,7 +34,7 @@ def build_requests(
         "apikey": key,
         "Authorization": f"Bearer {key}",
         "Content-Type": "application/json",
-        "Prefer": "resolution=merge-duplicates,return=minimal",
+        "Prefer": "resolution=ignore-duplicates,return=minimal",
     }
     requests = []
     for table, rows in seed.items():
