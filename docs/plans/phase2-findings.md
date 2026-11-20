@@ -24,7 +24,17 @@ Schema, row-level security and seed are applied to the live Supabase project and
 
 `npm run seed:export`, then `cd backend && uv run python -m app.seed.load seed/portfolio.json`, then `uv run python -m app.seed.verify seed/portfolio.json --toggle-draft`. Needs `backend/.env` (git-ignored).
 
-## Still open
+## Review fixes (migration 4, applied live)
 
-- Create the first admin: Supabase **Authentication → Users → Add user**, then in the SQL Editor `insert into admin_profiles (user_id) values ('<uuid>');`.
+A whole-branch review found three Important issues, all fixed and confirmed live:
+
+- The seed is **insert-only**: re-running it never overwrites admin edits (status, order, Bangla).
+- `projects.category/role/team/custom_timeline` and `blog_posts.author_name` are translatable (`{"en": ...}`); `blog_posts.category` stays a plain filter key; `projects.details` must hold an English object.
+- Whitespace-only English text (newline, tab, no-break and zero-width spaces) is rejected by the database (live write attempt returned HTTP 400).
+
+## State
+
+- The first admin exists (`admin_profiles` has one row, role `admin`).
 - Only English text is seeded. Bangla is added through the admin (Phase 5); readers fall back to English.
+- Migrations applied live: 1 schema, 2 RLS, 3 service_role grants, 4 review fixes (pasted in the SQL Editor; there is no automated log, so this list is the record).
+- Deferred minors from the review are listed in the commit history and the branch review notes: failed-seed partial writes, FAQ key follows question text, `media_assets` has no `updated_at`, unpinned `tsx`, verifier restores `published` unconditionally, no database-level idempotence test.
