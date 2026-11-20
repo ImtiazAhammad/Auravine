@@ -1,0 +1,21 @@
+[project]
+name = "auravine-backend"
+version = "0.1.0"
+description = "Auravine backend: content, contact, chat and admin API"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+    "pydantic-settings",
+]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "httpx2",
+    "ruff",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
