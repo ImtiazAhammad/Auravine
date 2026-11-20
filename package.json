@@ -8,6 +8,7 @@
         "start": "next start",
         "lint": "next lint",
         "dev:api": "uv run --directory backend uvicorn app.main:app --reload --port 8000",
+        "seed:export": "npx tsx scripts/export-portfolio.ts",
         "assets:logo": "python3 scripts/brand-assets/build_logo.py",
         "assets:generate": "node scripts/brand-assets/render.mjs"
     },
