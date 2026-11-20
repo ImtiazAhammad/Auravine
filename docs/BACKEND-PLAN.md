@@ -81,6 +81,20 @@ Each phase ends with something you can open and check.
 6. **Hardening.** Tests for the API and RLS policies, secret review, error handling, a scheduled keep-alive so the free Supabase project does not pause, backup export.
 7. **Cutover.** Turn the flag, delete the fallback data, update `DESIGN.md` and a README for running everything.
 
+## Running locally
+
+The Python backend lives in `backend/` and needs [uv](https://docs.astral.sh/uv/).
+
+```bash
+cd backend && uv sync          # install (Python 3.12, fetched by uv if missing)
+uv run pytest -q               # tests
+uv run ruff check .            # lint
+cp .env.example .env           # then fill in values (git-ignored)
+npm run dev:api                # from the repo root: http://localhost:8000/health
+```
+
+CI (`.github/workflows/backend.yml`) runs the same lint and test commands on every change under `backend/`.
+
 ## Risks and how we handle them
 
 | Risk | Handling |
