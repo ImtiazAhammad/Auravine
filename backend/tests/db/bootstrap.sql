@@ -13,3 +13,5 @@ grant usage on schema public, auth to anon, authenticated, service_role;
 -- Supabase grants new tables to these roles by default and relies on RLS to gate access.
 alter default privileges in schema public grant all on tables to anon, authenticated, service_role;
 alter default privileges in schema public grant all on sequences to anon, authenticated, service_role;
+-- Supabase lets service_role manage auth.users; tests create users to satisfy foreign keys.
+grant all on auth.users to service_role;
