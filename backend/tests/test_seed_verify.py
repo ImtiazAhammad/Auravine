@@ -14,11 +14,15 @@ BASE = "https://x.supabase.co"
 class FakeSupabase:
     """A stand-in for the live REST API, with switches for the ways it could be misconfigured."""
 
-    def __init__(self, counts=None, open_writes=False, leak_private=False, draft_hidden=True):
+    def __init__(
+        self, counts=None, open_writes=False, leak_private=False, draft_hidden=True,
+        patch_status=204,
+    ):
         self.counts = counts or dict(EXPECTED)
         self.open_writes = open_writes
         self.leak_private = leak_private
         self.draft_hidden = draft_hidden
+        self.patch_status = patch_status
         self.patches: list[str] = []
         self.post_bodies: list[dict] = []
         self.status = "published"
@@ -41,9 +45,10 @@ class FakeSupabase:
             self.post_bodies.append(json.loads(request.content))
             return httpx2.Response(201 if self.open_writes else 401)
         if request.method == "PATCH":
-            self.status = json.loads(request.content)["status"]
-            self.patches.append(self.status)
-            return httpx2.Response(204)
+            self.patches.append(json.loads(request.content)["status"])
+            if self.patch_status < 300:
+                self.status = self.patches[-1]
+            return httpx2.Response(self.patch_status)
         raise AssertionError(request.method)
 
 
@@ -91,4 +96,12 @@ def test_draft_still_visible_fails_but_still_restores():
     fake = FakeSupabase(draft_hidden=False)
     checks = run(fake, service_key="svc", toggle_slug="some-project")
     assert any("draft" in name for name in failed(checks))
+    assert fake.patches == ["draft", "published"]
+
+
+def test_refused_draft_patch_is_reported_as_such_and_restore_is_still_attempted():
+    fake = FakeSupabase(patch_status=403)
+    names = failed(run(fake, service_key="svc", toggle_slug="some-project"))
+    assert any("could not set" in name for name in names)
+    assert not any("hidden from anonymous" in name for name in names)
     assert fake.patches == ["draft", "published"]

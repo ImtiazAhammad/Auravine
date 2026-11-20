@@ -87,11 +87,15 @@ def run_checks(
             )
 
         try:
-            set_status("draft")
-            got = _total(_count(client, base, anon_key, "projects"))
-            want = expected["projects"] - 1
-            checks.append(Check("draft project is hidden from anonymous", got == want,
-                                f"got {got}, wanted {want}"))
+            flipped = set_status("draft")
+            if flipped.status_code >= 300:
+                checks.append(Check("could not set a project to draft with the service key", False,
+                                    f"HTTP {flipped.status_code}"))
+            else:
+                got = _total(_count(client, base, anon_key, "projects"))
+                want = expected["projects"] - 1
+                checks.append(Check("draft project is hidden from anonymous", got == want,
+                                    f"got {got}, wanted {want}"))
         finally:
             restored = set_status("published")
             checks.append(Check("project restored to published", restored.status_code < 300,
