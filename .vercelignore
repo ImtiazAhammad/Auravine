@@ -1,0 +1,10 @@
+# Never upload secrets or local-only data when deploying with the Vercel CLI.
+.env
+.env.*
+backend/.env
+backend/.venv
+backend/seed
+.superpowers
+.vercel
+node_modules
+.next
