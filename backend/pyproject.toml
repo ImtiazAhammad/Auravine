@@ -1,0 +1,30 @@
+[project]
+name = "auravine-backend"
+version = "0.1.0"
+description = "Auravine backend: content, contact, chat and admin API"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+    "pydantic-settings",
+    "httpx2",
+]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "ruff",
+    "psycopg[binary]",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+markers = ["db: needs a PostgreSQL server (uses local server binaries)"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
