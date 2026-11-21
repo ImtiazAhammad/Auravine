@@ -27,6 +27,9 @@ class Settings(BaseSettings):
     groq_api_key: SecretStr | None = None
     gemini_api_key: SecretStr | None = None
     rate_limit_salt: SecretStr | None = None
+    groq_model: str = "llama-3.1-8b-instant"
+    # Confirm the current free Flash model name against Google's docs; override with GEMINI_MODEL.
+    gemini_model: str = "gemini-2.5-flash"
 
     @field_validator(
         "email_user", "email_app_password", "groq_api_key", "gemini_api_key", "rate_limit_salt",
