@@ -2,11 +2,12 @@
 
 import { motion } from 'framer-motion';
 import { Code2, Award, Sparkles, TrendingUp } from 'lucide-react';
-import { portfolioData } from '@/data/portfolio';
+import { useContent } from '@/providers/ContentProvider';
+import type { PortfolioData } from '@/types';
 import { Counter } from '@/components/ui/Counter';
 
 // Calculate metrics from portfolio data
-const calculateMetrics = () => {
+const calculateMetrics = (portfolioData: PortfolioData) => {
     const totalProjects = portfolioData.projects?.length || 0;
     const completedProjects = portfolioData.projects?.filter(p => p.status === 'completed').length || 0;
     const totalTechStack = portfolioData.techStack?.length || 0;
@@ -92,7 +93,8 @@ const StatCard = ({ value, label, icon, delay, gradient, isLowPowerMode }: StatC
 };
 
 export function ProjectStats({ isLowPowerMode }: { isLowPowerMode?: boolean }) {
-    const metrics = calculateMetrics();
+    const portfolioData = useContent();
+    const metrics = calculateMetrics(portfolioData);
 
     const stats = [
         {

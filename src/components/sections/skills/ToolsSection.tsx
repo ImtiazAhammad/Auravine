@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { portfolioData } from '@/data/portfolio';
+import { useContent } from '@/providers/ContentProvider';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 
@@ -20,6 +20,7 @@ const toolLogos: Record<string, string> = {
 };
 
 export const ToolsSection = () => {
+    const portfolioData = useContent();
     const topRow = portfolioData.tools.slice(0, 5);
     const bottomRow = portfolioData.tools.slice(5, 10);
 

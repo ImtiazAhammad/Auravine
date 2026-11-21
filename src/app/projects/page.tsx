@@ -8,7 +8,7 @@ import { useLenis } from 'lenis/react';
 import { useTranslations } from 'next-intl';
 import { Search, X, Layers, ArrowRight, ArrowUpRight, Sparkles, Code2, Zap, Brain, Cpu, Wifi, Blocks, Globe, Database, LayoutGrid, List } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { portfolioData } from '@/data/portfolio';
+import { useContent } from '@/providers/ContentProvider';
 import { Project } from '@/types';
 import { HeroParallax } from '@/components/ui/hero-parallax';
 import { LogoTimeline, LogoItem } from '@/components/ui/logo-timeline';
@@ -948,6 +948,7 @@ const getIconKey = (name: string): keyof typeof Icons => {
 };
 
 export default function ProjectsPage() {
+    const portfolioData = useContent();
     const t = useTranslations('projects');
     const [searchQuery, setSearchQuery] = useState('');
     const [filter, setFilter] = useState<FilterType>('all');

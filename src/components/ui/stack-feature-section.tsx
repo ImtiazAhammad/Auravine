@@ -10,7 +10,7 @@ import {
   SiVite, SiTypescript, SiTailwindcss, SiNextdotjs, 
   SiFlask, SiJavascript, SiVercel
 } from "react-icons/si";
-import { portfolioData } from "@/data/portfolio";
+import { useContent } from '@/providers/ContentProvider';
 import MagneticEffect from "@/components/ui/MagneticEffect";
 
 const fallbackUrls = [
@@ -39,6 +39,7 @@ const iconConfigs = [
 ];
 
 export default function FeatureSection() {
+  const portfolioData = useContent();
   const orbitCount = 3;
   const orbitGap = 9; // rem between orbits
   const iconsPerOrbit = Math.ceil(iconConfigs.length / orbitCount);

@@ -6,9 +6,9 @@ import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 import Link from "next/link";
-import { portfolioData } from "@/data/portfolio";
-
+import { useContent } from '@/providers/ContentProvider';
 export default function ImpactSection() {
+  const portfolioData = useContent();
   const [openCard, setOpenCard] = useState(0);
   const containerRef = useRef<HTMLElement>(null);
 

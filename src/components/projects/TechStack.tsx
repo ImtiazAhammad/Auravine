@@ -3,7 +3,7 @@
 import { useRef, useState, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { useTheme } from 'next-themes';
-import { portfolioData } from '@/data/portfolio';
+import { useContent } from '@/providers/ContentProvider';
 import { cn } from '@/lib/utils';
 import { Cpu, Wrench, Zap, RefreshCw, ArrowDown, ChevronDown } from 'lucide-react';
 import { TechStack as TechStackType, Tool } from '@/types/index';
@@ -58,6 +58,7 @@ const CENTER_PULL = 0.002;
 const MAX_SPEED = 12;
 
 export function TechStack({ techStack, tools, isLowPowerMode }: TechStackProps & { isLowPowerMode?: boolean }) {
+    const portfolioData = useContent();
     const containerRef = useRef<HTMLDivElement>(null);
     const [bodies, setBodies] = useState<PhysicsBody[]>([]);
     const [mousePos, setMousePos] = useState({ x: -9999, y: -9999 });

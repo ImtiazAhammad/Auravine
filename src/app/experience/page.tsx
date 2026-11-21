@@ -24,7 +24,7 @@ import {
     Link2
 } from 'lucide-react';
 import { cn, formatDate } from '@/lib/utils';
-import { portfolioData } from '@/data/portfolio';
+import { useContent } from '@/providers/ContentProvider';
 import dynamic from 'next/dynamic';
 import { useTheme } from 'next-themes';
 import { Experience, Education } from '@/types';
@@ -93,6 +93,7 @@ interface TabItem {
 import MagneticEffect from '@/components/ui/MagneticEffect';
 
 function ExperienceTabSlider({ isLowPowerMode }: { isLowPowerMode: boolean }) {
+    const portfolioData = useContent();
     const contentRef = useRef<HTMLDivElement>(null);
     const [activeTab, setActiveTab] = useState<number>(1);
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -833,6 +834,7 @@ function TimelineGallery({ images, id, title, externalLink, logo }: { images: st
 }
 
 function ExperienceTimeline({ isLowPowerMode }: { isLowPowerMode: boolean }) {
+    const portfolioData = useContent();
     const experiences = portfolioData.experiences;
 
     const groupedExperiences = useMemo(() => {

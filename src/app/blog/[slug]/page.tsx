@@ -5,12 +5,13 @@ import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
-import { portfolioData } from '@/data/portfolio';
+import { useContent } from '@/providers/ContentProvider';
 import { Copy, Linkedin, Github, BookOpen, ArrowLeft, Check } from 'lucide-react';
 import { notFound, useRouter } from 'next/navigation';
 import { cn } from '@/lib/utils';
 
 export default function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+    const portfolioData = useContent();
     const { slug } = use(params);
     const t = useTranslations('blog');
     const router = useRouter();

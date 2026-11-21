@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { portfolioData } from '@/data/portfolio';
+import { getContent } from '@/lib/content';
 
 // ─── Build system prompt from portfolio data ─────────────────────────────────
-function buildSystemPrompt(locale: string = 'en'): string {
+async function buildSystemPrompt(locale: string = 'en'): Promise<string> {
+    const portfolioData = await getContent(locale === 'bn' ? 'bn' : 'en');
     const { personal, projects, experience, education, skills, achievements, softSkills, tools } = portfolioData as any;
 
     const projectList = (projects ?? [])
@@ -196,7 +197,7 @@ export async function POST(req: NextRequest) {
 
         // Limit to last 20 messages to avoid token overflow
         const messages = body.messages.slice(-20);
-        const systemPrompt = buildSystemPrompt(body.locale);
+        const systemPrompt = await buildSystemPrompt(body.locale);
 
         let reply: string;
         let provider: string;

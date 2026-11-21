@@ -1,7 +1,7 @@
 "use client";
 import { motion } from 'framer-motion';
 import { FaLinkedinIn, FaGithub, FaInstagram } from "react-icons/fa";
-import { portfolioData } from "@/data/portfolio";
+import { useContent } from '@/providers/ContentProvider';
 import { cn } from "@/lib/utils";
 import { ChatBot } from "@/components/layout/ChatBot";
 import { Bot } from "lucide-react";
@@ -12,6 +12,7 @@ interface SocialCornerProps {
 }
 
 export const SocialCorner = ({ className, delay = 0.5 }: SocialCornerProps) => {
+    const portfolioData = useContent();
     return null; // Component disabled per user request
     const linkedinLink = portfolioData.personal.socialLinks.find(s => s.platform === 'LinkedIn')?.url;
     const instagramLink = portfolioData.personal.socialLinks.find(s => s.platform === 'Instagram')?.url;

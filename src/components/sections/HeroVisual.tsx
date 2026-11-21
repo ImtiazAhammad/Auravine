@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Separator } from "@/components/ui/separator";
 import { Github, Linkedin, Mail, ArrowDown, ArrowDownRight, Bot, Zap, ExternalLink, MessageSquare } from 'lucide-react';
-import { portfolioData } from "@/data/portfolio";
+import { useContent } from '@/providers/ContentProvider';
 import { cn } from "@/lib/utils";
 import Link from 'next/link';
 import gsap from "gsap";
@@ -11,6 +11,7 @@ import { Spotlight } from "@/components/ui/spotlight-new";
 import { useRouter } from 'next/navigation';
 
 export function HeroVisual({ isExiting = false }: { isExiting?: boolean }) {
+  const portfolioData = useContent();
   const { personal } = portfolioData;
   const router = useRouter();
   const [showProfile, setShowProfile] = useState(false);

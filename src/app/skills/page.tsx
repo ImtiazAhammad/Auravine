@@ -3,7 +3,7 @@
 import { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useAnimationFrame, useMotionValue } from 'framer-motion';
 import { useTranslations } from 'next-intl';
-import { portfolioData } from '@/data/portfolio';
+import { useContent } from '@/providers/ContentProvider';
 import { SplineScene } from '@/components/ui/SplineScene';
 import { TextPressure } from '@/components/ui/TextPressure';
 import { KineticTechGrid } from '@/components/ui/KineticTechGrid';
@@ -153,6 +153,7 @@ function VaporFog({ className }: { className?: string }) {
 
 
 export default function SkillsPage() {
+    const portfolioData = useContent();
     const t = useTranslations('skills');
     const containerRef = useRef<HTMLDivElement>(null);
 

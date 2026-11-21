@@ -7,7 +7,7 @@ import {
   TrendUp, ArrowUpRight, Check, CircleNotch, Sparkle, Hash,
   Brain, Code, TerminalWindow, ShieldCheck, Robot, Atom, Database, Cpu, FileText, Lightning, Globe, Stack
 } from '@phosphor-icons/react';
-import { portfolioData } from '@/data/portfolio';
+import { useContent } from '@/providers/ContentProvider';
 import Link from 'next/link';
 import Image from 'next/image';
 import { AnimatedFolder } from '@/components/ui/3d-folder';
@@ -150,6 +150,7 @@ function FeaturedVisual({ posts, currentSlide, isLowPowerMode }: any) {
 
 /* ── Card 2: Stats Monitor ── */
 function StatsVisual({ categoryStats }: { categoryStats: { name: string, count: number }[] }) {
+  const portfolioData = useContent();
   // One bar per topic, sized by how many articles it has.
   const topicLabels: Record<string, string> = { 'applied-ai': 'AI', 'software-development': 'SOFTWARE', company: 'COMPANY' };
   const maxCount = Math.max(1, ...categoryStats.map((c) => c.count));
@@ -453,6 +454,7 @@ function RecentPublicationsVisual({ blogs }: { blogs: any[] }) {
 
 /* ── Card 5: Projects Showcase (Animated Stack) ── */
 function ProjectsVisual() {
+  const portfolioData = useContent();
   const topProjects = portfolioData.projects.slice(0, 3);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -533,6 +535,7 @@ function ProjectsVisual() {
 ────────────────────────────────────────────────────── */
 
 export const BentoHero = ({ isLowPowerMode }: { isLowPowerMode?: boolean }) => {
+  const portfolioData = useContent();
   const t = useTranslations('blog');
   const { theme } = useTheme();
   const isDark = theme === 'dark';

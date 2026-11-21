@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useMemo } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
@@ -10,7 +10,8 @@ import { useTheme } from "next-themes";
 import ImageTrail from "@/components/ImageTrail";
 import Image from "next/image";
 import InfiniteMenu from "@/components/InfiniteMenu";
-import { portfolioData } from "@/data/portfolio";
+import { useContent } from '@/providers/ContentProvider';
+import type { Experience } from '@/types';
 import { BeamDivider } from "@/components/ui/BeamDivider";
 import ScrollReveal from "@/components/ScrollReveal";
 import { Github, Linkedin, Instagram, MessageSquare, ArrowRight, ArrowUpRight } from "lucide-react";
@@ -26,9 +27,9 @@ import { ArgentLoopInfiniteSlider } from "@/components/ui/argent-loop-infinite-s
 import { HorizontalTimeline } from "@/components/ui/horizontal-timeline";
 import { PRODUCT_SCREENS } from "@/data/showcase";
 
-const showcaseMembers = [
+const buildShowcaseMembers = (experiences: Experience[]) => [
     // 1. Discovery & Design
-    ...portfolioData.experiences.filter(exp => exp.id === 'phase-1').map(exp => ({
+    ...experiences.filter(exp => exp.id === 'phase-1').map(exp => ({
         id: exp.id,
         name: "Discovery & Design",
         role: exp.position,
@@ -38,7 +39,7 @@ const showcaseMembers = [
         social: undefined
     })),
     // 2. Build & Integrate
-    ...portfolioData.experiences.filter(exp => exp.id === 'phase-2').map(exp => ({
+    ...experiences.filter(exp => exp.id === 'phase-2').map(exp => ({
         id: exp.id,
         name: "Build & Integrate",
         role: exp.position,
@@ -48,7 +49,7 @@ const showcaseMembers = [
         social: undefined
     })),
     // 3. Launch & Operate
-    ...portfolioData.experiences.filter(exp => exp.id === 'phase-3').map(exp => ({
+    ...experiences.filter(exp => exp.id === 'phase-3').map(exp => ({
         id: exp.id,
         name: "Launch & Operate",
         role: exp.position,
@@ -538,7 +539,8 @@ const ScrollHijackSection = () => {
 };
 
 export default function AboutSection() {
-    console.log('SHOWCASE MEMBERS:', showcaseMembers.map(m => m.id));
+    const portfolioData = useContent();
+    const showcaseMembers = useMemo(() => buildShowcaseMembers(portfolioData.experiences), [portfolioData.experiences]);
     const containerRef = useRef<HTMLElement>(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,

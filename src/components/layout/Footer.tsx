@@ -27,8 +27,7 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useIsMobile } from '@/hooks/useIsMobile';
-import { portfolioData } from '@/data/portfolio';
-
+import { useContent } from '@/providers/ContentProvider';
 type SocialIconComponent = typeof Github;
 
 const socialIcons: { [key: string]: SocialIconComponent } = {
@@ -86,6 +85,7 @@ function SocialCard({ social }: { social: SocialLink }) {
 }
 
 export function Footer() {
+    const portfolioData = useContent();
     const { theme } = useTheme();
     const tNav = useTranslations('navigation');
     const t = useTranslations('footer');

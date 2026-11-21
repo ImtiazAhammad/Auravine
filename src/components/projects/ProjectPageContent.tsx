@@ -10,8 +10,7 @@ import { TechStack } from './TechStack';
 import { ProjectPlaceholder } from './ProjectPlaceholder';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { portfolioData } from '@/data/portfolio';
-
+import { useContent } from '@/providers/ContentProvider';
 // --- Animated Terminal Component ---
 const TerminalBlock = ({ title, code }: { title: string; code: string }) => {
     const [copied, setCopied] = useState(false);
@@ -171,6 +170,7 @@ const Typewriter = ({ examples }: { examples: string[] }) => {
 };
 
 export function ProjectPageContent({ project, isLowPowerMode }: { project: Project; isLowPowerMode?: boolean }) {
+    const portfolioData = useContent();
     const t = useTranslations('projects');
     const tCommon = useTranslations('common');
     const router = useRouter();
