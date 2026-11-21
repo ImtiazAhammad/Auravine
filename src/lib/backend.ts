@@ -7,7 +7,7 @@ export class BackendUnavailable extends Error {
     }
 }
 
-const TIMEOUT_MS = 45_000; // chat may try two providers at 15 s each
+const TIMEOUT_MS = 70_000; // worst case: limiter + content reads, then two providers at 15 s each
 
 export async function callBackend(path: string, init: { body: unknown; ip: string }): Promise<Response> {
     const base = process.env.BACKEND_INTERNAL_URL?.trim().replace(/\/+$/, '');

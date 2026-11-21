@@ -13,7 +13,7 @@ def get_settings_dep() -> Settings:
 
 
 async def get_http_client() -> AsyncIterator[httpx2.AsyncClient]:
-    async with httpx2.AsyncClient(timeout=10) as client:
+    async with httpx2.AsyncClient(timeout=5) as client:
         yield client
 
 

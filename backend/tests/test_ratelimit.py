@@ -114,3 +114,32 @@ async def test_enforce_without_a_salt_fails_closed():
     async with client_with(lambda r: httpx2.Response(200, json=True)) as client:
         with pytest.raises(RateLimitUnavailable):
             await enforce(client, make_settings(), "chat", "ip", (600, 20), (86400, 500))
+
+
+def test_ipv6_visitors_are_keyed_by_their_64_bit_prefix():
+    a = visitor_key("2001:db8:1:2::1", "s")
+    b = visitor_key("2001:db8:1:2:ffff:ffff:ffff:ffff", "s")
+    c = visitor_key("2001:db8:1:3::1", "s")
+    assert a == b and a != c
+
+
+def test_ipv4_and_unparseable_addresses_are_handled():
+    assert visitor_key("203.0.113.9", "s") != visitor_key("203.0.113.10", "s")
+    assert visitor_key("not-an-ip", "s") == visitor_key("unknown", "s")
+
+
+async def test_enforce_adds_a_daily_per_visitor_check_between_the_two():
+    calls = []
+
+    def handler(request):
+        body = json.loads(request.content)
+        calls.append((body["p_bucket"], body["p_window_seconds"], body["p_max"]))
+        return httpx2.Response(200, json=True)
+
+    settings = make_settings(rate_limit_salt="salt")
+    async with client_with(handler) as client:
+        ok = await enforce(
+            client, settings, "chat", "ip", (600, 20), (86400, 500), daily_per_visitor=(86400, 100)
+        )
+    assert ok is True
+    assert calls == [("chat", 600, 20), ("chat-day", 86400, 100), ("chat-all", 86400, 500)]

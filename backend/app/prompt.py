@@ -41,6 +41,7 @@ async def _rows(client: httpx2.AsyncClient, settings: Settings, path: str) -> li
     response = await client.get(
         f"{settings.supabase_url.rstrip('/')}/rest/v1/{path}",
         headers={"apikey": key, "Authorization": f"Bearer {key}"},
+        timeout=3,
     )
     response.raise_for_status()
     data = response.json()
@@ -82,44 +83,60 @@ async def load_content(
         content = await _fetch(client, settings)
     except (httpx2.HTTPError, ValueError, KeyError, TypeError) as error:
         log.error("chat content refresh failed: %s", type(error).__name__)
-        if _cache["content"] is not None:
-            _cache["fetched_at"] = current - TTL_SECONDS + RETRY_AFTER_FAILURE_SECONDS
-            return _cache["content"]
-        return MINIMAL_CONTENT
+        # Remember the failure: retry in 30 s, not on every request.
+        _cache["fetched_at"] = current - TTL_SECONDS + RETRY_AFTER_FAILURE_SECONDS
+        if _cache["content"] is None:
+            _cache["content"] = MINIMAL_CONTENT
+        return _cache["content"]
     _cache.update(content=content, fetched_at=current)
     return content
 
 
 def build_system_prompt(content: dict, locale: str) -> str:
-    personal = content["personal"]
-    name = personal.get("name", "Auravine")
+    personal = content.get("personal") or MINIMAL_CONTENT["personal"]
+    name = personal.get("name") or "Auravine"
 
     def link(platform: str) -> str:
-        for item in content["social_links"]:
-            if item.get("platform") == platform and item.get("url") not in (None, "", "#"):
+        for item in content.get("social_links") or []:
+            if isinstance(item, dict) and item.get("platform") == platform and item.get("url") not in (None, "", "#"):
                 return item["url"]
         return ""
 
     project_lines = []
-    for p in content["projects"]:
-        line = f"- {_pick(p['title'], locale)}"
+    for p in content.get("projects") or []:
+        title = _pick(p.get("title"), locale)
+        if not title:
+            continue
+        line = f"- {title}"
         if p.get("category"):
             line += f" ({_pick(p['category'], locale)})"
-        line += f": {_pick(p['description'], locale)}."
+        line += f": {_pick(p.get('description'), locale)}."
         if p.get("tech_stack"):
-            line += f" Tech: {', '.join(p['tech_stack'])}."
+            line += f" Tech: {', '.join(str(t) for t in p['tech_stack'])}."
         if p.get("role"):
             line += f" Role: {_pick(p['role'], locale)}."
-        if p.get("demo_url"):
+        if p.get("demo_url") not in (None, "", "#"):
             line += f" Demo: {p['demo_url']}"
         project_lines.append(line)
 
+    def names(items: list | None) -> list[str]:
+        return [str(i["name"]) for i in items or [] if isinstance(i, dict) and i.get("name")]
+
     skills = ", ".join(
-        f"{s['name']} ({s['level']})" if s.get("level") else s["name"]
-        for s in content["hard_skills"]
+        f"{s['name']} ({s['level']})" if s.get("level") else str(s["name"])
+        for s in content.get("hard_skills") or [] if isinstance(s, dict) and s.get("name")
     )
-    languages = ", ".join(f"{x['name']} ({x['level']})" for x in content["languages"])
+    languages = ", ".join(
+        f"{x['name']} ({x['level']})" if x.get("level") else str(x["name"])
+        for x in content.get("languages") or [] if isinstance(x, dict) and x.get("name")
+    )
     reply_language = "Bengali (Bangla)" if locale == "bn" else "English"
+    solutions = (
+        f"SOLUTIONS ({len(project_lines)} total)\n" + "\n".join(project_lines)
+        if project_lines
+        else "SOLUTIONS\nThe list of solutions is not available right now. Invite the visitor to "
+             "see the projects page or to ask the team through the contact page."
+    )
 
     return f"""You are the AI assistant for {name}, an AI-first software development company based in Dhaka, Bangladesh. You are friendly, helpful, and knowledgeable about {name}'s services, delivery process, and solutions. Answer questions accurately based on the information below.
 
@@ -134,17 +151,16 @@ COMPANY INFO
 - GitHub: {link('GitHub')}
 - LinkedIn: {link('LinkedIn')}
 
-SOLUTIONS ({len(content['projects'])} total)
-{chr(10).join(project_lines)}
+{solutions}
 
 TECHNICAL SKILLS
 {skills or 'AI, Machine Learning, Full Stack Development, Computer Vision.'}
 
 SOFT SKILLS
-{', '.join(s['name'] for s in content['soft_skills']) or 'Transparency, Clear Communication, Ownership.'}
+{', '.join(names(content.get('soft_skills'))) or 'Transparency, Clear Communication, Ownership.'}
 
 TOOLS AND TECHNOLOGIES
-{', '.join(t['name'] for t in content['tools']) or 'Docker, GitHub, Figma.'}
+{', '.join(names(content.get('tools'))) or 'Docker, GitHub, Figma.'}
 
 INSTRUCTIONS
 - Answer in {reply_language} (the current interface language). If the user asks in a different language, you may respond in that language too, staying professionally friendly.

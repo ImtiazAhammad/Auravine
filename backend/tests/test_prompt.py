@@ -109,3 +109,24 @@ async def test_a_failed_refresh_serves_the_last_good_content_then_a_minimal_one(
         prompt_module.clear_cache()
         minimal = await load_content(c, make_settings(), now=lambda: 20_000.0)
     assert minimal["projects"] == [] and minimal["personal"]["name"] == "Auravine"
+
+
+def test_minimal_prompt_does_not_claim_there_are_no_solutions():
+    from app.prompt import MINIMAL_CONTENT
+
+    text = build_system_prompt(MINIMAL_CONTENT, "en")
+    assert "0 total" not in text and "contact page" in text
+
+
+async def test_a_cold_failure_is_remembered_so_requests_do_not_retry_every_time():
+    prompt_module.clear_cache()
+    calls: list[str] = []
+    async with httpx2.AsyncClient(
+        transport=httpx2.MockTransport(supabase_handler(calls, True))
+    ) as c:
+        await load_content(c, make_settings(), now=lambda: 0.0)
+        made = len(calls)
+        await load_content(c, make_settings(), now=lambda: 5.0)
+        assert len(calls) == made  # within the 30 s backoff
+        await load_content(c, make_settings(), now=lambda: 40.0)
+        assert len(calls) > made

@@ -20,7 +20,9 @@ log = logging.getLogger("auravine.contact")
 
 EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
 PER_VISITOR = (3600, 5)
+DAILY_PER_VISITOR = (86400, 20)
 OVERALL = (86400, 200)
+EMAIL_DEADLINE_SECONDS = 15  # the whole send, not each socket operation
 OK = {"message": "Message received"}
 
 
@@ -97,7 +99,10 @@ async def contact(
 
     ip = request.headers.get("x-client-ip", "unknown")
     try:
-        if not await enforce(client, settings, "contact", ip, PER_VISITOR, OVERALL):
+        if not await enforce(
+            client, settings, "contact", ip, PER_VISITOR, OVERALL,
+            daily_per_visitor=DAILY_PER_VISITOR,
+        ):
             return JSONResponse({"error": "Too many messages. Please try again later."}, 429)
     except RateLimitUnavailable as error:
         log.error("rate limiter unavailable: %s", error)
@@ -110,7 +115,12 @@ async def contact(
     }
     email_error: str | None = None
     try:
-        await anyio.to_thread.run_sync(mailer, settings, payload)
+        with anyio.fail_after(EMAIL_DEADLINE_SECONDS):
+            # abandon_on_cancel: stop waiting for a stuck SMTP thread
+            await anyio.to_thread.run_sync(mailer, settings, payload, abandon_on_cancel=True)
+    except TimeoutError:
+        email_error = "email timed out"
+        log.error("contact email timed out")
     except MailError as error:
         email_error = str(error)[:300]
         log.error("contact email failed: %s", email_error)

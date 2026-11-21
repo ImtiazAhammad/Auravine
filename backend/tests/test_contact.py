@@ -153,3 +153,26 @@ def test_both_failing_returns_503(client, world):
     response = post(client)
     assert response.status_code == 503
     assert "email" in response.json()["error"].lower()
+
+
+def test_limits_are_per_visitor_per_hour_per_day_and_overall(client, world):
+    post(client)
+    limits = [json.loads(r.content) for r in world.calls("POST", "/rpc/hit_rate_limit")]
+    assert [(x["p_bucket"], x["p_window_seconds"], x["p_max"]) for x in limits] == [
+        ("contact", 3600, 5), ("contact-day", 86400, 20), ("contact-all", 86400, 200),
+    ]
+
+
+def test_a_stuck_mailer_does_not_hold_the_response(client, world, monkeypatch):
+    import time
+
+    from app.routes import contact as contact_module
+
+    monkeypatch.setattr(contact_module, "EMAIL_DEADLINE_SECONDS", 0.2)
+    world.mailer = lambda settings, payload: time.sleep(1.5)  # noqa: E731
+    started = time.monotonic()
+    response = post(client)
+    assert time.monotonic() - started < 1.2
+    assert response.status_code == 200
+    patch_body = json.loads(world.calls("PATCH", "/contact_messages")[0].content)
+    assert patch_body["email_error"] == "email timed out"

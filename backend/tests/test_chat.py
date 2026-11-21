@@ -26,6 +26,9 @@ class World:
         self.groq = (200, {"choices": [{"message": {"content": "hello from groq"}}]})
         self.gemini = (200, {"candidates": [{"content": {"parts": [{"text": "from gemini"}]}}]})
         self.requests: list[httpx2.Request] = []
+        self.site = [{"key": "personal", "value": {"name": "ACME"}}]
+        self.tech: list[dict] = []
+        self.projects: list[dict] = []
 
     def handler(self, request: httpx2.Request) -> httpx2.Response:
         self.requests.append(request)
@@ -40,7 +43,11 @@ class World:
         if "googleapis" in host:
             return httpx2.Response(self.gemini[0], json=self.gemini[1])
         if path.endswith("/site_settings"):
-            return httpx2.Response(200, json=[{"key": "personal", "value": {"name": "ACME"}}])
+            return httpx2.Response(200, json=self.site)
+        if path.endswith("/tech_items"):
+            return httpx2.Response(200, json=self.tech)
+        if path.endswith("/projects"):
+            return httpx2.Response(200, json=self.projects)
         return httpx2.Response(200, json=[])
 
 
@@ -94,6 +101,41 @@ def test_bad_shapes_are_rejected(world, messages):
     assert not any("groq" in r.url.host for r in world.requests)
 
 
+def test_replayed_long_assistant_turns_do_not_break_the_chat(world):
+    msgs = [
+        {"role": "user", "content": "hi"},
+        {"role": "assistant", "content": "a" * 3000},
+        {"role": "user", "content": "and more?"},
+    ]
+    response = chat(build_client(world, **KEYS), msgs)
+    assert response.status_code == 200
+    groq = next(r for r in world.requests if "groq" in r.url.host)
+    sent = json.loads(groq.content)["messages"]
+    assert max(len(m["content"]) for m in sent[1:]) <= 2000
+
+
+def test_old_messages_outside_the_last_twenty_are_never_validated(world):
+    msgs = [{"role": "user", "content": "x" * 9000}] + [
+        {"role": "user" if i % 2 == 0 else "assistant", "content": f"m{i}"} for i in range(20)
+    ]
+    assert chat(build_client(world, **KEYS), msgs).status_code == 200
+
+
+def test_malformed_site_content_does_not_break_chat(world):
+    world.site = [{"key": "personal", "value": {"name": "ACME"}},
+                  {"key": "languages", "value": [{"name": "Bengali"}]}]
+    world.tech = [
+        {"kind": "hard_skill", "name": None, "extra": {"level": "x"}},
+        {"kind": "tool", "name": "Docker"},
+    ]
+    world.projects = [
+        {"description": {"en": "no title"}, "tech_stack": None},
+        {"title": None, "description": None},
+    ]
+    response = chat(build_client(world, **KEYS))
+    assert response.status_code == 200
+
+
 def test_rate_limit_429(world):
     world.limit_answers = [False]
     assert chat(build_client(world, **KEYS)).status_code == 429
@@ -106,13 +148,13 @@ def test_limiter_down_fails_closed(world):
     assert not any("groq" in r.url.host for r in world.requests)
 
 
-def test_limits_are_20_per_ten_minutes_and_500_per_day(world):
+def test_limits_are_per_visitor_per_day_and_overall(world):
     chat(build_client(world, **KEYS))
     limits = [
         json.loads(r.content) for r in world.requests if r.url.path.endswith("hit_rate_limit")
     ]
     assert [(x["p_bucket"], x["p_window_seconds"], x["p_max"]) for x in limits] == [
-        ("chat", 600, 20), ("chat-all", 86400, 500),
+        ("chat", 600, 20), ("chat-day", 86400, 100), ("chat-all", 86400, 500),
     ]
 
 
