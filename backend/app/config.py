@@ -1,6 +1,6 @@
 from functools import lru_cache
 
-from pydantic import Field, SecretStr
+from pydantic import Field, SecretStr, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -20,6 +20,21 @@ class Settings(BaseSettings):
     supabase_service_role_key: SecretStr = Field(min_length=1)
     revalidate_url: str = Field(min_length=1)
     revalidate_secret: SecretStr = Field(min_length=1)
+
+    # Optional: an endpoint that needs a missing one answers 503; the app still starts.
+    email_user: str | None = None
+    email_app_password: SecretStr | None = None
+    groq_api_key: SecretStr | None = None
+    gemini_api_key: SecretStr | None = None
+    rate_limit_salt: SecretStr | None = None
+
+    @field_validator(
+        "email_user", "email_app_password", "groq_api_key", "gemini_api_key", "rate_limit_salt",
+        mode="before",
+    )
+    @classmethod
+    def _blank_is_unset(cls, value):
+        return None if isinstance(value, str) and not value.strip() else value
 
 
 @lru_cache
