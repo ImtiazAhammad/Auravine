@@ -1,6 +1,6 @@
 # Auravine backend and admin: plan
 
-Status: phases 0 to 3 done (see `docs/plans/phase*-findings.md`); production still serves the static content until cutover. Decisions made 2026-11-21 are marked **Decided**.
+Status: phases 0 to 4 done (phase 4 waits on owner steps, see `docs/plans/phase4-findings.md`); production still serves the static content until cutover. Decisions made 2026-11-21 are marked **Decided**.
 
 ## Goals
 

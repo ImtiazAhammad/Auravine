@@ -121,7 +121,7 @@ const InputGroup = ({ label, name, type = "text", value, onChange, required = fa
 
 function ContactForm() {
     const t = useTranslations('contact');
-    const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
+    const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '', website: '' });
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -139,7 +139,7 @@ function ContactForm() {
 
             if (response.ok) {
                 setStatus('success');
-                setFormData({ name: '', email: '', subject: '', message: '' });
+                setFormData({ name: '', email: '', subject: '', message: '', website: '' });
             } else {
                 setStatus('error');
             }
@@ -168,6 +168,12 @@ function ContactForm() {
             </div>
 
             <form onSubmit={handleSubmit} className="w-full relative z-10">
+                {/* Honeypot: hidden from people, filled by bots; the backend drops those messages. */}
+                <input
+                    type="text" name="website" value={formData.website} onChange={handleChange}
+                    tabIndex={-1} autoComplete="off" aria-hidden="true"
+                    className="absolute left-[-9999px] h-0 w-0 opacity-0"
+                />
                 <InputGroup label={t('form.name')} name="name" value={formData.name} onChange={handleChange} required />
                 <InputGroup label={t('form.email')} name="email" type="email" value={formData.email} onChange={handleChange} required />
                 <InputGroup label={t('form.subject')} name="subject" value={formData.subject} onChange={handleChange} required />
