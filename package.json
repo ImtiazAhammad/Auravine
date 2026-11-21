@@ -9,6 +9,7 @@
         "lint": "next lint",
         "test": "vitest run",
         "dev:api": "uv run --directory backend uvicorn app.main:app --reload --port 8000",
+        "verify:parity": "npx tsx scripts/verify-content-parity.ts",
         "seed:export": "npx tsx scripts/export-portfolio.ts",
         "assets:logo": "python3 scripts/brand-assets/build_logo.py",
         "assets:generate": "node scripts/brand-assets/render.mjs"

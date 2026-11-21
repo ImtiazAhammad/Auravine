@@ -15,6 +15,7 @@ export async function POST(request: Request) {
         return Response.json({ error: 'unauthorized' }, { status: 401 });
     }
 
-    revalidateTag(CONTENT_TAG, 'max');
+    // expire: 0, not 'max': an admin who just saved must not be served the old copy once more.
+    revalidateTag(CONTENT_TAG, { expire: 0 });
     return Response.json({ revalidated: true });
 }

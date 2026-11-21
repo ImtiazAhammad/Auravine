@@ -38,6 +38,6 @@ describe('POST /api/revalidate', () => {
         expect(res.status).toBe(200);
         expect(await res.json()).toEqual({ revalidated: true });
         expect(revalidateTag).toHaveBeenCalledOnce();
-        expect(revalidateTag).toHaveBeenCalledWith('content', 'max');
+        expect(revalidateTag).toHaveBeenCalledWith('content', { expire: 0 });
     });
 });
