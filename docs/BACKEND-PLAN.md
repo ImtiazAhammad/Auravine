@@ -1,6 +1,6 @@
 # Auravine backend and admin: plan
 
-Status: plan only, nothing built. Decisions made 2026-11-21 are marked **Decided**.
+Status: phases 0 to 3 done (see `docs/plans/phase*-findings.md`); production still serves the static content until cutover. Decisions made 2026-11-21 are marked **Decided**.
 
 ## Goals
 
@@ -75,7 +75,7 @@ Each phase ends with something you can open and check.
 0. **Spike (about half a day).** Confirm Services on Hobby with a throwaway "hello" FastAPI behind the real Next.js app on a preview deploy. Create the Supabase project. Pick the final Vercel project name and check `auravine.vercel.app` is free (names are first come, first served).
 1. **Foundation.** `backend/` FastAPI project with `uv`, `pyproject.toml`, health route, config, tests. Env vars set locally and in Vercel. Document local run.
 2. **Schema, RLS, seed.** SQL migrations for the tables above. A one-off script exports `portfolio.ts` to JSON and a Python loader seeds Supabase. Check row counts match.
-3. **Read path.** Replace `portfolioData` reads with Supabase reads plus ISR, keeping `portfolio.ts` as a fallback behind a flag until cutover. Verify every public page is unchanged.
+3. **Read path (done, behind `CONTENT_SOURCE`).** Replace `portfolioData` reads with cached Supabase reads (Data Cache plus on-demand `/api/revalidate`; full-page ISR is not possible because the layout reads the locale cookie), keeping `portfolio.ts` as a fallback behind a flag until cutover. Verify every public page is unchanged.
 4. **Contact and chat in Python.** Move `contact` (store in `contact_messages`, then email) and `chat` into FastAPI with rate limiting. Remove the old Node routes once verified.
 5. **Admin.** Supabase Auth login, admin-only guard, CRUD screens for each table, bilingual fields, image upload through signed Supabase Storage URLs, revalidate on save.
 6. **Hardening.** Tests for the API and RLS policies, secret review, error handling, a scheduled keep-alive so the free Supabase project does not pause, backup export.
