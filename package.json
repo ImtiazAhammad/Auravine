@@ -7,6 +7,7 @@
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
+        "test": "vitest run",
         "dev:api": "uv run --directory backend uvicorn app.main:app --reload --port 8000",
         "seed:export": "npx tsx scripts/export-portfolio.ts",
         "assets:logo": "python3 scripts/brand-assets/build_logo.py",
@@ -70,7 +71,7 @@
     },
     "devDependencies": {
         "@types/aos": "^3.0.7",
-        "@types/node": "^20.10.0",
+        "@types/node": "^22.20.5",
         "@types/nodemailer": "^7.0.11",
         "@types/react": "^19.0.0",
         "@types/react-dom": "^19.0.0",
@@ -82,6 +83,7 @@
         "eslint-config-next": "^16.4.5",
         "postcss": "^8.4.0",
         "tailwindcss": "^3.4.0",
-        "typescript": "^5.3.0"
+        "typescript": "^5.3.0",
+        "vitest": "^5.1.1"
     }
 }
