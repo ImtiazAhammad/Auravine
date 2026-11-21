@@ -1,5 +1,8 @@
+import logging
+import re
+from datetime import UTC, datetime
 from typing import Annotated
-from uuid import UUID
+from uuid import UUID, uuid4
 
 import httpx2
 from fastapi import APIRouter, Depends, HTTPException
@@ -13,6 +16,7 @@ from app.auth import AdminUser, require_admin
 from app.config import Settings
 from app.deps import get_http_client, get_settings_dep
 
+log = logging.getLogger("auravine.admin")
 router = APIRouter(prefix="/admin", dependencies=[Depends(require_admin)])
 
 Client = Annotated[httpx2.AsyncClient, Depends(get_http_client)]
@@ -79,3 +83,73 @@ async def put_setting(key: str, body: dict, client: Client, settings: Config):
         "site_settings", {"key": key, "value": schemas.dump(parsed)["value"]}, "key"
     )
     return {"item": item, "revalidated": await notify(client, settings)}
+
+
+# ---------------------------------------------------------------- contact messages
+@router.get("/messages")
+async def list_messages(client: Client, settings: Config):
+    return {"items": await Store(client, settings).list("contact_messages", "created_at.desc")}
+
+
+@router.patch("/messages/{item_id}")
+async def mark_message(item_id: UUID, body: schemas.MessagePatch, client: Client, settings: Config):
+    item = await Store(client, settings).update(
+        "contact_messages", str(item_id), {"handled": body.handled}
+    )
+    return {"item": item}
+
+
+# ---------------------------------------------------------------- media
+def _public_url(settings: Settings, path: str) -> str:
+    if path.startswith("/"):
+        return path  # a file that lives in the repo's public/ folder
+    return f"{settings.supabase_url.rstrip('/')}/storage/v1/object/public/media/{path}"
+
+
+def _safe_stem(filename: str) -> str:
+    stem = filename.replace("\\", "/").rsplit("/", 1)[-1].rsplit(".", 1)[0].lower()
+    return re.sub(r"[^a-z0-9]+", "-", stem).strip("-")[:40] or "image"
+
+
+@router.get("/media")
+async def list_media(client: Client, settings: Config):
+    rows = await Store(client, settings).list("media_assets", "created_at.desc")
+    return {"items": [{**r, "public_url": _public_url(settings, r["path"])} for r in rows]}
+
+
+@router.post("/media/sign")
+async def sign_upload(body: schemas.SignRequest, client: Client, settings: Config):
+    path = (
+        f"uploads/{datetime.now(UTC).year}/{uuid4().hex[:12]}-{_safe_stem(body.filename)}"
+        f".{schemas.IMAGE_TYPES[body.content_type]}"
+    )
+    key = settings.supabase_service_role_key.get_secret_value()
+    base = settings.supabase_url.rstrip("/")
+    try:
+        response = await client.post(
+            f"{base}/storage/v1/object/upload/sign/media/{path}",
+            headers={"apikey": key, "Authorization": f"Bearer {key}"},
+            json={},
+        )
+        signed = response.json()["url"] if response.status_code == 200 else None
+    except (httpx2.HTTPError, ValueError, KeyError, TypeError) as error:
+        log.error("storage signing failed: %s", type(error).__name__)
+        signed = None
+    if not signed or not isinstance(signed, str):
+        raise HTTPException(502, "Storage error")
+    return {
+        "path": path,
+        "upload_url": f"{base}/storage/v1{signed}",
+        "public_url": _public_url(settings, path),
+    }
+
+
+@router.post("/media", status_code=201)
+async def register_media(body: schemas.MediaIn, client: Client, settings: Config):
+    row = {
+        "path": body.path, "kind": "image", "source": "storage",
+        "alt": body.alt.model_dump(mode="json") if body.alt else None,
+        "width": body.width, "height": body.height,
+    }
+    item = await Store(client, settings).insert("media_assets", row)
+    return {"item": {**item, "public_url": _public_url(settings, item["path"])}}

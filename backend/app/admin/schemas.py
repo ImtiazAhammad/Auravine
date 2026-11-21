@@ -11,6 +11,7 @@ from pydantic import (
     BaseModel,
     ConfigDict,
     Field,
+    StrictBool,
     StringConstraints,
     field_validator,
     model_serializer,
@@ -257,3 +258,31 @@ SETTINGS: dict[str, type[BaseModel]] = {
 
 def dump(model: BaseModel) -> dict[str, Any]:
     return model.model_dump(mode="json")
+
+
+# ---------------------------------------------------------------- messages and media
+class MessagePatch(_Strict):
+    handled: StrictBool
+
+
+IMAGE_TYPES = {
+    "image/webp": "webp", "image/png": "png", "image/jpeg": "jpg", "image/gif": "gif",
+    "image/svg+xml": "svg", "image/avif": "avif",
+}
+MAX_UPLOAD_BYTES = 5 * 1024 * 1024
+
+
+class SignRequest(_Strict):
+    filename: Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=200)]
+    content_type: Literal[tuple(IMAGE_TYPES)]  # type: ignore[valid-type]
+    size: Annotated[int, Field(gt=0, le=MAX_UPLOAD_BYTES)]
+
+
+UPLOAD_PATH_RE = r"^uploads/[0-9]{4}/[a-z0-9][a-z0-9-]*\.(webp|png|jpg|gif|svg|avif)$"
+
+
+class MediaIn(_Strict):
+    path: Annotated[str, StringConstraints(pattern=UPLOAD_PATH_RE, max_length=200)]
+    alt: Short | None = None
+    width: Annotated[int, Field(gt=0, le=20_000)] | None = None
+    height: Annotated[int, Field(gt=0, le=20_000)] | None = None
