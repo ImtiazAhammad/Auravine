@@ -15,15 +15,41 @@ function compact<T extends object>(value: T): T {
     ) as T;
 }
 
+const isStr = (v: unknown): v is string => typeof v === 'string';
+const isObj = (v: unknown): v is Record<string, unknown> => typeof v === 'object' && v !== null && !Array.isArray(v);
+// An empty result is "absent": pages treat any array, even [], as "has this section".
+const list = <T>(v: unknown, keep: (item: unknown) => item is T): T[] | undefined => {
+    const kept = Array.isArray(v) ? v.filter(keep) : [];
+    return kept.length > 0 ? kept : undefined;
+};
+
+/** `details` is written by the admin, so each known key is checked and anything else is dropped:
+ *  it can neither override a column nor crash a page with a wrong shape. */
+function cleanDetails(details: Record<string, unknown>): Partial<Project> {
+    return compact({
+        highlights: list(details.highlights, isStr),
+        challenges: list(details.challenges, isStr),
+        metrics: list(details.metrics, (m): m is { value: string; label: string } =>
+            isObj(m) && isStr(m.value) && isStr(m.label)),
+        features: list(details.features, (f): f is { title: string; items: string[] } =>
+            isObj(f) && isStr(f.title) && Array.isArray(f.items) && f.items.every(isStr)),
+        challengesAndSolutions: list(details.challengesAndSolutions, (c): c is { problem: string; solution: string } =>
+            isObj(c) && isStr(c.problem) && isStr(c.solution)),
+        installation: list(details.installation, (i): i is NonNullable<Project['installation']>[number] =>
+            isObj(i) && isStr(i.title) && (i.type === 'code' || i.type === 'text')),
+    });
+}
+
 export function mapProject(row: ProjectRow, locale: Locale): Project {
     const details = pickDetails(row.details as { en: object; bn?: object }, locale);
     return compact({
+        ...cleanDetails(details as Record<string, unknown>),
         id: row.id ?? row.slug,
         slug: row.slug,
         title: pick(row.title, locale) ?? '',
         description: pick(row.description, locale) ?? '',
         longDescription: pick(row.long_description, locale),
-        image: row.hero_image ?? PLACEHOLDER_IMAGE,
+        image: row.hero_image, // unset: the pages show their own placeholder
         // Absent, not empty: the page treats any array (even []) as "has a gallery".
         galleryImages: row.gallery_images.length > 0 ? row.gallery_images : undefined,
         techStack: row.tech_stack,
@@ -37,7 +63,6 @@ export function mapProject(row: ProjectRow, locale: Locale): Project {
         team: pick(row.team, locale),
         category: pick(row.category, locale),
         customTimeline: pick(row.custom_timeline, locale),
-        ...details,
     }) as Project;
 }
 
@@ -69,7 +94,7 @@ export function mapTechRows(rows: TechItemRow[]): {
 } {
     const of = (kind: TechItemRow['kind']) =>
         rows.filter((r) => r.kind === kind).sort((a, b) => a.sort_order - b.sort_order);
-    const base = (r: TechItemRow) => ({ name: r.name, ...r.extra });
+    const base = (r: TechItemRow) => ({ ...r.extra, name: r.name });
     return {
         techStack: of('tech').map((r) => compact({
             ...base(r), icon: r.icon ?? PLACEHOLDER_IMAGE, category: r.category ?? 'tool', url: r.url,

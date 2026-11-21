@@ -8,7 +8,7 @@ The public site can read its content from Supabase. It is switched by `CONTENT_S
 - `ContentProvider` / `useContent()` in `src/providers/`; the root layout loads content once per request. About 35 pages and components moved from `import { portfolioData }` to `useContent()`; only `src/lib/content/static.ts` still imports the old data (a test enforces this).
 - `POST /api/revalidate` (header `Authorization: Bearer <REVALIDATE_SECRET>`): drops the cache so an admin save shows at once.
 - `npm run verify:parity -- <staticBase> <supabaseBase>` compares the visible text of every public route on two servers.
-- vitest (devDependency), 52 tests. `@types/node` moved to 22 because vitest 5 needs it.
+- vitest (devDependency), 63 tests. `@types/node` moved to 22 because vitest 5 needs it.
 
 ## Results
 

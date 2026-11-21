@@ -69,8 +69,10 @@ describe('minimal rows (admin-made, nearly empty) stay safe to render', () => {
         const project = mapProject(minimalProject, 'en');
         expect(project).toMatchObject({
             id: 'bare', slug: 'bare', title: 'T', description: 'D', status: 'planned',
-            image: '/grid.svg', techStack: [], tools: [], startDate: '',
+            techStack: [], tools: [], startDate: '',
         });
+        // No image: leave it unset so the page shows its own project placeholder.
+        expect(project.image).toBeUndefined();
         expect(project.galleryImages).toBeUndefined();
         expect(project.features).toBeUndefined();
         expect(project.endDate).toBeUndefined();
@@ -108,6 +110,39 @@ describe('Bangla', () => {
         const project = mapProject(row, 'bn');
         expect(project.highlights).toEqual(['ক']);
         expect(project.metrics).toEqual([{ value: '1', label: 'x' }]);
+    });
+});
+
+describe('details from the database are untrusted (admin-written)', () => {
+    const base = rows.projects[0];
+    it('cannot override core columns', () => {
+        const row = { ...base, details: { en: { title: 'X', slug: 'evil', image: '/x.png', status: 'zzz', techStack: ['a'], highlights: ['ok'] } } };
+        const project = mapProject(row, 'en');
+        expect(project.slug).toBe(base.slug);
+        expect(project.title).toBe(base.title.en);
+        expect(project.image).toBe(base.hero_image);
+        expect(project.status).toBe(base.delivery_status);
+        expect(project.techStack).toEqual(base.tech_stack);
+        expect(project.highlights).toEqual(['ok']);
+    });
+    it('drops wrongly shaped values instead of crashing the page', () => {
+        const row = { ...base, details: { en: {
+            features: 'text', highlights: [1, 'ok'], metrics: [{ value: '1' }, { value: '2', label: 'l' }],
+            challengesAndSolutions: [{ problem: 'p' }],
+        } } } as never;
+        const project = mapProject(row, 'en');
+        expect(project.features).toBeUndefined();
+        expect(project.highlights).toEqual(['ok']);
+        expect(project.metrics).toEqual([{ value: '2', label: 'l' }]);
+        expect(project.challengesAndSolutions).toBeUndefined();
+    });
+    it('drops a feature whose items are not a list', () => {
+        const row = { ...base, details: { en: { features: [{ title: 't', items: null }, { title: 'ok', items: ['a'] }] } } } as never;
+        expect(mapProject(row, 'en').features).toEqual([{ title: 'ok', items: ['a'] }]);
+    });
+    it('tech extra cannot override the name', () => {
+        const tech = mapTechRows([{ key: 'tech-x', status: 'published', sort_order: 0, kind: 'tech', name: 'X', icon: 'i', category: 'language', url: null, extra: { name: 'evil' } }]);
+        expect(tech.techStack[0].name).toBe('X');
     });
 });
 

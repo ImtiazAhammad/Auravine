@@ -23,6 +23,10 @@ describe('pickDetails', () => {
         const value = { en: { features: [1], metrics: [2] }, bn: { features: [9] } };
         expect(pickDetails(value, 'bn')).toEqual({ features: [9], metrics: [2] });
     });
+    it('ignores empty Bangla values so an untouched Bangla tab does not wipe the English', () => {
+        const value = { en: { features: [1], highlights: ['a'], note: 'n', metrics: [2] }, bn: { features: [], highlights: [''], note: '  ', metrics: ['  ', ''] } };
+        expect(pickDetails(value as never, 'bn')).toEqual({ features: [1], highlights: ['a'], note: 'n', metrics: [2] });
+    });
     it('returns English for en and an empty object for null', () => {
         expect(pickDetails({ en: { a: 1 }, bn: { a: 2 } }, 'en')).toEqual({ a: 1 });
         expect(pickDetails(null, 'en')).toEqual({});

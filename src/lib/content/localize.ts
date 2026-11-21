@@ -18,5 +18,15 @@ export function pickDetails<T extends object>(
     locale: Locale,
 ): T {
     if (!value) return {} as T;
-    return locale === 'bn' ? { ...value.en, ...value.bn } : value.en;
+    if (locale !== 'bn' || !value.bn) return value.en;
+    const translated = Object.fromEntries(Object.entries(value.bn).filter(([, v]) => !isBlank(v)));
+    return { ...value.en, ...translated };
+}
+
+/** An untouched Bangla tab saves as empty strings and lists; that means "not translated". */
+function isBlank(value: unknown): boolean {
+    if (value === null || value === undefined) return true;
+    if (typeof value === 'string') return value.trim() === '';
+    if (Array.isArray(value)) return value.every(isBlank);
+    return false;
 }
