@@ -16,7 +16,7 @@ import {
     Minimize2,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { portfolioData } from "@/data/portfolio";
+import { useContent } from '@/providers/ContentProvider';
 import { useTranslations, useLocale } from "next-intl";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -272,6 +272,7 @@ function TypingIndicator() {
 
 // ─── ChatWindow ───────────────────────────────────────────────────────────────
 function ChatWindow({ onClose, origin }: { onClose: () => void, origin?: { x: number, y: number } | null }) {
+    const portfolioData = useContent();
     const t = useTranslations("chatbot");
     const locale = useLocale();
 

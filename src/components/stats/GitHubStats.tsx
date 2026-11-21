@@ -7,7 +7,7 @@ import { useTheme } from 'next-themes';
 import { useTranslations } from 'next-intl';
 import { formatDistanceToNow } from 'date-fns';
 import { GitCommit, Star, Trophy, Zap, TrendingUp, Calendar as CalendarIcon, Github, GitPullRequest, ChevronDown } from 'lucide-react';
-import { portfolioData } from '@/data/portfolio';
+
 import { animate, useMotionValue, useTransform } from 'framer-motion';
 import { Counter } from '@/components/ui/Counter';
 

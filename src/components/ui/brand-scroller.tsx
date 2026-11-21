@@ -1,19 +1,19 @@
 "use client";
 
-import React from "react";
+import React, { useMemo } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { portfolioData } from "@/data/portfolio";
+import { useContent } from '@/providers/ContentProvider';
+import type { PortfolioData } from '@/types';
 import { cn } from "@/lib/utils";
 
-const techStackItems = [
+const pickTechStackItems = (portfolioData: PortfolioData) => [
     // 5 AI & Data
     ...portfolioData.techStack.filter(s => s.name === 'TensorFlow' || s.name === 'PyTorch' || s.name === 'LangChain' || s.name === 'Scikit-learn' || s.name === 'OpenCV'),
     // 5 Software Engineering
     ...portfolioData.techStack.filter(s => s.name === 'TypeScript' || s.name === 'Next.js' || s.name === 'Python' || s.name === 'Node.js' || s.name === 'React')
 ].slice(0, 10);
 
-const toolItems = portfolioData.tools.slice(0, 10);
 
 const ScrollerItem = ({ name, icon }: { name: string; icon: string }) => (
     <div className="flex items-center gap-4 px-12 py-4 transition-all duration-300 group">
@@ -33,6 +33,8 @@ const ScrollerItem = ({ name, icon }: { name: string; icon: string }) => (
 );
 
 export const BrandScroller = () => {
+    const portfolioData = useContent();
+    const techStackItems = useMemo(() => pickTechStackItems(portfolioData), [portfolioData]);
     return (
         <div className="relative flex overflow-hidden py-2 w-full px-8 md:px-16 lg:px-24 [mask-image:linear-gradient(to_right,_rgba(0,_0,_0,_0),rgba(0,_0,_0,_1)_10%,rgba(0,_0,_0,_1)_90%,rgba(0,_0,_0,_0))]">
             <motion.div
@@ -63,6 +65,8 @@ export const BrandScroller = () => {
 };
 
 export const BrandScrollerReverse = () => {
+    const portfolioData = useContent();
+    const toolItems = useMemo(() => portfolioData.tools.slice(0, 10), [portfolioData.tools]);
     return (
         <div className="relative flex overflow-hidden py-2 w-full px-8 md:px-16 lg:px-24 [mask-image:linear-gradient(to_right,_rgba(0,_0,_0,_0),rgba(0,_0,_0,_1)_10%,rgba(0,_0,_0,_1)_90%,rgba(0,_0,_0,_0))]">
             <motion.div

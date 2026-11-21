@@ -3,10 +3,11 @@
 import React, { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { portfolioData } from "@/data/portfolio";
+import { useContent } from '@/providers/ContentProvider';
 import { ChevronDown, ChevronUp } from "lucide-react";
 
 export const HardSkills = () => {
+  const portfolioData = useContent();
   const [expanded, setExpanded] = useState<Record<string, boolean>>({
     ai: false,
     software: false,

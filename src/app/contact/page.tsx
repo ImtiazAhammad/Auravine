@@ -5,7 +5,7 @@ import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import { useTranslations } from 'next-intl';
 import { Send, CheckCircle, AlertCircle, Loader2, Disc, Music, ArrowUpRight, Sparkles, HelpCircle, MessageSquare, ExternalLink, Github, Linkedin, Twitter, Mail, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { portfolioData } from '@/data/portfolio';
+import { useContent } from '@/providers/ContentProvider';
 import dynamic from 'next/dynamic';
 
 const Lanyard = dynamic<{ position?: [number, number, number], gravity?: [number, number, number], isLowPowerMode?: boolean }>(() => import('@/components/three/Lanyard').then(mod => mod.Lanyard), {
@@ -295,6 +295,7 @@ const socialDescriptions: Record<string, string> = {
 import { usePerformance } from '@/hooks/usePerformance';
 
 export default function ContactPage() {
+    const portfolioData = useContent();
     const t = useTranslations('contact');
     const { isLowPowerMode } = usePerformance();
 

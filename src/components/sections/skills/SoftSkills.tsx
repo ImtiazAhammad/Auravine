@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { portfolioData } from '@/data/portfolio';
+import { useContent } from '@/providers/ContentProvider';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import { useState } from 'react';
@@ -42,6 +42,7 @@ const EXTRA_SKILLS = [
 ];
 
 export const SoftSkills = () => {
+    const portfolioData = useContent();
     const skills = portfolioData.softSkills.slice(0, 7); // Use top 7 skills for a tight bento
 
     return (

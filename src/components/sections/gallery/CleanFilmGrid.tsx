@@ -3,7 +3,6 @@
 import { useState, useMemo, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-// import { portfolioData } from "@/data/portfolio";
 import { X, Play, Maximize2, ChevronLeft, ChevronRight, Minimize2, ListFilter, ArrowDownUp, ImageIcon, Video, ArrowRight, LayoutGrid, StretchHorizontal, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { getAllGalleryImages, GalleryImage } from "@/app/actions/getGalleryImages";

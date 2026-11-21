@@ -4,7 +4,7 @@ import React, { ReactNode, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { MessageCircle, Mail, ArrowUpRight } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
-import { portfolioData } from '@/data/portfolio';
+
 import { InteractiveRobotSpline } from '@/components/ui/interactive-3d-robot';
 import Link from 'next/link';
 

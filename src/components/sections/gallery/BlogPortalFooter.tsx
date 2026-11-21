@@ -5,10 +5,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { portfolioData } from "@/data/portfolio";
+import { useContent } from '@/providers/ContentProvider';
 import { cn } from "@/lib/utils";
 
 export default function BlogPortalFooter({ isLowPowerMode }: { isLowPowerMode?: boolean }) {
+    const portfolioData = useContent();
     const [hoveredBlog, setHoveredBlog] = useState<string | null>(null);
     const frameRef = useRef<number | null>(null);
 

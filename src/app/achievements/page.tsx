@@ -6,7 +6,7 @@ import { motion, AnimatePresence, useMotionValue, useSpring, useMotionTemplate, 
 import { useTranslations } from 'next-intl';
 import { Search, SortAsc, SortDesc, ExternalLink, X, Calendar, Building2, Trophy, Medal, Award, Target, ChevronRight, ChevronLeft, MousePointer2, Eye, Share2, PanelLeftClose, PanelLeftOpen, LayoutGrid, List } from 'lucide-react';
 import { cn, formatDate } from '@/lib/utils';
-import { portfolioData } from '@/data/portfolio';
+import { useContent } from '@/providers/ContentProvider';
 import { Achievement } from '@/types';
 import dynamic from 'next/dynamic';
 
@@ -555,6 +555,7 @@ const AchievementModal = React.forwardRef<HTMLDivElement, {
 });
 
 export default function AchievementsPage() {
+    const portfolioData = useContent();
     const t = useTranslations('achievements');
     const { isLowPowerMode } = usePerformance();
     const [searchQuery, setSearchQuery] = useState('');

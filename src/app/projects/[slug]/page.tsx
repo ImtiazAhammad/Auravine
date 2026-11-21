@@ -1,19 +1,15 @@
 
 import { notFound } from 'next/navigation';
-import { portfolioData } from '@/data/portfolio';
+import { getLocale } from 'next-intl/server';
+import { getProject } from '@/lib/content';
+import type { Locale } from '@/lib/content/localize';
 import { ProjectPageContent } from '@/components/projects/ProjectPageContent';
-
-export async function generateStaticParams() {
-    return portfolioData.projects.map((project) => ({
-        slug: project.slug,
-    }));
-}
 
 import { getProjectImages } from '@/app/actions/getProjectImages'; // Import server action
 
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
-    const project = portfolioData.projects.find((p) => p.slug === slug);
+    const project = await getProject(slug, (await getLocale()) as Locale);
 
     if (!project) {
         notFound();

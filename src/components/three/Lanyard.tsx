@@ -18,8 +18,7 @@ import * as THREE from 'three';
 import { useTheme } from 'next-themes';
 
 import { usePerformance } from '@/hooks/usePerformance';
-import { portfolioData } from '@/data/portfolio';
-
+import { useContent } from '@/providers/ContentProvider';
 extend({ MeshLineGeometry, MeshLineMaterial });
 
 // Preload assets for faster startup
@@ -42,6 +41,7 @@ export function Lanyard({
     transparent = true,
     isLowPowerMode: isLowPowerModeProp
 }: LanyardProps) {
+    const portfolioData = useContent();
     const [isMobile, setIsMobile] = useState<boolean>(false);
     const { isLowPowerMode: isLowPowerModeHook } = usePerformance();
     const isLowPowerMode = isLowPowerModeProp ?? isLowPowerModeHook;

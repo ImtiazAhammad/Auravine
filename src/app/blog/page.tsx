@@ -4,7 +4,7 @@ import { useState, useRef, useEffect, Suspense } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring, animate } from 'framer-motion';
 import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { portfolioData } from '@/data/portfolio';
+import { useContent } from '@/providers/ContentProvider';
 import { BlogCard } from '@/components/ui/BlogCard';
 import { BentoHero } from '@/components/sections/blog/BentoHero';
 import { MarqueeClosing } from '@/components/sections/blog/MarqueeClosing';
@@ -18,6 +18,7 @@ import { DeferredMount } from '@/components/ui/DeferredMount';
 import FlowingMenu from '@/components/ui/flowing-menu';
 
 function BlogContent() {
+    const portfolioData = useContent();
     const t = useTranslations('blog');
     const searchParams = useSearchParams();
     const [searchQuery, setSearchQuery] = useState('');

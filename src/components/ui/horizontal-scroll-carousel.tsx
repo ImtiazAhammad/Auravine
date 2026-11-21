@@ -1,8 +1,9 @@
 "use client";
 
 import { motion, useTransform, useScroll } from "framer-motion";
-import { useRef } from "react";
-import { portfolioData } from "@/data/portfolio";
+import { useMemo, useRef } from "react";
+import { useContent } from '@/providers/ContentProvider';
+import type { SoftSkill } from '@/types';
 import {
   Users, Brain, Users2, MessageSquare, Puzzle,
   RefreshCw, BookOpen, Network, LineChart, Search
@@ -21,7 +22,7 @@ const skillIcons: Record<string, any> = {
 
 const slug = (name: string) => name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 
-const allCards = portfolioData.softSkills.slice(0, 10).map((skill, index) => ({
+const buildCards = (softSkills: SoftSkill[]) => softSkills.slice(0, 10).map((skill, index) => ({
   id: index + 1,
   title: skill.name,
   description: skill.description,
@@ -29,7 +30,11 @@ const allCards = portfolioData.softSkills.slice(0, 10).map((skill, index) => ({
   Icon: skillIcons[skill.name] || Users
 }));
 
+type CardData = ReturnType<typeof buildCards>[number];
+
 export const HorizontalScrollCarousel = () => {
+  const portfolioData = useContent();
+  const allCards = useMemo(() => buildCards(portfolioData.softSkills), [portfolioData.softSkills]);
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -75,7 +80,7 @@ export const HorizontalScrollCarousel = () => {
   );
 };
 
-const Card = ({ card }: { card: typeof allCards[0] }) => {
+const Card = ({ card }: { card: CardData }) => {
   const { Icon } = card;
   return (
     <div

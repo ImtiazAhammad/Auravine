@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ZoomParallax } from "@/components/ui/zoom-parallax";
 import { Book } from "@/components/ui/book";
-import { portfolioData } from "@/data/portfolio";
+import { useContent } from '@/providers/ContentProvider';
 import Link from "next/link";
 import { ArrowUpRight, BookOpen, ChevronLeft, ChevronRight } from "lucide-react";
 import { PRODUCT_SCREENS } from '@/data/showcase';
@@ -17,6 +17,7 @@ const CATEGORY_COLORS: Record<string, string> = {
 
 
 export default function StatsSection({ scrollYProgress, showOnly }: { scrollYProgress?: any, showOnly?: 'top' | 'bottom' }) {
+    const portfolioData = useContent();
     const [images, setImages] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
     const [currentIndex, setCurrentIndex] = useState(0);

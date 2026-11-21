@@ -3,10 +3,11 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { portfolioData } from "@/data/portfolio";
+import { useContent } from '@/providers/ContentProvider';
 import { X, Play, Maximize2 } from "lucide-react";
 
 export default function FocusGrid() {
+    const portfolioData = useContent();
     const containerRef = useRef<HTMLDivElement>(null);
     const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
     const [selectedId, setSelectedId] = useState<string | null>(null);
