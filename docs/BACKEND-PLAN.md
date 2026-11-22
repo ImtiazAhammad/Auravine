@@ -1,6 +1,6 @@
 # Auravine backend and admin: plan
 
-Status: phases 0 to 4 done (phase 4 waits on owner steps, see `docs/plans/phase4-findings.md`); production still serves the static content until cutover. Decisions made 2026-11-21 are marked **Decided**.
+Status: phases 0 to 5 done (phase 5 waits on the first real login, see `docs/plans/phase5-findings.md`) (phase 4 waits on owner steps, see `docs/plans/phase4-findings.md`); production still serves the static content until cutover. Decisions made 2026-11-21 are marked **Decided**.
 
 ## Goals
 
@@ -77,7 +77,7 @@ Each phase ends with something you can open and check.
 2. **Schema, RLS, seed.** SQL migrations for the tables above. A one-off script exports `portfolio.ts` to JSON and a Python loader seeds Supabase. Check row counts match.
 3. **Read path (done, behind `CONTENT_SOURCE`).** Replace `portfolioData` reads with cached Supabase reads (Data Cache plus on-demand `/api/revalidate`; full-page ISR is not possible because the layout reads the locale cookie), keeping `portfolio.ts` as a fallback behind a flag until cutover. Verify every public page is unchanged.
 4. **Contact and chat in Python.** Move `contact` (store in `contact_messages`, then email) and `chat` into FastAPI with rate limiting. Remove the old Node routes once verified.
-5. **Admin.** Supabase Auth login, admin-only guard, CRUD screens for each table, bilingual fields, image upload through signed Supabase Storage URLs, revalidate on save.
+5. **Admin (built; first login pending).** Supabase Auth login, admin-only guard, CRUD screens for each table, bilingual fields, image upload through signed Supabase Storage URLs, revalidate on save.
 6. **Hardening.** Tests for the API and RLS policies, secret review, error handling, a scheduled keep-alive so the free Supabase project does not pause, backup export.
 7. **Cutover.** Turn the flag, delete the fallback data, update `DESIGN.md` and a README for running everything.
 
