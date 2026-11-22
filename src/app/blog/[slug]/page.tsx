@@ -9,6 +9,7 @@ import { useContent } from '@/providers/ContentProvider';
 import { Copy, Linkedin, Github, BookOpen, ArrowLeft, Check } from 'lucide-react';
 import { notFound, useRouter } from 'next/navigation';
 import { cn } from '@/lib/utils';
+import { Markdown } from '@/components/Markdown';
 
 export default function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
     const portfolioData = useContent();
@@ -39,9 +40,6 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
             router.push('/blog');
         }
     };
-
-    // Article bodies are plain text: blank lines separate paragraphs and lines starting with "## " become headings.
-    const blocks = post.content.split(/\n\s*\n/).map((block) => block.trim()).filter(Boolean);
 
     return (
         <main className="min-h-screen bg-background pb-24 pt-32">
@@ -146,17 +144,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
             {/* Article Content */}
             <div className="container max-w-4xl mx-auto px-6">
                 <article className="prose prose-lg prose-invert prose-primary max-w-none prose-headings:font-black prose-headings:tracking-tight prose-p:leading-loose prose-p:text-muted-foreground">
-                    {blocks.map((block, i) =>
-                        block.startsWith('## ') ? (
-                            <h2 key={i} className="text-3xl font-bold mb-6 text-foreground scroll-mt-32">
-                                {block.replace(/^##\s+/, '')}
-                            </h2>
-                        ) : (
-                            <p key={i} className="mb-8">
-                                {block}
-                            </p>
-                        )
-                    )}
+                    <Markdown source={post.content} />
                 </article>
 
                 <div className="mt-12 pt-12 border-t border-border/40">
