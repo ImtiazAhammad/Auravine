@@ -17,6 +17,12 @@ describe('slugify and keys', () => {
         expect(slugify('  C++ & .NET  ')).toBe('c-net');
         expect(slugify('শুধু বাংলা')).toBe('');
     });
+    it('truncates to the 100 characters the API allows, without a trailing dash', () => {
+        const long = slugify('word '.repeat(60));
+        expect(long.length).toBeLessThanOrEqual(100);
+        expect(long.endsWith('-')).toBe(false);
+        expect(techKey('hard_skill', 'word '.repeat(60)).length).toBeLessThanOrEqual(100);
+    });
     it('builds tech keys the way the seed did', () => {
         expect(techKey('tech', 'Next.js')).toBe('tech-next-js');
         expect(techKey('hard_skill', 'Computer Vision')).toBe('hard_skill-computer-vision');

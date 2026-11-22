@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { saveMessage } from '@/lib/admin/messages';
+import { cleanRows } from '@/lib/admin/payload';
 import { type SaveState, Section, TextField } from './fields';
 import { useAdminApi } from './useAdminApi';
 
@@ -67,12 +68,12 @@ function PersonalCard({ initial }: { initial: Obj }) {
 }
 
 function RowsCard<T extends Obj>({
-    title, settingKey, initial, fields, blank,
-}: { title: string; settingKey: string; initial: T[]; fields: { key: keyof T & string; label: string }[]; blank: T }) {
+    title, settingKey, initial, fields, blank, optional = [],
+}: { title: string; settingKey: string; initial: T[]; fields: { key: keyof T & string; label: string }[]; blank: T; optional?: string[] }) {
     const { state, save } = useSetting(initial, settingKey);
     const [rows, setRows] = useState<T[]>(initial);
     const edit = (i: number, key: string, v: string) => setRows(rows.map((r, n) => (n === i ? { ...r, [key]: v } : r)));
-    const clean = () => rows.map((r) => Object.fromEntries(Object.entries(r).filter(([, v]) => !(typeof v === 'string' && v.trim() === ''))));
+    const clean = () => cleanRows(rows, optional);
     return (
         <Section title={title}>
             <ul className="space-y-3">
@@ -97,7 +98,7 @@ export function SettingsEditor({ settings }: { settings: Obj }) {
             <h1 className="text-2xl font-black tracking-tight">Site settings</h1>
             <PersonalCard initial={settings.personal ?? {}} />
             <RowsCard
-                title="Social links" settingKey="social_links" initial={settings.social_links ?? []} blank={{ platform: '', url: '', icon: '', username: '' }}
+                title="Social links" settingKey="social_links" initial={settings.social_links ?? []} blank={{ platform: '', url: '', icon: '', username: '' }} optional={['username']}
                 fields={[{ key: 'platform', label: 'Platform' }, { key: 'url', label: 'Link (https)' }, { key: 'icon', label: 'Icon name' }, { key: 'username', label: 'Username' }]}
             />
             <RowsCard

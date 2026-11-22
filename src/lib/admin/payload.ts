@@ -120,6 +120,14 @@ export function toProjectPayload(form: ProjectForm): Result<Item> {
 }
 
 // ---------------------------------------------------------------- blog posts
+/** The categories the public blog has labels for (messages/*.json "blog.categories"). */
+export const BLOG_CATEGORIES = [
+    { value: 'applied-ai', label: 'Applied AI' },
+    { value: 'software-development', label: 'Software' },
+    { value: 'company', label: 'Company' },
+    { value: 'more', label: 'More' },
+] as const;
+
 export interface BlogForm {
     slug: string; status: 'draft' | 'published'; sortOrder: string;
     title: Bi; excerpt: Bi; content: Bi; coverImage: string; publishedAt: string;
@@ -128,7 +136,7 @@ export interface BlogForm {
 
 export const emptyBlogForm = (): BlogForm => ({
     slug: '', status: 'draft', sortOrder: '0', title: bi(), excerpt: bi(), content: bi(),
-    coverImage: '', publishedAt: '', category: '', tags: '', authorName: bi(), readTime: '',
+    coverImage: '', publishedAt: '', category: 'company', tags: '', authorName: bi(), readTime: '',
 });
 
 export function fromBlog(item: Item): BlogForm {
@@ -141,7 +149,7 @@ export function fromBlog(item: Item): BlogForm {
     };
 }
 
-export function toBlogPayload(form: BlogForm): Result<Item> {
+export function toBlogPayload(form: BlogForm, now: Date = new Date()): Result<Item> {
     const order = sortOrder(form.sortOrder);
     if (!order.ok) return order;
     const minutes = form.readTime.trim() === '' ? null : Number(form.readTime);
@@ -153,9 +161,22 @@ export function toBlogPayload(form: BlogForm): Result<Item> {
         value: {
             slug: form.slug.trim(), status: form.status, sort_order: order.value,
             title: toBi(form.title), excerpt: toBi(form.excerpt), content: toBi(form.content),
-            cover_image: text(form.coverImage), published_at: text(form.publishedAt),
+            cover_image: text(form.coverImage),
+            // A published post is always dated: the public list shows its date.
+            published_at: text(form.publishedAt) ?? (form.status === 'published' ? now.toISOString().slice(0, 10) : null),
             category: text(form.category), tags: list(form.tags, /,/),
             author_name: toBi(form.authorName), read_time_minutes: minutes,
         },
     };
+}
+
+
+/** Rows of a settings table for the API: blank required fields stay as empty strings, only the
+ *  listed optional keys are dropped when blank. */
+export function cleanRows<T extends Record<string, unknown>>(rows: T[], optional: string[]): Partial<T>[] {
+    return rows.map((row) =>
+        Object.fromEntries(
+            Object.entries(row).filter(([key, value]) => !(optional.includes(key) && typeof value === 'string' && value.trim() === '')),
+        ) as Partial<T>,
+    );
 }

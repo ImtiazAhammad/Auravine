@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest';
+import seed from '@/lib/content/__fixtures__/seed-rows.json';
 import {
-    emptyBlogForm, emptyProjectForm, fromBlog, fromProject, parseDetails, toBlogPayload, toProjectPayload,
+    cleanRows, emptyBlogForm, emptyProjectForm, fromBlog, fromProject, parseDetails, toBlogPayload,
+    toProjectPayload, BLOG_CATEGORIES,
 } from './payload';
 
 describe('parseDetails', () => {
@@ -69,5 +71,43 @@ describe('toBlogPayload', () => {
         const item = { id: 'b1', slug: 'a', status: 'published', sort_order: 1, title: { en: 'T' }, excerpt: { en: 'E' }, content: { en: 'C' }, cover_image: '/c.webp', published_at: '2026-03-20', category: 'ai', tags: ['x'], author_name: { en: 'Team' }, read_time_minutes: 5 };
         const round = toBlogPayload(fromBlog(item as never));
         expect(round.ok && round.value).toMatchObject({ read_time_minutes: 5, author_name: { en: 'Team' }, cover_image: '/c.webp', category: 'ai' });
+    });
+});
+
+
+describe('seeded rows survive the editor unchanged (the API accepts exactly these)', () => {
+    const rows = seed as unknown as { projects: Record<string, unknown>[]; blog_posts: Record<string, unknown>[] };
+    it.each(rows.projects.map((r) => [r.slug as string, r]))('project %s', (_slug, row) => {
+        const payload = toProjectPayload(fromProject(row));
+        expect(payload.ok && payload.value).toEqual(row);
+    });
+    it.each(rows.blog_posts.map((r) => [r.slug as string, r]))('blog post %s', (_slug, row) => {
+        const payload = toBlogPayload(fromBlog(row));
+        expect(payload.ok && payload.value).toEqual(row);
+    });
+});
+
+describe('blog rules that match the API', () => {
+    const base = () => ({ ...emptyBlogForm(), slug: 'a', title: { en: 'T', bn: '' }, excerpt: { en: 'E', bn: '' }, content: { en: 'C', bn: '' } });
+    it('offers exactly the categories the public site has labels for', () => {
+        expect(BLOG_CATEGORIES.map((c) => c.value)).toEqual(['applied-ai', 'software-development', 'company', 'more']);
+    });
+    it('dates a published post with today when no date was given', () => {
+        const result = toBlogPayload({ ...base(), status: 'published', publishedAt: '' }, new Date('2026-11-22T10:00:00Z'));
+        expect(result.ok && result.value.published_at).toBe('2026-11-22');
+    });
+    it('leaves a draft undated and keeps a chosen date', () => {
+        const draft = toBlogPayload({ ...base(), status: 'draft', publishedAt: '' });
+        expect(draft.ok && draft.value.published_at).toBeNull();
+        const kept = toBlogPayload({ ...base(), status: 'published', publishedAt: '2026-01-02' });
+        expect(kept.ok && kept.value.published_at).toBe('2026-01-02');
+    });
+});
+
+describe('cleanRows (settings tables)', () => {
+    it('keeps blank required fields as empty strings and drops only blank optional ones', () => {
+        const rows = [{ platform: 'GitHub', url: '', icon: '', username: ' ' }];
+        expect(cleanRows(rows, ['username'])).toEqual([{ platform: 'GitHub', url: '', icon: '' }]);
+        expect(cleanRows([{ name: 'Bengali', level: 'Native' }], [])).toEqual([{ name: 'Bengali', level: 'Native' }]);
     });
 });

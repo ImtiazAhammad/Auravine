@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { type BlogForm, emptyBlogForm, fromBlog, toBlogPayload } from '@/lib/admin/payload';
+import { BLOG_CATEGORIES, type BlogForm, emptyBlogForm, fromBlog, toBlogPayload } from '@/lib/admin/payload';
 import { saveMessage } from '@/lib/admin/messages';
 import { BilingualField } from './BilingualField';
 import { ConfirmDelete } from './ConfirmDelete';
@@ -53,12 +53,13 @@ export function BlogEditor({ item }: { item: Item | null }) {
                     <TextField label="Sort order" value={form.sortOrder} onChange={(v) => set('sortOrder', v)} hint="Smaller numbers show first" />
                     <SelectField label="Visibility" value={form.status} onChange={(v) => set('status', v)} options={STATUS_OPTIONS} />
                     <TextField label="Published on" type="date" value={form.publishedAt} onChange={(v) => set('publishedAt', v)} />
-                    <TextField label="Category" value={form.category} onChange={(v) => set('category', v)} />
+                    <SelectField label="Category" value={form.category as (typeof BLOG_CATEGORIES)[number]['value']} onChange={(v) => set('category', v)} options={[...BLOG_CATEGORIES]} />
                     <TextField label="Read time (minutes)" value={form.readTime} onChange={(v) => set('readTime', v)} />
                 </div>
                 <TextField label="Tags (comma separated)" value={form.tags} onChange={(v) => set('tags', v)} />
                 <BilingualField label="Author" value={form.authorName} onChange={(v) => set('authorName', v)} />
                 <ImagePicker label="Cover image" value={form.coverImage} onChange={(v) => set('coverImage', v)} />
+                <p className="-mt-2 text-xs text-muted-foreground">Use Upload or the library. Links to other websites are not accepted for the cover.</p>
             </Section>
             <Section title="Content">
                 <BilingualField label="Title" value={form.title} onChange={(v) => set('title', v)} />

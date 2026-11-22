@@ -1,12 +1,14 @@
 import Link from 'next/link';
+import { unstable_rethrow } from 'next/navigation';
 import { adminGet } from '@/lib/admin/server';
 
 type Row = { status?: string; handled?: boolean };
 
 async function items(path: string): Promise<Row[]> {
     try {
-        return (await adminGet<{ items: Row[] }>(path)).items;
-    } catch {
+        return (await adminGet<{ items: Row[] }>(path, '/admin')).items;
+    } catch (error) {
+        unstable_rethrow(error); // let a session redirect through
         return [];
     }
 }

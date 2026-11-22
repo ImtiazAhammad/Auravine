@@ -46,6 +46,10 @@ describe('BlogEditor', () => {
         expect(html).toContain('Big heading</h2>');
         expect(html).toContain('Article (Markdown)');
     });
+    it('offers only the categories the public site has labels for', () => {
+        const html = render(<BlogEditor item={null} />);
+        for (const label of ['Applied AI', 'Software', 'Company', 'More']) expect(html).toContain(`>${label}</option>`);
+    });
 });
 
 describe('ResourceList', () => {
