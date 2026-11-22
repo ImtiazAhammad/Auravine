@@ -103,7 +103,10 @@ export function safeNext(next: string | null): string {
 
 export type AdminState =
     | { status: 'ok'; admin: { id: string; email: string | null } }
-    | { status: 'anonymous' | 'expired' | 'forbidden' | 'unavailable' };
+    | { status: 'anonymous' }
+    | { status: 'expired' }
+    | { status: 'forbidden' }
+    | { status: 'unavailable' };
 
 /** For server components: who is logged in, judged by the backend (the source of truth). */
 export async function getAdmin(): Promise<AdminState> {
