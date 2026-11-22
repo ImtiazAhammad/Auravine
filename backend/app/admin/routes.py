@@ -1,5 +1,6 @@
 import logging
 import re
+from collections.abc import Callable
 from datetime import UTC, datetime
 from typing import Annotated
 from uuid import UUID, uuid4
@@ -28,8 +29,12 @@ async def me(admin: Annotated[AdminUser, Depends(require_admin)]):
     return {"id": admin.id, "email": admin.email}
 
 
-def _resource(path: str, table: str, schema: type[BaseModel], order: str) -> None:
-    """Register list/get/create/update/delete for one table."""
+def _resource(
+    path: str, table: str, schema: type[BaseModel], order: str,
+    check: Callable[[BaseModel, Settings], None] | None = None,
+) -> None:
+    """Register list/get/create/update/delete for one table. `check` runs extra validation that
+    needs settings (it raises HTTPException 422)."""
 
     @router.get(f"/{path}", name=f"list_{table}")
     async def list_items(client: Client, settings: Config):
@@ -41,6 +46,8 @@ def _resource(path: str, table: str, schema: type[BaseModel], order: str) -> Non
 
     @router.post(f"/{path}", status_code=201, name=f"create_{table}")
     async def create_item(body: schema, client: Client, settings: Config):  # type: ignore[valid-type]
+        if check:
+            check(body, settings)
         item = await Store(client, settings).insert(table, schemas.dump(body))
         return {"item": item, "revalidated": await notify(client, settings)}
 
@@ -48,6 +55,8 @@ def _resource(path: str, table: str, schema: type[BaseModel], order: str) -> Non
     async def update_item(  # type: ignore[valid-type]
         item_id: UUID, body: schema, client: Client, settings: Config
     ):
+        if check:
+            check(body, settings)
         item = await Store(client, settings).update(table, str(item_id), schemas.dump(body))
         return {"item": item, "revalidated": await notify(client, settings)}
 
@@ -58,7 +67,21 @@ def _resource(path: str, table: str, schema: type[BaseModel], order: str) -> Non
 
 
 _resource("projects", "projects", schemas.ProjectIn, "sort_order.asc,slug.asc")
-_resource("blog-posts", "blog_posts", schemas.BlogPostIn, "sort_order.asc,slug.asc")
+def _check_blog_cover(body: schemas.BlogPostIn, settings: Settings) -> None:
+    """The public post page shows the cover through next/image, which only loads files from this
+    site or from this project's media bucket; any other address would be a broken image."""
+    cover = body.cover_image
+    if cover is None or cover.startswith("/"):
+        return
+    allowed = f"{settings.supabase_url.rstrip('/')}/storage/v1/object/public/media/"
+    if not cover.startswith(allowed):
+        raise HTTPException(
+            422, "cover_image: choose an image from the media library or use a /path on this site"
+        )
+
+
+_resource("blog-posts", "blog_posts", schemas.BlogPostIn, "sort_order.asc,slug.asc",
+          check=_check_blog_cover)
 _resource("faqs", "faqs", schemas.FaqIn, "sort_order.asc,key.asc")
 _resource("tech-items", "tech_items", schemas.TechItemIn, "sort_order.asc,key.asc")
 

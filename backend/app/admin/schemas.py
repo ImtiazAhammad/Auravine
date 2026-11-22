@@ -15,10 +15,14 @@ from pydantic import (
     StringConstraints,
     field_validator,
     model_serializer,
+    model_validator,
 )
 
 SLUG_RE = r"^[a-z0-9]+(-[a-z0-9]+)*$"
 Slug = Annotated[str, StringConstraints(pattern=SLUG_RE, max_length=100)]
+# Tech item keys look like "hard_skill-computer-vision" (kind, then slug), so allow underscores.
+TECH_KEY_RE = r"^[a-z0-9]+([_-][a-z0-9]+)*$"
+TechKey = Annotated[str, StringConstraints(pattern=TECH_KEY_RE, max_length=100)]
 Status = Literal["draft", "published"]
 SortOrder = Annotated[int, Field(ge=0, le=100_000)]
 Tag = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=100)]
@@ -169,6 +173,9 @@ class ProjectIn(_Strict):
     custom_timeline: Short | None = None
 
 
+BlogCategory = Literal["applied-ai", "software-development", "company", "more"]
+
+
 class BlogPostIn(_Strict):
     slug: Slug
     status: Status
@@ -178,10 +185,16 @@ class BlogPostIn(_Strict):
     content: Article
     cover_image: Link = None
     published_at: date | None = None
-    category: Annotated[str, StringConstraints(max_length=50)] | None = None
+    category: BlogCategory  # the public site has a label for exactly these
     tags: Annotated[list[Tag], Field(max_length=50)] = []
     author_name: Short | None = None
     read_time_minutes: Annotated[int, Field(gt=0, le=600)] | None = None
+
+    @model_validator(mode="after")
+    def _published_needs_a_date(self):
+        if self.status == "published" and self.published_at is None:
+            raise ValueError("published_at is required for a published post")
+        return self
 
 
 class FaqIn(_Strict):
@@ -196,7 +209,7 @@ ExtraValue = str | int | float | bool | list[Annotated[str, StringConstraints(ma
 
 
 class TechItemIn(_Strict):
-    key: Slug
+    key: TechKey
     status: Status
     sort_order: SortOrder
     kind: Literal["tech", "tool", "hard_skill", "soft_skill"]
@@ -225,10 +238,15 @@ class Personal(_Sparse):
     website: Link = None
 
 
+def _social_url(value: str) -> str:
+    """'#' is the site's "no link" value and is what the seeded data uses."""
+    return value if value.strip() == "#" else (_link(value) or "")
+
+
 class SocialLink(_Sparse):
     platform: Annotated[str, StringConstraints(min_length=1, max_length=50)]
-    url: Annotated[str, AfterValidator(lambda v: _link(v) or "")]
-    icon: Annotated[str, StringConstraints(max_length=50)]
+    url: Annotated[str, AfterValidator(_social_url)]
+    icon: Annotated[str, StringConstraints(max_length=50)] = ""
     username: Annotated[str, StringConstraints(max_length=100)] | None = None
 
 

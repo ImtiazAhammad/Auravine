@@ -45,7 +45,7 @@ PROJECT = {
     "title": {"en": "Shefa"}, "description": {"en": "Agent"},
 }
 BLOG = {"slug": "hello", "status": "draft", "sort_order": 0, "title": {"en": "Hi"},
-        "excerpt": {"en": "E"}, "content": {"en": "## Body"}}
+        "excerpt": {"en": "E"}, "content": {"en": "## Body"}, "category": "company"}
 FAQ = {"key": "q1", "status": "published", "sort_order": 0, "question": {"en": "Q"},
        "answer": {"en": "A"}}
 TECH = {"key": "tech-python", "status": "published", "sort_order": 0, "kind": "tech",
@@ -190,3 +190,30 @@ def test_settings_roundtrip_and_validation(client, fake):
     assert client.put("/admin/settings/secrets", json={"value": {}}, headers=as_admin()).status_code == 404
     bad = [{"platform": "X", "url": "javascript:x", "icon": "x"}]
     assert client.put("/admin/settings/social_links", json={"value": bad}, headers=as_admin()).status_code == 422
+
+
+# ------------------------------------------------------------------ blog cover images
+COVER_OK = [
+    "/blog/a.webp",
+    "https://x.supabase.co/storage/v1/object/public/media/uploads/2026/ab-a.png",
+    None,
+]
+COVER_BAD = [
+    "https://evil.test/a.png",                                   # next/image would refuse this host
+    "https://x.supabase.co/storage/v1/object/public/other/a.png",  # not our media bucket
+    "https://other.supabase.co/storage/v1/object/public/media/a.png",  # a different project
+]
+
+
+@pytest.mark.parametrize("cover", COVER_OK)
+def test_blog_cover_may_be_a_site_path_an_uploaded_image_or_empty(client, cover):
+    response = client.post("/admin/blog-posts", json={**BLOG, "cover_image": cover}, headers=as_admin())
+    assert response.status_code == 201
+
+
+@pytest.mark.parametrize("cover", COVER_BAD)
+def test_blog_cover_from_elsewhere_is_refused_with_a_clear_message(client, fake, cover):
+    response = client.post("/admin/blog-posts", json={**BLOG, "cover_image": cover}, headers=as_admin())
+    assert response.status_code == 422
+    assert "cover" in response.text.lower()
+    assert fake.tables["blog_posts"] == [] and fake.revalidate_calls == []

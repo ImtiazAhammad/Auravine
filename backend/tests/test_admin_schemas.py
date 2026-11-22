@@ -110,7 +110,7 @@ def test_length_and_count_caps():
 
 def test_blog_post_rules():
     base = {"slug": "a-post", "status": "draft", "sort_order": 1, "title": {"en": "T"},
-            "excerpt": {"en": "E"}, "content": {"en": "## Hi\n\ntext"}}
+            "excerpt": {"en": "E"}, "content": {"en": "## Hi\n\ntext"}, "category": "company"}
     assert BlogPostIn(**base).read_time_minutes is None
     for bad in ({"read_time_minutes": 0}, {"content": {"en": "x" * 100001}},
                 {"cover_image": "javascript:x"}, {"tags": ["a"] * 51}):
@@ -139,3 +139,35 @@ def test_settings_shapes():
         SocialLinksSetting(value=[{"platform": "X", "url": "javascript:x", "icon": "x"}])
     with pytest.raises(ValidationError):
         PersonalSetting(value={"name": "A"})
+
+
+def test_blog_category_must_be_one_the_public_site_has_a_label_for():
+    base = {"slug": "a-post", "status": "draft", "sort_order": 1, "title": {"en": "T"},
+            "excerpt": {"en": "E"}, "content": {"en": "x"}}
+    for good in ("applied-ai", "software-development", "company", "more"):
+        BlogPostIn(**base, category=good)
+    for bad in ("AI", "applied.ai", "", None):
+        with pytest.raises(ValidationError):
+            BlogPostIn(**base, category=bad)
+
+
+def test_a_published_post_needs_a_date_a_draft_does_not():
+    base = {"slug": "a-post", "sort_order": 1, "title": {"en": "T"}, "excerpt": {"en": "E"},
+            "content": {"en": "x"}, "category": "company"}
+    BlogPostIn(**base, status="draft")
+    BlogPostIn(**base, status="published", published_at="2026-03-20")
+    with pytest.raises(ValidationError):
+        BlogPostIn(**base, status="published")
+
+
+def test_social_links_may_use_the_site_s_no_link_value():
+    SocialLinksSetting(value=[{"platform": "GitHub", "url": "#", "icon": "github"}])
+    SocialLinksSetting(value=[{"platform": "GitHub", "url": "", "icon": ""}])
+
+
+def test_tech_keys_may_contain_underscores_but_stay_url_safe():
+    for good in ("hard_skill-computer-vision", "soft_skill-ownership", "tech-next-js"):
+        TechItemIn(key=good, status="draft", sort_order=0, kind="tech", name="X")
+    for bad in ("Hard_Skill", "_lead", "trail_", "a b", "x" * 101):
+        with pytest.raises(ValidationError):
+            TechItemIn(key=bad, status="draft", sort_order=0, kind="tech", name="X")
