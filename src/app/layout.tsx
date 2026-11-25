@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter, JetBrains_Mono, Playfair_Display, Alex_Brush } from 'next/font/google';
 import { getMessages, getLocale } from 'next-intl/server';
-import { ThemeProvider, I18nProvider, SmoothScrollProvider, ContentProvider } from '@/providers';
+import { ThemeProvider, I18nProvider, ContentProvider } from '@/providers';
 import { getContent } from '@/lib/content';
 import type { Locale } from '@/lib/content/localize';
 
@@ -91,10 +91,7 @@ export const viewport: Viewport = {
     minimumScale: 1,
 };
 
-import { ThemeAwareClickSpark } from '@/components/ui/ThemeAwareClickSpark';
-import { ConditionalNavigation } from '@/components/layout/ConditionalNavigation';
-import { ArcPreloaderWrapper } from '@/components/layout/ArcPreloaderWrapper';
-import { ChatBot } from '@/components/layout/ChatBot';
+import { SiteChrome } from '@/components/layout/SiteChrome';
 
 export default async function RootLayout({
     children,
@@ -111,16 +108,7 @@ export default async function RootLayout({
                 <ThemeProvider>
                     <I18nProvider locale={locale} messages={messages}>
                         <ContentProvider value={content}>
-                            <SmoothScrollProvider>
-                                <ThemeAwareClickSpark>
-                                    <ArcPreloaderWrapper>
-                                        <ConditionalNavigation>
-                                            {children}
-                                        </ConditionalNavigation>
-                                    </ArcPreloaderWrapper>
-                                    <ChatBot headless />
-                                </ThemeAwareClickSpark>
-                            </SmoothScrollProvider>
+                            <SiteChrome>{children}</SiteChrome>
                         </ContentProvider>
                     </I18nProvider>
                 </ThemeProvider>

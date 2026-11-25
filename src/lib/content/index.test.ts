@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { portfolioData } from '@/data/portfolio';
 import fixture from './__fixtures__/seed-rows.json';
-import { getBlogPost, getProject, loadContent } from './index';
+import { getBlogPost, getProject, loadContent, resetLastGood } from './index';
 
 const rows = fixture as unknown as Record<string, any[]>;
 const TABLE_OF: Record<string, string> = {
@@ -24,6 +24,7 @@ function stubFetch(overrides: Override = {}) {
 
 let errors: ReturnType<typeof vi.spyOn>;
 beforeEach(() => {
+    resetLastGood();
     process.env.SUPABASE_URL = 'https://proj.supabase.co';
     process.env.SUPABASE_ANON_KEY = KEY;
     process.env.CONTENT_SOURCE = 'supabase';
@@ -120,5 +121,45 @@ describe('unpublished content (Review Focus 2)', () => {
         expect(content.projects).toEqual([]);
         expect(content.blogs).toEqual([]);
         expect(await getBlogPost(rows.blog_posts[0].slug, 'en')).toBeNull();
+    });
+});
+
+
+describe('last good copy (an outage must not bring back removed content)', () => {
+    it('serves the last good database copy, not static, when a later read fails', async () => {
+        const [hidden, ...rest] = rows.projects;
+        stubFetch({ projects: rest });
+        const first = await loadContent('en');
+        expect(first.projects).toHaveLength(rest.length);
+
+        stubFetch({ projects: new Error('outage') });
+        const during = await loadContent('en');
+        expect(during.projects.map((p) => p.slug)).toEqual(rest.map((p) => p.slug));
+        expect(during.projects.some((p) => p.slug === hidden.slug)).toBe(false);
+        expect(String(errors.mock.calls.at(-1)?.[0])).toMatch(/projects served last good copy/);
+    });
+    it('uses static only when this process never had a good copy', async () => {
+        stubFetch({ projects: new Error('outage') });
+        expect((await loadContent('en')).projects).toBe(portfolioData.projects);
+    });
+    it('an empty successful read becomes the last good copy', async () => {
+        stubFetch({ projects: [] });
+        await loadContent('en');
+        stubFetch({ projects: new Error('outage') });
+        expect((await loadContent('en')).projects).toEqual([]);
+    });
+    it('keeps copies per language', async () => {
+        stubFetch();
+        await loadContent('en');
+        stubFetch({ projects: new Error('outage') });
+        expect((await loadContent('bn')).projects).toBe(portfolioData.projects);
+    });
+    it('recovers: a later success replaces the last good copy', async () => {
+        stubFetch({ projects: rows.projects.slice(0, 3) });
+        await loadContent('en');
+        stubFetch({ projects: rows.projects.slice(0, 5) });
+        await loadContent('en');
+        stubFetch({ projects: new Error('outage') });
+        expect((await loadContent('en')).projects).toHaveLength(5);
     });
 });

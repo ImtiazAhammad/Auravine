@@ -32,3 +32,5 @@ select = ["E", "F", "I", "B", "UP"]
 [tool.ruff.lint.per-file-ignores]
 # The prompt is prose; wrapping it would change what the model reads.
 "app/prompt.py" = ["E501"]
+# Test data and fixtures read better on one line.
+"tests/**" = ["E501"]
