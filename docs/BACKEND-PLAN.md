@@ -1,6 +1,6 @@
 # Auravine backend and admin: plan
 
-Status: phases 0 to 5 done (phases 4 and 5 wait on owner steps, see `docs/plans/phase4-findings.md` and `phase5-findings.md`); production still serves the static content until cutover. Decisions made 2026-11-21 are marked **Decided**.
+Status: phases 0 to 6 done (phases 4 to 6 wait on owner steps, see `docs/plans/phase4-findings.md`, `phase5-findings.md` and `phase6-findings.md`); production still serves the static content until cutover. Decisions made 2026-11-21 are marked **Decided**.
 
 ## Goals
 
@@ -78,7 +78,7 @@ Each phase ends with something you can open and check.
 3. **Read path (done, behind `CONTENT_SOURCE`).** Replace `portfolioData` reads with cached Supabase reads (Data Cache plus on-demand `/api/revalidate`; full-page ISR is not possible because the layout reads the locale cookie), keeping `portfolio.ts` as a fallback behind a flag until cutover. Verify every public page is unchanged.
 4. **Contact and chat in Python.** Move `contact` (store in `contact_messages`, then email) and `chat` into FastAPI with rate limiting. Remove the old Node routes once verified.
 5. **Admin (built; first login pending).** Supabase Auth login, admin-only guard, CRUD screens for each table, bilingual fields, image upload through signed Supabase Storage URLs, revalidate on save.
-6. **Hardening.** Tests for the API and RLS policies, secret review, error handling, a scheduled keep-alive so the free Supabase project does not pause, backup export.
+6. **Hardening (done).** Tests for the API and RLS policies, secret review, error handling, a scheduled keep-alive so the free Supabase project does not pause, backup export.
 7. **Cutover.** Turn the flag, delete the fallback data, update `DESIGN.md` and a README for running everything.
 
 ## Running locally
@@ -91,6 +91,7 @@ uv run pytest -q               # tests
 uv run ruff check .            # lint
 cp .env.example .env           # then fill in values (git-ignored)
 npm run dev:api                # from the repo root: http://localhost:8000/health
+uv run python -m app.backup ../backups/2026-12-01   # export every table to JSON (private: git-ignored)
 ```
 
 CI (`.github/workflows/backend.yml`) runs the same lint and test commands on every change under `backend/`.
