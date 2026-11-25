@@ -21,4 +21,7 @@ describe('security headers', () => {
             expect((await headersFor(source))['Cache-Control']).toBe('no-store');
         }
     });
+    it('serves images directly: /_next/image is not available behind Vercel Services', () => {
+        expect(config.images?.unoptimized).toBe(true);
+    });
 });
