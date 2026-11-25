@@ -28,6 +28,10 @@ const nextConfig: NextConfig = {
         ];
     },
     images: {
+        // Behind Vercel Services (vercel.json) every /_next/image request answers 404 in production
+        // (checked 2026-11-25), so no optimized image ever loaded. Serve the files as they are:
+        // they are already WebP at a sensible size.
+        unoptimized: true,
         remotePatterns: [
             { protocol: 'https', hostname: 'cdn.jsdelivr.net' },
             { protocol: 'https', hostname: 'images.unsplash.com' },
