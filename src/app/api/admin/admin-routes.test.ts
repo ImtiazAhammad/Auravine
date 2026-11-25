@@ -12,6 +12,7 @@ const ORIGIN = { origin: 'https://site.test', host: 'site.test' };
 let fetchMock: ReturnType<typeof vi.fn>;
 let backend: (url: string, init: RequestInit) => Response | Promise<Response>;
 let authToken: (url: string, init: RequestInit) => Response;
+let attempt: (init: RequestInit) => Response;
 
 beforeEach(() => {
     process.env.SUPABASE_URL = 'https://proj.supabase.co';
@@ -19,8 +20,10 @@ beforeEach(() => {
     process.env.BACKEND_INTERNAL_URL = 'https://backend.internal';
     authToken = () => json(TOKENS);
     backend = () => json({ items: [] });
+    attempt = () => json({ ok: true });
     fetchMock = vi.fn(async (url: string, init: RequestInit) =>
-        url.includes('/auth/v1/token') ? authToken(url, init) : backend(url, init));
+        url.includes('/auth/v1/token') ? authToken(url, init)
+            : url.endsWith('/login-attempt') ? attempt(init) : backend(url, init));
     vi.stubGlobal('fetch', fetchMock);
 });
 afterEach(() => {
@@ -36,6 +39,36 @@ const setCookies = (res: Response) => res.headers.getSetCookie().join('\n');
 const ctx = (...path: string[]) => ({ params: Promise.resolve({ path }) });
 
 describe('POST /api/admin/login', () => {
+    it('counts the attempt against the visitor first, using the real client address', async () => {
+        backend = () => json({ id: 'u1', email: 'o@x.co' });
+        const request = new Request('https://site.test/api/admin/login', {
+            method: 'POST', body: JSON.stringify({ email: 'o@x.co', password: 'pw' }),
+            headers: { ...ORIGIN, 'x-forwarded-for': '6.6.6.6, 9.9.9.9' },
+        });
+        await login(request);
+        const [url, init] = fetchMock.mock.calls[0];
+        expect(url).toBe('https://backend.internal/login-attempt');
+        expect((init.headers as Record<string, string>)['x-client-ip']).toBe('9.9.9.9');
+    });
+    it('too many attempts: 429 and the password is never sent to Supabase', async () => {
+        attempt = () => json({ error: 'Too many attempts' }, 429);
+        const res = await login(post('/api/admin/login', { email: 'o@x.co', password: 'pw' }));
+        expect(res.status).toBe(429);
+        expect(fetchMock.mock.calls.some(([u]) => String(u).includes('/auth/v1/token'))).toBe(false);
+        expect(setCookies(res)).toBe('');
+    });
+    it.each([503, 500, 404])('limiter answering %i fails closed: 503, no password sent', async (status) => {
+        attempt = () => json({}, status);
+        const res = await login(post('/api/admin/login', { email: 'o@x.co', password: 'pw' }));
+        expect(res.status).toBe(503);
+        expect(fetchMock.mock.calls.some(([u]) => String(u).includes('/auth/v1/token'))).toBe(false);
+    });
+    it('backend unreachable fails closed: 503, no password sent', async () => {
+        fetchMock.mockImplementationOnce(async () => { throw new TypeError('down'); });
+        const res = await login(post('/api/admin/login', { email: 'o@x.co', password: 'pw' }));
+        expect(res.status).toBe(503);
+        expect(fetchMock.mock.calls.some(([u]) => String(u).includes('/auth/v1/token'))).toBe(false);
+    });
     it('sets httpOnly strict cookies and returns no token (Review Focus 3)', async () => {
         backend = () => json({ id: 'u1', email: 'o@x.co' });
         const res = await login(post('/api/admin/login', { email: 'o@x.co', password: 'pw' }));
