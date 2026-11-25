@@ -20,3 +20,6 @@ __pycache__/
 .superpowers/
 .vercel/
 backend/seed/portfolio.json
+
+# Local database backups (contain private data)
+backups/

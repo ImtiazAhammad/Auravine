@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { BackendUnavailable } from '@/lib/backend';
+import { BackendUnavailable, callBackend, clientIp } from '@/lib/backend';
 import { adminFetch } from '@/lib/admin/backend';
 import { AuthUnavailable, sameOrigin, setTokenCookies, signIn } from '@/lib/admin/session';
 
@@ -19,6 +19,16 @@ export async function POST(request: Request) {
         return NextResponse.json({ error: 'Invalid request' }, { status: 400 });
     }
     try {
+        // Count the attempt before any password reaches Supabase. Fails closed: if the limiter
+        // cannot answer, nobody signs in (the admin API needs the same backend anyway).
+        const attempt = await callBackend('/login-attempt', { body: {}, ip: clientIp(request) });
+        if (attempt.status === 429) {
+            return NextResponse.json({ error: 'Too many attempts. Try again later.' }, { status: 429 });
+        }
+        if (attempt.status !== 200) {
+            console.error('[admin login] limiter answered', attempt.status);
+            return NextResponse.json({ error: 'Service temporarily unavailable.' }, { status: 503 });
+        }
         const tokens = await signIn(email.trim(), password);
         if (!tokens) {
             return NextResponse.json({ error: 'Invalid email or password' }, { status: 401 });
