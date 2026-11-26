@@ -1,30 +1,23 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { ZoomParallax } from "@/components/ui/zoom-parallax";
-import { Book } from "@/components/ui/book";
 import { useContent } from '@/providers/ContentProvider';
 import Link from "next/link";
 import { ArrowUpRight, BookOpen, ChevronLeft, ChevronRight } from "lucide-react";
 import { PRODUCT_SCREENS } from '@/data/showcase';
 
-const CATEGORY_COLORS: Record<string, string> = {
-    'applied-ai': '#9D2127', // Deep Red
-    'software-development': '#7DC1C1', // Teal
-    'more': '#FED954', // Yellow
-};
-
-
 export default function StatsSection({ scrollYProgress, showOnly }: { scrollYProgress?: any, showOnly?: 'top' | 'bottom' }) {
     const portfolioData = useContent();
     const [images, setImages] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [direction, setDirection] = useState(0);
+    const t = useTranslations('blog');
+    const track = useRef<HTMLUListElement>(null);
 
     const blogs = portfolioData.blogs.slice(0, 6);
-    const visibleCount = 3;
 
     useEffect(() => {
         const galleryImages = PRODUCT_SCREENS.map(({ src, alt }) => ({ src, alt }));
@@ -34,23 +27,12 @@ export default function StatsSection({ scrollYProgress, showOnly }: { scrollYPro
         setLoading(false);
     }, []);
 
-    const nextSlide = () => {
-        setDirection(1);
-        setCurrentIndex((prev) => (prev + 1) % blogs.length);
-    };
-
-    const prevSlide = () => {
-        setDirection(-1);
-        setCurrentIndex((prev) => (prev - 1 + blogs.length) % blogs.length);
-    };
-
-    // Helper to get visible blogs in an infinite way
-    const getVisibleBlogs = () => {
-        const result = [];
-        for (let i = 0; i < visibleCount; i++) {
-            result.push(blogs[(currentIndex + i) % blogs.length]);
-        }
-        return result;
+    // Scroll the row by one card; the browser handles snapping and touch.
+    const scrollByCard = (dir: 1 | -1) => {
+        const el = track.current;
+        const card = el?.firstElementChild as HTMLElement | null;
+        if (!el || !card) return;
+        el.scrollBy({ left: dir * (card.offsetWidth + 24), behavior: 'smooth' });
     };
 
     if (loading || images.length === 0) return (
@@ -99,121 +81,83 @@ export default function StatsSection({ scrollYProgress, showOnly }: { scrollYPro
                 </>
             )}
 
-            {/* Book Showcase Integration */}
+            {/* Latest insights */}
             {(showOnly === 'bottom' || !showOnly) && (
-                <div className="w-full max-w-[1600px] mx-auto px-6 md:px-12 pt-16 pb-32 space-y-16 relative">
-                    <div className="flex items-center justify-between border-b border-border/50 pb-8">
-                        <div className="space-y-1">
-                            <h3 className="text-2xl font-bold text-foreground flex items-center gap-3">
-                                Latest insights
-                            </h3>
-                            <p className="text-muted-foreground/60 font-medium uppercase tracking-widest text-xs">Practical guides for business owners</p>
+                <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 min-h-[100svh] py-24 flex flex-col justify-center gap-10">
+                    <div className="flex items-end justify-between gap-6 border-b border-border/50 pb-6">
+                        <div className="space-y-1.5">
+                            <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground">Latest insights</h3>
+                            <p className="text-sm text-muted-foreground">Practical guides for business owners</p>
                         </div>
-                        <Link href="/blog" className="hidden md:flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-muted-foreground/40 hover:text-foreground transition-colors group">
-                            All insights
-                            <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                        </Link>
-                    </div>
-
-                    <div className="relative group/slider flex items-center justify-center">
-                        {/* Navigation Buttons - Positioned relatively to the container */}
-                        <div className="absolute left-0 top-[35%] -translate-y-1/2 z-30 hidden lg:block">
+                        <div className="flex items-center gap-3">
+                            <Link href="/blog" className="mr-2 hidden sm:flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors group">
+                                All insights
+                                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                            </Link>
                             <button
-                                onClick={prevSlide}
-                                className="p-4 rounded-full bg-muted/10 border border-border/50 text-foreground transition-all hover:bg-muted/20 hover:scale-110 active:scale-95"
-                            >
-                                <ChevronLeft className="w-6 h-6" />
-                            </button>
-                        </div>
-
-                        <div className="absolute right-0 top-[35%] -translate-y-1/2 z-30 hidden lg:block">
-                            <button
-                                onClick={nextSlide}
-                                className="p-4 rounded-full bg-muted/10 border border-border/50 text-foreground transition-all hover:bg-muted/20 hover:scale-110 active:scale-95"
-                            >
-                                <ChevronRight className="w-6 h-6" />
-                            </button>
-                        </div>
-
-                        {/* Mobile Navigation */}
-                        <div className="absolute inset-x-0 top-[35%] -translate-y-1/2 z-30 flex justify-between px-2 lg:hidden">
-                            <button
-                                onClick={prevSlide}
-                                className="p-3 rounded-full bg-background/80 backdrop-blur-sm border border-border/50 text-foreground"
+                                onClick={() => scrollByCard(-1)}
+                                aria-label="Previous insights"
+                                className="grid place-items-center size-10 rounded-full border border-border text-foreground transition-colors hover:border-emerald-500 hover:text-emerald-500 focus-visible:outline-2 focus-visible:outline-emerald-500"
                             >
                                 <ChevronLeft className="w-5 h-5" />
                             </button>
                             <button
-                                onClick={nextSlide}
-                                className="p-3 rounded-full bg-background/80 backdrop-blur-sm border border-border/50 text-foreground"
+                                onClick={() => scrollByCard(1)}
+                                aria-label="Next insights"
+                                className="grid place-items-center size-10 rounded-full border border-border text-foreground transition-colors hover:border-emerald-500 hover:text-emerald-500 focus-visible:outline-2 focus-visible:outline-emerald-500"
                             >
                                 <ChevronRight className="w-5 h-5" />
                             </button>
                         </div>
-
-                        <div className="overflow-visible w-full lg:max-w-[1400px] mx-auto px-4 md:px-12">
-                            <div className="flex gap-8 md:gap-24 justify-center pt-12 pb-32 min-h-[600px] items-start relative">
-                                <AnimatePresence mode="popLayout" initial={false}>
-                                    {getVisibleBlogs().map((blog, index) => (
-                                        <motion.div
-                                            key={blog.id}
-                                            layout
-                                            initial={{ opacity: 0, x: direction * 50, scale: 0.9, filter: "blur(10px)" }}
-                                            animate={{ opacity: 1, x: 0, scale: 1, filter: "blur(0px)" }}
-                                            exit={{ opacity: 0, x: direction * -50, scale: 0.9, filter: "blur(10px)" }}
-                                            transition={{
-                                                type: "spring",
-                                                stiffness: 260,
-                                                damping: 26,
-                                            }}
-                                            className="group relative w-[200px] md:w-[260px] flex-shrink-0"
-                                        >
-                                            <Link href={`/blog/${blog.slug}`} className="block relative z-10 group/book">
-                                                {/* Glow Effect - Inside Link for better hover detection */}
-                                                <div
-                                                    className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[180%] aspect-square -z-10 blur-[80px] opacity-0 group-hover/book:opacity-70 group-hover/book:scale-110 transition-all duration-700 rounded-full pointer-events-none"
-                                                    style={{
-                                                        background: `radial-gradient(circle, ${CATEGORY_COLORS[blog.category]} 0%, transparent 70%)`,
-                                                    }}
-                                                />
-
-                                                <Book
-                                                    title={blog.title}
-                                                    color={CATEGORY_COLORS[blog.category] || '#222222'}
-                                                    textColor={
-                                                        (index % 2 !== 0 && blog.category === 'applied-ai')
-                                                            ? '#FFFFFF'
-                                                            : 'var(--ds-gray-1000)'
-                                                    }
-                                                    variant={index % 2 === 0 ? 'stripe' : 'simple'}
-                                                    textured
-                                                    width={{ sm: 160, md: 220, lg: 260 }}
-                                                />
-
-                                                <div className="mt-8 space-y-3 opacity-0 group-hover/book:opacity-100 transition-all duration-500 translate-y-4 group-hover/book:translate-y-0">
-                                                    <div className="flex items-center gap-2">
-                                                        <span className="text-[10px] font-black uppercase tracking-[0.2em] px-2 py-0.5 rounded bg-muted/20 border border-border/50 text-foreground/60">
-                                                            {blog.category.replace(/-/g, ' ')}
-                                                        </span>
-                                                        <span className="text-[10px] font-bold text-muted-foreground/30 uppercase tracking-widest">
-                                                            {new Date(blog.date).getFullYear()}
-                                                        </span>
-                                                    </div>
-                                                    <p className="text-sm text-muted-foreground line-clamp-2 font-medium leading-relaxed">
-                                                        {blog.excerpt}
-                                                    </p>
-                                                </div>
-                                            </Link>
-                                        </motion.div>
-                                    ))}
-                                </AnimatePresence>
-                            </div>
-                        </div>
                     </div>
 
-                    <div className="flex justify-center md:hidden pt-8">
-                        <Link href="/blog" className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-muted-foreground/40 hover:text-foreground transition-colors group">
-                            Browse Full Archive
+                    <ul
+                        ref={track}
+                        className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-pl-6 md:scroll-pl-0 pb-2 -mx-6 px-6 md:mx-0 md:px-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                    >
+                        {blogs.map((blog) => (
+                            <li key={blog.id} className="snap-start shrink-0 basis-[82%] sm:basis-[calc(50%-12px)] lg:basis-[calc(33.333%-16px)]">
+                                <Link
+                                    href={`/blog/${blog.slug}`}
+                                    className="group/card flex h-full flex-col gap-5 rounded-xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-500"
+                                >
+                                    <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-border bg-muted">
+                                        <Image
+                                            src={blog.image}
+                                            alt=""
+                                            fill
+                                            sizes="(max-width: 640px) 82vw, (max-width: 1024px) 50vw, 33vw"
+                                            className="object-cover transition-transform duration-500 ease-out group-hover/card:scale-[1.03]"
+                                        />
+                                    </div>
+                                    <div className="flex flex-1 flex-col gap-3">
+                                        <p className="flex items-center gap-2 text-sm text-muted-foreground">
+                                            <span className="size-1.5 rounded-full bg-emerald-500" aria-hidden />
+                                            <span className="font-medium text-foreground/80">{t(`categories.${blog.category}`)}</span>
+                                            <span aria-hidden className="text-border">/</span>
+                                            <time dateTime={blog.date}>
+                                                {new Date(blog.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })}
+                                            </time>
+                                        </p>
+                                        <h4 className="text-xl font-semibold leading-snug tracking-tight text-foreground transition-colors group-hover/card:text-emerald-500">
+                                            {blog.title}
+                                        </h4>
+                                        <p className="text-[15px] leading-relaxed text-muted-foreground line-clamp-2">
+                                            {blog.excerpt}
+                                        </p>
+                                        <span className="mt-auto inline-flex items-center gap-1.5 pt-1 text-sm font-medium text-foreground">
+                                            {t('readMore')}
+                                            <ArrowUpRight className="w-4 h-4 transition-transform group-hover/card:translate-x-0.5 group-hover/card:-translate-y-0.5" />
+                                        </span>
+                                    </div>
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+
+                    <div className="flex justify-center sm:hidden">
+                        <Link href="/blog" className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                            All insights
                             <ArrowUpRight className="w-4 h-4" />
                         </Link>
                     </div>
